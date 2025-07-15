@@ -1,0 +1,628 @@
+{
+	"header": {
+		"logIn": "Prisijungti",
+		"signUp": "Registruotis",
+		"logout": "Atsijungti",
+		"options": {
+			"home": "Pagrindinis",
+			"search": "Paieška",
+			"blog": "Blogas",
+			"buyNow": "Pasiūlymai „Pirkti dabar“",
+			"sold": "Parduotos transporto priemonės",
+			"contact": "Kontaktai",
+			"profile": "Profilis",
+			"aboutUs": "Apie mus",
+			"changePassword": "Keisti slaptažodį",
+			"language": "Kalba",
+			"settings": "Nustatymai",
+			"editProfile": "Redaguoti profilį",
+			"help": "Pagalba",
+			"shop": "Parduotuvė",
+			"reservation": "Rezervacijos",
+			"auction": "Aukcionas"
+		}
+	},
+	"blog": {
+		"search": "Paieška",
+		"noPosts": "Įrašų nerasta",
+		"readMore": "Skaityti daugiau",
+		"headers": {
+			"AllPosts": {
+				"header": "Visi įrašai",
+				"subHeader": "Čia galite rasti visus mūsų įrašus."
+			}
+		}
+	},
+	"auth": {
+		"password": "Slaptažodis",
+		"passwordPlaceholder": "Įveskite slaptažodį",
+		"email": "El. paštas",
+		"emailPlaceholder": "Įveskite savo el. pašto adresą",
+		"verifyEmail": "Patvirtinti el. paštą",
+		"firstName": "Vardas",
+		"firstNamePlaceholder": "Įveskite savo vardą",
+		"lastName": "Pavardė",
+		"lastNamePlaceholder": "Įveskite savo pavardę",
+		"phone": "Telefonas",
+		"phonePlaceholder": "Įveskite savo numerį",
+		"verifyPhone": "Patvirtinti telefoną",
+		"code": "Kodas",
+		"codePlaceholder": "Įveskite patvirtinimo kodą",
+		"verify": "Patvirtinti",
+		"register": "Registruotis",
+		"registration": "Registracija",
+		"login": "Prisijungti",
+		"forgotPassword": "Pamiršote slaptažodį?",
+		"changePassword": "Keisti slaptažodį",
+		"newPassword": "Naujas slaptažodis",
+		"newPasswordPlaceholder": "Įveskite naują slaptažodį",
+		"confirm": "Patvirtinti",
+		"change": "Keisti",
+		"yourPassword": "jūsų slaptažodis",
+		"welcome": "Sveiki atvykę",
+		"welcomeBack": "Sveiki sugrįžę",
+		"to": "į",
+		"haventAccount": "Dar neturite paskyros?",
+		"returnToLogin": "Grįžti prie prisijungimo",
+		"alreadyHaveAccount": "Jau turite paskyrą?",
+		"verificationCode": "Mes išsiuntėme patvirtinimo kodą į",
+		"confirmEmail": "Prašome patvirtinti savo el. paštą!",
+		"confirmPhone": "Prašome patvirtinti savo telefono numerį!",
+		"confirmLater": "Patvirtinti vėliau",
+		"sendNew": "Siųsti naują"
+	},
+	"validation": {
+		"shortPass": "Slaptažodis per trumpas",
+		"longPass": "Slaptažodis per ilgas",
+		"shortFirstName": "Vardas per trumpas",
+		"longFirstName": "Vardas per ilgas",
+		"shortLastName": "Pavardė per trumpa",
+		"longLastName": "Pavardė per ilga",
+		"invalidEmail": "Neteisingas el. paštas",
+		"requiredError": "Šis laukas yra privalomas",
+		"shortCode": "Kodas per trumpas",
+		"longCode": "Kodas per ilgas"
+	},
+	"home": {
+		"firstScreen": {
+			"header": "Siūlykite ir pirkite automobilius JAV",
+			"subHeader": "Pateikite savo išankstinius pasiūlymus šimtams audros pažeistų automobilių, prieinamų keliose pietryčių filialuose.",
+			"button": "Sužinoti daugiau"
+		},
+		"searchbar": {
+			"headers": {
+				"main": "Ieškoti skirtingų variantų",
+				"sub": "Raskite tinkamus automobilius savo regione"
+			},
+			"transportType": {
+				"car": "Automobilis",
+				"moto": "Motociklas"
+			},
+			"selectOptions": "Pasirinkti variantus",
+			"byVINOrLotNumber": "Ieškoti pagal VIN arba loto numerį",
+			"selects": {
+				"archived": "Archyvuota",
+				"inputPlaceholder": "Įveskite VIN arba loto numerį"
+			},
+			"allMakes": "Visos markės",
+			"allModels": "Visi modeliai",
+			"from": "Nuo",
+			"to": "Iki",
+			"search": "Ieškoti"
+		},
+		"instagram": {
+			"header": "Mūsų Instagram srautas",
+			"subHeader": "Sužinokite naujausią informaciją apie mūsų dabartinį renginį Instagram tinkle",
+			"viewProfile": "Peržiūrėti profilį"
+		},
+		"cars": {
+			"lates": "Naujausi",
+			"details": "išsami informacija"
+		},
+		"carBrands": "Automobilių markės"
+	},
+	"footer": {
+		"top": {
+			"header": "Leiskite mums pristatyti jūsų svajonių automobilį iš JAV",
+			"text": {
+				"first": "Mes pristatome į tris strateginius taškus — Klaipėdą, Roterdamą ir Potį — užtikrindami patikimumą.",
+				"second": "Efektyvi logistika į pagrindinius Europos ir Kaukazo regiono centrus."
+			},
+			"button": "Pirkti dabar"
+		},
+		"bottom": {
+			"text": "Jūsų patikimas partneris transporto priemonių logistikoje per Atlanto vandenyną.",
+			"folowUs": "Sekite mus",
+			"products": "Mūsų pagrindiniai produktai",
+			"contact": "Kontaktai"
+		},
+		"destinations": "Mes pristatome į 3 paskirties vietas"
+	},
+	"profile": {
+		"profile": "Profilis",
+		"archived": "Archyvuota",
+		"bidPower": "Pasiūlymo galia",
+		"carValue": "Automobilio vertė",
+		"seeInvoice": "Peržiūrėti sąskaitą",
+		"downloadInvoice": "Atsisiųsti sąskaitą",
+		"increaseBiddingPower": "Padidinti pasiūlymo galią",
+		"favorites": "Mėgstamiausi",
+		"bids": "Pasiūlymai",
+		"carfax": "Carfax",
+		"orders": "Užsakymai",
+		"vehicle": {
+			"damage": {
+				"primary": "Pagrindinis pažeidimas",
+				"secondary": "Antrinis pažeidimas"
+			}
+		},
+		"absence": {
+			"favorites": "Nėra mėgstamiausių",
+			"bids": "Nėra pasiūlymų",
+			"carfax": "Nėra Carfax",
+			"orders": "Nėra užsakymų"
+		},
+		"details": {
+			"header": "Išsami informacija",
+			"email": "El. paštas",
+			"phone": "Telefonas"
+		},
+		"account": {
+			"header": "Paskyra",
+			"frozenBalance": "Užšaldytas balansas",
+			"plan": "Planai",
+			"bidPower": "Pasiūlymo galia",
+			"carfaxPackage": {
+				"name": "Carfax paketas",
+				"left": "Liko Carfax ataskaitų"
+			}
+		},
+		"sorting": {
+			"header": "Rūšiuoti",
+			"createNew": "Pagal sukūrimą (nauji)",
+			"createOld": "Pagal sukūrimą (seni)",
+			"auctionDateNew": "Pagal aukciono datą (nauji)",
+			"auctionDateOld": "Pagal aukciono datą (seni)",
+			"lastUpdate": "Pagal paskutinį atnaujinimą",
+			"firstUpdate": "Pagal pirmąjį atnaujinimą",
+			"highestAmount": "Pagal didžiausią sumą",
+			"lowestAmount": "Pagal mažiausią sumą"
+		},
+		"statuses": {
+			"header": "Būsena",
+			"all": "Visi",
+			"placed": "Pateikti",
+			"won": "Laimėti",
+			"lost": "Perbūti"
+		}
+	},
+	"lot": {
+		"lot": "lotas",
+		"date": "Data",
+		"bidView": "Loto peržiūra",
+		"currentBid": "Dabartinis pasiūlymas",
+		"buyNow": "Pirkti dabar",
+		"finalBid": "Išankstinis pasiūlymas uždarytas",
+		"lotNotFound": "Lotas nerastas",
+		"preBidClosed": "Išankstinis pasiūlymas uždarytas",
+		"noInformation": "Nėra informacijos",
+		"documentNameUnknown": "Dokumento pavadinimas nežinomas",
+		"card": {
+			"button": "Peržiūrėti išsamią informaciją"
+		},
+		"header": {
+			"estimatedFinalPrice": "Numatoma galutinė kaina",
+			"actualCashValue": "Tikroji piniginė vertė"
+		},
+		"averagePrices": {
+			"minimum": "Minimali",
+			"average": "Vidutinė",
+			"maximum": "Maksimali"
+		},
+		"sideBar": {
+			"vehicleReports": "Transporto priemonės ataskaitos",
+			"getReports": "Gauti ataskaitas"
+		},
+		"bidBox": {
+			"bidding": "Siūlymas",
+			"outbid": "Jus perbūrė",
+			"yourBid": "Jūsų pasiūlymas",
+			"notAvailable": "neprieinamas",
+			"changeBid": "Keisti pasiūlymą",
+			"placeBid": "Pateikti pasiūlymą",
+			"loginToBid": "Prisijunkite, kad pateiktumėte pasiūlymą",
+			"createOrder": "Sukurti užsakymą",
+			"modal": {
+				"text1": "Ar tikrai norite pateikti pasiūlymą",
+				"text2": "Patvirtindami aukciono užsakymą, jūs pateikiate pasiūlymą T-AutoLogistics, kad būtų pateiktas pasiūlymas už transporto priemonę iki jūsų pasirinktos sumos. Patvirtinus šią operaciją paspaudus mygtuką „Patvirtinti užsakymą“, T-AutoLogistics pradės vykdyti užsakymą ir jūsų vardu siūlys pirkti pasirinktą transporto priemonę aukcione per tiesioginį aukcioną. Šios operacijos atšaukti negalima. Prieš patvirtindami, prašome perskaityti taisykles.",
+				"text3": "Dėmesio!",
+				"text4": "Prieš pateikdami pasiūlymą, peržiūrėkite dabartinį pasiūlymą aukcione!",
+				"text5": "tiesiog spustelėkite čia",
+				"text6": "Atsiprašome už nepatogumus.",
+				"text7": "Atšaukti",
+				"text8": "Siūlyti"
+			}
+		},
+		"additionalServices": {
+			"title": "Papildomos paslaugos",
+			"text1": "Pavojingas krovinys (EV, hibridas)",
+			"text2": "Didelė transporto priemonė (didelis visureigis, furgonas)"
+		},
+		"calc": {
+			"currency": "Valiuta",
+			"finalPriceEstimator": "Galutinės kainos skaičiuoklė",
+			"estimatedPrice": "Numatoma kaina",
+			"purchaseAmount": "Pirkimo suma",
+			"customValue": "Muitinės vertė",
+			"titleMailingFee": "Pavadinimo siuntimo mokestis",
+			"finalPriceCalculator": "Galutinės kainos skaičiuoklė",
+			"customClearanceCalculator": "Muitinės įforminimo skaičiuoklė (tik ES)",
+			"preliminaryCustomsClearanceCalculator": "Pirminė muitinės įforminimo skaičiuoklė",
+			"euroRate": "Euro kursas",
+			"terminal": "Terminalas",
+			"lotPrice": "Loto kaina",
+			"auctionFees": "Aukciono mokesčiai",
+			"brokerFee": "Brokerio mokestis",
+			"ship": "Jūrų transportas",
+			"transport": "Vietinis transportavimas",
+			"total": "Iš viso",
+			"vat": "PVM",
+			"importTax": "Importo mokestis",
+			"customAgency": "Muitinės agentūra + iškrovimas"
+		},
+		"details": {
+			"details": "Išsami informacija",
+			"lotId": "Loto ID",
+			"odometer": "Odometras",
+			"odometerBrand": "Odometro markė",
+			"lotCondition": "Loto būklė",
+			"color": "Spalva",
+			"manufacturedIn": "Pagaminta",
+			"location": "Vieta",
+			"damage": "Pažeidimai",
+			"documents": "Dokumentai",
+			"startCode": "Paleidimo kodas",
+			"insuranceCompany": "Draudimo bendrovė",
+			"seller": "Pardavėjas",
+			"primaryDamage": "Pagrindinis pažeidimas",
+			"secondaryDamage": "Antrinis pažeidimas",
+			"make": "Markė",
+			"model": "Modelis",
+			"engine": "Variklis",
+			"fuel": "Kuras",
+			"transmission": "Pavarų dėžė",
+			"keys": "Raktai"
+		},
+		"salesHistory": {
+			"salesHistory": "Pardavimų istorija",
+			"noHistory": "Nėra istorijos"
+		},
+		"similarSales": {
+			"similarSales": "Panašūs pardavimai",
+			"noSales": "Nėra archyvinių pasiūlymų"
+		},
+		"userBid": {
+			"yourBid": "Jūsų pasiūlymas"
+		}
+	},
+	"shop": {
+		"reservation": {
+			"makeReservation": "Atlikti rezervaciją",
+			"loginToReservation": "Prisijunkite, kad atliktumėte rezervaciją",
+			"warning": "Kaina nurodyta su pristatymu į Klaipėdą. Visi importo mokesčiai, iškrovimo mokestis ir kt. NEĮTRAUKTI",
+			"modal": {
+				"text1": "Ar tikrai norite atlikti rezervaciją",
+				"text2": "Prieš rezervuodami automobilį, prašome perskaityti taisykles ir sąlygas: rezervacijai reikalingas 1000 USD užstatas. Užstatas negrąžinamas, jei likusi suma nesumokama per 3 darbo dienas. Rezervuodami automobilį, jūs sutinkate su šiomis sąlygomis.",
+				"agreement": "Sutinku su negrąžinamu užstatu"
+			}
+		},
+		"auction": {
+			"info": {
+				"title": "Aukciono informacija",
+				"startDate": "Pradžios data",
+				"endDate": "Pabaigos data",
+				"initialPrice": "Pradinė kaina",
+				"minBid": "Minimalus pasiūlymas"
+			},
+			"status": {
+				"connected": "Prisijungta",
+				"notConnected": "Neprisijungta"
+			},
+			"highestBid": "Dabartinis didžiausias pasiūlymas",
+			"makeConnection": "Užmegzti ryšį",
+			"successBed": "Pasiūlymas sėkmingas",
+			"modal": {
+				"winner": {
+					"text1": "Sveikiname, jūs laimėjote aukcioną!",
+					"text2": "Peržiūrėkite automobilio puslapį profilio puslapyje, transporto priemonių skirtuke."
+				},
+				"loser": {
+					"text1": "Aukcionas baigėsi",
+					"text2": "Pabandykite kitą kartą."
+				},
+				"warning": "Jei turite klausimų, galite kreiptis į pagalbos operatorių."
+			}
+		}
+	},
+	"common": {
+		"yes": "Taip",
+		"no": "Ne"
+	},
+	"monthes": {
+		"jan": "Sau",
+		"feb": "Vas",
+		"mar": "Kov",
+		"apr": "Bal",
+		"may": "Geg",
+		"jun": "Bir",
+		"jul": "Lie",
+		"aug": "Rgp",
+		"sep": "Rgs",
+		"oct": "Spa",
+		"nov": "Lap",
+		"dec": "Gru"
+	},
+	"weekDays": {
+		"mon": "Pirm",
+		"tue": "Antr",
+		"wed": "Treč",
+		"thu": "Ketv",
+		"fri": "Penkt",
+		"sat": "Šešt",
+		"sun": "Sekm"
+	},
+	"help": {
+		"help": "Pagalba",
+		"salesDocuments": {
+			"header": "Pardavimo dokumentai",
+			"dots": {
+				"header": "Taškai šalia dokumentų padės jums suprasti, ką reiškia konkretus dokumentas",
+				"green": "Eksportas galimas / registracija Europoje galima su dabartiniais dokumentais",
+				"red": "Eksportas galimas / registracija Europoje neįmanoma su dabartiniais dokumentais",
+				"black": "Eksportas neįmanomas / registracija Europoje neįmanoma su dabartiniais dokumentais",
+				"yellow": "Eksportas neįmanomas / registracija Europoje neįmanoma su dabartiniais dokumentais",
+				"doubleRed": "Reikalingas papildomas apdorojimas eksportui - papildoma kaina 200–800 USD / registracija Europoje neįmanoma su dabartiniais dokumentais",
+				"gray": "Nėra informacijos apie dabartinius dokumentus"
+			},
+			"firstClue": "Gali būti tam tikri reikalavimai eksportuojant automobilius iš konkrečių uostų. Kai kurie BOS automobiliai turi būti perkelti iš jiems skirtų terminalų į kitus, kad būtų tinkami eksportui.",
+			"secondClue": "Atviras įsipareigojimas - Jei draudimo bendrovė sumokėjo įsipareigojimą, galime paprašyti įsipareigojimo atleidimo laiško. Tačiau jei vis dar yra nesumokėtas likutis kreditoriui, automobilis turi būti grąžintas į aukcioną nedelsiant perparduoti. Tai pirkėjo rizika.",
+			"thirdClueFirstPart": "Potvynio paveikti automobiliai su įprastu gelbėjimo titulu, bet pažymėti potvyniu, yra pažymėti kaip galimi eksportui (žalia -",
+			"thirdClueSecondPart": "tačiau registracija gali būti atmesta kai kuriose Europos DMV."
+		},
+		"deposit": {
+			"header": "Užstatas",
+			"basicPlan": {
+				"header": "Pagrindinis planas",
+				"description": "Šis planas leidžia jums kiekvieną mėnesį vienu metu dalyvauti 5 lotų aukcionuose. Įnešę vos 1 000 USD užstatą, turėsite 10 000 USD siūlymų galią."
+			},
+			"professionalPlan": {
+				"header": "Profesionalus planas",
+				"description": "Šis planas padidina jūsų galimybes teikti pasiūlymus iki 10 lotų vienu metu. Įnešus 2 500 USD užstatą, jūsų siūlymų galia padidėja iki 50 000 USD."
+			},
+			"enterprisePlan": {
+				"header": "Enterprise planas",
+				"description": "Mūsų aukščiausio lygio pasiūlymas leidžia vienu metu teikti pasiūlymus dėl 20 lotų. Įnešę 5 000 USD užstatą, gaunate įspūdingą 200 000 USD siūlymų galią."
+			},
+			"note": {
+				"header": "PASTABA:",
+				"description": "Jei pasirinkote Įmonės planą ir pastebėjote, kad jūsų užstatas nukrito žemiau 1000 USD, nesijaudinkite! Turėsite galimybę iš naujo įsigyti bet kurį iš mūsų siūlomų planų."
+			},
+			"goodNews": {
+				"header": "Geros naujienos!",
+				"description": "Jei jau investavote į mūsų Pagrindinį planą už 1000 USD ir galvojate apie perėjimą prie mūsų Profesionalaus plano, kainuojančio 2500 USD, jums nereikės mokėti visos sumos. Jums reikės padengti tik kainų skirtumą tarp šių dviejų planų! Štai kaip tai veikia: skirtumas tarp mūsų Pagrindinio ir Profesionalaus plano yra 1500 USD (2500 - 1000). Taigi, jūs tiesiog sumokėsite šį 1500 USD skirtumą, kad pereitumėte iš Pagrindinio į Profesionalų planą. Ši patogi politika taip pat taikoma pereinant iš Pagrindinio į Įmonės planą arba iš bet kurio kito plano į aukštesnį. Tiesiog prisiminkite, kad mokėsite tik skirtumą tarp dviejų planų kainų, o ne visą naujo plano kainą. Jūsų atnaujinimas tapo daug paprastesnis!"
+			}
+		}
+	},
+	"alert": {
+		"bold": "MUITINĖS ĮFORMINIMAS",
+		"text": "Nepraleiskite mūsų vaizdo įrašo apie muitinės procedūras! Spustelėkite ir sužinokite daugiau!",
+		"clickable": "spustelėjamas"
+	},
+	"aboutUs": {
+		"header": "Apie mus",
+		"welcome": {
+			"header": "Sveiki atvykę į bidauto.online",
+			"description": "Sveiki atvykę į bidauto.online, jūsų pagrindinį vartą į platų transporto priemonių pasaulį iš JAV. Mūsų misijos šerdyje slypi paprasta, tačiau gili aistra automobiliams ir begalinės galimybės, kurias JAV siūlo automobilių pramonėje."
+		},
+		"ourJourney": {
+			"header": "Mūsų kelionė",
+			"description": "Mūsų kelionė į šį dinamišką sektorių prasidėjo 2008 m., kai mūsų generalinis direktorius Tautvydas Lukauskas baigė vidurinę mokyklą. Skatinamas nenutrūkstamo susidomėjimo automobiliais ir JAV, Tautvydas pradėjo automobilių tarpininkavimo veiklą, padėdamas pagrindą tam, kas tapo žinomu vardu transporto priemonių pirkimo ir pristatymo srityje."
+		},
+		"dedication": {
+			"header": "Atsidavimas tobulumui",
+			"description": "Per daugelį metų mūsų atsidavimas teikti aukščiausios kokybės pristatymo paslaugas iš JAV į bet kurį pasaulio kampelį pelnė mums didžiulę sėkmę, ypač socialiniuose tinkluose mūsų gimtojoje šalyje Lietuvoje 2023 m. Ši sėkmė tapo evoliucijos katalizatoriumi, įkvėpdama mus diegti naujoves ir pristatyti IT sprendimus, kurie keičia žmonių automobilių pirkimo iš JAV aukcionų būdą. Mūsų tikslas visada buvo užtikrinti skaidrumą, aiškumą ir išsamius visų su automobilio pirkimo procesu susijusių mokesčių bei išlaidų paaiškinimus."
+		},
+		"latestInovation": {
+			"header": "Naujausia inovacija",
+			"description": "Šiandien mes didžiuojamės pristatydami savo naujausią inovaciją: internetinę automobilių aukciono tarpininkavimo sistemą, kuri kasdien demonstruoja daugiau nei 100 000 parduodamų transporto priemonių. Mūsų platforma siūlo platų transporto priemonių asortimentą, įskaitant švarius ir gelbėjimo titulus turinčius automobilius, pikapus, elektromobilius, prabangius automobilius, visureigius, keturračius, motociklus ir valtis. Ir geriausia dalis? Galite pasiekti šį didžiulį inventorių be būtinybės turėti pardavėjo licenciją."
+		},
+		"hassleFree": {
+			"header": "Patirtis be rūpesčių",
+			"description": "Mes esame pasiryžę padaryti automobilių aukciono procesą be rūpesčių, malonų ir saugų visiems dalyviams. Be to, kad teikiame puikią pasiūlymų patirtį, mes garantuojame jūsų įsigytų transporto priemonių pristatymą į bet kurią pasaulio vietą. Mūsų įsipareigojimas tobulumui tuo nesibaigia; mes visada pasiruošę atsakyti į jūsų klausimus ar išspręsti bet kokias problemas."
+		},
+		"joinUs": {
+			"header": "Prisijunkite prie mūsų",
+			"description": "Bidauto.online mes ne tik padedame įsigyti transporto priemones; mes esame pasiryžę keisti automobilių aukciono procesą į gerąją pusę. Prisijunkite prie mūsų šioje kelionėje ir atraskite skirtumą, kuris ateina pasirinkus partnerį, nuoširdžiai atsidavusį jūsų pasitenkinimui ir sėkmei automobilių pasaulyje."
+		}
+	},
+	"termsOfUse": {
+		"header": "Naudojimo sąlygos",
+		"description": "Šios Naudojimo sąlygos reglamentuoja elektroninių paslaugų, teikiamų T-Auto Logistics LLC svetainėje, naudojimą, siūlančią platformą transporto priemonių pirkimui, pasiūlymų teikimui ir transportavimui iš Jungtinių Valstijų į viso pasaulio vietas.",
+		"definitions": {
+			"header": "Apibrėžimai",
+			"company": {
+				"header": "Įmonė",
+				"description": "T-Auto Logistics LLC, 1806 Mariners Ln, Weston, FL 33327, JAV."
+			},
+			"user": {
+				"header": "Vartotojas",
+				"description": "Bet kuris fizinis ar juridinis asmuo, naudojantis Įmonės teikiamas paslaugas."
+			},
+			"vehicle": {
+				"header": "Transporto priemonė",
+				"description": "Motorinės transporto priemonės, parduodamos aukcione ir parduodamos per Įmonės platformą."
+			},
+			"order": {
+				"header": "Užsakymas",
+				"description": "Vartotojo prašymas Įmonei pateikti pasiūlymą, įsigyti ir/arba organizuoti transporto priemonės transportavimą."
+			},
+			"website": {
+				"header": "Svetainė",
+				"description": "Internetinė platforma, kurią valdo Įmonė."
+			},
+			"account": {
+				"header": "Paskyra",
+				"description": "Vartotojo profilis Svetainėje."
+			}
+		},
+		"generalProvisions": {
+			"header": "Bendrosios nuostatos",
+			"description": "Šios Sąlygos yra privalomos visiems Vartotojams. Įmonė palengvina transporto priemonių pasiūlymų teikimą, pirkimą ir transportavimą. Sandoriai vykdomi USD."
+		},
+		"membership": {
+			"header": "Narystė ir paskyra",
+			"description": "Vartotojai turi būti ne jaunesni kaip 18 metų ir turėti pilną teisinį veiksnumą. Svetainė siūlo nemokamas ir premium paskyrų parinktis."
+		},
+		"servicesOffered": {
+			"header": "Teikiamos elektroninės paslaugos",
+			"description": "Paslaugos apima transporto priemonių pasiūlymų teikimą, kainų skaičiavimą, muitinės pagalbą ir transporto organizavimą."
+		},
+		"vehicleConditionsAndDelivery": {
+			"header": "Transporto priemonių sąlygos ir pristatymas",
+			"vehicleConditions": {
+				"header": "Transporto priemonių sąlygos",
+				"description": "Transporto priemonės parduodamos „KAIP YRA, KUR YRA“, be jokių garantijų dėl būklės, išskyrus aukciono sąrašuose nurodytas. Įmonė neatsako už neaprašytus pažeidimus."
+			},
+			"delivery": {
+				"header": "Pristatymas",
+				"description": "Įmonė organizuoja transportavimą per trečiųjų šalių vežėjus ir neatsako už pažeidimus pristatymo metu nuo Aukciono iki Pakrovimo terminalo."
+			},
+			"support": {
+				"header": "Palaikymas",
+				"description": "Įmonė palaikys Vartotojus sprendžiant pristatymo problemas, laikantis nurodytų apribojimų."
+			}
+		},
+		"buyersResponsibilities": {
+			"header": "Pirkėjo pareigos",
+			"description": "Pirkėjas renkasi transporto priemones pagal asmeninius stebėjimus ir tyrimus. Patvirtindamas pirkimą, Pirkėjas sutinka atlikti pilną mokėjimą per 3 darbo dienas nuo pirkimo datos, pradedant pirkimo diena."
+		},
+		"calculatorsAndDeposits": {
+			"header": "Skaičiuoklės ir užstatai",
+			"description": "Kainų ir muitinės skaičiuoklės skirtos tik informaciniais tikslais. Užstatai mokami USD ir lemia Vartotojo pirkimo galią."
+		},
+		"biddingAndOrders": {
+			"header": "Pasiūlymai ir užsakymai",
+			"description": "Pasiūlymams teikti reikalingas užstatas. Svetainė palengvina pasiūlymų ir užsakymų pateikimą transporto priemonėms."
+		},
+		"services": {
+			"header": "Elektroninės paslaugos",
+			"description": "Paslaugos prieinamos Vartotojams, turintiems interneto prieigą ir tinkamus įrenginius."
+		},
+		"agreementTerms": {
+			"header": "Sutarties sąlygos",
+			"description": "Elektroninių paslaugų sutartis prasideda naudojant Svetainę ir baigiasi, kai Vartotojas nustoja ją naudoti."
+		},
+		"userContent": {
+			"header": "Vartotojo turinys",
+			"description": "Vartotojai sutinka įkelti teisingą, neapgaulingą turinį ir apsaugoti savo paskyros prieigą."
+		},
+		"complaints": {
+			"header": "Skundai",
+			"description": "Skundai turi būti pateikti per 30 dienų nuo incidento adresu logisticstauto@gmail.com."
+		},
+		"liability": {
+			"header": "Atsakomybė",
+			"description": "Įmonė neatsako už problemas, kurios nepriklauso nuo jos kontrolės, arba už pažeidimus po aukciono ir iki pristatymo į pakrovimo terminalą."
+		},
+		"copyrights": {
+			"header": "Autorių teisės",
+			"description": "Svetainės turinys yra apsaugotas autorių teisėmis. Vartotojai neįgyja jokių teisių į šį turinį."
+		},
+		"finalProvisions": {
+			"header": "Baigiamosios nuostatos",
+			"description": "Šios Sąlygos gali būti keičiamos Įmonės. Ginčai bus sprendžiami pagal Jungtinių Valstijų įstatymus, jurisdikcija priklauso Floridos teismams."
+		},
+		"contactInfo": {
+			"header": "Kontaktinė informacija",
+			"email": "El. paštas",
+			"phone": "Telefonas"
+		}
+	},
+	"warnings": {
+		"address": "Pridėkite savo adresą, kad galėtume pristatyti jūsų užsakymą"
+	},
+	"plans": {
+		"modal": {
+			"description": "Įnešdamas lėšas į bidauto.online, sutinku su platformos naudojimo sąlygomis, įskaitant asmens duomenų tvarkymą pagal galiojančius įstatymus ir taisykles.",
+			"continue": "Tęsti",
+			"confirm": "Ar tikrai norite įsigyti šį planą už"
+		},
+		"header": "Pasirinkite savo planą",
+		"select": "Pasirinkti",
+		"more": "Daugiau informacijos apie planus",
+		"biddingPower": "Turima pasiūlymo galia:",
+		"cost": "Reikalingas užstatas",
+		"verifyEmail": "Patvirtinkite savo el. paštą dėl užstato",
+		"verifyPhone": "Patvirtinkite savo telefono numerį dėl užstato",
+		"basic": {
+			"header": "Pagrindinis planas",
+			"description": "Geras pradžiamokslis visiems",
+			"bidUp": "Siūlykite iki 5 transporto priemonių vienu metu",
+			"receive": "Gaukite 5 transporto priemonių istorijos ataskaitas kas mėnesį nemokamai"
+		},
+		"pro": {
+			"header": "Profesionalus planas",
+			"description": "Turite šiek tiek patirties?",
+			"bidUp": "Siūlykite iki 10 transporto priemonių vienu metu",
+			"receive": "Gaukite 10 transporto priemonių istorijos ataskaitų kas mėnesį nemokamai"
+		},
+		"enterprise": {
+			"header": "Įmonės planas",
+			"description": "Geriausia pardavėjams ir brokeriams",
+			"bidUp": "Siūlykite iki 20 transporto priemonių vienu metu",
+			"receive": "Gaukite 20 transporto priemonių istorijos ataskaitų kas mėnesį nemokamai"
+		}
+	},
+	"settings": {
+		"header": "Nustatymai",
+		"save": "Išsaugoti",
+		"changePassword": {
+			"header": "Keisti slaptažodį",
+			"newPassword": "Naujas slaptažodis",
+			"newPasswordPlaceholder": "Įveskite savo naują slaptažodį",
+			"confirmPassword": "Patvirtinkite slaptažodį",
+			"confirmPasswordPlaceholder": "Patvirtinkite savo slaptažodį",
+			"oldPassword": "Senasis slaptažodis",
+			"oldPasswordPlaceholder": "Įveskite savo dabartinį slaptažodį"
+		},
+		"personalInfo": {
+			"header": "Asmeninė informacija",
+			"account": {
+				"header": "Paskyra",
+				"firstName": "Vardas",
+				"firstNamePlaceholder": "Įveskite savo vardą",
+				"lastName": "Pavardė",
+				"lastNamePlaceholder": "Įveskite savo pavardę"
+			},
+			"connect": {
+				"header": "Ryšys",
+				"email": "El. paštas",
+				"verified": "Patvirtinta",
+				"notVerified": "Nepatvirtinta"
+			},
+			"address": {
+				"header": "Adresas",
+				"address": "Adresas",
+				"addressPlaceholder": "Įveskite savo adresą",
+				"zipCode": "Pašto kodas",
+				"zipCodePlaceholder": "Įveskite savo pašto kodą",
+				"country": "Šalis",
+				"countryPlaceholder": "Įveskite savo šalį",
+				"state": "Valstija",
+				"statePlaceholder": "Įveskite savo valstiją",
+				"city": "Miestas",
+				"cityPlaceholder": "Įveskite savo miestą"
+			}
+		}
+	}
+}

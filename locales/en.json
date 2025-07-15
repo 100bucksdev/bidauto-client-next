@@ -1,0 +1,628 @@
+{
+	"header": {
+		"logIn": "Log In",
+		"signUp": "Register",
+		"logout": "Log Out",
+		"options": {
+			"home": "Home",
+			"search": "Search",
+			"contact": "Contact",
+			"blog": "Blog",
+			"profile": "Profile",
+			"buyNow": "Buy now offers",
+			"sold": "Sold vehicles",
+			"aboutUs": "About us",
+			"changePassword": "Change password",
+			"language": "Language",
+			"settings": "Settings",
+			"editProfile": "Edit profile",
+			"help": "Help",
+			"shop": "Shop",
+			"reservation": "Reservations",
+			"auction": "Auction"
+		}
+	},
+	"blog": {
+		"search": "Search",
+		"noPosts": "No posts found",
+		"readMore": "Read more",
+		"headers": {
+			"AllPosts": {
+				"header": "All posts",
+				"subHeader": "Here you can find all our posts."
+			}
+		}
+	},
+	"auth": {
+		"password": "Password",
+		"passwordPlaceholder": "Enter password",
+		"email": "Email",
+		"emailPlaceholder": "Enter your email",
+		"verifyEmail": "Verify Mail",
+		"firstName": "First name",
+		"firstNamePlaceholder": "Enter you first name",
+		"lastName": "Last name",
+		"lastNamePlaceholder": "Enter your last name",
+		"phone": "Phone",
+		"phonePlaceholder": "Enter your number",
+		"verifyPhone": "Verify Phone",
+		"code": "Code",
+		"codePlaceholder": "Enter verification code",
+		"verify": "Verify",
+		"register": "Register",
+		"registration": "Registration",
+		"login": "Login",
+		"forgotPassword": "Forgot your password?",
+		"changePassword": "Change password",
+		"newPassword": "New password",
+		"newPasswordPlaceholder": "Enter new password",
+		"confirm": "Confirm",
+		"change": "Change",
+		"yourPassword": "your password",
+		"welcome": "Welcome",
+		"welcomeBack": "Welcome back",
+		"to": "to",
+		"haventAccount": "Don't have an account yet?",
+		"returnToLogin": "Return to login",
+		"alreadyHaveAccount": "Already have an account?",
+		"verificationCode": "We have sent the verification code to",
+		"confirmEmail": "Please confirm your email!",
+		"confirmPhone": "Please confirm your phone number!",
+		"confirmLater": "Confirm later",
+		"sendNew": "Send a new one"
+	},
+	"validation": {
+		"shortPass": "Password is too short",
+		"longPass": "Password is too long",
+		"shortFirstName": "First name is too short",
+		"longFirstName": "First name is too long",
+		"shortLastName": "Last name is too short",
+		"longLastName": "Last name is too long",
+		"invalidEmail": "Invalid email",
+		"requiredError": "This field is required",
+		"shortCode": "Code is too short",
+		"longCode": "Code is too long"
+	},
+	"home": {
+		"firstScreen": {
+			"header": "Bid & Buy cars in U.S.A",
+			"subHeader": "Place your pre-bids on hundreds of storm-damaged vehicles available at multiple branches in the southeast.",
+			"button": "Explore more"
+		},
+		"searchbar": {
+			"headers": {
+				"main": "Search for Different Options",
+				"sub": "Find suitable Cars in your area"
+			},
+			"transportType": {
+				"car": "Car",
+				"moto": "Motorcycle"
+			},
+			"selectOptions": "Select options",
+			"byVINOrLotNumber": "Search by VIN or lot number",
+			"selects": {
+				"archived": "Archived",
+				"inputPlaceholder": "Enter VIN or lot number"
+			},
+			"allMakes": "All Makes",
+			"allModels": "All Models",
+			"from": "From",
+			"to": "To",
+			"search": "Search"
+		},
+		"instagram": {
+			"header": "Our instagram feed",
+			"subHeader": "Find out the latest about our current event, on Instagram",
+			"viewProfile": "View Profile"
+		},
+		"cars": {
+			"lates": "Lates",
+			"details": "details"
+		},
+		"carBrands": "Car brands"
+	},
+	"footer": {
+		"top": {
+			"header": "Let us deliver your dream car from the USA",
+			"text": {
+				"first": "We deliver to three strategic destinations—Klaipeda, Rotterdam, and Poti—ensuring reliable.",
+				"second": "Efficient logistics to key hubs across Europe and the Caucasus region."
+			},
+			"button": "Shop now"
+		},
+		"bottom": {
+			"text": "Your trusted partner in vehicle logistics across Atlantic ocean.",
+			"folowUs": "Follow US",
+			"products": "Our main products",
+			"contact": "Contact"
+		},
+		"destinations": "We deliver to 3 destinations"
+	},
+	"profile": {
+		"profile": "Profile",
+		"archived": "Archived",
+		"bidPower": "Bid Power",
+		"carValue": "Car Value",
+		"seeInvoice": "See invoice",
+		"downloadInvoice": "Download invoice",
+		"increaseBiddingPower": "Increase bidding power",
+		"favorites": "Favorites",
+		"bids": "Bids",
+		"carfax": "Carfax",
+		"orders": "Orders",
+		"vehicle": {
+			"damage": {
+				"primary": "Primary Damage",
+				"secondary": "Secondary Damage"
+			}
+		},
+		"absence": {
+			"favorites": "No Favorites",
+			"bids": "No Bids",
+			"carfax": "No Carfax",
+			"orders": "No Orders"
+		},
+		"details": {
+			"header": "Details",
+			"email": "Email",
+			"phone": "Phone"
+		},
+		"account": {
+			"header": "Account",
+			"frozenBalance": "Frozen Balance",
+			"plan": "Plan",
+			"bidPower": "Bid Power",
+			"carfaxPackage": {
+				"name": "Carfax Package",
+				"left": "Carfax Reports Left"
+			}
+		},
+		"sorting": {
+			"header": "Sort",
+			"createNew": "By create (new)",
+			"createOld": "By create (old)",
+			"auctionDateNew": "By auction date (new)",
+			"auctionDateOld": "By auction date (old)",
+			"lastUpdate": "By last update",
+			"firstUpdate": "By first update",
+			"highestAmount": "By highest amount",
+			"lowestAmount": "By lowest amount"
+		},
+		"statuses": {
+			"header": "Status",
+			"all": "All",
+			"placed": "Placed",
+			"won": "Won",
+			"lost": "Out bid"
+		}
+	},
+	"lot": {
+		"lot": "lot",
+		"date": "Date",
+		"bidView": "Lot View",
+		"currentBid": "Current Bid",
+		"buyNow": "Buy Now",
+		"finalBid": "Pre-bid closed",
+		"lotNotFound": "Lot Not Found",
+		"preBidClosed": "Pre-Bid Closed",
+		"noInformation": "No Information",
+		"documentNameUnknown": "Document name unknown",
+		"card": {
+			"button": "View Details"
+		},
+		"header": {
+			"estimatedFinalPrice": "Estimated Final Price",
+			"actualCashValue": "Actual Cash Value"
+		},
+		"averagePrices": {
+			"minimum": "Minimum",
+			"average": "Average",
+			"maximum": "Maximum"
+		},
+		"sideBar": {
+			"vehicleReports": "Vehicle reports",
+			"getReports": "Get reports"
+		},
+		"bidBox": {
+			"bidding": "Bidding",
+			"outbid": "You've been outbid",
+			"yourBid": "Your bid",
+			"notAvailable": "is not available",
+			"changeBid": "Change bid",
+			"placeBid": "Place a bid",
+			"loginToBid": "Login to bid",
+			"createOrder": "Create Order",
+			"modal": {
+				"text1": "Are you sure you want bid",
+				"text2": "By confirming the Auction Order, you are submitting an offer to T-AutoLogistics to place a bid on a vehicle up to your chosen amount. Upon confirmation of this operation by clicking the 'Confirm Order' button, T-AutoLogistics will proceed with the execution of the order and will bid on your behalf for the purchase of the selected vehicle at the auction house during the live auction. This operation cannot be undone. Before confirming,please read the Rules.",
+				"text3": "Attention!",
+				"text4": "See the current bid on the auction before you bid!",
+				"text5": "just click here",
+				"text6": "Sorry for the inconvenience.",
+				"text7": "Cancel",
+				"text8": "Bid"
+			}
+		},
+		"additionalServices": {
+			"title": "Additional Services",
+			"text1": "Hazardous Cargo (EV, Hybrid)",
+			"text2": "Oversized vehicle (BIG SUV,VAN)"
+		},
+		"calc": {
+			"currency": "Currency",
+			"finalPriceEstimator": "Final Price Estimator",
+			"estimatedPrice": "Estimated price",
+			"purchaseAmount": "Purchase amount",
+			"customValue": "Custom value",
+			"titleMailingFee": "Title Mailing Fee",
+			"finalPriceCalculator": "Final Price Calculator",
+			"customClearanceCalculator": "Custom Clearance Calculator (EU only)",
+			"preliminaryCustomsClearanceCalculator": "Primary Customs Clearance Calculator",
+			"euroRate": "Euro rate",
+			"terminal": "Terminal",
+			"lotPrice": "Lot Price",
+			"auctionFees": "Auction Fees",
+			"brokerFee": "Broker Fee",
+			"ship": "Ocean Freight",
+			"transport": "Local Transportation",
+			"total": "Total",
+			"vat": "VAT",
+			"importTax": "Import Tax",
+			"customAgency": "Customs Agency + Unloading"
+		},
+		"details": {
+			"details": "Details",
+			"lotId": "Lot Id",
+			"odometer": "Odometer",
+			"odometerBrand": "Odometer Brand",
+			"lotCondition": "Lot Condition",
+			"color": "Color",
+			"manufacturedIn": "Manufactured In",
+			"location": "Location",
+			"damage": "Damage",
+			"documents": "Documents",
+			"startCode": "Start Code",
+			"insuranceCompany": "Insurance Co.",
+			"seller": "Seller",
+			"primaryDamage": "Primary Damage",
+			"secondaryDamage": "Secondary Damage",
+			"make": "Make",
+			"model": "Model",
+			"engine": "Engine",
+			"fuel": "Fuel",
+			"transmission": "Transmission",
+			"keys": "Keys"
+		},
+		"salesHistory": {
+			"salesHistory": "Sales History",
+			"noHistory": "No History"
+		},
+		"similarSales": {
+			"similarSales": "Similar Sales",
+			"noSales": "No Archival Offers"
+		},
+		"userBid": {
+			"yourBid": "Your bid"
+		}
+	},
+	"shop": {
+		"reservation": {
+			"makeReservation": "Make Reservation",
+			"loginToReservation": "Login to make a Reservation",
+			"warning": "The price is show with delivery to Klaipeda. All import taxes, unloading fee, etc. are NOT included",
+			"modal": {
+				"text1": "Are you sure you want to make a Reservation",
+				"text2": "Before reserving a car, please read the terms and conditions: a $1000 deposit is required for the reservation. The deposit is non-refundable if the remaining amount is not paid within 3 business days. By reserving a car, you agree to these terms.",
+				"agreement": "I agree with non-refundable deposit"
+			}
+		},
+		"auction": {
+			"info": {
+				"title": "Auction Info",
+				"startDate": "Start Date",
+				"endDate": "End Date",
+				"initialPrice": "Initial Price",
+				"minBid": "Minimum Bid"
+			},
+			"status": {
+				"connected": "Connected",
+				"notConnected": "Not Connected"
+			},
+			"highestBid": "Current highest bid",
+			"makeConnection": "Make connection",
+			"successBed": "The bet is successful",
+			"modal": {
+				"winner": {
+					"text1": "Congratulations, you have won the auction!",
+					"text2": "View the car page on the profile page in the vehicle tab."
+				},
+				"loser": {
+					"text1": "The auction has ended",
+					"text2": "Try your hand another time."
+				},
+				"warning": "If you have any questions, you can contact the support operator."
+			}
+		}
+	},
+	"common": {
+		"yes": "Yes",
+		"no": "No"
+	},
+	"monthes": {
+		"jan": "Jan",
+		"feb": "Feb",
+		"mar": "Mar",
+		"apr": "Apr",
+		"may": "May",
+		"jun": "Jun",
+		"jul": "Jul",
+		"aug": "Aug",
+		"sep": "Sep",
+		"oct": "Oct",
+		"nov": "Nov",
+		"dec": "Dec"
+	},
+	"weekDays": {
+		"mon": "Mon",
+		"tue": "Tue",
+		"wed": "Wed",
+		"thu": "Thu",
+		"fri": "Fri",
+		"sat": "Sat",
+		"sun": "Sun"
+	},
+	"help": {
+		"help": "Help",
+		"salesDocuments": {
+			"header": "Sales Documents",
+			"dots": {
+				"header": "The dots next to the documents will help you understand what a particular document means",
+				"green": "Export possible / registration in Europe possible with current documentation",
+				"red": "Export possible / registration in Europe impossible with current documentation",
+				"black": "Export impossible / registration in Europe impossible with current documentation",
+				"yellow": "Export impossible / registration in Europe impossible with current documentation",
+				"doubleRed": "Additional processing required for export - extra cost 200$-800$ / registration in Europe impossible with current documentation",
+				"gray": "No information about current documentation"
+			},
+			"firstClue": "There may be certain requirements for exporting cars from specific ports. Some BOS vehicles need to be transferred from their dedicated terminals to others in order to be eligible for export.",
+			"secondClue": "Open lien - If the insurance company has paid off the lien, we are able to request a lien release letter. However, if there is still an outstanding balance owed to the lienholder, the vehicle must be returned to the auction for immediate resale. This is the buyer's risk.",
+			"thirdClueFirstPart": "Flood vehicles with regular salvage but flood branding have been marked as possible for export (green -",
+			"thirdClueSecondPart": "however, registration may be denied by some Europe DMVs."
+		},
+		"deposit": {
+			"header": "Deposit",
+			"basicPlan": {
+				"header": "Basic Plan",
+				"description": "This plan allows you to place bids on 5 lots simultaneously each month. With a deposit of just 1,000 USD, you'll have a bidding power of 10,000 USD."
+			},
+			"professionalPlan": {
+				"header": "Professional Plan",
+				"description": "This plan increases your ability to bid on up to 10 lots at the same time. With a deposit of 2,500 USD, your bidding power rises to 50,000 USD."
+			},
+			"enterprisePlan": {
+				"header": "Enterprise Plan",
+				"description": "Our premium offering allows you to bid on 20 lots simultaneously. With a deposit of 5,000 USD, you receive an impressive bidding power of 200,000 USD."
+			},
+			"note": {
+				"header": "NOTE:",
+				"description": "If you have chosen the Enterprise plan and find that your deposit has fallen below $1,000, don't feel bad! You will have the opportunity to re-purchase any of the plans we offer."
+			},
+			"goodNews": {
+				"header": "Good news!",
+				"description": "If you've already invested in our Basic Plan for $1000 and you're thinking about stepping up to our Professional Plan priced at $2500, you won't have to shoulder the full cost. You'll only need to cover the price difference between the two! Here's how it works: the gap between our Basic and Professional Plans is $1500 ($2500 - $1000). So, you would simply pay this $1500 difference to upgrade from the Basic to the Professional Plan. This convenient policy also applies when you're upgrading from the Basic to the Enterprise Plan, or from any other plan to a higher one. Just remember, you'll only be paying the difference between the two plan costs, not the entire cost of the new plan. Your upgrade just got a whole lot simpler!"
+			}
+		}
+	},
+	"alert": {
+		"bold": "CUSTOMS CLEARANCE",
+		"text": "Don't miss our video about customs procedures! Click and learn more!",
+		"clickable": "clickable"
+	},
+	"aboutUs": {
+		"header": "About Us",
+		"welcome": {
+			"header": "Welcome to bidauto.online",
+			"description": "Welcome to bidauto.online , your premier gateway to the vast world of vehicles from the USA. At the heart of our mission lies a simple, yet profound passion for cars and the endless opportunities the USA presents in the automotive industry."
+		},
+		"ourJourney": {
+			"header": "Our Journey",
+			"description": "Our journey into this dynamic sector began in 2008, marked by the graduation of our CEO, Tautvydas Lukauskas, from high school. Fueled by an unwavering interest in both cars and the USA, Tautvydas ventured into the realm of car brokering, setting the stage for what would become a renowned name in vehicle procurement and delivery."
+		},
+		"dedication": {
+			"header": "Dedication to Excellence",
+			"description": "Over the years, our dedication to providing top-notch delivery services from the USA to any corner of the globe has earned us immense success, especially on social media platforms in our home country, Lithuania, in 2023. This success has been a catalyst for evolution, inspiring us to innovate and introduce IT solutions that revolutionize the way people purchase cars from USA auctions. Our aim has always been to ensure transparency, clarity, and detailed explanations of all fees and expenses involved in the car buying process."
+		},
+		"latestInovation": {
+			"header": "Latest Innovation",
+			"description": "Today, we are proud to introduce our latest innovation: an online car auction broker system that showcases over 100,000+ vehicles for sale every day. Our platform offers a diverse range of vehicles, including clean title and salvage title cars, pickup trucks, electric cars, luxury vehicles, SUVs, ATVs, motorcycles, and boats. And the best part? You can access this vast inventory without the need for a dealer license."
+		},
+		"hassleFree": {
+			"header": "Hassle-Free Experience",
+			"description": "We are dedicated to making the car auction process hassle-free, enjoyable, and safe for everyone involved. Beyond providing a superior bidding experience, we guarantee the delivery of your purchased vehicles to any location worldwide. Our commitment to excellence doesn’t end there; we are always ready to address any questions or concerns you may have."
+		},
+		"joinUs": {
+			"header": "Join Us",
+			"description": "At bidauto.online , we are not just about facilitating vehicle purchases; we are committed to changing the car auction process for the better. Join us on this journey and discover the difference that comes with choosing a partner who is genuinely committed to your satisfaction and success in the automotive world."
+		}
+	},
+	"termsOfUse": {
+		"header": "Terms and Conditions of Use",
+		"description": "These Terms and Conditions govern the use of electronic services provided on the T-Auto Logistics LLC website, offering a platform for the purchase, bidding, and transportation of vehicles from the United States to locations worldwide.",
+		"definitions": {
+			"header": "Definitions",
+			"company": {
+				"header": "Company",
+				"description": "T-Auto Logistics LLC, 1806 Mariners Ln, Weston, FL 33327, USA."
+			},
+			"user": {
+				"header": "User",
+				"description": "Any individual or entity using the services provided by the Company."
+			},
+			"vehicle": {
+				"header": "Vehicle",
+				"description": "Motor vehicles auctioned and sold through the Company’s platform."
+			},
+			"order": {
+				"header": "Order",
+				"description": "A User request for the Company to bid on, purchase, and/or arrange the transport of a Vehicle."
+			},
+			"website": {
+				"header": "Website",
+				"description": "The online platform operated by the Company."
+			},
+			"account": {
+				"header": "Account",
+				"description": "The User’s profile on the Website."
+			}
+		},
+		"generalProvisions": {
+			"header": "General Provisions",
+			"description": "These Terms are binding for all Users. The Company facilitates vehicle bidding, purchase, and transport. Transactions are conducted in USD."
+		},
+		"membership": {
+			"header": "Membership and Account",
+			"description": "Users must be at least 18 years old with full legal capacity. The Website offers free and premium account options."
+		},
+		"servicesOffered": {
+			"header": "Electronic Services Offered",
+			"description": "Services include vehicle bidding, price calculation, customs assistance, and transport organization."
+		},
+		"vehicleConditionsAndDelivery": {
+			"header": "Vehicle Conditions and Delivery",
+			"vehicleConditions": {
+				"header": "Vehicle Conditions",
+				"description": "Vehicles are sold \"AS IS, WHERE IS,\" without warranties on condition beyond auction listings. The Company is not liable for undepictured damages."
+			},
+			"delivery": {
+				"header": "Delivery",
+				"description": "The Company arranges transport through third-party haulers and is not liable for damages during delivery from the Auction to the Loading terminal."
+			},
+			"support": {
+				"header": "Support",
+				"description": "The Company will support Users in mitigating delivery issues, within the limitations stated."
+			}
+		},
+		"buyersResponsibilities": {
+			"header": "Buyer’s Responsibilities",
+			"description": "The Buyer chooses vehicles based on personal observation and research. By confirming a purchase, the Buyer agrees to make full payment within 3 working days from the purchase date, starting on purchase day."
+		},
+		"calculatorsAndDeposits": {
+			"header": "Calculators and Deposits",
+			"description": "Price and customs calculators are for informational purposes only. Deposits are made in USD and define the User’s purchasing power."
+		},
+		"biddingAndOrders": {
+			"header": "Bidding and Orders",
+			"description": "A deposit is required for bidding. The Website facilitates bid and order submissions for Vehicles."
+		},
+		"services": {
+			"header": "Electronic Services",
+			"description": "Services are available to Users with internet access and appropriate devices."
+		},
+		"agreementTerms": {
+			"header": "Agreement Terms",
+			"description": "The agreement for electronic services commences upon Website use and ends when the User stops using the Website."
+		},
+		"userContent": {
+			"header": "User Content",
+			"description": "Users agree to upload true, non-misleading content and to protect their Account access."
+		},
+		"complaints": {
+			"header": "Complaints",
+			"description": "Complaints must be submitted within 30 days of the incident to logisticstauto@gmail.com."
+		},
+		"liability": {
+			"header": "Liability",
+			"description": "The Company is not liable for issues beyond its control or for damages post-auction and pre-loading terminal delivery."
+		},
+		"copyrights": {
+			"header": "Copyrights",
+			"description": "Website content is copyrighted. Users do not acquire any rights to this content."
+		},
+		"finalProvisions": {
+			"header": "Final Provisions",
+			"description": "These Terms may be modified by the Company. Disputes will be governed by the laws of the United States, with jurisdiction in Florida courts."
+		},
+		"contactInfo": {
+			"header": "Contact Information",
+			"email": "Email",
+			"phone": "Phone"
+		}
+	},
+	"warnings": {
+		"address": "Add your address so we can deliver your order to you"
+	},
+	"plans": {
+		"modal": {
+			"description": "By depositing funds on bidauto.online, I consent to the terms and conditions governing the use of the platform, including the processing of personal data in accordance with applicable laws and regulations.",
+			"continue": "Continue",
+			"confirm": "Are you sure you want to buy this plan for"
+		},
+		"header": "Choose your plan",
+		"select": "Select",
+		"more": "More info about plans",
+		"biddingPower": "Available bidding power:",
+		"cost": "Required deposit",
+		"verifyEmail": "Verify your email for deposit",
+		"verifyPhone": "Verify your phone number for deposit",
+		"basic": {
+			"header": "Basic Plan",
+			"description": "Good start for everyone",
+			"bidUp": "Bid up to 5 vehicles at one time",
+			"receive": "Receive 5 vehicles history reports monthly for free"
+		},
+		"pro": {
+			"header": "Professional Plan",
+			"description": "Have a little bit of experience?",
+			"bidUp": "Bid up to 10 vehicles at one time",
+			"receive": "Receive 10 vehicles history reports monthly for free"
+		},
+		"enterprise": {
+			"header": "Enterprise Plan",
+			"description": "Best for Dealers & Brokers",
+			"bidUp": "Bid up to 20 vehicles at one time",
+			"receive": "Receive 20 vehicles history reports monthly for free"
+		}
+	},
+	"settings": {
+		"header": "Settings",
+		"save": "Save",
+		"changePassword": {
+			"header": "Change Password",
+			"newPassword": "New password",
+			"newPasswordPlaceholder": "Enter your new password",
+			"confirmPassword": "Confirm password",
+			"confirmPasswordPlaceholder": "Confirm your password",
+			"oldPassword": "Old password",
+			"oldPasswordPlaceholder": "Enter your current password"
+		},
+		"personalInfo": {
+			"header": "Personal Information",
+			"account": {
+				"header": "Account",
+				"firstName": "First name",
+				"firstNamePlaceholder": "Enter you first name",
+				"lastName": "Last name",
+				"lastNamePlaceholder": "Enter your last name"
+			},
+			"connect": {
+				"header": "Connect",
+				"email": "Email",
+				"verified": "Verified",
+				"notVerified": "Not Verified"
+			},
+			"address": {
+				"header": "Address",
+				"address": "Address",
+				"addressPlaceholder": "Enter your address",
+				"zipCode": "Zip code",
+				"zipCodePlaceholder": "Enter your zip code",
+				"country": "Country",
+				"countryPlaceholder": "Enter your country",
+				"state": "State",
+				"statePlaceholder": "Enter your state",
+				"city": "City",
+				"cityPlaceholder": "Enter your city"
+			}
+		}
+	}
+}
