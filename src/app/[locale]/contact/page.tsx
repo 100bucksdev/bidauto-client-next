@@ -1,12 +1,12 @@
 import { Metadata } from 'next'
 import ContactCard from './(widgets)/ContactCard'
 
-export default async function Contact() {
-	const metadata: Metadata = {
-		title: 'Contact',
-		description: 'Contact with t-autologistics',
-	}
+export const metadata: Metadata = {
+	title: 'Contact',
+	description: 'Contact with t-autologistics',
+}
 
+export default async function Contact() {
 	return (
 		<>
 			<div className='my-10 max-w-[1200px] flex flex-col items-center mx-auto'>
