@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
 import { DefaultMetadata } from '@/config/ceo.config'
 import { routing } from '@/i18n/routing'
@@ -34,6 +35,9 @@ export default async function RootLayout({
 						<Header />
 					</header>
 					<main className='mx-44'>{children}</main>
+					<footer>
+						<Footer />
+					</footer>
 				</NextIntlClientProvider>
 			</body>
 		</html>

@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export function useClickAway({
 	func,
 	refs,
-	container = document,
+	container = typeof document !== 'undefined' ? document : null,
 	mode,
 }: {
 	func: () => void

@@ -5,6 +5,8 @@
 	--color-t-blue-black: #050b20;
 	--color-t-blue-cyan: #21405c;
 
+	--color-t-gray: #ebebeb;
+
 	--color-t-white-bg: #ebebeb;
 	--color-color-t-white-bg-from: #76ffc3;
 	--color-t-white-bg-to: #b6ffff;
@@ -71,4 +73,8 @@
 
 	--color-t-reg-button-bg: #4184fc;
 	--color-t-reg-button-bg-hover: #0d61ba;
+}
+
+body {
+	@apply bg-t-gray;
 }

@@ -126,7 +126,7 @@ const Header = () => {
 					</div>
 				</div>
 
-				<div className='flex justify-between 3xl:px-72 2xl:px-72 lg:px-20 max-lg:px-5 h-[70px] items-center max-md:px-[16px] !border-b-2 !border-b-t-header-bottom-border z-10 relative !border-solid'>
+				<div className='flex justify-between 3xl:px-72 2xl:px-72 lg:px-20 max-lg:px-5 h-[70px] items-center max-md:px-[16px] !border-b-2 bg-white !border-b-t-header-bottom-border z-10 relative !border-solid'>
 					<div className='flex h-[100%] select-none'>
 						<Link href={$Pages.HOME}>
 							<Image
