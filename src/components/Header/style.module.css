@@ -1,0 +1,7 @@
+.header_option {
+	@apply cursor-pointer flex items-center max-hd:!text-[14px] !text-[16px] h-[100%] px-[16px] transition duration-200 gap-2 max-xl:gap-1 max-xl:px-[8px];
+}
+
+.header_option:hover {
+	@apply !bg-t-header-top text-t-header-bottom;
+}

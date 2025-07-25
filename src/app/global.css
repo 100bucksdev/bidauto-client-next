@@ -1,6 +1,74 @@
 @import 'tailwindcss';
 
-:root {
-	--background: #ffffff;
-	--foreground: #171717;
+@theme {
+	--color-t-blue-light: #4184fc;
+	--color-t-blue-black: #050b20;
+	--color-t-blue-cyan: #21405c;
+
+	--color-t-white-bg: #ebebeb;
+	--color-color-t-white-bg-from: #76ffc3;
+	--color-t-white-bg-to: #b6ffff;
+
+	--color-t-footer-bottom-bg: #5f0075;
+	--color-t-footer-bottom-text: #ffffff;
+	--color-t-footer-top-bg: #ebebeb;
+
+	--color-t-header-top: #4184fc;
+	--color-t-header-bottom: #ffffff;
+	--color-t-header-bottom-from: #b600bb;
+	--color-t-header-bottom-to: #6e3ca9;
+
+	--color-t-header-bottom-border: #9a9ea7;
+	--color-t-header-bottom-option-hover: rgba(255, 255, 255, 0.4);
+	--color-t-header-bottom-option-hover-from: #6353e1;
+	--color-t-header-bottom-option-to: #d060ca;
+
+	--color-t-text-black: #000;
+	--color-t-text-primary: #fff;
+	--color-t-text-secondary: #e0e0e0;
+	--color-t-text-error: #fa0000;
+
+	--color-t-modal-bg: rgba(0, 0, 0, 0.5);
+	--color-t-modal-bg-from: rgba(52, 234, 166, 0.34);
+	--color-t-modal-bg-to: rgba(196, 130, 246, 0.31);
+
+	--color-t-burger-bg: #000;
+	--color-t-burger-menu-bg: #000;
+
+	--color-t-scroll-track: #8cb5ff;
+	--color-t-scroll-thumb: #4184fc;
+	--color-t-scroll-thumb-hover: #012f81;
+
+	--color-t-home-search: #050b20;
+	--color-t-home-search-from: #b500af;
+	--color-t-home-search-to: #7f3bc7;
+
+	--color-t-home-search-option: #690073;
+	--color-t-home-search-option-active: #ffffff;
+	--color-t-home-search-option-bg: transparent;
+	--color-t-home-search-option-bg-hover: rgba(242, 164, 255, 0.44);
+
+	--color-t-home-search-searchbar-bg-from: #2196f3;
+	--color-t-home-search-searchbar-bg-to: #1974bd;
+	--color-t-home-search-searchbar-bg-hover-from: #2883fa;
+	--color-t-home-search-searchbar-bg-hover-to: #1c61ba;
+
+	--color-color-t-home-search-select-bg: #e5e7eb;
+
+	--color-color-t-login-button-bg: #4184fc;
+	--color-color-t-login-button-border: #7b7b7b;
+	--color-color-t-register-button-bg: #4184fc;
+
+	--color-color-t-card-bg: #930ad3;
+	--color-color-t-card-bg-from: #f0f0f0;
+	--color-color-t-card-bg-to: #d9d7d7;
+
+	--color-t-profilebar-menu-bg: #891596;
+	--color-t-profilebar-menu-button-hover: #a82fa8;
+
+	--color-t-profile-banner-bg: #fff;
+	--color-t-circle-loader-color: #bababa;
+
+	--color-t-reg-button-bg: #4184fc;
+	--color-t-reg-button-bg-hover: #0d61ba;
 }

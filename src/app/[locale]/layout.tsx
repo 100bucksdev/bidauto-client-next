@@ -1,3 +1,4 @@
+import Header from '@/components/Header/Header'
 import { DefaultMetadata } from '@/config/ceo.config'
 import { routing } from '@/i18n/routing'
 import type { Metadata } from 'next'
@@ -28,7 +29,12 @@ export default async function RootLayout({
 	return (
 		<html lang={locale}>
 			<body className={`${roboto.variable} antialiased`}>
-				<NextIntlClientProvider>{children}</NextIntlClientProvider>
+				<NextIntlClientProvider>
+					<header>
+						<Header />
+					</header>
+					<main className='mx-44'>{children}</main>
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	)
