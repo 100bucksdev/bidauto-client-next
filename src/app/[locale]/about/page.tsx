@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 	description: 'About t-autologistics',
 }
 
-export default async function About() {
+export default function About() {
 	return (
 		<>
 			<div>
@@ -15,3 +15,5 @@ export default async function About() {
 		</>
 	)
 }
+
+export const dynamic = 'force-static'

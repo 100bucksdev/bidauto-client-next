@@ -34,7 +34,7 @@ export default async function RootLayout({
 					<header>
 						<Header />
 					</header>
-					<main className='mx-44'>{children}</main>
+					<main className='mx-72'>{children}</main>
 					<footer>
 						<Footer />
 					</footer>
