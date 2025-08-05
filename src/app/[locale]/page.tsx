@@ -1,107 +1,86 @@
+import pfetch from '@astralis-team/primitive-fetch'
+import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import Image from 'next/image'
+import { HomePageCarBrendsData } from './data'
+
+const metadata: Metadata = {
+	title: 'T-auto',
+	description: 'Win lots at auctions and we will deliver them to you',
+	openGraph: {
+		title: 'T-auto',
+		description: 'Win lots at auctions and we will deliver them to you',
+		images: [
+			{
+				url: '../../assets/images/footerImage.jpg',
+				width: 1200,
+				height: 630,
+				alt: 'T-auto Open Graph Image',
+			},
+		],
+	},
+}
 
 export default async function Home() {
 	const t = await getTranslations('header')
 
-	return (
-		<div className='grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-			<main className='flex flex-col gap-[32px] row-start-2 items-center sm:items-start'>
-				<div>{t('signUp')}</div>
-				<Image
-					className='dark:invert'
-					src='/next.svg'
-					alt='Next.js logo'
-					width={180}
-					height={38}
-					priority
-				/>
-				<ol className='list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]'>
-					<li className='mb-2 tracking-[-.01em]'>
-						Get started by editing{' '}
-						<code className='bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold'>
-							src/app/page.tsx
-						</code>
-						.
-					</li>
-					<li className='tracking-[-.01em]'>
-						Save and see your changes instantly.
-					</li>
-				</ol>
+	const $TestApi = pfetch.create({
+		baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		credentials: 'include',
+	})
 
-				<div className='flex gap-4 items-center flex-col sm:flex-row'>
-					<a
-						className='rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto'
-						href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-						target='_blank'
-						rel='noopener noreferrer'
-					>
-						<Image
-							className='dark:invert'
-							src='/vercel.svg'
-							alt='Vercel logomark'
-							width={20}
-							height={20}
-						/>
-						Deploy now
-					</a>
-					<a
-						className='rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]'
-						href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-						target='_blank'
-						rel='noopener noreferrer'
-					>
-						Read our docs
-					</a>
+	const cars = pfetch.get('/auction-vehicles/main-page/')
+
+	return (
+		<div className='break-words w-full overflow-y-auto overflow-x-hidden'>
+			{/* {isWarning && (
+          <div className='bg-yellow-500/80 p-2 flex max-md:flex-col gap-4 items-center px-6'>
+            <div>
+              We would like to apologize that until the end of December we will
+              have issues with informations from IAAI auction. Please use{" "}
+              <a href='https://www.iaai.com/' className='text-blue-500'>
+                iaai.com
+              </a>{" "}
+              page to search for the vehicles in that auction and send us a
+              message. Thank You for Your patience
+            </div>
+            <button onClick={handleClose} className='text-3xl'>
+              <IoIosClose />1. Удаляешь index.html и assets
+            </button>
+          </div>
+        )} */}
+			<HomeScreen />
+			<section className='w-full 3xl:ml-72 2xl:ml-36 2xl:mr-0 xl:mx-36 lg:mx-20 flex flex-col my-24 max-sm:my-12 max-lg:ml-0 overflow-hidden'>
+				<div className='w-full mb-10 pb-4 max-lg:mx-36 max-sm:mx-10'>
+					<InstagramPosts />
 				</div>
-			</main>
-			<footer className='row-start-3 flex gap-[24px] flex-wrap items-center justify-center'>
-				<a
-					className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-					href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<Image
-						aria-hidden
-						src='/file.svg'
-						alt='File icon'
-						width={16}
-						height={16}
-					/>
-					Learn
-				</a>
-				<a
-					className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-					href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<Image
-						aria-hidden
-						src='/window.svg'
-						alt='Window icon'
-						width={16}
-						height={16}
-					/>
-					Examples
-				</a>
-				<a
-					className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-					href='https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					<Image
-						aria-hidden
-						src='/globe.svg'
-						alt='Globe icon'
-						width={16}
-						height={16}
-					/>
-					Go to nextjs.org →
-				</a>
-			</footer>
+				<div className='space-y-10 max-lg:ml-10 max-sm:mx-2 flex justify-center flex-col'>
+					{cars.data?.map((car, index) => (
+						<Lots
+							key={index}
+							data={car.vehicles}
+							isFetching={cars.isFetching}
+							title={car.make}
+						/>
+					))}
+				</div>
+			</section>
+			<section className='flex flex-col items-center w-full h-auto max-lg:h-[60vh] max-sm:h-[170vh] bg-t-blue-black text-white xl:px-36 overflow-hidden'>
+				<h1 className='mt-24 font-bold text-5xl'>{t('home.carBrands')}</h1>
+				<div className='3xl:flex gap-5 mt-16 max-lg:grid max-lg:grid-cols-3 max-lg:grid-rows-2 max-lg:p-20 max-lg:mt-1 max-sm:flex max-sm:flex-col lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:p-20 lg:mt-1'>
+					{HomePageCarBrendsData.map((data, index) => (
+						<div
+							key={index}
+							className='flex flex-col items-center px-8 bg-white rounded-xl text-black gap-2 py-5'
+						>
+							<img src={data.icon} alt={data.title} />
+							<p className='text-lg'>{data.title}</p>
+						</div>
+					))}
+				</div>
+			</section>
 		</div>
 	)
 }

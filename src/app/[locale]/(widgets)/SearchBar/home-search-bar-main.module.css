@@ -1,0 +1,25 @@
+.search {
+	@apply text-t-text-primary relative bg-t-blue-light hover:bg-t-blue-light/90 transition-all duration-100 py-3 px-8 2xl:rounded-r-2xl 2xl:rounded-l-none shadow-lg overflow-hidden max-sm:rounded-b-2xl max-sm:rounded-t-none max-lg:rounded-b-2xl max-lg:rounded-t-none lg:rounded-b-2xl lg:rounded-t-none;
+}
+
+@media (hover: hover) {
+	.search:hover::after {
+		@apply opacity-100;
+	}
+	.search:hover::before {
+		@apply left-[105%];
+	}
+}
+
+@media (hover: none) {
+	.search:active {
+		@apply duration-0;
+	}
+	.search:active::after {
+		@apply opacity-100 duration-0;
+	}
+}
+
+.search .span {
+	@apply z-30 relative;
+}
