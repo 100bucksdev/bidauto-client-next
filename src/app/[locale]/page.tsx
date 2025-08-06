@@ -1,6 +1,8 @@
+import { IMainPageCars } from '@/shared/types/MainPageCars.interface'
 import pfetch from '@astralis-team/primitive-fetch'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import Lots from './(widgets)/Lots/HomeLots'
 import { HomePageCarBrendsData } from './data'
 
 const metadata: Metadata = {
@@ -21,7 +23,7 @@ const metadata: Metadata = {
 }
 
 export default async function Home() {
-	const t = await getTranslations('header')
+	const t = await getTranslations()
 
 	const $TestApi = pfetch.create({
 		baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1',
@@ -31,11 +33,13 @@ export default async function Home() {
 		credentials: 'include',
 	})
 
-	const cars = pfetch.get('/auction-vehicles/main-page/')
+	const cars = await $TestApi.get<IMainPageCars[]>(
+		'/auction-vehicles/main-page/'
+	)
 
 	return (
 		<div className='break-words w-full overflow-y-auto overflow-x-hidden'>
-			{/* {isWarning && (
+			{/* {/* {isWarning && (
           <div className='bg-yellow-500/80 p-2 flex max-md:flex-col gap-4 items-center px-6'>
             <div>
               We would like to apologize that until the end of December we will
@@ -50,20 +54,16 @@ export default async function Home() {
               <IoIosClose />1. Удаляешь index.html и assets
             </button>
           </div>
-        )} */}
+        )} 
 			<HomeScreen />
-			<section className='w-full 3xl:ml-72 2xl:ml-36 2xl:mr-0 xl:mx-36 lg:mx-20 flex flex-col my-24 max-sm:my-12 max-lg:ml-0 overflow-hidden'>
+			*/}
+			<section className='w-full 3xl:ml-72 2xl:ml-72 2xl:mr-0 xl:mx-36 lg:mx-20 flex flex-col my-24 max-sm:my-12 max-lg:ml-0 overflow-hidden'>
 				<div className='w-full mb-10 pb-4 max-lg:mx-36 max-sm:mx-10'>
-					<InstagramPosts />
+					{/* <InstagramPosts /> */}
 				</div>
 				<div className='space-y-10 max-lg:ml-10 max-sm:mx-2 flex justify-center flex-col'>
 					{cars.data?.map((car, index) => (
-						<Lots
-							key={index}
-							data={car.vehicles}
-							isFetching={cars.isFetching}
-							title={car.make}
-						/>
+						<Lots key={index} data={car.vehicles} title={car.make} />
 					))}
 				</div>
 			</section>

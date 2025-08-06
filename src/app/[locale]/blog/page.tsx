@@ -14,7 +14,7 @@ export default async function Blog() {
 	}
 
 	return (
-		<>
+		<div className='px-72'>
 			<BlogHeader />
 			<div className='bg-white p-5 rounded-2xl w-full max-w-[78rem] mx-auto overflow-hidden'>
 				<div>
@@ -50,7 +50,7 @@ export default async function Blog() {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

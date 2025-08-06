@@ -23,7 +23,7 @@ export default function BlogPost({ params }: Props) {
 	}
 
 	return (
-		<>
+		<div className='px-72'>
 			<PostHeader />
 			<div className='bg-white p-8 rounded-2xl max-w-6xl mx-auto h-full'>
 				<h1 className='font-bold text-3xl mb-5'>{post.title}</h1>
@@ -31,7 +31,7 @@ export default function BlogPost({ params }: Props) {
 					<ReactMarkdown remarkPlugins={[remarkGfm]}>{post.text}</ReactMarkdown>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

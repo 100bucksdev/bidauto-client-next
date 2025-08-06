@@ -6,7 +6,7 @@ export default async function HeplLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<section className='flex h-screen w-full mt-14 gap-5'>
+		<section className='flex h-screen w-full mt-14 gap-5 px-72'>
 			<aside className='w-[25%] max-lg:w-full'>
 				<HelpSideBar />
 			</aside>

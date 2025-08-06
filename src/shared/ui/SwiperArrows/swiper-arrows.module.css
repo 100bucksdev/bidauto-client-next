@@ -1,0 +1,63 @@
+@media (hover: hover) {
+	.arrow {
+		display: flex;
+	}
+	.new_arrow {
+		display: flex;
+	}
+}
+
+@media (hover: none) {
+	.arrow {
+		display: none;
+	}
+	.new_arrow {
+		display: none;
+	}
+}
+
+.arrow {
+	position: absolute;
+	z-index: 40;
+	height: 100%;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	font-size: 3rem; /* text-5xl */
+	align-items: center;
+	cursor: pointer;
+	color: #fff;
+	user-select: none;
+	transition-duration: 200ms;
+}
+
+.arrow:hover {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.new_arrow_wraper {
+	position: absolute;
+	z-index: 40;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.25rem; /* gap-5 */
+}
+
+.new_arrow {
+	background-color: var(--color-t-blue-light);
+	width: 3rem; /* w-12 */
+	height: 3rem; /* h-12 */
+	font-size: 3rem; /* text-5xl */
+	border-radius: 9999px; /* rounded-full */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	color: #fff;
+	user-select: none;
+	transition-duration: 200ms;
+}
+
+.new_arrow:hover {
+	opacity: 0.9;
+}
