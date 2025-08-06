@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import { SwiperClass } from 'swiper/react'
 import { useWindowWidth } from './useWindowWidth'

@@ -1,8 +1,10 @@
+import { $TestApi } from '@/config/api.config'
+import { IInstagramPost } from '@/shared/types/InstagramPost.interface'
 import { IMainPageCars } from '@/shared/types/MainPageCars.interface'
-import pfetch from '@astralis-team/primitive-fetch'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import Lots from './(widgets)/Lots/HomeLots'
+import InstagramPosts from './(widgets)/Realse/InstagramPosts'
 import { HomePageCarBrendsData } from './data'
 
 const metadata: Metadata = {
@@ -25,44 +27,53 @@ const metadata: Metadata = {
 export default async function Home() {
 	const t = await getTranslations()
 
-	const $TestApi = pfetch.create({
-		baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		credentials: 'include',
-	})
-
-	const cars = await $TestApi.get<IMainPageCars[]>(
-		'/auction-vehicles/main-page/'
+	const carsResponse = await $TestApi.get<IMainPageCars[]>(
+		'/auction-vehicles/main-page/',
+		{
+			next: {
+				revalidate: 60 * 60,
+			},
+		}
 	)
+
+	const realseResponse = await $TestApi.get<IInstagramPost[]>(
+		'/instagram/posts/',
+		{
+			next: {
+				revalidate: 60 * 60,
+			},
+		}
+	)
+
+	const cars = carsResponse.data
+	const realse = realseResponse.data
 
 	return (
 		<div className='break-words w-full overflow-y-auto overflow-x-hidden'>
 			{/* {/* {isWarning && (
-          <div className='bg-yellow-500/80 p-2 flex max-md:flex-col gap-4 items-center px-6'>
-            <div>
-              We would like to apologize that until the end of December we will
-              have issues with informations from IAAI auction. Please use{" "}
-              <a href='https://www.iaai.com/' className='text-blue-500'>
-                iaai.com
-              </a>{" "}
-              page to search for the vehicles in that auction and send us a
-              message. Thank You for Your patience
-            </div>
-            <button onClick={handleClose} className='text-3xl'>
-              <IoIosClose />1. Удаляешь index.html и assets
-            </button>
-          </div>
-        )} 
-			<HomeScreen />
-			*/}
+						<div className='bg-yellow-500/80 p-2 flex max-md:flex-col gap-4 items-center px-6'>
+							<div>
+								We would like to apologize that until the end of December we will
+								have issues with informations from IAAI auction. Please use{" "}
+								<a href='https://www.iaai.com/' className='text-blue-500'>
+									iaai.com
+								</a>{" "}
+								page to search for the vehicles in that auction and send us a
+								message. Thank You for Your patience
+							</div>
+							<button onClick={handleClose} className='text-3xl'>
+								<IoIosClose />1. Удаляешь index.html и assets
+							</button>
+						</div>
+					)} 
+				<HomeScreen />
+				*/}
 			<section className='w-full 3xl:ml-72 2xl:ml-72 2xl:mr-0 xl:mx-36 lg:mx-20 flex flex-col my-24 max-sm:my-12 max-lg:ml-0 overflow-hidden'>
 				<div className='w-full mb-10 pb-4 max-lg:mx-36 max-sm:mx-10'>
-					{/* <InstagramPosts /> */}
+					<InstagramPosts data={realse} />
 				</div>
 				<div className='space-y-10 max-lg:ml-10 max-sm:mx-2 flex justify-center flex-col'>
-					{cars.data?.map((car, index) => (
+					{cars.map((car, index) => (
 						<Lots key={index} data={car.vehicles} title={car.make} />
 					))}
 				</div>

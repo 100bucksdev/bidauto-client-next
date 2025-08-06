@@ -1,0 +1,27 @@
+.swiper {
+	position: relative;
+	border-radius: 0.5rem; /* rounded-lg */
+	user-select: none;
+}
+
+.swiper::after {
+	content: ' ';
+	height: 100%;
+	display: block;
+	width: 400px;
+	z-index: 10;
+	position: absolute;
+	right: 0;
+	background: linear-gradient(to left, #ebebeb 0%, #ebebeb00 100%);
+}
+
+.swiper::before {
+	content: ' ';
+	height: 100%;
+	display: block;
+	width: 400px;
+	z-index: 10;
+	position: absolute;
+	left: 0;
+	background: linear-gradient(to right, #ebebeb 0%, #ebebeb00 100%);
+}
