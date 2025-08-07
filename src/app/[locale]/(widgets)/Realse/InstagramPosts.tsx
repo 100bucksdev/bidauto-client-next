@@ -51,7 +51,7 @@ const InstagramPosts = ({ data }: { data: IInstagramPost[] }) => {
 						<div
 							className={` flex flex-wrap items-start mb-5 w-full overflow-hidden`}
 						>
-							<div className='absolute right-[27rem] bottom-[75vh]'>
+							<div className='absolute right-[27rem] bottom-[-13vh]'>
 								<SwiperArrows
 									prevButtonRef={prevButtonRef}
 									nextButtonRef={nextButtonRef}

@@ -1,8 +1,9 @@
-import { $TestApi } from '@/config/api.config'
+import { $Api } from '@/config/api.config'
 import { IInstagramPost } from '@/shared/types/InstagramPost.interface'
 import { IMainPageCars } from '@/shared/types/MainPageCars.interface'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import HomeScreen from './(widgets)/HomeScrean/HomeScreen'
 import Lots from './(widgets)/Lots/HomeLots'
 import InstagramPosts from './(widgets)/Realse/InstagramPosts'
 import { HomePageCarBrendsData } from './data'
@@ -27,7 +28,7 @@ const metadata: Metadata = {
 export default async function Home() {
 	const t = await getTranslations()
 
-	const carsResponse = await $TestApi.get<IMainPageCars[]>(
+	const carsResponse = await $Api.get<IMainPageCars[]>(
 		'/auction-vehicles/main-page/',
 		{
 			next: {
@@ -36,38 +37,18 @@ export default async function Home() {
 		}
 	)
 
-	const realseResponse = await $TestApi.get<IInstagramPost[]>(
-		'/instagram/posts/',
-		{
-			next: {
-				revalidate: 60 * 60,
-			},
-		}
-	)
+	const realseResponse = await $Api.get<IInstagramPost[]>('/instagram/posts/', {
+		next: {
+			revalidate: 60 * 60,
+		},
+	})
 
 	const cars = carsResponse.data
 	const realse = realseResponse.data
 
 	return (
 		<div className='break-words w-full overflow-y-auto overflow-x-hidden'>
-			{/* {/* {isWarning && (
-						<div className='bg-yellow-500/80 p-2 flex max-md:flex-col gap-4 items-center px-6'>
-							<div>
-								We would like to apologize that until the end of December we will
-								have issues with informations from IAAI auction. Please use{" "}
-								<a href='https://www.iaai.com/' className='text-blue-500'>
-									iaai.com
-								</a>{" "}
-								page to search for the vehicles in that auction and send us a
-								message. Thank You for Your patience
-							</div>
-							<button onClick={handleClose} className='text-3xl'>
-								<IoIosClose />1. Удаляешь index.html и assets
-							</button>
-						</div>
-					)} 
-				<HomeScreen />
-				*/}
+			<HomeScreen />
 			<section className='w-full 3xl:ml-72 2xl:ml-72 2xl:mr-0 xl:mx-36 lg:mx-20 flex flex-col my-24 max-sm:my-12 max-lg:ml-0 overflow-hidden'>
 				<div className='w-full mb-10 pb-4 max-lg:mx-36 max-sm:mx-10'>
 					<InstagramPosts data={realse} />

@@ -3,7 +3,9 @@
 import arrow from '@/assets/images/MainPageArrow.svg'
 import usa from '@/assets/images/Usa.svg'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import HomeSearchBarMain from '../SearchBar/HomeSearchBarMain'
 import HomeScreenBg from './HomeScreenBg'
 
 const HomeScreen = () => {
@@ -14,7 +16,7 @@ const HomeScreen = () => {
 		<section>
 			<HomeScreenBg>
 				<div className='flex'>
-					<div className='text-white z-10 3xl:w-[30vw] 2xl:w-[40vw] xl:w-[40vw] lg:w-[50vw] max-sm:flex max-sm:flex-col max-sm:mx-auto max-sm:w-[350px] max-lg:flex max-lg:flex-col max-lg:mx-auto max-lg:w-[65vw]'>
+					<div className='text-white z-10 max-sm:flex max-sm:flex-col max-sm:mx-auto max-sm:w-[350px] max-lg:flex max-lg:flex-col max-lg:mx-auto max-lg:w-[65vw] text-start'>
 						<div className='flex'>
 							<h1 className='font-bold text-5xl text-white max-sm:text-[1.75rem] max-lg:text-4xl'>
 								{t('home.firstScreen.header')}
@@ -32,11 +34,11 @@ const HomeScreen = () => {
 							{t('home.firstScreen.button')}
 						</button>
 					</div>
-					<div className=' absolute 3xl:left-[44vw] 2xl:left-[50vw] xl:left-[52vw] top-40 w-24 h-24 max-sm:w-12 max-sm:h-12 max-sm:left-80 max-sm:top-20 max-lg:left-[65vw] max-lg:top-36 lg:left-[60vw]'>
-						<img src={usa} alt={usa} />
+					<div className=' absolute 2xl:left-[30vw] xl:left-[52vw] w-24 h-24 max-sm:w-12 max-sm:h-12 max-sm:left-80 max-sm:top-20 max-lg:left-[65vw] max-lg:top-36 lg:left-[60vw]'>
+						<Image src={usa} alt={usa} />
 					</div>
-					<div className=' absolute 3xl:left-[38vw] top-72 max-hd:hidden max-lg:block max-lg:top-64 max-lg:left-[51svw] max-sm:hidden 2xl:block 2xl:left-[42vw] lg:block lg:left-[49vw] xl:left-[43vw]'>
-						<img src={arrow} alt='arrow' />
+					<div className=' absolute 2xl:left-[24vw] top-30 max-hd:hidden max-lg:block max-lg:top-64 max-lg:left-[51svw] max-sm:hidden 2xl:block lg:block lg:left-[49vw] xl:left-[43vw]'>
+						<Image src={arrow} alt='arrow' />
 					</div>
 				</div>
 			</HomeScreenBg>

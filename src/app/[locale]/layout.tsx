@@ -7,6 +7,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { Roboto } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import '../global.css'
+import { Providers } from './providers'
 
 const roboto = Roboto({
 	variable: '--font-roboto-sans',
@@ -31,13 +32,15 @@ export default async function RootLayout({
 		<html lang={locale}>
 			<body className={`${roboto.variable} antialiased`}>
 				<NextIntlClientProvider>
-					<header>
-						<Header />
-					</header>
-					<main>{children}</main>
-					<footer>
-						<Footer />
-					</footer>
+					<Providers>
+						<header>
+							<Header />
+						</header>
+						<main>{children}</main>
+						<footer>
+							<Footer />
+						</footer>
+					</Providers>
 				</NextIntlClientProvider>
 			</body>
 		</html>

@@ -1,8 +1,9 @@
 import { searchOptions } from '@/store/searchOptions.store'
 import { useTranslations } from 'next-intl'
 import { FC, useEffect } from 'react'
-import HomeSearchBarArea from '../HomeSearchBarArea'
-import HomeSearchBarAuctionType from '../HomeSearchBarAuctionType'
+
+import HomeSearchBarArea from './widgets/HomeSearchBarArea'
+import HomeSearchBarAuctionType from './widgets/HomeSearchBarAuctionType'
 
 interface HomeSearchBarMainProps {}
 
@@ -23,7 +24,7 @@ const HomeSearchBarMain: FC<HomeSearchBarMainProps> = () => {
 	}, [type, t, setMake, setModel])
 
 	return (
-		<section className='2xl:grid gap-7 2xl:grid-rows-2 max-sm:block 3xl:mx-72 2xl:mx-36 xl:mx-36 lg:mx-20 mt-5 max-sm:mx-2 max-sm:w-[350px] max-lg:w-[65vw] max-lg:flex max-lg:flex-col max-lg:mx-2 lg:gap-5 lg:flex lg:flex-col'>
+		<section className='2xl:grid gap-7 2xl:grid-rows-2 max-sm:block 3xl:mx-72 2xl:mx-72 xl:mx-36 lg:mx-20 mt-5 max-sm:mx-2 max-sm:w-[350px] max-lg:w-[65vw] max-lg:flex max-lg:flex-col max-lg:mx-2 lg:gap-5 lg:flex lg:flex-col'>
 			<div className='2xl:grid 2xl:grid-rows-2 max-lg:block lg-block max-sm:block text-white'>
 				<div>
 					<h1 className='text-4xl font-semibold max-sm:text-2xl max-lg:text-3xl'>
