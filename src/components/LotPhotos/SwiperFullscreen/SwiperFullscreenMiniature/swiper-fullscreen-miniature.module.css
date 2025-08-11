@@ -1,0 +1,19 @@
+.photo {
+	@apply select-none cursor-pointer rounded-md relative h-full w-full duration-150 mx-2 max-md:mx-1;
+}
+
+.photo::after {
+	@apply absolute left-0 bottom-0 right-0 content-[''] duration-100 top-0;
+}
+
+@media (hover: hover) {
+	.photo:hover {
+		@apply scale-90 after:bg-black after:bg-opacity-50;
+	}
+}
+
+@media (hover: none) {
+	.photo:active {
+		@apply scale-90 after:bg-black after:bg-opacity-50;
+	}
+}

@@ -1,6 +1,6 @@
 import { $Api } from '@/config/api.config'
-import { IInstagramPost } from '@/shared/types/InstagramPost.interface'
-import { IMainPageCars } from '@/shared/types/MainPageCars.interface'
+import { IInstagramPost } from '@/types/InstagramPost.interface'
+import { IMainPageCars } from '@/types/MainPageCars.interface'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import HomeScreen from './(widgets)/HomeScrean/HomeScreen'

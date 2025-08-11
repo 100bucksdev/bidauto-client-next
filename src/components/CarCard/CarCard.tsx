@@ -2,9 +2,9 @@
 
 import { useBiddingTimeLeft } from '@/shared/hooks/useBiddingTimeLeft'
 import { IcFuel, IcOdometr, IcTransmision } from '@/shared/icons'
-import { TLot } from '@/shared/types/Lot.interface'
-import { AuctionImage } from '@/shared/types/Shop.interface'
 import { priceFormat } from '@/shared/utils/priceFormat'
+import { TLot } from '@/types/Lot.interface'
+import { AuctionImage } from '@/types/Shop.interface'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'

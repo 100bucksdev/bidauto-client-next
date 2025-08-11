@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react'
 
 import { useGetUserData } from '@/shared/api/User/getUserData/useGetUserData'
-import { TDepositPlans } from '@/shared/types/DepositPlans.type'
-import { TUserDepositPlans } from '@/shared/types/UserPlans.type'
 import { currencyStore } from '@/store/currency.store'
+import { TDepositPlans } from '@/types/DepositPlans.type'
+import { TUserDepositPlans } from '@/types/UserPlans.type'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import st from './deposit-plan-card.module.scss'

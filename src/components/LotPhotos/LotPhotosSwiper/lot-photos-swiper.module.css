@@ -1,0 +1,49 @@
+.non_photo {
+	@apply w-full h-[150px] grid place-items-center text-5xl;
+}
+
+@media (hover: hover) {
+	.arrow {
+		@apply flex;
+	}
+	.arrow_new {
+		@apply flex;
+	}
+}
+
+@media (hover: none) {
+	.arrow {
+		@apply hidden;
+	}
+	.arrow_new {
+		@apply hidden;
+	}
+}
+
+.arrow {
+	@apply absolute z-20 h-full px-2 text-3xl items-center cursor-pointer text-white select-none duration-200;
+
+	&:hover {
+		@apply bg-black bg-opacity-50;
+	}
+}
+
+.arrow[data-isphotolength='false'] {
+	& {
+		@apply hidden;
+	}
+}
+
+.arrow_new {
+	@apply absolute z-20 top-[50%] h-10 w-10 text-3xl flex justify-center items-center cursor-pointer text-t-blue-light bg-white bg-opacity-50 select-none duration-200;
+
+	&:hover {
+		@apply bg-opacity-100;
+	}
+}
+
+.arrow_new[data-isphotolength='false'] {
+	& {
+		@apply hidden;
+	}
+}

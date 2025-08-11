@@ -1,7 +1,7 @@
 'use client'
 
 import { IcBookmark, IcHeart, IcMessage, IcSend } from '@/shared/icons'
-import { IInstagramPost } from '@/shared/types/InstagramPost.interface'
+import { IInstagramPost } from '@/types/InstagramPost.interface'
 
 import instagramLogo from '@/assets/images/InstagramLogo.jpg'
 import { useTranslations } from 'next-intl'

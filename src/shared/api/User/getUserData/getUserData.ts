@@ -1,5 +1,5 @@
 import { $Api } from '@/config/api.config'
-import { IUser } from '@/shared/types/User.interface'
+import { IUser } from '@/types/User.interface'
 import { FetchesRequestConfig } from '@astralis-team/primitive-fetch'
 
 export type getUserDataConfig = FetchesRequestConfig

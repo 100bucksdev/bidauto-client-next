@@ -2,8 +2,8 @@
 
 import CarCard from '@/components/CarCard/CarCard'
 import { useCarousel } from '@/shared/hooks/useCarousel'
-import { TLot } from '@/shared/types/Lot.interface'
 import SwiperArrows from '@/shared/ui/SwiperArrows'
+import { TLot } from '@/types/Lot.interface'
 import { useTranslations } from 'next-intl'
 import { Fragment, useRef } from 'react'
 import 'swiper/css'

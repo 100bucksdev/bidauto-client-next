@@ -1,0 +1,19 @@
+@media (hover: hover) {
+	.arrow {
+		@apply flex;
+	}
+}
+
+@media (hover: none) {
+	.arrow {
+		@apply hidden;
+	}
+}
+
+.arrow {
+	@apply absolute z-10 h-full px-2 text-5xl items-center cursor-pointer text-white select-none duration-200;
+}
+
+.arrow:hover {
+	@apply bg-black bg-opacity-50;
+}

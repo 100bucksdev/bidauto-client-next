@@ -1,8 +1,8 @@
 'use client'
 
 import { useCarousel } from '@/shared/hooks/useCarousel'
-import { IInstagramPost } from '@/shared/types/InstagramPost.interface'
 import SwiperArrows from '@/shared/ui/SwiperArrows'
+import { IInstagramPost } from '@/types/InstagramPost.interface'
 import { useTranslations } from 'next-intl'
 import { Fragment, useRef } from 'react'
 import { A11y, Navigation } from 'swiper/modules'

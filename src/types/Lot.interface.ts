@@ -1,6 +1,11 @@
-import { IAvgPrices } from '@/service/Lots.service'
 import { ILotCalculator, ILotEuCalculator } from './LotCalculator.interface'
 import { ISalesHistoryItem } from './SalesHistoryItem.interface'
+
+export interface IAvgPrices {
+	min: number
+	max: number
+	avg: number
+}
 
 export interface IAuctionsStatuses {
 	iaai_available: boolean

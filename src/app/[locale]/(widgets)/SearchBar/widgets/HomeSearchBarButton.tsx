@@ -4,8 +4,8 @@ import { getStringParams } from '@/store/searchOptions.store'
 
 import { UseQueryResult } from '@tanstack/react-query'
 
-import { TLot } from '@/shared/types/Lot.interface'
 import CircleLoader from '@/shared/ui/CircleLoader'
+import { TLot } from '@/types/Lot.interface'
 import { FetchesResponse } from '@astralis-team/primitive-fetch'
 import { useRouter } from 'next/navigation'
 

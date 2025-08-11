@@ -1,6 +1,6 @@
 'use client'
 
-import { AuctionImage } from '@/shared/types/Shop.interface'
+import { AuctionImage } from '@/types/Shop.interface'
 import { Dispatch, FC, SetStateAction, useRef, useState } from 'react'
 import { FaCar } from 'react-icons/fa'
 import { GrNext, GrPrevious } from 'react-icons/gr'

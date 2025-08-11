@@ -1,5 +1,5 @@
 import { $Api } from '@/config/api.config'
-import { TLot } from '@/shared/types/Lot.interface'
+import { TLot } from '@/types/Lot.interface'
 import {
 	FetchesRequestConfig,
 	FetchesResponse,
