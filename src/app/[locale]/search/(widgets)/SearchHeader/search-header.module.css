@@ -1,0 +1,7 @@
+.header {
+	transform: translateY(0);
+}
+
+.header__scrolled {
+	@apply 2xl:-translate-y-[100%];
+}

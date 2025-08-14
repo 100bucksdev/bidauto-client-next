@@ -1,0 +1,9 @@
+.sidebar {
+	@apply top-[174px] max-2xl:top-[120px] lg:sticky;
+	transform: translateY(0);
+	transition: all 0.25s ease;
+}
+
+.sidebar__scrolled {
+	@apply lg:-translate-y-[150%];
+}
