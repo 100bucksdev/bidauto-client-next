@@ -1,0 +1,18 @@
+.deposit_button {
+	@apply bg-blue-500 px-6 py-2 w-full text-lg rounded-md text-t-text-primary;
+}
+
+@media (hover: hover) {
+	.deposit_button {
+		@apply duration-100;
+	}
+
+	.deposit_button:hover {
+		@apply bg-blue-600;
+	}
+}
+@media (hover: none) {
+	.deposit_button:active {
+		@apply bg-blue-600;
+	}
+}

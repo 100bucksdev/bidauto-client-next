@@ -1,0 +1,24 @@
+/* phone-input.css */
+.special-label {
+	@apply absolute left-1.5 -top-6 px-[5px] font-medium rounded-md;
+	font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	background-color: white; /* Чтобы label не пересекался с бордером */
+	color: #4b5563; /* gray-600 по умолчанию */
+	transition: all 0.2s ease; /* Плавный переход для эффектов */
+}
+
+.form-control {
+	@apply w-full rounded-2xl border-2 border-gray-400;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-right: 0.75rem;
+}
+
+.form-control:hover {
+	@apply border-black;
+}
+
+.form-control:focus {
+	@apply shadow-lg border-blue-600 outline-none;
+}

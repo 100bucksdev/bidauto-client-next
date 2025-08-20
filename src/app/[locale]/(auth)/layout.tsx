@@ -1,13 +1,11 @@
-import Footer from '@/components/Footer/Footer'
-import Header from '@/components/Header/Header'
 import { DefaultMetadata } from '@/config/ceo.config'
 import { routing } from '@/i18n/routing'
 import type { Metadata } from 'next'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { Roboto } from 'next/font/google'
 import { notFound } from 'next/navigation'
-import '../global.css'
-import { Providers } from './providers'
+import '../../global.css'
+import { Providers } from '../providers'
 
 const roboto = Roboto({
 	variable: '--font-roboto-sans',
@@ -33,13 +31,7 @@ export default async function RootLayout({
 			<body className={`${roboto.variable} antialiased`}>
 				<NextIntlClientProvider>
 					<Providers>
-						<header>
-							<Header />
-						</header>
 						<main>{children}</main>
-						<footer>
-							<Footer />
-						</footer>
 					</Providers>
 				</NextIntlClientProvider>
 			</body>

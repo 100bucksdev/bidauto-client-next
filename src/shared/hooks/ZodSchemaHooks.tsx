@@ -25,11 +25,10 @@ export function useRegisterSchema() {
 			.min(8, t('validation.shortPass'))
 			.max(30, t('validation.longPass')),
 		country: z.string().nullable().optional(),
-		terms: z
-			.boolean()
-			.refine(val => val === true, {
-				message: 'You must agree with terms of use',
-			}),
+		terms: z.boolean().refine(val => val === true, {
+			message: 'You must agree with terms of use',
+		}),
+		captcha: z.string().min(1, 'Captcha is required'),
 	})
 
 	if (!isDev) {
@@ -51,13 +50,16 @@ export function useLoginSchema() {
 			.string()
 			.min(8, t('validation.shortPass'))
 			.max(30, t('validation.longPass')),
+		captcha: isDev
+			? z.string().optional() // not required in dev
+			: z.string().min(1, 'Captcha is required'),
 	})
 
-	if (!isDev) {
-		schema = schema.extend({
-			captcha: z.string().min(1, 'Captcha is required'),
-		})
-	}
+	// if (!isDev) {
+	// 	schema = schema.extend({
+	// 		captcha: z.string().min(1, 'Captcha is required'),
+	// 	})
+	// }
 
 	return schema
 }
@@ -83,6 +85,7 @@ export function useForgotPasswordSchema() {
 			.string()
 			.min(8, t('validation.shortPass'))
 			.max(30, t('validation.longPass')),
+		captcha: z.string().min(1, 'Captcha is required'),
 	})
 
 	if (!isDev) {
@@ -98,11 +101,9 @@ export function useTermsSchema() {
 	const t = useTranslations()
 
 	const schema = z.object({
-		terms: z
-			.boolean()
-			.refine(val => val === true, {
-				message: 'You must agree with terms of use',
-			}),
+		terms: z.boolean().refine(val => val === true, {
+			message: 'You must agree with terms of use',
+		}),
 	})
 
 	return schema
