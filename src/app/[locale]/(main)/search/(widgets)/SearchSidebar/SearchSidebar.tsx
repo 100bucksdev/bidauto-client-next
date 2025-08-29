@@ -1,3 +1,5 @@
+'use client'
+
 import { getStringParams, searchOptions } from '@/store/searchOptions.store'
 import { ISearchLotParams } from '@/types/SearchLotParams.interface'
 

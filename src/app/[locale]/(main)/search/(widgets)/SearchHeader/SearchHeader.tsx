@@ -1,3 +1,5 @@
+'use client'
+
 import { useGetBrands } from '@/shared/api/Search/getBrands/useGetBrands'
 import { useGetModelsByMake } from '@/shared/api/Search/getModelsByMake/useGetModelsByMake'
 import SwipeCheckbox from '@/shared/ui/SwipeCheckbox'
@@ -15,7 +17,7 @@ import queryString from 'query-string'
 import { useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import Select from 'react-select'
-import st from './search-header.module.scss'
+import st from './search-header.module.css'
 
 const SearchHeader = () => {
 	const [prevScrollPos, setPrevScrollPos] = useState<number>(0)

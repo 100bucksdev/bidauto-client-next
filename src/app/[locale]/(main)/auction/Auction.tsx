@@ -1,7 +1,9 @@
+'use client'
+
+import backgroundImage from '@/assets/images/ShopBackground.jpeg'
 import { useGetAllAuctionVehicles } from '@/shared/api/auction/getAllAuctionVehicles/useGetAllAuctionVehicles'
 import { useGetAuctionFirstFoutVehiclesEveryCategory } from '@/shared/api/auction/getAuctionFirstFoutVehiclesEveryCategory/useGetAuctionFirstFoutVehiclesEveryCategory'
 import { useInfiniteScrolling } from '@/shared/hooks/useInfiniteScrolling'
-import backgroundImage from '@images/ShopBackground.jpeg'
 import { useParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { IoIosArrowBack, IoIosSearch } from 'react-icons/io'
@@ -10,7 +12,7 @@ import { Fragment } from 'react/jsx-runtime'
 import ShopCardMask from '../shop/(widgets)/ShopCardMask'
 import AuctionCard from './(widgets)/AuctionCard'
 
-const AuctionPage = () => {
+const Auction = () => {
 	const { push: path } = useRouter()
 	const [search, setSearch] = useState('')
 	const { slug, id } = useParams()
@@ -166,4 +168,4 @@ const AuctionPage = () => {
 	)
 }
 
-export default AuctionPage
+export default Auction

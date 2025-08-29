@@ -1,3 +1,5 @@
+'use client'
+
 import SearchCardMask from '@/components/SearchCard/SearchCardMask'
 import { useGetBuyNowOffers } from '@/shared/api/Search/getBuyNowOffers/useGetByNowOffers'
 import { useInfiniteScrolling } from '@/shared/hooks/useInfiniteScrolling'

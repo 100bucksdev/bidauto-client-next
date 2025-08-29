@@ -1,3 +1,5 @@
+'use client'
+
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { IUser } from '@/types/User.interface'
 import { useTranslations } from 'next-intl'

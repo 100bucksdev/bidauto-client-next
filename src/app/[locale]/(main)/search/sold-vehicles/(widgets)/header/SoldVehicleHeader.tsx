@@ -1,3 +1,5 @@
+'use client'
+
 import { useGetBrands } from '@/shared/api/Search/getBrands/useGetBrands'
 import { useGetModelsByMake } from '@/shared/api/Search/getModelsByMake/useGetModelsByMake'
 import SwipeCheckbox from '@/shared/ui/SwipeCheckbox'

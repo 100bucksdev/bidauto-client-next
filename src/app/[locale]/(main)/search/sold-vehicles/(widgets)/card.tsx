@@ -1,3 +1,5 @@
+'use client'
+
 import CardPhotos from '@/components/CarCard/CardPhoto'
 import View360Modal from '@/components/LotPhotos/View360/View360Modal'
 import InsuranceBar from '@/components/SearchCard/InsuranceBar'

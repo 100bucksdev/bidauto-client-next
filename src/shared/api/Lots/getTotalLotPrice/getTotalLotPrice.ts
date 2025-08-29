@@ -28,10 +28,16 @@ export const getTotalLotPrice = async ({
 		eur_rate: number
 	}>
 > => {
-	return $Api.get('/calculator/', {
-		price: params.price,
-		lot_id: params.lot_id,
-		auction: params.auction_name,
-		fee_type: params.fee_type,
-	})
+	return $Api.post(
+		'/calculator/',
+		{
+			price: params.price,
+			lot_id: params.lot_id,
+			auction: params.auction_name,
+			fee_type: params.fee_type,
+		},
+		{
+			...config,
+		}
+	)
 }

@@ -1,7 +1,10 @@
+'use client'
+
 import { MRegPopUpFromRightToLeft } from '@/assets/animation/PopUp.animation'
 import port from '@/assets/images/port3.jpg'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import Steps from '../(widgets)/Steps'
@@ -17,35 +20,45 @@ const Registration = () => {
 	const [phone, setPhone] = useState('')
 
 	return (
-		<>
-			<div className='flex overflow-hidden max-lg:grid-cols-1 h-screen'>
-				<div className='lg:hidden max-lg:hidden xl:block my-7 ml-5 bg-white rounded-[3rem] after:rounded-[3rem] relative after:content-[""] after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-t-modal-bg after:bg-opacity-40 min-h-[550px]] xl:w-4/6'>
-					<div
-						className='w-full h-full bg-cover rounded-[3rem]'
-						style={{ backgroundImage: `url(${port})` }}
-					>
-						<div className='z-10 relative grid place-items-center h-full text-t-text-primary'>
-							<div>
-								<div className='text-center text-8xl font-bold max-2xl:text-6xl'>
-									{t('auth.welcome')}
-									<br />
-									{t('auth.to')} t-autologistics
-								</div>
-								<div className='text-center text-5xl mt-6 font-semibold max-2xl:text-4xl'>
-									{t('footer.destinations')}
-								</div>
-							</div>
+		<div className='flex h-screen overflow-hidden'>
+			{/* Картинка слева */}
+			<div className='hidden xl:flex xl:w-2/3 relative bg-white rounded-[3rem] my-7 ml-5 overflow-hidden'>
+				<Image
+					src={port}
+					alt='port'
+					fill
+					className='object-cover rounded-[3rem]'
+					priority
+				/>
+				<div className='absolute inset-0 bg-t-modal-bg bg-opacity-40 rounded-[3rem]'></div>
+				<div className='absolute inset-0 flex flex-col justify-center items-center text-t-text-primary p-10'>
+					<div className='text-center'>
+						<div className='text-6xl font-bold max-2xl:text-4xl'>
+							{t('auth.welcome')}
+							<br />
+							{t('auth.to')} t-autologistics
+						</div>
+						<div className='text-4xl mt-6 font-semibold max-2xl:text-3xl'>
+							{t('footer.destinations')}
 						</div>
 					</div>
 				</div>
-				<div className='flex flex-col items-center mx-36 my-7 max-lg:w-full justify-center overflow-hidden min-h-[500px] xl:w-3/6 3xl:w-2/6 lg:w-full xl:mx-20 max-md:m-0 max-md:my-3 max-md:w-full max-lg:my-20'>
-					<div className='flex justify-center text-6xl mb-10 font-semibold max-lg:text-5xl max-md:text-4xl'>
+			</div>
+
+			{/* Форма справа */}
+			<div className='flex flex-col justify-between h-full xl:w-1/2 w-full px-10 max-md:px-5 py-10'>
+				<div>
+					<div className='flex flex-col justify-center items-center text-4xl font-semibold max-lg:text-5xl max-md:text-4xl mb-8'>
 						{t('auth.registration')}
 					</div>
+
+					{/* Шаги */}
 					<Steps steps={['1', '2', '3']} currentStep={step} />
-					<div className='auth_form'>
+
+					{/* Форма */}
+					<div className='auth_form w-full flex justify-center my-6 relative'>
 						<AnimatePresence mode='wait'>
-							{step === 0 || step > 2 ? (
+							{(step === 0 || step > 2) && (
 								<motion.div
 									initial='from'
 									animate='to'
@@ -54,20 +67,14 @@ const Registration = () => {
 									transition={{ duration: 0.1 }}
 									className='absolute w-full'
 								>
-									<>
-										<RegistrationGeneralInformation
-											setStep={setStep}
-											setEmail={setEmail}
-											setPhone={setPhone}
-										/>
-									</>
+									<RegistrationGeneralInformation
+										setStep={setStep}
+										setEmail={setEmail}
+										setPhone={setPhone}
+									/>
 								</motion.div>
-							) : (
-								''
 							)}
-						</AnimatePresence>
-						<AnimatePresence mode='wait'>
-							{step === 1 ? (
+							{step === 1 && (
 								<motion.div
 									initial='from'
 									animate='to'
@@ -78,29 +85,34 @@ const Registration = () => {
 								>
 									<RegistrationEmailConfirm setStep={setStep} email={email} />
 								</motion.div>
-							) : (
-								''
+							)}
+							{step === 2 && (
+								<motion.div
+									initial='from'
+									animate='to'
+									exit='exit'
+									variants={MRegPopUpFromRightToLeft}
+									transition={{ delay: 0.1, duration: 0.1 }}
+									className='absolute w-full'
+								>
+									<RegistrationPhoneConfirm email={email} phone={phone} />
+								</motion.div>
 							)}
 						</AnimatePresence>
-						<AnimatePresence mode='wait'>
-							{step === 2 ? (
-								<RegistrationPhoneConfirm email={email} phone={phone} />
-							) : (
-								''
-							)}
-						</AnimatePresence>
-					</div>
-					<div className='mb-2 flex justify-center'>
-						<span className='text-center'>
-							{`${t('auth.alreadyHaveAccount')} `}
-							<button onClick={() => path('/login')} className='text-blue-500'>
-								{`${t('auth.login')}.`}
-							</button>
-						</span>
 					</div>
 				</div>
+
+				{/* Ссылка на логин внизу */}
+				<div className='flex justify-center text-center mt-12'>
+					<span>
+						{`${t('auth.alreadyHaveAccount')} `}
+						<button onClick={() => path('/login')} className='text-blue-500'>
+							{t('auth.login')}.
+						</button>
+					</span>
+				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

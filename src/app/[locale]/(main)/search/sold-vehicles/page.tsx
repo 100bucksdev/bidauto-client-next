@@ -5,6 +5,8 @@ export const metadata: Metadata = {
 	title: 'Search',
 }
 
-export const SoldVehiclesSearch = () => {
+const SoldVehiclesSearch = () => {
 	return <SoldVehiclesPage />
 }
+
+export default SoldVehiclesSearch

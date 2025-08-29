@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react'
-
-import { useGetUserBids } from '@/hooks/Bids.hooks'
-import { useGetUserOrders } from '@/hooks/Orders.hooks'
-import { useGetProfileVehicles } from '@/hooks/Shop.hooks'
-import { useGetUserCarfax, useGetUserFavorites } from '@/hooks/User.hooks'
+import { useGetUserCarfax } from '@/shared/api/User/getCarfax/useGetUserCarfax'
+import { useGetUserFavourites } from '@/shared/api/User/getFavorites/useGetUserFavourites'
+import { useGetUserOrders } from '@/shared/api/User/getOrder/useGetUserOrders'
+import { useGetUserProfileVehicles } from '@/shared/api/User/getProfileVehicles/useGetUserProfileVehicles'
+import { useGetUserBids } from '@/shared/api/User/getUserBids/useGetUserBids'
 import { useGetUserData } from '@/shared/api/User/getUserData/useGetUserData'
 import { IcSettings } from '@/shared/icons'
 import defaultUserAvatar from '@images/default-user-avatar.svg'
 import { useTranslations } from 'next-intl'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import queryString from 'query-string'
-import AdminPanelUserMessageModal from '../admin/Users/component/message/AdminPanelUserMessageModal'
+import { useEffect, useState } from 'react'
 import InfoProfileAccount from './InfoProfileAccount'
 import ProfileBannerMask from './ProfileBannerMask'
 import ProfileDetails from './ProfileDetails'
@@ -48,7 +47,7 @@ const Profile = () => {
 		isError,
 		fetchNextPage,
 	} = type === 'favorites'
-		? useGetUserFavorites({ sort, user_id: params.user_id })
+		? useGetUserFavourites({ sort: Number(sort), user_id: params.user_id })
 		: type === 'bids'
 		? useGetUserBids({
 				sort,
@@ -59,10 +58,10 @@ const Profile = () => {
 		? useGetUserOrders({ user_id: params.user_id })
 		: type === 'carfax'
 		? useGetUserCarfax({ sort, user_id: params.user_id })
-		: useGetProfileVehicles({ user_id: params.user_id })
+		: useGetUserProfileVehicles({ user_id: params.user_id })
 
-	const isLogin = localStorage.getItem('access')
-	const path = useNavigate()
+	const isLogin = localStorage.getItem('access_token')
+	const { push: path } = useRouter()
 
 	useEffect(() => {
 		if (!isLogin) {
@@ -70,14 +69,16 @@ const Profile = () => {
 		}
 	}, [isLogin, path])
 
-	const isAddressAdded =
-		user?.pages[user.pages.length - 1]?.data &&
-		user.pages[user.pages.length - 1]?.data.user.delivery_info &&
-		user.pages[user.pages.length - 1]?.data.user.delivery_info.zip_code &&
-		user.pages[user.pages.length - 1]?.data.user.delivery_info.address &&
-		user.pages[user.pages.length - 1]?.data.user.delivery_info.country &&
-		user.pages[user.pages.length - 1]?.data.user.delivery_info.state &&
-		user.pages[user.pages.length - 1]?.data.user.delivery_info.city
+	if (type === 'carfax' && user) {
+		const pages = user.pages
+		const lastPage = pages[pages.length - 1]?.data
+		const isAddressAdded =
+			lastPage?.user.delivery_info?.zip_code &&
+			lastPage?.user.delivery_info?.address &&
+			lastPage?.user.delivery_info?.country &&
+			lastPage?.user.delivery_info?.state &&
+			lastPage?.user.delivery_info?.city
+	}
 
 	return (
 		<>
@@ -145,12 +146,12 @@ const Profile = () => {
 														{t('profile.increaseBiddingPower')}
 													</button>
 												</div>
-												{currentUser.id !==
+												{currentUser?.id !==
 													user?.pages[user.pages.length - 1].data.user.id &&
 													user?.pages[user.pages.length - 1].data.user
 														.is_email_confirmed &&
-													(currentUser.is_superuser ||
-														currentUser.is_staff) && (
+													(currentUser?.is_superuser ||
+														currentUser?.is_staff) && (
 														<div className='flex justify-center items-center mt-2'>
 															<button
 																onClick={() => setIsVisible(true)}

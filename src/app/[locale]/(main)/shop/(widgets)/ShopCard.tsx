@@ -1,3 +1,5 @@
+'use client'
+
 import CardPhotos from '@/components/CarCard/CardPhoto'
 import { IcFuel, IcOdometr, IcTransmision } from '@/shared/icons'
 import { priceFormat } from '@/shared/utils/priceFormat'

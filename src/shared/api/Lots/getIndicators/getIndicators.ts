@@ -21,6 +21,9 @@ export const getIndicators = ({
 	}
 
 	return $Api.get<ILotInfo>(
-		`/auction-vehicles/indicators/${params.auction}/${params.id}/`
+		`/auction-vehicles/indicators/${params.auction}/${params.id}/`,
+		{
+			...config,
+		}
 	)
 }

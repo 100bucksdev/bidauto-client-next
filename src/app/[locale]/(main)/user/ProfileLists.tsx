@@ -1,3 +1,5 @@
+'use client'
+
 import SearchCard from '@/components/SearchCard/SearchCard'
 import SearchCardMask from '@/components/SearchCard/SearchCardMask'
 import { useInfiniteScrolling } from '@/shared/hooks/useInfiniteScrolling'

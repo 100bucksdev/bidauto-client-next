@@ -15,7 +15,7 @@ const Login = () => {
 	const t = useTranslations()
 
 	useEffect(() => {
-		if (localStorage.getItem('access')) {
+		if (localStorage.getItem('access_token')) {
 			path('/')
 		}
 	}, [path])

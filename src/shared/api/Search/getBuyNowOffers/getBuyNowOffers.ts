@@ -21,14 +21,10 @@ export const getBuyNowOffers = ({
 		data: IOffers[]
 	}>
 > => {
-	return $Api.get(
-		'/auction-vehicles/buy-now-offers/',
-		{},
-		{
-			params: {
-				page: params.page,
-			},
-			...config,
-		}
-	)
+	return $Api.get('/auction-vehicles/buy-now-offers/', {
+		params: {
+			page: params.page,
+		},
+		...config,
+	})
 }

@@ -5,7 +5,7 @@ import { FetchesResponse } from '@astralis-team/primitive-fetch'
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query'
 import { getSoldVehicle, getSoldVehiclesParams } from './getSoldVehicles'
 
-export function useGetBuyNowOffers(
+export function useGetSoldVehicles(
 	params: getSoldVehiclesParams,
 	settings?: QuerySettings<typeof getSoldVehicle>
 ) {

@@ -1,16 +1,18 @@
-import { useSoldVehiclesGet } from '@/hooks/SoldVehicle.hooks'
+'use client'
+
+import SearchCardMask from '@/components/SearchCard/SearchCardMask'
+import { useGetSoldVehicles } from '@/shared/api/Search/getSoldVehicles/useGetSoldVehicles'
+import { useInfiniteScrolling } from '@/shared/hooks/useInfiniteScrolling'
+import CircleLoader from '@/shared/ui/CircleLoader'
 import { getSoldVehiclesStringParams } from '@/store/SoldSearchOptions.store'
 import { ISoldSearchParams } from '@/types/SoldVehicle.interface'
+import { useRouter, useSearchParams } from 'next/navigation'
 import queryString from 'query-string'
 import { useEffect, useRef, useState } from 'react'
 import { Fragment } from 'react/jsx-runtime'
 import SoldVehicleCard from './(widgets)/card'
 import SoldVehicleHeader from './(widgets)/header/SoldVehicleHeader'
 import SoldVehicleSidebar from './(widgets)/sidebar/SoldVehicleSideBar'
-import { useRouter, useSearchParams } from 'next/navigation'
-import CircleLoader from '@/shared/ui/CircleLoader'
-import { useInfiniteScrolling } from '@/shared/hooks/useInfiniteScrolling'
-import SearchCardMask from '@/components/SearchCard/SearchCardMask'
 
 // Custom debounce hook
 const useDebouncedCallback = (
@@ -46,11 +48,7 @@ const SoldVehiclesPage = () => {
 		hasNextPage,
 		data,
 		refetch,
-	} = useSoldVehiclesGet(
-		['sold-vehicles', searchParams],
-		searchParams,
-		searchParamsString
-	)
+	} = useGetSoldVehicles({ ...searchParams, q: searchParamsString })
 
 	useInfiniteScrolling(
 		document,

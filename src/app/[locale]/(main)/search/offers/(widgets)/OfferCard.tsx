@@ -1,3 +1,5 @@
+'use client'
+
 import CardPhotos from '@/components/CarCard/CardPhoto'
 import InsuranceBar from '@/components/SearchCard/InsuranceBar'
 import { getBiddingTimeLeft } from '@/shared/serverActions/getBiddingTimeLeft'

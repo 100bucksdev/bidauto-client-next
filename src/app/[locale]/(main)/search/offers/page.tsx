@@ -5,6 +5,8 @@ export const metadata: Metadata = {
 	title: 'Buy Now Offers',
 }
 
-export const OffersPage = () => {
+const OffersPage = () => {
 	return <ByNowOffers />
 }
+
+export default OffersPage

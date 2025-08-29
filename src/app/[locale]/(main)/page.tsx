@@ -3,6 +3,7 @@ import { IInstagramPost } from '@/types/InstagramPost.interface'
 import { IMainPageCars } from '@/types/MainPageCars.interface'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import Image from 'next/image'
 import HomeScreen from './(widgets)/HomeScrean/HomeScreen'
 import Lots from './(widgets)/Lots/HomeLots'
 import InstagramPosts from './(widgets)/Realse/InstagramPosts'
@@ -67,7 +68,7 @@ export default async function Home() {
 							key={index}
 							className='flex flex-col items-center px-8 bg-white rounded-xl text-black gap-2 py-5'
 						>
-							<img src={data.icon} alt={data.title} />
+							<Image src={data.icon} alt={data.title} />
 							<p className='text-lg'>{data.title}</p>
 						</div>
 					))}

@@ -16,7 +16,7 @@ import { Fragment } from 'react/jsx-runtime'
 import SearchHeader from './(widgets)/SearchHeader/SearchHeader'
 import SearchSidebar from './(widgets)/SearchSidebar/SearchSidebar'
 
-// Универсальный тип, чтобы TS понимал структуру lot.data
+// Универсальный тип для данных
 type PaginatedData<T> = {
 	pages: Array<{ data: T }>
 }
@@ -28,6 +28,7 @@ const Search = () => {
 	const isAccurateSearch = searchParams.vin
 	const { setMake, setModel } = searchOptions()
 
+	// ------------------ API вызовы ------------------
 	const { isLoading, ...lot } = isAccurateSearch
 		? useGetLot({
 				params: {
@@ -39,20 +40,18 @@ const Search = () => {
 				{ ...searchParams },
 				{
 					options: {
-						options: {
-							onSuccess: data => {
-								if (
-									'make_model' in data.pages[0].data &&
-									data.pages[0].data.make_model
-								) {
-									if (data.pages[0].data.make_model.make) {
-										setMake(data.pages[0].data.make_model.make.slug)
-									}
-									if (data.pages[0].data.make_model.model) {
-										setModel(data.pages[0].data.make_model.model.slug)
-									}
+						onSuccess: data => {
+							if (
+								'make_model' in data.pages[0].data &&
+								data.pages[0].data.make_model
+							) {
+								if (data.pages[0].data.make_model.make) {
+									setMake(data.pages[0].data.make_model.make.slug)
 								}
-							},
+								if (data.pages[0].data.make_model.model) {
+									setModel(data.pages[0].data.make_model.model.slug)
+								}
+							}
 						},
 					},
 				}
@@ -65,9 +64,10 @@ const Search = () => {
 				...searchParams,
 		  })
 
-	// Приводим тип данных к известному формату
+	// приводим тип
 	const lotData = lot.data as PaginatedData<any> | { data: any[] } | undefined
 
+	// ------------------ infinite scroll ------------------
 	useInfiniteScrolling(
 		document,
 		() => {
@@ -78,10 +78,11 @@ const Search = () => {
 		3000
 	)
 
+	// ------------------ UI ------------------
 	return (
 		<>
 			<SearchHeader />
-			<div className='mx-auto max-w-[1660px] my-10'>
+			<div className='mx-auto max-w-[1500px] my-10'>
 				<div className='mx-10 max-md:mx-4'>
 					<div
 						className={`flex max-lg:flex-col w-full ${
@@ -98,7 +99,7 @@ const Search = () => {
 						<div className='w-[25%] relative max-lg:w-[100%] max-lg:mb-3'>
 							<SearchSidebar />
 						</div>
-						<div className='w-[75%] max-lg:w-[100%]'>
+						<div className='w-[70%] max-lg:w-[100%]'>
 							<div className=' flex flex-col bg-white rounded-2xl p-5'>
 								<div className='text-xl pb-3 w-full flex items-center justify-between gap-x-2'>
 									<div>
@@ -148,6 +149,7 @@ const Search = () => {
 													{'lots' in page.data &&
 														page.data.lots.map((lot: any, idx: number) => (
 															<Fragment key={idx}>
+																{/* здесь используем Server Component */}
 																<SearchCard redirectWithAuction lot={lot} />
 															</Fragment>
 														))}

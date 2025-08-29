@@ -1,12 +1,13 @@
+'use client'
+
 import {
 	getStringParams,
 	searchOptions,
 	TCopartVehicles,
 } from '@/store/searchOptions.store'
 import { ISearchLotParams } from '@/types/SearchLotParams.interface'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import queryString from 'query-string'
-import st from './brand.module.css'
 
 const Brand = ({
 	label,
@@ -18,12 +19,11 @@ const Brand = ({
 	type: TCopartVehicles
 }) => {
 	const path = useRouter()
-	const location = usePathname()
+	const location = useSearchParams()
 	const queryParams: ISearchLotParams = queryString.parse(location.toString())
 	const { setMake } = searchOptions()
 
-	const isMakeMatch =
-		label.replace(/ /g, '_').toLowerCase() === queryParams.make?.toLowerCase()
+	const isMakeMatch = value.toLowerCase() === queryParams.make?.toLowerCase()
 
 	const stringParams = getStringParams()
 
@@ -48,7 +48,7 @@ const Brand = ({
 			}}
 			className={`${
 				isMakeMatch ? '!text-t-text-primary !bg-t-blue-light' : ''
-			} ${st.brand}`}
+			} bg-gray-200 px-2 text-sm py-1 cursor-pointer duration-100 rounded-xl hover:text-t-text-primary hover:bg-t-blue-light :active:text-t-text-primary :active:bg-t-blue-light;`}
 		>
 			{label}
 		</div>

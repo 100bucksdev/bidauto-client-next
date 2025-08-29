@@ -17,13 +17,9 @@ export const getFirstFoutVehiclesEveryCategory = ({
 		}[]
 	>
 > => {
-	return $Api.get(
-		'/shop/vehicles-by-cat/?purchase_mode=reservation',
-		{},
-		{
-			...config,
-		}
-	)
+	return $Api.get('/shop/vehicles-by-cat/?purchase_mode=reservation', {
+		...config,
+	})
 }
 
 //getFirstFoutVehiclesEveryCategory

@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import st from './circle-loader.module.css'
 
 interface CircleLoaderProps {
 	svgClassName?: string
@@ -7,17 +6,17 @@ interface CircleLoaderProps {
 }
 
 const CircleLoader: FC<CircleLoaderProps> = ({
-	svgClassName,
-	circleClassName,
+	svgClassName = 'w-6 h-6',
+	circleClassName = 'stroke-current text-white',
 }) => {
 	return (
-		<svg className={[st.svg, svgClassName].join(' ')} viewBox='25 25 50 50'>
+		<svg className={`animate-spin ${svgClassName}`} viewBox='25 25 50 50'>
 			<circle
-				className={[st.circle, circleClassName].join(' ')}
+				className={`fill-none stroke-2 stroke-linecap-round animate-[dash_1.5s_ease-in-out_infinite] ${circleClassName}`}
 				r='20'
 				cy='50'
 				cx='50'
-			></circle>
+			/>
 		</svg>
 	)
 }

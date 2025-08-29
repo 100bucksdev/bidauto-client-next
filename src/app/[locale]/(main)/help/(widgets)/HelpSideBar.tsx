@@ -17,7 +17,7 @@ export default function HelpSideBar() {
 				<div
 					className={`px-3 duration-100 rounded-2xl mb-3 cursor-pointer ${
 						pathname.includes('/help/deposit')
-							? 'bg-t-blue-light'
+							? 'bg-t-blue-light cursor-pointer'
 							: 'bg-white  hover:bg-gray-100'
 					}`}
 				>

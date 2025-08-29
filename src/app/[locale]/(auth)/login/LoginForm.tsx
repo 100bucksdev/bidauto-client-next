@@ -47,6 +47,10 @@ const LoginForm = () => {
 				password: fields.password,
 			},
 		})
+
+		setTimeout(() => {
+			path('/')
+		}, 1000)
 		return data
 	}
 

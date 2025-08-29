@@ -1,9 +1,10 @@
+'use client'
+
 import SwipeCheckbox from '@/shared/ui/SwipeCheckbox'
 import { SoldVehicleSearchOptionsStore } from '@/store/SoldSearchOptions.store'
 import { TSoldVehicleSaleStatus } from '@/types/SoldVehicle.interface'
-import { useEffect, useState } from 'react'
-
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import Select from 'react-select'
 import { SALE_STATUS, SELLER_TYPE } from './data'
 

@@ -1,33 +1,49 @@
+import { MutationSettings } from '@/index'
+import { IUser } from '@/types/User.interface'
 import { FetchesResponse } from '@astralis-team/primitive-fetch'
-import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { getUserData } from '../getUserData/getUserData'
 import { getUserBids, getUserBidsParams } from './getUserBids'
 
-export const useGetUserBids = async (
-	params: Omit<getUserBidsParams, 'page'>
-) => {
-	const { is_superuser, is_staff, id } = await getUserData({})
+type BidsPageResponse = FetchesResponse<{
+	pagination: { page: number; pages: number; size: number; count: number }
+	user: IUser
+}>
 
-	type PageResponse = FetchesResponse<{}>
+export const useGetUserBids = (
+	params: Omit<getUserBidsParams, 'page'>,
+	settings?: MutationSettings<typeof getUserBids>
+) => {
+	const { data: userDataResponse } = useQuery({
+		queryKey: ['userData'],
+		queryFn: () => getUserData({}),
+	})
+
+	const { is_superuser, is_staff, id } = userDataResponse?.data ?? {}
 
 	return useInfiniteQuery<
-		PageResponse,
+		BidsPageResponse,
 		Error,
-		InfiniteData<PageResponse>,
-		[string],
+		BidsPageResponse,
+		(string | number | undefined)[],
 		number
 	>({
-		queryKey: ['ByNowOffers'],
-		queryFn: ({ pageParam }) =>
-			getUserBids({ params: { page: pageParam, ...params } }),
+		queryKey: [
+			'bids',
+			params.sort,
+			params.user_status,
+			(is_superuser || is_staff) && id !== params.user_id
+				? params.user_id
+				: undefined,
+		],
+		queryFn: async ({ pageParam = 1 }) =>
+			await getUserBids({
+				params: { page: pageParam, ...params },
+			}),
 		initialPageParam: 1,
 		getNextPageParam: lastPage => {
-			if ('pagination' in lastPage.data) {
-				const { page, pages } = lastPage.data.pagination
-				if (!pages) return null
-				return page >= pages ? null : page + 1
-			}
-			return null
+			const { page, pages } = lastPage.data.pagination
+			return page >= pages ? null : page + 1
 		},
 		retry: 0,
 		...settings?.options,

@@ -1,5 +1,7 @@
 import SearchHome from './HomeSearchPage'
 
-export const HomeSearchPage = () => {
+const HomeSearchPage = () => {
 	return <SearchHome />
 }
+
+export default HomeSearchPage

@@ -28,16 +28,13 @@ export const getShop = ({
 		category: null | { id: number; name: string; slug: string }
 	}>
 > => {
-	return $Api.get(
-		'/shop/?purchase_mode=reservation',
-		{},
-		{
-			params: {
-				search: params.search,
-				page: params.page,
-				category_id: params.category,
-				purchase_mode: 'reservation',
-			},
-		}
-	)
+	return $Api.get('/shop/?purchase_mode=reservation', {
+		params: {
+			search: params.search,
+			page: params.page,
+			category_id: params.category,
+			purchase_mode: 'reservation',
+		},
+		...config,
+	})
 }

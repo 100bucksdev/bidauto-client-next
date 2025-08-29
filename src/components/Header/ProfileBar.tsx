@@ -8,6 +8,7 @@ import { IcCircleUser, IcSettings, IcShield } from '@/shared/icons'
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 
@@ -81,7 +82,7 @@ const ProfileBar = () => {
 					{!isAddressAdded && (
 						<div className='absolute w-3 h-3 bg-orange-300 rounded-full right-0 -translate-x-2'></div>
 					)}
-					<img
+					<Image
 						className='rounded-full w-[48px] h-[48px] mr-2'
 						src={defaultUserAvatar}
 						alt=''
@@ -108,7 +109,7 @@ const ProfileBar = () => {
 					>
 						<div className='px-2 py-2 flex'>
 							<div className='relative'>
-								<img
+								<Image
 									className='rounded-full w-[48px] h-[48px] mr-2'
 									src={defaultUserAvatar}
 									alt=''

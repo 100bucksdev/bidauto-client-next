@@ -1,5 +1,7 @@
 import Shop from './Shop'
 
-export const ShopPage = () => {
+const ShopPage = () => {
 	return <Shop />
 }
+
+export default ShopPage

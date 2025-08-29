@@ -1,8 +1,8 @@
+'use client'
+
 import CardPhotos from '@/components/CarCard/CardPhoto'
-import {
-	useDownloadUserInvoice,
-	useGetUserInvoice,
-} from '@/hooks/Invoices.hooks'
+import { useDownloadUserInvoice } from '@/shared/api/invoices/downloadUserInvoice/useDownloadUserInvoice'
+import { useGetUserInvoice } from '@/shared/api/invoices/getUserInvoice/useGetUserInvoice'
 import { useGetUserData } from '@/shared/api/User/getUserData/useGetUserData'
 import AuctionName from '@/shared/ui/AuctionName'
 import CircleLoader from '@/shared/ui/CircleLoader'
@@ -53,15 +53,19 @@ const LotOrderCard = ({ order }: { order: IOrder }) => {
 
 	const onSubmit = async () => {
 		return await getUserInvoice.mutateAsync({
-			id: Number(order.id),
-			user_id: is_superuser || is_staff ? order.user.id : undefined,
+			params: {
+				id: Number(order.id),
+				user_id: is_superuser || is_staff ? order.user.id : undefined,
+			},
 		})
 	}
 
 	const onDownload = async () => {
 		return await downloadUserInvoice.mutateAsync({
-			id: Number(order.id),
-			user_id: is_superuser || is_staff ? order.user.id : undefined,
+			params: {
+				id: Number(order.id),
+				user_id: is_superuser || is_staff ? order.user.id : undefined,
+			},
 		})
 	}
 
@@ -154,7 +158,7 @@ const LotOrderCard = ({ order }: { order: IOrder }) => {
 								onClick={onSubmit}
 								className='text-t-text-primary mb-2 bg-blue-500 hover:bg-blue-600 active:scale-95 duration-100 py-1.5 rounded-full w-full flex justify-center'
 							>
-								{getUserInvoice.isLoading ? (
+								{getUserInvoice.isPending ? (
 									<div>
 										<CircleLoader />
 									</div>
@@ -173,7 +177,7 @@ const LotOrderCard = ({ order }: { order: IOrder }) => {
 								onClick={onDownload}
 								className='text-t-text-primary bg-blue-500 hover:bg-blue-600 active:scale-95 duration-100 py-1.5 rounded-full w-full flex justify-center'
 							>
-								{downloadUserInvoice.isLoading ? (
+								{downloadUserInvoice.isPending ? (
 									<div>
 										<CircleLoader />
 									</div>

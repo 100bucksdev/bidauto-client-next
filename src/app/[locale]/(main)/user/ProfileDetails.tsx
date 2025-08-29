@@ -1,5 +1,7 @@
-import UserService from '@/service/User.service'
+'use client'
+
 import { useGetUserData } from '@/shared/api/User/getUserData/useGetUserData'
+import { patchVerifyUserPhone } from '@/shared/api/User/patchVerifyUserPhone/patchVerifyUserPhone'
 import { IcMail, IcPhone } from '@/shared/icons'
 import { IUser } from '@/types/User.interface'
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
@@ -15,7 +17,7 @@ const ProfileDetails = ({
 	// const { t } = useTranslation()
 	const currentUser = useGetUserData()
 	const VerifyPhone = () => {
-		UserService.patchVerifyUserPhone({ id: user?.id }).finally(() => {
+		patchVerifyUserPhone({ params: { id: user?.id } }).finally(() => {
 			refetch()
 		})
 	}
@@ -58,8 +60,9 @@ const ProfileDetails = ({
 							>
 								<RxCrossCircled />
 							</div>
-							{(currentUser?.id !== user?.id && currentUser?.is_staff) ||
-							currentUser.is_superuser ? (
+							{(currentUser?.data?.id !== user?.id &&
+								currentUser?.data?.is_staff) ||
+							currentUser.data?.is_superuser ? (
 								<div>
 									<button
 										className='btn px-2.5 py-1 text-white bg-t-blue-light'

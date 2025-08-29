@@ -16,11 +16,7 @@ export const getShopVehicleById = ({
 	params,
 	config,
 }: getShopVehicleByIdConfig): Promise<FetchesResponse<IShopVehicle>> => {
-	return $Api.get(
-		`/shop/vehicle/${params.id}/`,
-		{},
-		{
-			...config,
-		}
-	)
+	return $Api.get(`/shop/vehicle/${params.id}/`, {
+		...config,
+	})
 }

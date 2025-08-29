@@ -1,7 +1,7 @@
 export const listOfCarBrands = [
 	{ value: 'Acura', label: 'Acura' },
-	{ value: 'Alfa_Romeo', label: 'Alfa Romeo' },
-	{ value: 'Aston_Martin', label: 'Aston Martin' },
+	{ value: 'Alfa Romeo', label: 'Alfa Romeo' },
+	{ value: 'Aston Martin', label: 'Aston Martin' },
 	{ value: 'Audi', label: 'Audi' },
 	{ value: 'Bentley', label: 'Bentley' },
 	{ value: 'BMW', label: 'BMW' },
@@ -26,7 +26,7 @@ export const listOfCarBrands = [
 	{ value: 'Jeep', label: 'Jeep' },
 	{ value: 'Kia', label: 'Kia' },
 	{ value: 'Lamborghini', label: 'Lamborghini' },
-	{ value: 'Land_Rover', label: 'Land Rover' },
+	{ value: 'Land Rover', label: 'Land Rover' },
 	{ value: 'Lexus', label: 'Lexus' },
 	{ value: 'Lincoln', label: 'Lincoln' },
 	{ value: 'Lotus', label: 'Lotus' },

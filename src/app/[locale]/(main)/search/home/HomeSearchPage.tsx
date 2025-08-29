@@ -1,9 +1,11 @@
-import { getStringParams, searchOptions } from '@/store/searchOptions.store'
-import logo from '@images/mobile-logo.svg'
+'use client'
 
+import logo from '@/assets/images/mobile-logo.svg'
 import Input from '@/shared/ui/Input'
 import { listOfCarBrands } from '@/shared/utils/listOfCarBrands'
 import { listOfMotoBrands } from '@/shared/utils/listOfMotoBrands'
+import { getStringParams, searchOptions } from '@/store/searchOptions.store'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { IoIosSearch } from 'react-icons/io'
@@ -43,7 +45,7 @@ const SearchHome = () => {
 					<div className='bg-white rounded-lg shadow-xl flex flex-col px-12 text-lg py-10 max-md:py-5 max-md:px-6'>
 						<div>
 							<div className='flex justify-center h-20 overflow-hidden'>
-								<img className='w-36 h-28' src={logo} alt='' />
+								<Image className='w-36 h-28' src={logo} alt='' />
 							</div>
 							<div className='flex max-md:flex-col gap-y-2 items-end gap-x-3'>
 								<div className='w-4/5 max-md:w-full'>

@@ -18,13 +18,9 @@ export const getAuctionFirstFoutVehiclesEveryCategory = ({
 		}[]
 	>
 > => {
-	return $Api.get(
-		'/shop/vehicles-by-cat/?purchase_mode=auction combined',
-		{},
-		{
-			...config,
-		}
-	)
+	return $Api.get('/shop/vehicles-by-cat/?purchase_mode=auction combined', {
+		...config,
+	})
 }
 
 //getFirstFoutVehiclesEveryCategory

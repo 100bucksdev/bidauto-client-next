@@ -1,3 +1,5 @@
+'use client'
+
 import CardPhotos from '@/components/CarCard/CardPhoto'
 import { shopVehicleDeliverStatuses } from '@/shared/constants/constants'
 import { kmInMile, odometer } from '@/shared/utils/odometer'

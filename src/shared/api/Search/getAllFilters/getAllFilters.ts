@@ -20,14 +20,10 @@ export const getAllFilters = ({
 		vehicles_types: Record<'slug' | 'name', string>[]
 	}>
 > => {
-	return $Api.get(
-		'/auction-vehicles/get-basic-filters/',
-		{},
-		{
-			params: {
-				auction: params.auction,
-			},
-			...config,
-		}
-	)
+	return $Api.get('/auction-vehicles/get-basic-filters/', {
+		params: {
+			auction: params.auction,
+		},
+		...config,
+	})
 }

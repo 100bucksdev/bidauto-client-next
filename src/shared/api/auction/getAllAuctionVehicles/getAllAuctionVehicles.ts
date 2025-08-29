@@ -29,17 +29,13 @@ export const getAllAuctionVehicles = ({
 		category: null | { id: number; name: string; slug: string }
 	}>
 > => {
-	return $Api.get(
-		`/shop/?purchase_mode=auction combined`,
-		{},
-		{
-			params: {
-				search: params.search,
-				page: params.page,
-				category_id: params.category,
-				purchase_mode: 'auction combined',
-			},
-			...config,
-		}
-	)
+	return $Api.get(`/shop/?purchase_mode=auction combined`, {
+		params: {
+			search: params.search,
+			page: params.page,
+			category_id: params.category,
+			purchase_mode: 'auction combined',
+		},
+		...config,
+	})
 }

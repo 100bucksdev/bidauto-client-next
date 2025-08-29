@@ -1,3 +1,5 @@
+'use client'
+
 import { useLocale } from 'next-intl'
 import { FC, useEffect, useState } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'

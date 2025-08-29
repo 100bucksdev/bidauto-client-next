@@ -1,3 +1,5 @@
+'use client'
+
 import { useGetSearchFilters } from '@/shared/api/Search/getAllFilters/useGetAllFilters'
 import Menu from '@/shared/ui/Menu'
 import { searchOptions } from '@/store/searchOptions.store'
