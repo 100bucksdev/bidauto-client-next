@@ -1,0 +1,57 @@
+name: Build and Push Next.js Docker Image
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push client-side:prod image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./dockerfile
+          push: true
+          build-args: |
+            NEXT_PUBLIC_APP_WEBSOCKET_URL=wss://api.bidauto.online/api
+            NEXT_PUBLIC_APP_API_URL=https://api.bidauto.online
+            NEXT_PUBLIC_APP_CLIENT_URL=https://bidauto.online
+            NEXT_PUBLIC_CAPTCHA_KEY=6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw
+            NEXT_PUBLIC_COPART_DOMEN=https://www.copart.com
+            NEXT_PUBLIC_IAAI_DOMEN=https://www.iaai.com
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/bid-auto-client-side:latest
+            ghcr.io/${{ github.repository_owner }}/bid-auto-client-side:prod
+
+      - name: Build and push client-side:dev image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./dockerfile
+          push: true
+          build-args: |
+            NEXT_PUBLIC_APP_WEBSOCKET_URL=wss://api.bidauto.online/api
+            NEXT_PUBLIC_APP_API_URL=https://api.bidauto.online
+            NEXT_PUBLIC_APP_CLIENT_URL=https://bidauto.online
+            NEXT_PUBLIC_CAPTCHA_KEY=6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw
+            NEXT_PUBLIC_COPART_DOMEN=https://www.copart.com
+            NEXT_PUBLIC_IAAI_DOMEN=https://www.iaai.com
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/bid-auto-client-side:dev
