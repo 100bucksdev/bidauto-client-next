@@ -3,7 +3,12 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Устанавливаем зависимости
+# Поддержка приватных пакетов (до npm install!)
+ARG NPM_TOKEN
+RUN echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" > .npmrc \
+    && echo "@100bucksdev:registry=https://npm.pkg.github.com" >> .npmrc
+
+# Копируем package.json и устанавливаем зависимости
 COPY package*.json ./
 RUN npm ci
 
@@ -17,7 +22,6 @@ ARG NEXT_PUBLIC_APP_CLIENT_URL
 ARG NEXT_PUBLIC_CAPTCHA_KEY
 ARG NEXT_PUBLIC_COPART_DOMEN
 ARG NEXT_PUBLIC_IAAI_DOMEN
-ARG NPM_TOKEN
 
 ENV NEXT_PUBLIC_APP_WEBSOCKET_URL=$NEXT_PUBLIC_APP_WEBSOCKET_URL
 ENV NEXT_PUBLIC_APP_API_URL=$NEXT_PUBLIC_APP_API_URL
@@ -25,15 +29,19 @@ ENV NEXT_PUBLIC_APP_CLIENT_URL=$NEXT_PUBLIC_APP_CLIENT_URL
 ENV NEXT_PUBLIC_CAPTCHA_KEY=$NEXT_PUBLIC_CAPTCHA_KEY
 ENV NEXT_PUBLIC_COPART_DOMEN=$NEXT_PUBLIC_COPART_DOMEN
 ENV NEXT_PUBLIC_IAAI_DOMEN=$NEXT_PUBLIC_IAAI_DOMEN
-ENV NPM_TOKEN=$NPM_TOKEN
 
-# Сборка
+# Сборка Next.js
 RUN npm run build
 
 # ---------- Stage 2: Runner ----------
 FROM node:18-alpine AS runner
 
 WORKDIR /app
+
+# Поддержка приватных пакетов
+ARG NPM_TOKEN
+RUN echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" > .npmrc \
+    && echo "@100bucksdev:registry=https://npm.pkg.github.com" >> .npmrc
 
 # Устанавливаем только production зависимости
 COPY package*.json ./
@@ -44,11 +52,5 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
 
-# Если нужен кастомный сервер — можно скопировать server.js
-# COPY --from=builder /app/server.js ./server.js
-RUN echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" > ~/.npmrc \
-    && echo "@100bucksdev:registry=https://npm.pkg.github.com" >> ~/.npmrc
-		
 EXPOSE 3000
-
 CMD ["npm", "run", "start"]
