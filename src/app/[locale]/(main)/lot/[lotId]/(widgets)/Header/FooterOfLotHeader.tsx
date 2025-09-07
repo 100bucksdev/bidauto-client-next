@@ -1,3 +1,5 @@
+'use client'
+
 import { useGetSimilarArchivalOffers } from '@/shared/api/Lots/getSimilarArchivalOffers/useGetSimilarArchivalOffers'
 import { FetchesResponse } from '@astralis-team/primitive-fetch'
 import { useState } from 'react'

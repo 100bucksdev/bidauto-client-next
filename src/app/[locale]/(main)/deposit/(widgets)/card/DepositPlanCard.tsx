@@ -6,7 +6,6 @@ import { TDepositPlans } from '@/types/DepositPlans.type'
 import { TUserDepositPlans } from '@/types/UserPlans.type'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import st from './deposit-plan-card.module.scss'
 
 const DepositPlanCard = ({
 	plan,
@@ -116,7 +115,7 @@ const DepositPlanCard = ({
 						disabled={isDisabledValue || isDefaultDisabled}
 						className={`${
 							isDisabledValue || isDefaultDisabled
-								? st.disable_button
+								? ''
 								: `btn btn-primary w-full py-2 flex justify-center`
 						}`}
 					>

@@ -1,3 +1,5 @@
+'use client'
+
 import { IShopVehicle } from '@/types/Shop.interface'
 import { useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'

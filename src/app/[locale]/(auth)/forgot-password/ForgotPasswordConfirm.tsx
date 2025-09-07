@@ -9,27 +9,37 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+interface ForgotPasswordConfirmProps {
+	email: string
+	password: string
+}
+
+interface ErrorResponse {
+	response?: {
+		data?: {
+			non_field_errors?: string[]
+			new_password?: string[]
+			[key: string]: any
+		}
+	}
+}
+
 const ForgotPasswordConfirm = ({
 	email,
 	password,
-}: {
-	email: string
-	password: string
-}) => {
+}: ForgotPasswordConfirmProps) => {
 	const t = useTranslations()
 	const [timer, setTimer] = useState(59)
 	const { push: path } = useRouter()
 
 	useEffect(() => {
-		const timer = setInterval(() => {
+		const interval = setInterval(() => {
 			setTimer(prev => (prev > 0 ? prev - 1 : 0))
 		}, 1000)
-
-		return () => clearInterval(timer)
+		return () => clearInterval(interval)
 	}, [])
 
 	const CodeSchema = useCodeSchema()
-
 	const {
 		register,
 		formState: { errors },
@@ -40,17 +50,16 @@ const ForgotPasswordConfirm = ({
 	const sendMail = useSendEmail()
 	const forgotPassword = useForgotPassword({
 		options: {
-			onError: (data: any) => {
-				setError
-					? setError('code', {
-							message:
-								(data.response.data.non_field_errors &&
-									data.response.data.non_field_errors[0]) ||
-								(data.response.data.new_password &&
-									data.response.data.new_password[0]) ||
-								(data.response.data && data.response.data[0]),
-					  })
-					: null
+			onError: (error: unknown) => {
+				if (setError) {
+					const err = error as ErrorResponse
+					const msg =
+						err.response?.data?.non_field_errors?.[0] ??
+						err.response?.data?.new_password?.[0] ??
+						err.response?.data?.[0] ??
+						'Unknown error'
+					setError('code', { message: msg })
+				}
 			},
 			onSuccess: () => {
 				path('/login')
@@ -58,13 +67,10 @@ const ForgotPasswordConfirm = ({
 		},
 	})
 
+	// Исправляем useEffect зависимости
 	useEffect(() => {
-		sendMail.mutateAsync({
-			params: {
-				email,
-			},
-		})
-	}, [])
+		sendMail.mutateAsync({ params: { email } })
+	}, [email, sendMail])
 
 	const onSubmit = async (fields: { code: string }) => {
 		const data = await forgotPassword.mutateAsync({
@@ -110,6 +116,7 @@ const ForgotPasswordConfirm = ({
 					</div>
 				</div>
 			</form>
+
 			<div className='flex justify-center mt-6 text-lg'>
 				<button
 					onClick={() => {
@@ -124,7 +131,7 @@ const ForgotPasswordConfirm = ({
 						className={`text-blue-500 ${timer <= 0 ? '' : 'text-opacity-60'}`}
 					>
 						<div>{t('auth.sendNew')}</div>
-						<div>{`${timer > 0 ? `${timer}s` : ''}`}</div>
+						<div>{timer > 0 ? `${timer}s` : ''}</div>
 					</div>
 				</button>
 			</div>

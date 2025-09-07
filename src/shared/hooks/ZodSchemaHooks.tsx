@@ -44,7 +44,7 @@ export function useLoginSchema() {
 	const isDev = process.env.NODE_ENV === 'development'
 	const t = useTranslations()
 
-	let schema = z.object({
+	const schema = z.object({
 		email: z.string().email(t('validation.invalidEmail')),
 		password: z
 			.string()

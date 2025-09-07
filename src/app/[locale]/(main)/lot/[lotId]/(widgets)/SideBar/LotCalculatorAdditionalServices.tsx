@@ -48,7 +48,7 @@ const LotCalculatorAdditionalServices = ({
 
 										const newObj = { ...prev }
 
-										for (let key in newObj) {
+										for (const key in newObj) {
 											;(newObj as any)[key] += cargoPrice
 										}
 
@@ -59,7 +59,7 @@ const LotCalculatorAdditionalServices = ({
 
 										const newObj = { ...prev }
 
-										for (let key in newObj) {
+										for (const key in newObj) {
 											;(newObj as any)[key] += cargoPrice
 										}
 
@@ -71,7 +71,7 @@ const LotCalculatorAdditionalServices = ({
 
 										const newObj = { ...prev }
 
-										for (let key in newObj) {
+										for (const key in newObj) {
 											;(newObj as any)[key] -= cargoPrice
 										}
 
@@ -82,7 +82,7 @@ const LotCalculatorAdditionalServices = ({
 
 										const newObj = { ...prev }
 
-										for (let key in newObj) {
+										for (const key in newObj) {
 											;(newObj as any)[key] -= cargoPrice
 										}
 
@@ -114,7 +114,7 @@ const LotCalculatorAdditionalServices = ({
 
 										const newObj = { ...prev }
 
-										for (let key in newObj) {
+										for (const key in newObj) {
 											;(newObj as any)[key] += oversizedPrice
 										}
 
@@ -125,7 +125,7 @@ const LotCalculatorAdditionalServices = ({
 
 										const newObj = { ...prev }
 
-										for (let key in newObj) {
+										for (const key in newObj) {
 											;(newObj as any)[key] += oversizedPrice
 										}
 
@@ -137,7 +137,7 @@ const LotCalculatorAdditionalServices = ({
 
 										const newObj = { ...prev }
 
-										for (let key in newObj) {
+										for (const key in newObj) {
 											;(newObj as any)[key] -= oversizedPrice
 										}
 
@@ -148,7 +148,7 @@ const LotCalculatorAdditionalServices = ({
 
 										const newObj = { ...prev }
 
-										for (let key in newObj) {
+										for (const key in newObj) {
 											;(newObj as any)[key] -= oversizedPrice
 										}
 

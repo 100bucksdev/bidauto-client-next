@@ -1,8 +1,10 @@
+'use client'
+
 import LotMask from '@/components/LotMask/LotMask'
 import { useAuctionConnect } from '@/shared/api/auction/ws/connect/AuctionConnect'
+import { useGetShopVehicleById } from '@/shared/api/Shop/getShopVehicleById/useGetShopVehiclesById'
 import { useGetUserData } from '@/shared/api/User/getUserData/useGetUserData'
 import { ISocetLastBid } from '@/types/Auction.interface'
-import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import AuctionVehicleMain from '../(widgets)/AuctiomVehicleMain'
 import AuctionLotHeader from '../(widgets)/AuctionLotHeader'
@@ -11,15 +13,18 @@ import AuctionStartedSideBar from '../(widgets)/AuctionStartedSideBar'
 import AuctionEndedModal from '../(widgets)/EndedModal'
 import AuctionWinerModal from '../(widgets)/WinerModal'
 
-const AuctionByIdPage = () => {
-	const { id } = useParams()
+interface AuctionByIdPageProps {
+	id: string
+}
+
+const AuctionByIdPage = ({ id }: AuctionByIdPageProps) => {
 	const { data, isLoading } = useGetShopVehicleById({ id: Number(id) })
 	const [isWinerModal, setIsWinerModal] = useState(false)
 	const [isEndedModal, setEndedModal] = useState(false)
 	const userId = useGetUserData()
 
 	const vehicle = data?.data
-	const auctionId = vehicle?.auction?.id ? vehicle.auction.id : 0
+	const auctionId = vehicle?.auction?.id ?? 0
 	const nowDate = new Date()
 	const startTime = vehicle?.auction?.start_time
 		? new Date(vehicle.auction.start_time)
@@ -40,26 +45,25 @@ const AuctionByIdPage = () => {
 	const lastBid = WS.messages.find(message => message.type === 'last_bid') as
 		| ISocetLastBid
 		| undefined
-
 	const newBid = WS.messages.filter(message => message.type === 'new_bid').pop()
 	const isWiner = WS.messages.find(
 		message => message.type === 'auction_ended'
 	) as { final_bid: number; user_id: number } | undefined
 
-	const user_id = userId.data?.id ? userId.data.id : 0
+	const user_id = userId.data?.id ?? 0
 
 	useEffect(() => {
 		if (isWiner) {
 			if (isWiner.user_id === user_id) {
 				setIsWinerModal(true)
-				setEndedModal(false) // Додано для коректного відображення модальних вікон
+				setEndedModal(false)
 			} else {
 				setEndedModal(true)
-				setIsWinerModal(false) // Додано для коректного відображення модальних вікон
+				setIsWinerModal(false)
 			}
 		} else {
-			setIsWinerModal(false) // Додано для коректного відображення модальних вікон
-			setEndedModal(false) // Додано для коректного відображення модальних вікон
+			setIsWinerModal(false)
+			setEndedModal(false)
 		}
 	}, [isWiner, user_id])
 
@@ -129,9 +133,3 @@ const AuctionByIdPage = () => {
 }
 
 export default AuctionByIdPage
-function useGetShopVehicleById(arg0: { id: number }): {
-	data: any
-	isLoading: any
-} {
-	throw new Error('Function not implemented.')
-}

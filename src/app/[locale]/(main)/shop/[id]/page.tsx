@@ -6,13 +6,14 @@ import ShopVehicleMain from './(widgets)/ShopVehicleMain'
 import ShopVehicleSidebar from './(widgets)/ShopVehicleSidebar'
 
 type Props = {
-	params: { id: string }
+	params: Promise<{ id: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { id } = await params
 	const vehicle = await getShopVehicleById({
-		params: { id: Number(params.id) },
-	}) // асинхронный запрос
+		params: { id: Number(id) },
+	})
 
 	return {
 		title: `T-auto${vehicle ? ` | ${vehicle.data.name}` : ''}`,
@@ -21,7 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const ShopVehicle = async ({ params }: Props) => {
-	const data = await getShopVehicleById({ params: { id: Number(params.id) } })
+	const { id } = await params
+	const data = await getShopVehicleById({ params: { id: Number(id) } })
 
 	const vehicle = data?.data
 

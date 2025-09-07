@@ -6,6 +6,6 @@ export const metadata: Metadata = {
 	description: 'Deposit page for T-auto',
 }
 
-export function DepositPage() {
+export default function DepositPage() {
 	return <DepositClientPage />
 }

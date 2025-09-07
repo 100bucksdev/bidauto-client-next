@@ -7,8 +7,8 @@ import LotMain from './(widgets)/Main/LotMain'
 import LotSidebar from './(widgets)/SideBar/LotSidebar'
 
 type LotPageProps = {
-	params: { lotNumber: string }
-	searchParams?: { auction_name?: 'COPART' | 'IAAI' }
+	params: Promise<{ lotNumber: string }>
+	searchParams?: Promise<{ auction_name?: 'COPART' | 'IAAI' }>
 }
 
 // SEO-метаданные
@@ -16,8 +16,11 @@ export async function generateMetadata({
 	params,
 	searchParams,
 }: LotPageProps): Promise<Metadata> {
+	const { lotNumber } = await params
+	const searchParamsData = await searchParams
+
 	const data = await getLot({
-		params: { vinOrId: params.lotNumber, auction: searchParams?.auction_name },
+		params: { vinOrId: lotNumber, auction: searchParamsData?.auction_name },
 	})
 
 	const lot = Array.isArray(data) ? data[0] : data
@@ -36,8 +39,11 @@ export async function generateMetadata({
 }
 
 export default async function LotPage({ params, searchParams }: LotPageProps) {
+	const { lotNumber } = await params
+	const searchParamsData = await searchParams
+
 	const data = await getLot({
-		params: { vinOrId: params.lotNumber, auction: searchParams?.auction_name },
+		params: { vinOrId: lotNumber, auction: searchParamsData?.auction_name },
 	})
 
 	if (!data) {
@@ -48,7 +54,7 @@ export default async function LotPage({ params, searchParams }: LotPageProps) {
 	const info = await getIndicators({
 		params: {
 			id: Number(lot?.U_ID),
-			auction: searchParams?.auction_name as 'COPART' | 'IAAI',
+			auction: searchParamsData?.auction_name as 'COPART' | 'IAAI',
 		},
 	})
 

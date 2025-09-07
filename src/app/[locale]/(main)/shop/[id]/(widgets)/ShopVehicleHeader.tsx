@@ -1,9 +1,11 @@
+'use client'
+
 import { IcArrowRight } from '@/shared/icons'
 import { kmInMile, odometer } from '@/shared/utils/odometer'
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { IShopVehicle } from '@/types/Shop.interface'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 const ShopVehicleHeader = ({ vehicle }: { vehicle: IShopVehicle }) => {
 	const t = useTranslations()
 	const { push: path } = useRouter()

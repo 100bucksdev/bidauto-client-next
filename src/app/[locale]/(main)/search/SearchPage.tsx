@@ -21,6 +21,20 @@ type PaginatedData<T> = {
 	pages: Array<{ data: T }>
 }
 
+// Тип для данных с make_model
+type UserSearchData = {
+	pages: Array<{
+		data: {
+			make_model?: {
+				make?: { slug: string }
+				model?: { slug: string }
+			}
+			lots?: any[]
+			pagination?: { count: number }
+		}
+	}>
+}
+
 const Search = () => {
 	const params = useSearchParams()
 	const searchParams: ISearchLotParams = queryString.parse(params.toString())
@@ -40,7 +54,7 @@ const Search = () => {
 				{ ...searchParams },
 				{
 					options: {
-						onSuccess: data => {
+						onSuccess: (data: UserSearchData) => {
 							if (
 								'make_model' in data.pages[0].data &&
 								data.pages[0].data.make_model

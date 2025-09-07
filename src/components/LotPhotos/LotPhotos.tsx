@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { FaCar } from 'react-icons/fa'
 import { SwiperClass } from 'swiper/react'

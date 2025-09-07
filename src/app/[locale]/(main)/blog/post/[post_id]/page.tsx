@@ -6,7 +6,7 @@ import { blogPosts } from '../../data'
 import PostHeader from './(widgets)/PostHeader'
 
 type Props = {
-	params: { post_id: string }
+	params: Promise<{ post_id: string }>
 }
 
 export async function generateStaticParams() {
@@ -15,8 +15,9 @@ export async function generateStaticParams() {
 	}))
 }
 
-export default function BlogPost({ params }: Props) {
-	const post = blogPosts.find(p => p.id.toString() === params.post_id)
+export default async function BlogPost({ params }: Props) {
+	const { post_id } = await params
+	const post = blogPosts.find(p => p.id.toString() === post_id)
 
 	if (!post) {
 		return <div>Post not found</div>
