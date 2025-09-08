@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
+import { $Api } from '@/config/api.config'
 import { DefaultMetadata } from '@/config/ceo.config'
 import { routing } from '@/i18n/routing'
 import type { Metadata } from 'next'
@@ -27,6 +28,9 @@ export default async function RootLayout({
 	if (!hasLocale(routing.locales, locale)) {
 		notFound()
 	}
+
+	// test
+	console.log($Api.baseURL)
 
 	return (
 		<html lang={locale}>
