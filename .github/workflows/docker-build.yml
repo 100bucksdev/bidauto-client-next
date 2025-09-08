@@ -56,7 +56,7 @@ jobs:
           push: true
           build-args: |
             NEXT_PUBLIC_APP_WEBSOCKET_URL=wss://api.bidauto.online/api
-            NEXT_PUBLIC_APP_API_URL=API_URL=http://host.docker.internal:8000/api/v1
+            NEXT_PUBLIC_APP_API_URL=http://host.docker.internal:8000/api/v1
             NEXT_PUBLIC_APP_CLIENT_URL=https://bidauto.online
             NEXT_PUBLIC_CAPTCHA_KEY=6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw
             NEXT_PUBLIC_COPART_DOMEN=https://www.copart.com
