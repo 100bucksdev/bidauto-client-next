@@ -47,7 +47,7 @@ export function useLoginSchema() {
 	const schema = z.object({
 		email: z.string().email(t('validation.invalidEmail')),
 		password: z
-			.string()
+			.string('It should be a string')
 			.min(8, t('validation.shortPass'))
 			.max(30, t('validation.longPass')),
 		captcha: isDev

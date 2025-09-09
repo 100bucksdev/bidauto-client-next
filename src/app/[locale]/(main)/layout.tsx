@@ -32,10 +32,9 @@ export default async function RootLayout({
 	// test
 	console.log($Api.baseURL)
 
-
 	return (
 		<html lang={locale}>
-			<body className={`${roboto.variable} antialiased`}>
+			<body className={`${roboto.variable} antialiased bg-t-white-bg`}>
 				<NextIntlClientProvider>
 					<Providers>
 						<header>

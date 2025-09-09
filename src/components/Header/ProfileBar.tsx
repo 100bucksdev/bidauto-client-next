@@ -2,9 +2,12 @@
 
 import { MMenuPopUpFromBottom } from '@/assets/animation/PopUp.animation'
 import defaultUserAvatar from '@/assets/images/default-user-avatar.svg'
+import { useGetUserData } from '@/shared/api/User/getUserData/useGetUserData'
+import { useLogout } from '@/shared/api/User/logout/useLogout'
 import { useClickAway } from '@/shared/hooks/useClickAway'
 import { useLocationChanged } from '@/shared/hooks/useLocationChanged'
-import { IcCircleUser, IcSettings, IcShield } from '@/shared/icons'
+import { IcCircleUser, IcExit, IcSettings, IcShield } from '@/shared/icons'
+import CircleLoader from '@/shared/ui/CircleLoader'
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
@@ -16,22 +19,7 @@ import { MdExpandMore } from 'react-icons/md'
 const ProfileBar = () => {
 	const priceFormatter = priceFormat({ char: 'USD' })
 	const t = useTranslations()
-	const user = {
-		first_name: 'John',
-		last_name: 'Doe',
-		account: {
-			bid_power: 1000,
-		},
-		delivery_info: {
-			zip_code: '12345',
-			address: '123 Main St',
-			country: 'USA',
-			state: 'CA',
-			city: 'Los Angeles',
-		},
-		is_superuser: false,
-		is_staff: false,
-	} // This should be replaced with actual user data fetching logic
+	const user = useGetUserData().data
 	const path = useRouter()
 	const [isOpen, setIsOpen] = useState(false)
 	const profileBarRef = useRef<HTMLDivElement>(null)
@@ -43,7 +31,13 @@ const ProfileBar = () => {
 			menuBarRef as React.RefObject<HTMLElement>,
 		],
 	})
-	// const logout = useLogout()
+	const logout = useLogout({
+		options: {
+			onSuccess: () => {
+				path.push('/')
+			},
+		},
+	})
 
 	const isAddressAdded =
 		user &&
@@ -65,7 +59,7 @@ const ProfileBar = () => {
 			>
 				<div className='mr-5 text-lg'>
 					<div className='!text-[18px] text-black max-hd:!text-[17px]'>
-						{user.first_name}
+						{user?.first_name}
 					</div>
 					<div className='flex'>
 						<span className='whitespace-nowrap !text-[18px] max-hd:!text-[16px]'>
@@ -74,7 +68,7 @@ const ProfileBar = () => {
 						&nbsp;
 						{/* space character */}
 						<span className='!text-[18px] max-hd:!text-[16px]'>
-							{priceFormatter.format(user.account?.bid_power)}
+							{priceFormatter.format(Number(user?.account?.bid_power))}
 						</span>
 					</div>
 				</div>
@@ -117,7 +111,7 @@ const ProfileBar = () => {
 							</div>
 							<div>
 								<div>
-									{user.first_name} {user.last_name}
+									{user?.first_name} {user?.last_name}
 								</div>
 								<div className='flex'>
 									<span className='whitespace-nowrap text-sm'>
@@ -126,7 +120,9 @@ const ProfileBar = () => {
 									&nbsp;
 									{/* space character */}
 									<span className='text-sm'>
-										{priceFormatter.format(user.account?.bid_power)}
+										{priceFormatter.format(
+											Number(user?.account?.bid_power ?? 0)
+										)}
 									</span>
 								</div>
 							</div>
@@ -154,7 +150,7 @@ const ProfileBar = () => {
 								<div>{t('header.options.settings')}</div>
 							</button>
 						</div>
-						{user.is_superuser || user.is_staff ? (
+						{user?.is_superuser || user?.is_staff ? (
 							<div>
 								<button
 									className='!text-black !px-[12px] !py-[8px] !text-base !w-full text-start flex items-center gap-x-2 duration-150 hover:bg-gray-300'
@@ -170,11 +166,11 @@ const ProfileBar = () => {
 							''
 						)}
 						<hr />
-						{/* <div>
+						<div>
 							<button
-								className='profilebar-menu-option !text-t-text-error items-center justify-between'
-								onClick={() => logout.mutateAsync()}
-								disabled={logout.isLoading}
+								className='!text-red-500 hover:text-red-500 !px-[12px] !py-[8px] !text-base !w-full text-start flex items-center gap-x-2 duration-150 hover:bg-gray-300'
+								onClick={() => logout.mutateAsync({})}
+								disabled={logout.isPending}
 							>
 								<div className='flex items-center gap-3'>
 									<div className='text-xl'>
@@ -183,12 +179,12 @@ const ProfileBar = () => {
 									<div>{t('header.logout')}</div>
 								</div>
 								<div>
-									{logout.isLoading && (
+									{logout.isPending && (
 										<CircleLoader circleClassName='stroke-t-text-error' />
 									)}
 								</div>
 							</button>
-						</div> */}
+						</div>
 					</motion.div>
 				) : (
 					''
