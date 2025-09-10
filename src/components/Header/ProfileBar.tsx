@@ -7,6 +7,7 @@ import { useLogout } from '@/shared/api/User/logout/useLogout'
 import { useClickAway } from '@/shared/hooks/useClickAway'
 import { useLocationChanged } from '@/shared/hooks/useLocationChanged'
 import { IcCircleUser, IcExit, IcSettings, IcShield } from '@/shared/icons'
+import { GoOutside } from '@/shared/serverActions/goOutside'
 import CircleLoader from '@/shared/ui/CircleLoader'
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -131,7 +132,7 @@ const ProfileBar = () => {
 						<div>
 							<button
 								className='!text-black !px-[12px] !py-[8px] !text-base !w-full text-start flex items-center gap-x-2 duration-150 hover:bg-gray-300'
-								onClick={() => path.push('/user')}
+								onClick={() => GoOutside.toUser('/user')}
 							>
 								<div>
 									<IcCircleUser />
@@ -142,7 +143,7 @@ const ProfileBar = () => {
 						<div>
 							<button
 								className='!text-black !px-[12px] !py-[8px] !text-base !w-full text-start flex items-center gap-x-2 duration-150 hover:bg-gray-300'
-								onClick={() => path.push('/settings/personal-info')}
+								onClick={() => GoOutside.toUser('/settings/personal-info')}
 							>
 								<div>
 									<IcSettings />
@@ -154,7 +155,7 @@ const ProfileBar = () => {
 							<div>
 								<button
 									className='!text-black !px-[12px] !py-[8px] !text-base !w-full text-start flex items-center gap-x-2 duration-150 hover:bg-gray-300'
-									onClick={() => path.push('/admin/bids')}
+									onClick={() => GoOutside.toAdmin('/bids')}
 								>
 									<div>
 										<IcShield />
