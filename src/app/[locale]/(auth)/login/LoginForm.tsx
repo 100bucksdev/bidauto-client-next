@@ -10,7 +10,6 @@ import { useTranslations } from 'next-intl'
 import { useRouter, useSearchParams } from 'next/navigation'
 import queryString from 'query-string'
 import { useForm } from 'react-hook-form'
-import RegistrationReCaptcha from '../(widgets)/RegistrationReCaptcha'
 
 const LoginForm = () => {
 	const t = useTranslations()
@@ -26,10 +25,10 @@ const LoginForm = () => {
 		setError,
 		handleSubmit,
 		setValue,
-	} = useForm<LoginFields & { captcha: string | undefined }>({
+	} = useForm<LoginFields>({
 		resolver: zodResolver(LoginSchema),
 	})
-
+	// & { captcha: string | undefined }
 	const login = useLogin({
 		options: {
 			onSuccess: () => {
@@ -84,14 +83,14 @@ const LoginForm = () => {
 					/>
 				</div>
 				<div>
-					<RegistrationReCaptcha
+					{/* <RegistrationReCaptcha
 						onChange={value => {
 							setValue('captcha', value || '')
 						}}
 					/>
 					{errors.captcha && (
 						<span className='text-red-500 flex'>{errors.captcha.message}</span>
-					)}
+					)} */}
 				</div>
 				<div>
 					<button
