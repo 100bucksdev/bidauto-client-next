@@ -38,6 +38,9 @@ export default async function Home() {
 		}
 	)
 
+	console.log(carsResponse)
+	console.log('RENDER', $Api.baseURL)
+
 	const realseResponse = await $Api.get<IInstagramPost[]>('/instagram/posts/', {
 		next: {
 			revalidate: 60 * 60,
