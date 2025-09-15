@@ -38,7 +38,7 @@ export default async function Home() {
 		}
 	)
 
-	console.log(carsResponse)
+	console.log(carsResponse.config.url)
 	console.log('RENDER', $Api.baseURL)
 
 	const realseResponse = await $Api.get<IInstagramPost[]>('/instagram/posts/', {
