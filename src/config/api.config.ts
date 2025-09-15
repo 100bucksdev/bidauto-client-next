@@ -1,8 +1,11 @@
 import pfetch from '@astralis-team/primitive-fetch'
 
+const isServer = typeof window === 'undefined'
+
 export const $Api = pfetch.create({
-	baseURL:
-		process.env.NEXT_PUBLIC_APP_API_URL || 'http://localhost:8000/api/v1',
+	baseURL: isServer
+		? process.env.NEXT_PUBLIC_API_URL_SERVER || 'http://localhost:8000/api/v1'
+		: process.env.NEXT_PUBLIC_API_URL_CLIENT || 'http://localhost:8000/api/v1',
 	headers: {
 		'Content-Type': 'application/json',
 	},
