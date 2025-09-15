@@ -9,7 +9,7 @@ import Lots from './(widgets)/Lots/HomeLots'
 import InstagramPosts from './(widgets)/Realse/InstagramPosts'
 import { HomePageCarBrendsData } from './data'
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
 	title: 'T-auto',
 	description: 'Win lots at auctions and we will deliver them to you',
 	openGraph: {
@@ -17,7 +17,7 @@ const metadata: Metadata = {
 		description: 'Win lots at auctions and we will deliver them to you',
 		images: [
 			{
-				url: '../../assets/images/footerImage.jpg',
+				url: '/images/footerImage.jpg', // ⚠️ помести файл в public/images/
 				width: 1200,
 				height: 630,
 				alt: 'T-auto Open Graph Image',
@@ -29,42 +29,52 @@ const metadata: Metadata = {
 export default async function Home() {
 	const t = await getTranslations()
 
-	const carsResponse = await $Api.get<IMainPageCars[]>(
-		'/auction-vehicles/main-page/',
-		{
-			next: {
-				revalidate: 60 * 60,
-			},
-		}
-	)
+	let cars: IMainPageCars[] = []
+	let realse: IInstagramPost[] = []
 
-	console.log(carsResponse.config.url)
-	console.log('RENDER', $Api.baseURL)
+	try {
+		const carsResponse = await $Api.get<IMainPageCars[]>(
+			'/auction-vehicles/main-page/',
+			{
+				next: { revalidate: 60 * 60 },
+			}
+		)
+		cars = carsResponse?.data ?? []
+	} catch (err) {
+		console.error('Ошибка загрузки машин:', err)
+	}
 
-	const realseResponse = await $Api.get<IInstagramPost[]>('/instagram/posts/', {
-		next: {
-			revalidate: 60 * 60,
-		},
-	})
-
-	const cars = carsResponse.data
-	const realse = realseResponse.data
+	try {
+		const realseResponse = await $Api.get<IInstagramPost[]>(
+			'/instagram/posts/',
+			{
+				next: { revalidate: 60 * 60 },
+			}
+		)
+		realse = realseResponse?.data ?? []
+	} catch (err) {
+		console.error('Ошибка загрузки Instagram постов:', err)
+	}
 
 	return (
 		<div className='break-words w-full overflow-y-auto overflow-x-hidden'>
 			<HomeScreen />
+
 			<section className='w-full 3xl:ml-72 2xl:ml-72 2xl:mr-0 xl:mx-36 lg:mx-20 flex flex-col my-24 max-sm:my-12 max-lg:ml-0 overflow-hidden'>
 				<div className='w-full mb-10 pb-4 max-lg:mx-36 max-sm:mx-10'>
 					<InstagramPosts data={realse} />
 				</div>
+
 				<div className='space-y-10 max-lg:ml-10 max-sm:mx-2 flex justify-center flex-col'>
 					{cars.map((car, index) => (
 						<Lots key={index} data={car.vehicles} title={car.make} />
 					))}
 				</div>
 			</section>
+
 			<section className='flex flex-col items-center w-full h-auto max-lg:h-[60vh] max-sm:h-[170vh] bg-t-blue-black text-white xl:px-36 overflow-hidden'>
 				<h1 className='mt-24 font-bold text-5xl'>{t('home.carBrands')}</h1>
+
 				<div className='3xl:flex gap-5 mt-16 max-lg:grid max-lg:grid-cols-3 max-lg:grid-rows-2 max-lg:p-20 max-lg:mt-1 max-sm:flex max-sm:flex-col lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:p-20 lg:mt-1'>
 					{HomePageCarBrendsData.map((data, index) => (
 						<div
