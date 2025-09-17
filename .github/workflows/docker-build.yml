@@ -58,7 +58,7 @@ jobs:
             NEXT_PUBLIC_APP_WEBSOCKET_URL=wss://api.bidauto.online/api
             API_URL_SERVER=http://host.docker.internal:8000/api/v1
             NEXT_PUBLIC_API_URL_CLIENT=http://localhost/api/v1
-            NEXT_PUBLIC_APP_CLIENT_URL=https://bidauto.online
+            NEXT_PUBLIC_APP_CLIENT_URL=http://localhost
             NEXT_PUBLIC_CAPTCHA_KEY=6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw
             NEXT_PUBLIC_COPART_DOMEN=https://www.copart.com
             NEXT_PUBLIC_IAAI_DOMEN=https://www.iaai.com
