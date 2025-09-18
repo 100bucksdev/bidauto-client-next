@@ -35,7 +35,6 @@ const SafeCarCard = ({ lot }: SafeCarCardProps) => {
 
 	// Безопасный price formatter
 	const priceFormatter = priceFormat({ char: 'USD' })
-	const currentBid = typeof lot.CurrentBid === 'number' ? lot.CurrentBid : 0
 
 	// Безопасная дата аукциона
 	const auctionDateEnd = lot.AuctionDate
@@ -99,7 +98,7 @@ const SafeCarCard = ({ lot }: SafeCarCardProps) => {
 			<div className='flex items-center px-3 pb-3 pt-2'>
 				<div>
 					<p className='font-semibold text-lg'>
-						{currentBid ? priceFormatter.format(currentBid) : '—'}
+						{priceFormatter.format(Number(lot.CurrentBid))}
 					</p>
 					<p className='text-sm text-gray-400'>Price</p>
 				</div>

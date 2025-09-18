@@ -11,3 +11,39 @@ export const $Api = pfetch.create({
 	},
 	credentials: 'include',
 })
+
+$Api.interceptors.request.use(config => {
+	const accessToken = localStorage.getItem('access_token')
+
+	if (config?.headers && accessToken)
+		config.headers.Authorization = `Bearer ${accessToken}`
+
+	return config
+})
+
+// $Api.interceptors.response.use(
+// 	config => config,
+// 	async error => {
+// 		const originalRequest = error
+
+// 		if (
+// 			(error?.response?.status === 401 ||
+// 				error?.response?.status === 401 ||
+// 				errorCatch(error) === 'Unauthorized') &&
+// 			error
+// 		) {
+// 			originalRequest = true
+// 			try {
+// 				await refresh()
+// 				return axiosWithAuth.request(originalRequest)
+// 			} catch (error) {
+// 				if (errorCatch(error) === 'Unauthorized') {
+// 					removeFromStorage()
+// 					NextResponse.redirect(new URL('/auth/login'))
+// 				}
+// 			}
+// 		}
+
+// 		throw error
+// 	}
+// )

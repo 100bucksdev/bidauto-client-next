@@ -51,6 +51,9 @@ const ProfileBar = () => {
 
 	useLocationChanged(() => setIsOpen(false))
 
+	console.log('User data:', user)
+	console.log('Is address added:', user?.account?.bid_power)
+
 	return (
 		<div className='relative h-full'>
 			<div
