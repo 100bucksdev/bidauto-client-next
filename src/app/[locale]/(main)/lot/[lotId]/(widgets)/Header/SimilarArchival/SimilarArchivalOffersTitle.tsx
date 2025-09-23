@@ -1,14 +1,14 @@
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 import { MdExpandMore, MdOutlineContentCopy } from 'react-icons/md'
 
-const SimilarArchivalOffersTitle = async ({
+const SimilarArchivalOffersTitle = ({
 	isOpen,
 	setIsOpen,
 }: {
 	isOpen: boolean
 	setIsOpen: (value: boolean) => void
 }) => {
-	const t = await getTranslations()
+	const t = useTranslations()
 
 	return (
 		<div

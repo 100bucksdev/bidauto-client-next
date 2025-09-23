@@ -38,9 +38,11 @@ const PlaceBidButton: FC<IPlaceBidButton> = ({
 			String(lot.Auction === 'IAAI' ? `1_${lot.Stock}` : `0_${lot.U_ID}`)
 	)
 
+	const is = true
+
 	return (
 		<>
-			{localStorage.getItem('access') ? (
+			{is ? (
 				<>
 					{bids && isAlreadyPlaced ? (
 						<div className='mt-2'>

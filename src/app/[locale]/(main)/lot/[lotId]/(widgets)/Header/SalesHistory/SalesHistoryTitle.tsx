@@ -1,15 +1,15 @@
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 import { IoStatsChartSharp } from 'react-icons/io5'
 import { MdExpandMore } from 'react-icons/md'
 
-const SalesHistoryTitle = async ({
+const SalesHistoryTitle = ({
 	isOpen,
 	setIsOpen,
 }: {
 	isOpen: boolean
 	setIsOpen: (value: boolean) => void
 }) => {
-	const t = await getTranslations()
+	const t = useTranslations()
 
 	return (
 		<div

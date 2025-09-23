@@ -1,11 +1,11 @@
 import { TLot } from '@/types/Lot.interface'
-import { getTranslations } from 'next-intl/server'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { GrNext } from 'react-icons/gr'
 import SimilarArchivalCard from './SimilarArchivalCard'
 import SimilarArchivalCardSkeleton from './SimilarArchivalCardSkeleton'
 
-const SimilarArchivalOffers = async ({
+const SimilarArchivalOffers = ({
 	data,
 	isLoading,
 	isOpen,
@@ -21,7 +21,7 @@ const SimilarArchivalOffers = async ({
 	isOpen: boolean
 	auction: 'IAAI' | 'COPART'
 }) => {
-	const t = await getTranslations()
+	const t = useTranslations()
 
 	return (
 		<>

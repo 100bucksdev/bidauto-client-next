@@ -7,7 +7,6 @@ import { kmInMile, odometer } from '@/shared/utils/odometer'
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { ILotInfo, TLot } from '@/types/Lot.interface'
 import { ISalesHistoryItem } from '@/types/SalesHistoryItem.interface'
-import { FetchesResponse } from '@astralis-team/primitive-fetch'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { FiExternalLink } from 'react-icons/fi'
@@ -36,7 +35,7 @@ const LotHeader = async ({
 }: {
 	lot: TLot
 	info: ILotInfo | undefined
-	request: FetchesResponse<LotWithHistory>
+	request: LotWithHistory
 }) => {
 	const t = await getTranslations()
 	const price = priceFormat({ char: 'USD' })

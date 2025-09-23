@@ -1,4 +1,4 @@
-import { $Api } from '@/config/api.config'
+import { $ApiServer } from '@/config/apiServer.config'
 import { IInstagramPost } from '@/types/InstagramPost.interface'
 import { IMainPageCars } from '@/types/MainPageCars.interface'
 import { Metadata } from 'next'
@@ -33,7 +33,7 @@ export default async function Home() {
 	let realse: IInstagramPost[] = []
 
 	try {
-		const carsResponse = await $Api.get<IMainPageCars[]>(
+		const carsResponse = await $ApiServer.get<IMainPageCars[]>(
 			'/auction-vehicles/main-page/',
 			{
 				next: { revalidate: 60 * 60 },
@@ -45,7 +45,7 @@ export default async function Home() {
 	}
 
 	try {
-		const realseResponse = await $Api.get<IInstagramPost[]>(
+		const realseResponse = await $ApiServer.get<IInstagramPost[]>(
 			'/instagram/posts/',
 			{
 				next: { revalidate: 60 * 60 },

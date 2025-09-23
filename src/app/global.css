@@ -275,3 +275,7 @@
 		background-color: var(--color-t-scroll-thumb-hover);
 	}
 }
+
+.price-gradient {
+	background: linear-gradient(to right, #22c55e, #facc15, #ef4444);
+}

@@ -15,7 +15,8 @@ const LotPhotoSwiperFavoriteButton = ({
 }) => {
 	const userData = useGetUserData()
 
-	const isUserLogin = localStorage.getItem('access_token') ? true : false
+	// const isUserLogin = localStorage.getItem('access_token') ? true : false
+	const isUserLogin = false
 	const userFavorites = userData.data?.favorites || []
 
 	const [isFavorite, setIsFavorite] = useState(

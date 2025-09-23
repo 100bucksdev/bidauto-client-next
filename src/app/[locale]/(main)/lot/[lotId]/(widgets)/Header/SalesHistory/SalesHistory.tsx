@@ -2,7 +2,6 @@
 
 import { ISalesHistoryItem } from '@/types/SalesHistoryItem.interface'
 
-import { FetchesResponse } from '@astralis-team/primitive-fetch'
 import { useTranslations } from 'next-intl'
 import { Fragment, useEffect, useState } from 'react'
 import { LotWithHistory } from '../LotHeader'
@@ -12,7 +11,8 @@ import SalesHistoryItemMask from './SalesHistoryItemMask'
 const SalesHistory = ({
 	data,
 	isOpen,
-}: FetchesResponse<LotWithHistory> & {
+}: {
+	data: LotWithHistory
 	isOpen: boolean
 }) => {
 	const t = useTranslations()

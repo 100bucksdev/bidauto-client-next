@@ -26,7 +26,8 @@ const Header = () => {
 	const t = useTranslations()
 
 	//todo: change to server request
-	const isLogin = localStorage.getItem('access_token') ? true : false
+	// const isLogin = localStorage.getItem('access_token') ? true : false
+	const isLogin = false
 
 	const path = useRouter()
 

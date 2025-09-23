@@ -1,7 +1,6 @@
 'use client'
 
 import { useGetSimilarArchivalOffers } from '@/shared/api/Lots/getSimilarArchivalOffers/useGetSimilarArchivalOffers'
-import { FetchesResponse } from '@astralis-team/primitive-fetch'
 import { useState } from 'react'
 import { LotWithHistory } from './LotHeader'
 import SalesHistory from './SalesHistory/SalesHistory'
@@ -14,7 +13,7 @@ const LotHeaderFooter = ({
 	auction,
 	id,
 }: {
-	info: FetchesResponse<LotWithHistory>
+	info: LotWithHistory
 	auction: 'COPART' | 'IAAI'
 	id: string
 }) => {
@@ -61,7 +60,7 @@ const LotHeaderFooter = ({
 				/>
 			</div>
 			<div>
-				<SalesHistory {...info} isOpen={isSalesHistoryOpen} />
+				<SalesHistory data={info} isOpen={isSalesHistoryOpen} />
 			</div>
 			<div>
 				<SimilarArchivalOffers
