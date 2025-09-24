@@ -12,6 +12,7 @@ export const useLogin = (
 		...settings?.options,
 		onSuccess: data => {
 			localStorage.setItem('access_token', data.data.access)
+			localStorage.setItem('refresh_token', data.data.refresh) // must be removed after implementing refresh token rotation
 		},
 	})
 }
