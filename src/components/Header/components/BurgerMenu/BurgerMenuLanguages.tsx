@@ -15,6 +15,7 @@ const BurgerMenuLanguages = () => {
 	const switchLanguage = (newLocale: string) => {
 		const segments = pathname.split('/')
 		segments[1] = newLocale
+		localStorage.setItem('selectedLanguage', newLocale)
 		const newPath = segments.join('/')
 		router.push(newPath)
 	}

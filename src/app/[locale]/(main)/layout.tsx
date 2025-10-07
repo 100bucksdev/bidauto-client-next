@@ -1,12 +1,12 @@
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
-import { $Api } from '@/config/api.config'
 import { DefaultMetadata } from '@/config/ceo.config'
 import { routing } from '@/i18n/routing'
 import type { Metadata } from 'next'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { Roboto } from 'next/font/google'
 import { notFound } from 'next/navigation'
+import { useEffect } from 'react'
 import '../../global.css'
 import { Providers } from '../providers'
 
@@ -29,8 +29,16 @@ export default async function RootLayout({
 		notFound()
 	}
 
-	// test
-	console.log($Api.baseURL)
+	useEffect(() => {
+		const savedLanguage = localStorage.getItem('selectedLanguage')
+		if (savedLanguage) {
+			window.location.href = `/${savedLanguage}/${window.location.pathname}`
+		} else {
+			window.location.href = `/lt/${window.location.pathname}`
+			localStorage.setItem('selectedLanguage', 'lt')
+			localStorage.setItem('isDefaultLanguage', 'true')
+		}
+	})
 
 	return (
 		<html lang={locale}>
