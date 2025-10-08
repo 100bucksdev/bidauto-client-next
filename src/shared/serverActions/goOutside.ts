@@ -4,6 +4,6 @@ export class GoOutside {
 	}
 
 	static toAdmin(url: string) {
-		window.location.href = `${process.env.NEXT_PUBLIC_APP_ADMIN_URL}/admin${url}`
+		window.location.href = `${process.env.NEXT_PUBLIC_APP_CLIENT_URL}/admin${url}`
 	}
 }
