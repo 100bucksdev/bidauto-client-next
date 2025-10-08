@@ -132,7 +132,7 @@ const ProfileBar = () => {
 						<div>
 							<button
 								className='!text-black !px-[12px] !py-[8px] !text-base !w-full text-start flex items-center gap-x-2 duration-150 hover:bg-gray-300'
-								onClick={() => GoOutside.toUser('/user')}
+								onClick={() => GoOutside.toUser('/profile')}
 							>
 								<div>
 									<IcCircleUser />
