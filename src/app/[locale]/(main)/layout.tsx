@@ -6,7 +6,6 @@ import type { Metadata } from 'next'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { Roboto } from 'next/font/google'
 import { notFound } from 'next/navigation'
-import { useEffect } from 'react'
 import '../../global.css'
 import { Providers } from '../providers'
 
@@ -29,16 +28,14 @@ export default async function RootLayout({
 		notFound()
 	}
 
-	useEffect(() => {
-		const savedLanguage = localStorage.getItem('selectedLanguage')
-		if (savedLanguage) {
-			window.location.href = `/${savedLanguage}/${window.location.pathname}`
-		} else {
-			window.location.href = `/lt/${window.location.pathname}`
-			localStorage.setItem('selectedLanguage', 'lt')
-			localStorage.setItem('isDefaultLanguage', 'true')
-		}
-	})
+	const savedLanguage = localStorage.getItem('selectedLanguage')
+	if (savedLanguage) {
+		window.location.href = `/${savedLanguage}/${window.location.pathname}`
+	} else {
+		window.location.href = `/lt/${window.location.pathname}`
+		localStorage.setItem('selectedLanguage', 'lt')
+		localStorage.setItem('isDefaultLanguage', 'true')
+	}
 
 	return (
 		<html lang={locale}>
