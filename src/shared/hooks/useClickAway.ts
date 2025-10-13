@@ -7,7 +7,7 @@ export function useClickAway({
 	mode,
 }: {
 	func: () => void
-	refs: React.RefObject<HTMLElement>[]
+	refs: React.RefObject<HTMLElement | null>[]
 	container?: any
 	mode?: 'touchstart' | 'mousedown'
 }) {
