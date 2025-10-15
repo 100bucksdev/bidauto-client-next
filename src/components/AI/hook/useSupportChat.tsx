@@ -1,17 +1,16 @@
-import { useUser } from '@/store/user.store'
+'use client'
+
+import pfetch from '@astralis-team/primitive-fetch'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import React, { createContext, useCallback, useContext } from 'react'
 import useWebSocket from 'react-use-websocket'
 
 export function useSupportChat() {
-	const { isLogin } = useUser()
+	const isLogin = localStorage.getItem('access_token') ? true : false
 	// Мемоизируем URL
 	const socketUrl = React.useMemo(() => {
 		const chatId = localStorage.getItem('support_chat_id') || ''
-		return `${
-			import.meta.env.VITE_REACT_APP_WEBSOCKET_URL
-		}/v1/ws/chat/?h=${chatId}`
+		return `${process.env.NEXT_PUBLIC_APP_WEBSOCKET_URL}/v1/ws/chat/?h=${chatId}`
 	}, [isLogin])
 
 	// Мемоизируем опции WebSocket
@@ -95,23 +94,24 @@ export function useSupportChatContext() {
 export function useGetSupportChatHistory() {
 	return useInfiniteQuery({
 		queryKey: ['support_chat_history'],
-		queryFn: ({ pageParam = 1 }) =>
-			axios.get(
+		queryFn: ({ pageParam = 1 }: { pageParam?: number }) =>
+			pfetch.get(
 				`${
-					import.meta.env.VITE_REACT_APP_API_URL
+					process.env.NEXT_PUBLIC_APP_API_URL
 				}/api/v1/chatbot/chat/history/${localStorage.getItem(
 					'support_chat_id'
 				)}/`,
 				{
 					params: {
-						page: pageParam,
+						page: Number(pageParam),
 					},
 				}
 			),
-		getNextPageParam: lastPage => {
+		getNextPageParam: (lastPage: any) => {
 			const { page, pages } = lastPage.data.pagination
 			if (!pages && pages === 0) return false
 			return page >= pages ? false : page + 1
 		},
+		initialPageParam: 1,
 	})
 }

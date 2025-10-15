@@ -1,14 +1,19 @@
+'use client'
 
+import TAutoAILogo from '@/assets/images/T-AutoAILogo.svg'
+import UserAvatar from '@/assets/images/default-user-avatar.svg'
+import OperatorAvatar from '@/assets/images/operator-avatar.jpg'
 import { GPTMessage } from '@/types/GPTMessage.interface'
-import TAutoAILogo from '@images/T-AutoAILogo.svg'
-import UserAvatar from '@images/default-user-avatar.svg'
-import OperatorAvatar from '@images/operator-avatar.jpg'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { Dispatch, Fragment, SetStateAction, useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import ReactMarkdown from 'react-markdown'
-import { useNavigate } from 'react-router-dom'
 import GPTLoader from './GPTLoader/GPTLoader'
-import { useGetSupportChatHistory } from './hook/useSupportChat'
+import {
+	useGetSupportChatHistory,
+	useSupportChatContext,
+} from './hook/useSupportChat'
 
 const ChatGPTWidgetDialog = ({
 	messages,
@@ -21,11 +26,18 @@ const ChatGPTWidgetDialog = ({
 }) => {
 	const { fetchNextPage, hasNextPage, data } = useGetSupportChatHistory()
 	const [operatorCalled, setOperatorCalled] = useState(false)
-	const path = useNavigate()
-
+	const { push: path } = useRouter()
 	useEffect(() => {
-		if (data && data.pages[0].data.data.length) {
-			const formattedMessages = data.pages.flatMap(page =>
+		if (
+			data &&
+			Array.isArray((data as any).pages) &&
+			(data as any).pages[0] &&
+			(data as any).pages[0].data &&
+			Array.isArray((data as any).pages[0].data.data) &&
+			(data as any).pages[0].data.data.length
+		) {
+			const pages = (data as any).pages
+			const formattedMessages = pages.flatMap((page: any) =>
 				page.data.data.map((msg: any) => {
 					const sender = (msg.sender || '').trim().toLowerCase()
 					const from =
@@ -49,7 +61,8 @@ const ChatGPTWidgetDialog = ({
 					prevMessages.map(msg => `${msg.from}-${msg.message}-${msg.type}`)
 				)
 				const newUniqueMessages = formattedMessages.filter(
-					msg => !existingSet.has(`${msg.from}-${msg.message}-${msg.type}`)
+					(msg: GPTMessage) =>
+						!existingSet.has(`${msg.from}-${msg.message}-${msg.type}`)
 				)
 				return [...prevMessages, ...newUniqueMessages]
 			})
@@ -119,7 +132,7 @@ const ChatGPTWidgetDialog = ({
 							{message.from !== 'user' ? (
 								<div className='flex justify-start'>
 									<div className='max-w-[220px] md:max-w-[270px] relative break-words flex items-start'>
-										<img
+										<Image
 											src={
 												message.from === 'operator'
 													? OperatorAvatar
@@ -144,9 +157,9 @@ const ChatGPTWidgetDialog = ({
 											>
 												{!message.status || message.status === 'success' ? (
 													<span className='cursor-text'>
-														<ReactMarkdown className='flex-wrap flex break-words'>
-															{message.message}
-														</ReactMarkdown>
+														<div className='flex flex-wrap break-words'>
+															<ReactMarkdown>{message.message}</ReactMarkdown>
+														</div>
 													</span>
 												) : message.status === 'error' ? (
 													<span className='cursor-text text-t-text-error z-20'>
@@ -188,7 +201,7 @@ const ChatGPTWidgetDialog = ({
 												<ReactMarkdown>{message.message}</ReactMarkdown>
 											</span>
 										</div>
-										<img
+										<Image
 											src={UserAvatar}
 											alt='userAvatar'
 											width={26}

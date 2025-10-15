@@ -1,3 +1,4 @@
+import ChatGPTWidget from '@/components/AI/ChatGPTWidget'
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
 import { DefaultMetadata } from '@/config/ceo.config'
@@ -40,6 +41,7 @@ export default async function RootLayout({
 						<footer>
 							<Footer />
 						</footer>
+						<ChatGPTWidget />
 					</Providers>
 				</NextIntlClientProvider>
 			</body>

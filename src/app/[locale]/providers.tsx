@@ -1,5 +1,6 @@
 'use client'
 
+import { SupportChatProvider } from '@/components/AI/hook/useSupportChat'
 import { usePathname } from '@/i18n/navigation'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
@@ -42,5 +43,9 @@ export function Providers({ children }: PropsWithChildren) {
 		}
 	}, [])
 
-	return <QueryClientProvider client={client}>{children}</QueryClientProvider>
+	return (
+		<SupportChatProvider>
+			<QueryClientProvider client={client}>{children}</QueryClientProvider>
+		</SupportChatProvider>
+	)
 }

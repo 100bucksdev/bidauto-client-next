@@ -1,10 +1,12 @@
-import { useSupportChatContext } from '@/hooks/SupportChat.hooks'
+'use client'
+
 import { gptStore } from '@/store/gpt.store'
 import { GPTMessage } from '@/types/GPTMessage.interface'
 import { useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
 import ChatGPTWidgetChat from './ChatGPTWidgetChat'
 import ChatGPTWidgetPimple from './ChatGPTWidgetPimple'
+import { useSupportChatContext } from './hook/useSupportChat'
 
 const ChatGPTWidget = () => {
 	const { isGPTAllowed } = gptStore()
@@ -119,7 +121,7 @@ const ChatGPTWidget = () => {
 		}
 	}, [lastMessage])
 
-	const widgetRef = useRef(null)
+	const widgetRef = useRef<HTMLDivElement>(null)
 	const [isChatOpen, setIsChatOpen] = useState<boolean>(false)
 	const [isDragging, setIsDragging] = useState(false)
 	const [isNewNotification, setIsNewNotification] = useState(true)
@@ -176,7 +178,12 @@ const ChatGPTWidget = () => {
 	return (
 		<>
 			{isGPTAllowed ? (
-				<Draggable handle='strong' onDrag={handleDrag} {...handlers}>
+				<Draggable
+					handle='strong'
+					onDrag={handleDrag}
+					{...handlers}
+					nodeRef={widgetRef as React.RefObject<HTMLElement>}
+				>
 					<div
 						ref={widgetRef}
 						className='box no-cursor fixed bottom-10 right-10 z-[99999]'

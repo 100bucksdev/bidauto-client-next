@@ -1,3 +1,5 @@
+'use client'
+
 import { GPTMessage } from '@/types/GPTMessage.interface'
 import { Dispatch, RefObject, SetStateAction, useEffect } from 'react'
 import ChatGPTWidgetDialog from './ChatGPTWidgetDialog'
@@ -15,7 +17,7 @@ const ChatGPTWidgetChat = ({
 	isNewNotification,
 }: {
 	operatorEndedChat: boolean
-	widgetRef: RefObject<HTMLDivElement>
+	widgetRef: RefObject<HTMLDivElement | null>
 	setIsNotificationAllowed: Dispatch<SetStateAction<boolean>>
 	isNotificationAllowed: boolean
 	isNewNotification: boolean

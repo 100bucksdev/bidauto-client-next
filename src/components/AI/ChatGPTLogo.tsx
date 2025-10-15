@@ -1,4 +1,6 @@
-import logo from '@images/mstile-150x150.png'
+'use client'
+
+import logo from '@/assets/images/mstile-150x150.png'
 import Image from 'next/image'
 
 const ChatGPTLogo = () => {

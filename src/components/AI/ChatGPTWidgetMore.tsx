@@ -1,4 +1,4 @@
-;('')
+'use client'
 
 import { MMenuPopUpFromBottom } from '@/assets/animation/PopUp.animation'
 import { useClickAway } from '@/shared/hooks/useClickAway'
@@ -14,7 +14,7 @@ import {
 import { useSupportChatContext } from './hook/useSupportChat'
 
 interface ChatGPTWidgetMoreProps {
-	widgetRef: RefObject<HTMLDivElement>
+	widgetRef: RefObject<HTMLDivElement | null>
 	setIsNotificationAllowed: Dispatch<SetStateAction<boolean>>
 	isNotificationAllowed: boolean
 	setMessages: Dispatch<SetStateAction<GPTMessage[]>>

@@ -1,3 +1,5 @@
+'use client'
+
 import CircleLoader from '@/shared/ui/CircleLoader'
 import { GPTMessage } from '@/types/GPTMessage.interface'
 import { usePathname, useSearchParams } from 'next/navigation'

@@ -1,4 +1,6 @@
-import TAutoAILogo from '@images/T-AutoAILogo.svg'
+'use client'
+
+import TAutoAILogo from '@/assets/images/T-AutoAILogo.svg'
 import Image from 'next/image'
 import { Dispatch, SetStateAction } from 'react'
 import { RxCross2 } from 'react-icons/rx'
