@@ -1,3 +1,4 @@
+import ChatGPTWidget from '@/components/AI/ChatGPTWidget'
 import { DefaultMetadata } from '@/config/ceo.config'
 import { routing } from '@/i18n/routing'
 import type { Metadata } from 'next'
@@ -32,6 +33,7 @@ export default async function RootLayout({
 				<NextIntlClientProvider>
 					<Providers>
 						<main>{children}</main>
+						<ChatGPTWidget />
 					</Providers>
 				</NextIntlClientProvider>
 			</body>
