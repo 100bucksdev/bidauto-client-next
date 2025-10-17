@@ -38,9 +38,9 @@ jobs:
           push: true
           build-args: |
             NEXT_PUBLIC_APP_WEBSOCKET_URL=wss://api.bidauto.online/api
-            NEXT_PUBLIC_APP_API_URL=https://api.bidauto.online/api/v1
+            NEXT_PUBLIC_API_URL_CLIENT=https://api.bidauto.online/api/v1
             API_URL_SERVER=https://api.bidauto.online/api/v1
-            NEXT_PUBLIC_APP_CLIENT_URL=https://bidauto.online
+            NEXT_PUBLIC_APP_CLIENT_URL=https://demo.bidauto.online
             NEXT_PUBLIC_CAPTCHA_KEY=6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw
             NEXT_PUBLIC_COPART_DOMEN=https://www.copart.com
             NEXT_PUBLIC_IAAI_DOMEN=https://www.iaai.com

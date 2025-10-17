@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { SupportChatProvider } from '@/components/AI/hook/useSupportChat'
-import { usePathname } from '@/i18n/navigation'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation'
-import { PropsWithChildren, useEffect, useState } from 'react'
+import { SupportChatProvider } from "@/components/AI/hook/useSupportChat";
+import { usePathname } from "@/i18n/navigation";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { PropsWithChildren, useEffect, useState } from "react";
 
 export function Providers({ children }: PropsWithChildren) {
 	const [client] = useState(
@@ -26,26 +26,26 @@ export function Providers({ children }: PropsWithChildren) {
 					// },
 				},
 			},
-		})
-	)
+		}),
+	);
 
-	const router = useRouter()
-	const pathname = usePathname()
+	const router = useRouter();
+	const pathname = usePathname();
 
 	useEffect(() => {
-		const savedLanguage = localStorage.getItem('selectedLanguage')
+		const savedLanguage = localStorage.getItem("selectedLanguage");
 		if (savedLanguage) {
-			router.push(`/${savedLanguage}/${pathname}`)
+			router.push(`/${savedLanguage}/${pathname}`);
 		} else {
-			router.push(`/lt/${pathname}`)
-			localStorage.setItem('selectedLanguage', 'lt')
-			localStorage.setItem('isDefaultLanguage', 'true')
+			router.push(`/lt/${pathname}`);
+			localStorage.setItem("selectedLanguage", "lt");
+			localStorage.setItem("isDefaultLanguage", "true");
 		}
-	}, [])
+	}, []);
 
 	return (
 		<SupportChatProvider>
 			<QueryClientProvider client={client}>{children}</QueryClientProvider>
 		</SupportChatProvider>
-	)
+	);
 }
