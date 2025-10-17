@@ -23,13 +23,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Setup npm auth
-      #   run: |
-      #     echo "@100bucksdev:registry=https://npm.pkg.github.com/" >> .npmrc
-      #     echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> .npmrc
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Build and push client-side:prod image
         uses: docker/build-push-action@v4
         with:
@@ -44,10 +37,9 @@ jobs:
             NEXT_PUBLIC_CAPTCHA_KEY=6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw
             NEXT_PUBLIC_COPART_DOMEN=https://www.copart.com
             NEXT_PUBLIC_IAAI_DOMEN=https://www.iaai.com
-            NPM_TOKEN=${{ secrets.NPM_TOKEN }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/bid-auto-client-side:latest
-             ghcr.io/${{ github.repository_owner }}/bid-auto-client-side:prod
+            ghcr.io/${{ github.repository_owner }}/bid-auto-client-side:prod
 
       - name: Build and push client-side:dev image
         uses: docker/build-push-action@v4
@@ -63,6 +55,5 @@ jobs:
             NEXT_PUBLIC_CAPTCHA_KEY=6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw
             NEXT_PUBLIC_COPART_DOMEN=https://www.copart.com
             NEXT_PUBLIC_IAAI_DOMEN=https://www.iaai.com
-            NPM_TOKEN=${{ secrets.NPM_TOKEN }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/bid-auto-client-side:dev
