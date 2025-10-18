@@ -90,7 +90,7 @@ const SearchCard = ({
 						onClick={() =>
 							path.push(
 								`/lot/${lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}${
-									redirectWithAuction ? `?auction_name=${lot.Auction}` : ''
+									redirectWithAuction ? `/${lot.Auction}` : ''
 								}`
 							)
 						}

@@ -59,14 +59,10 @@ async function fetchLotInfo(
 // ================= METADATA =================
 export async function generateMetadata({
 	params,
-	searchParams,
 }: {
-	params: Promise<Record<'locale' | 'lotId', string>>
-	searchParams?: Promise<{ auction_name?: 'COPART' | 'IAAI' }>
+	params: Promise<Record<'locale' | 'lotId' | 'auctionName', string>>
 }): Promise<Metadata> {
-	const { lotId } = await params
-	const { auction_name } = (await searchParams) ?? {}
-	const auctionName = auction_name ?? 'COPART'
+	const { lotId, auctionName } = await params
 
 	const lot = await fetchLot(lotId, auctionName)
 
@@ -88,14 +84,10 @@ export async function generateMetadata({
 // ================= PAGE =================
 export default async function LotPage({
 	params,
-	searchParams,
 }: {
-	params: Promise<Record<'locale' | 'lotId', string>>
-	searchParams?: Promise<{ auction_name?: 'COPART' | 'IAAI' }>
+	params: Promise<Record<'locale' | 'lotId' | 'auctionName', string>>
 }) {
-	const { lotId } = await params
-	const { auction_name } = (await searchParams) ?? {}
-	const auctionName = auction_name ?? 'COPART'
+	const { lotId, auctionName } = await params
 
 	if (!lotId) notFound()
 
