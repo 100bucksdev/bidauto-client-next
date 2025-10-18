@@ -1,124 +1,123 @@
+import { ILotInfo, TLot } from '@/types/Lot.interface'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-
-import { ILotInfo, TLot } from '@/types/Lot.interface'
 import LotHeader from './(widgets)/Header/LotHeader'
 import LotMain from './(widgets)/Main/LotMain'
 import LotSidebar from './(widgets)/SideBar/LotSidebar'
 
-type LotPageProps = {
-	params: Promise<{ locale: string; lotId: string }>
-	searchParams?: Promise<{ auction_name?: 'COPART' | 'IAAI' }>
-}
+// ================= DYNAMIC MODE =================
+export const dynamic = 'force-dynamic'
 
-function resolveValue(v?: string | string[]): string | undefined {
-	if (!v) return undefined
-	return Array.isArray(v) ? v[0] : v
-}
-
+// ================= CONFIG =================
 const API_URL =
-	process.env.API_URL_SERVER || 'http://host.docker.internal:8000/api/v1'
+	process.env.API_URL_SERVER || 'https://api.bidauto.online/api/v1'
 
-// ================= SEO =================
+const CACHE_CONFIG = {
+	headers: { 'Content-Type': 'application/json' },
+	cache: 'no-store' as const,
+}
+
+// ================= HELPERS =================
+async function fetchLot(
+	lotId: string,
+	auctionName: string = 'COPART'
+): Promise<TLot | null> {
+	try {
+		const res = await fetch(
+			`${API_URL}/auction-vehicles/get-vin-or-lot/?vin_or_lot=${lotId}&auction=${auctionName}`,
+			CACHE_CONFIG
+		)
+		if (!res.ok) throw new Error(`API responded with ${res.status}`)
+
+		const data: TLot | TLot[] = await res.json()
+		return Array.isArray(data) ? data[0] : data
+	} catch (err) {
+		console.error('Ошибка загрузки данных лота:', err)
+		return null
+	}
+}
+
+async function fetchLotInfo(
+	uId: number,
+	auctionName: string = 'COPART'
+): Promise<ILotInfo | null> {
+	try {
+		const res = await fetch(
+			`${API_URL}/auction-vehicles/indicators/${auctionName}/${uId}`,
+			CACHE_CONFIG
+		)
+		if (!res.ok) return null
+
+		const data: ILotInfo = await res.json()
+		return Array.isArray(data) ? data[0] : data
+	} catch (err) {
+		console.error('Ошибка загрузки дополнительной информации:', err)
+		return null
+	}
+}
+
+// ================= METADATA =================
 export async function generateMetadata({
 	params,
 	searchParams,
-}: LotPageProps): Promise<Metadata> {
+}: {
+	params: Promise<Record<'locale' | 'lotId', string>>
+	searchParams?: Promise<{ auction_name?: 'COPART' | 'IAAI' }>
+}): Promise<Metadata> {
 	const { lotId } = await params
-	const { auction_name } = (searchParams ? await searchParams : {}) ?? {}
+	const { auction_name } = (await searchParams) ?? {}
+	const auctionName = auction_name ?? 'COPART'
 
-	let lot: TLot | null = null
-
-	try {
-		const res = await fetch(
-			`${API_URL}/auction-vehicles/get-vin-or-lot/?vin_or_lot=${lotId}&auction=${
-				auction_name ?? 'COPART'
-			}`,
-			{
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				credentials: 'include',
-			}
-		)
-		const data: TLot | TLot[] = await res.json()
-		lot = Array.isArray(data) ? data[0] : data
-	} catch (err) {
-		console.error('Ошибка загрузки машин:', err)
-	}
+	const lot = await fetchLot(lotId, auctionName)
 
 	if (!lot) {
 		return {
 			title: 'T-auto | Lot not found',
-			description: 'About t-autologistics',
+			description: 'Lot not found or unavailable.',
 		}
 	}
 
 	return {
-		title: `T-auto | ${lot.Make} ${lot.ModelGroup}`,
-		description: 'About t-autologistics',
+		title: `T-auto | ${lot.Make ?? ''} ${lot.ModelGroup ?? ''}`.trim(),
+		description: `Information about ${lot.Make ?? ''} ${
+			lot.ModelGroup ?? ''
+		}`.trim(),
 	}
 }
 
 // ================= PAGE =================
-export default async function LotPage({ params, searchParams }: LotPageProps) {
+export default async function LotPage({
+	params,
+	searchParams,
+}: {
+	params: Promise<Record<'locale' | 'lotId', string>>
+	searchParams?: Promise<{ auction_name?: 'COPART' | 'IAAI' }>
+}) {
 	const { lotId } = await params
-	const { auction_name } = (searchParams ? await searchParams : {}) ?? {}
+	const { auction_name } = (await searchParams) ?? {}
+	const auctionName = auction_name ?? 'COPART'
 
 	if (!lotId) notFound()
 
-	let lot: TLot | null = null
-
-	try {
-		const res = await fetch(
-			`${API_URL}/auction-vehicles/get-vin-or-lot/?vin_or_lot=${lotId}&auction=${
-				auction_name ?? 'COPART'
-			}`,
-			{
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				credentials: 'include',
-			}
-		)
-		const data: TLot | TLot[] = await res.json()
-		lot = Array.isArray(data) ? data[0] : data
-	} catch (err) {
-		console.error('Ошибка загрузки машин:', err)
+	// Fetch lot data
+	const lot = await fetchLot(lotId, auctionName)
+	if (!lot) {
+		console.warn('Лот не найден:', lotId)
+		notFound()
 	}
 
-	if (!lot) notFound()
+	// Fetch additional info if U_ID exists
+	let info: ILotInfo | null = null
+	if (lot.U_ID) {
+		info = await fetchLotInfo(Number(lot.U_ID), auctionName)
+	}
 
-	console.log('id', lotId)
-	console.log('auction', auction_name)
-	console.log('LOT', lot)
-	console.log(
-		'API_URL',
-		`${API_URL}/auction-vehicles/get-vin-or-lot/?vin_or_lot=${lotId}&auction=${
-			auction_name ?? 'COPART'
-		}`
-	)
-
-	let info: ILotInfo = {} as ILotInfo
-
-	if (lot?.U_ID) {
-		try {
-			const res = await fetch(
-				`${API_URL}/auction-vehicles/indicators/${
-					auction_name ?? 'COPART'
-				}/${Number(lot.U_ID)}`,
-				{
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					credentials: 'include',
-				}
-			)
-			const data: ILotInfo = await res.json()
-			info = Array.isArray(data) ? data[0] : data
-		} catch (err) {
-			console.error('Ошибка загрузки информации по лоту:', err)
-		}
+	// Prepare request data
+	const requestData = {
+		...(info ?? ({} as ILotInfo)),
+		title_indicator: info?.title_indicator ?? '',
+		insurance_caution: info?.insurance_caution ?? false,
+		history: [],
 	}
 
 	return (
@@ -126,14 +125,18 @@ export default async function LotPage({ params, searchParams }: LotPageProps) {
 			<div className='mx-auto max-w-[1400px] w-full'>
 				<div className='mx-10 max-md:mx-4'>
 					<div className='mb-6 max-lg:mb-4'>
-						<LotHeader lot={lot} info={info} request={info} />
+						<LotHeader
+							lot={lot}
+							info={info ?? undefined}
+							request={requestData}
+						/>
 					</div>
 					<div className='flex max-lg:flex-col max-lg:gap-y-4 gap-x-6'>
 						<div className='w-[65%] max-lg:w-full'>
 							<LotMain lot={lot} />
 						</div>
 						<div className='w-[35%] max-lg:w-full'>
-							<LotSidebar lot={lot} info={info} />
+							<LotSidebar lot={lot} info={info ?? {}} />
 						</div>
 					</div>
 				</div>
