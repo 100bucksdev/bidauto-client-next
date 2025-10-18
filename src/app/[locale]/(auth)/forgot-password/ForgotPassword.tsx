@@ -1,10 +1,9 @@
 'use client'
-
-import { AnimatePresence, motion } from 'framer-motion'
-
 import { MRegPopUpFromRightToLeft } from '@/assets/animation/PopUp.animation'
 import port from '@/assets/images/port.jpg'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa'
@@ -20,48 +19,69 @@ const ForgotPassword = () => {
 	const { push: path } = useRouter()
 
 	return (
-		<div className='flex overflow-hidden max-lg:grid-cols-1 h-screen'>
-			<div className='lg:hidden max-lg:hidden xl:block my-7 ml-5 bg-white rounded-[3rem] after:rounded-[3rem] relative after:content-[""] after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:bg-t-modal-bg after:bg-opacity-40 min-h-[550px]] xl:w-4/6'>
-				<div
-					className='w-full h-full bg-cover rounded-[3rem]'
-					style={{ backgroundImage: `url(${port})` }}
-				>
-					<div className='z-10 relative grid place-items-center h-full text-t-text-primary'>
+		<div className='flex overflow-hidden h-screen'>
+			{/* Left side - Image (hidden on mobile and tablet) */}
+			<div className='hidden xl:flex xl:w-2/3 my-7 ml-5'>
+				<div className='relative bg-white rounded-3xl overflow-hidden w-full min-h-[550px]'>
+					<Image
+						src={port}
+						alt='Forgot Password'
+						fill
+						className='object-cover'
+						priority
+					/>
+					{/* Overlay */}
+					<div className='absolute inset-0 bg-black/40' />
+
+					{/* Text content */}
+					<div className='relative z-10 flex items-center justify-center h-full text-center'>
 						<div>
-							<div className='text-center text-8xl font-bold max-2xl:text-6xl my-8 mx-10'>
+							<h1 className='text-6xl lg:text-8xl font-bold text-white mb-8 px-10'>
 								{t('auth.change')}
 								<br />
 								{t('auth.yourPassword')}
-							</div>
+							</h1>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className='flex flex-col items-center m-36 justify-center overflow-hidden min-h-[500px] xl:w-3/6 3xl:w-2/6 lg:w-full max-lg:w-full xl:m-20 max-md:m-0 max-md:my-3 max-md:w-full'>
-				<div className='flex justify-start w-full mb-6 text-lg max-md:text-base'>
-					<button onClick={() => path('/login')}>
-						<div className='flex items-center gap-3 text-blue-500 hover:underline'>
-							<span>
-								<FaArrowLeft />
-							</span>
-							<span>{t('auth.returnToLogin')}</span>
-						</div>
+
+			{/* Right side - Form */}
+			<div className='flex flex-col w-full xl:w-1/3 px-4 md:px-8 lg:px-12 py-8 justify-center'>
+				{/* Back button */}
+				<div className='mb-8'>
+					<button
+						onClick={() => path('/login')}
+						className='flex items-center gap-2 text-blue-500 hover:underline text-base'
+					>
+						<FaArrowLeft />
+						<span>{t('auth.returnToLogin')}</span>
 					</button>
 				</div>
-				<div className='flex justify-center text-3xl mb-5 max-md:mt-10 mt-36 font-semibold max-lg:text-5xl max-md:text-3xl'>
-					{t('auth.forgotPassword')}
+
+				{/* Title */}
+				<div className='text-center mb-8'>
+					<h2 className='text-3xl md:text-4xl lg:text-5xl font-semibold'>
+						{t('auth.forgotPassword')}
+					</h2>
 				</div>
-				<Steps steps={['1', '2']} currentStep={step} />
-				<div className='auth_form'>
+
+				{/* Steps */}
+				<div className='mb-12 flex justify-center'>
+					<Steps steps={['1', '2']} currentStep={step} />
+				</div>
+
+				{/* Form container */}
+				<div className='relative w-full min-h-[300px]'>
 					<AnimatePresence mode='wait'>
-						{step === 0 || step > 1 ? (
+						{step === 0 ? (
 							<motion.div
+								key='form'
 								initial='from'
 								animate='to'
 								exit='exit'
 								variants={MRegPopUpFromRightToLeft}
 								transition={{ duration: 0.1 }}
-								className='absolute w-full'
 							>
 								<ForgotPasswordForm
 									setStep={setStep}
@@ -69,25 +89,22 @@ const ForgotPassword = () => {
 									setPassword={setPassword}
 								/>
 							</motion.div>
-						) : (
-							''
-						)}
+						) : null}
 					</AnimatePresence>
+
 					<AnimatePresence mode='wait'>
 						{step === 1 ? (
 							<motion.div
+								key='confirm'
 								initial='from'
 								animate='to'
 								exit='exit'
 								variants={MRegPopUpFromRightToLeft}
 								transition={{ duration: 0.1 }}
-								className='absolute w-full'
 							>
 								<ForgotPasswordConfirm email={email} password={password} />
 							</motion.div>
-						) : (
-							''
-						)}
+						) : null}
 					</AnimatePresence>
 				</div>
 			</div>
