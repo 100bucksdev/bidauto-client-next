@@ -35,5 +35,3 @@ export default async function BlogPost({ params }: Props) {
 		</div>
 	)
 }
-
-export const dynamic = 'force-static'

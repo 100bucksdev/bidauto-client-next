@@ -164,5 +164,3 @@ export default async function TermsOfUse() {
 		</>
 	)
 }
-
-export const dynamic = 'force-static'

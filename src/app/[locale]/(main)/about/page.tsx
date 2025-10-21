@@ -15,5 +15,3 @@ export default function About() {
 		</>
 	)
 }
-
-export const dynamic = 'force-static'

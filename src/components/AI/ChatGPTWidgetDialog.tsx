@@ -176,7 +176,7 @@ const ChatGPTWidgetDialog = ({
 													<button
 														onClick={() => {
 															path(
-																`/lot/${message.lot_id}?auction_name=${
+																`/lot/${message.lot_id}/${
 																	message.auction === 'iaai'
 																		? 'IAAI'
 																		: message.auction === 'copart'

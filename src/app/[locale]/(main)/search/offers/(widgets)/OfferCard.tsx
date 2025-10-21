@@ -85,7 +85,7 @@ const OfferCard = ({
 												: lot.vehicle.U_ID
 										}${
 											redirectWithAuction
-												? `?auction_name=${lot.vehicle.Auction.toUpperCase()}`
+												? `/${lot.vehicle.Auction.toUpperCase()}`
 												: ''
 										}`
 									)
