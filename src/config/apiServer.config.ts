@@ -2,8 +2,7 @@ import pfetch from '@astralis-team/primitive-fetch'
 import { cookies } from 'next/headers'
 
 export const $ApiServer = pfetch.create({
-	baseURL:
-		process.env.API_URL_SERVER || 'http://host.docker.internal:8000/api/v1',
+	baseURL: process.env.API_URL_SERVER || 'https://api.bidauto.online/api/v1',
 	credentials: 'include',
 })
 
