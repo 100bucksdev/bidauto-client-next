@@ -2,10 +2,10 @@
 
 import CardPhotos from '@/components/CarCard/CardPhoto'
 import InsuranceBar from '@/components/SearchCard/InsuranceBar'
-import { getBiddingTimeLeft } from '@/shared/serverActions/getBiddingTimeLeft'
-import { getBidStatuses } from '@/shared/serverActions/getBidStatus'
-import { getListOfMonthes } from '@/shared/serverActions/getListOfMonthes'
-import { getListOfWeekDays } from '@/shared/serverActions/getListOfWeekDays'
+import { useBiddingTimeLeft } from '@/shared/hooks/useBiddingTimeLeft'
+import { useBidStatuses } from '@/shared/hooks/useBidStatuses'
+import { useMonths } from '@/shared/hooks/useMonths'
+import { useWeekDays } from '@/shared/hooks/useWeekDays'
 import AuctionName from '@/shared/ui/AuctionName'
 import { kmInMile, odometer } from '@/shared/utils/odometer'
 import { priceFormat } from '@/shared/utils/priceFormat'
@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react'
 
 import { FiCalendar } from 'react-icons/fi'
 
-const OfferCard = async ({
+const OfferCard = ({
 	lot,
 	redirectWithAuction = false,
 	withCarfax = false,
@@ -50,14 +50,14 @@ const OfferCard = async ({
 	}, [lot.vehicle])
 
 	const auctionDate = lot.vehicle.AuctionDate
-	const listOfWeekDays = await getListOfWeekDays()
-	const listOfMonths = await getListOfMonthes()
+	const listOfWeekDays = useWeekDays()
+	const listOfMonths = useMonths()
 	const saleDate = new Date(lot.vehicle.AuctionDate)
-	const timeLeft = await getBiddingTimeLeft(saleDate.getTime())
+	const timeLeft = useBiddingTimeLeft(Number(auctionDate))
 
 	const price = priceFormat({ char: 'USD' })
 
-	const bidStatusesLabels = await getBidStatuses()
+	const bidStatusesLabels = useBidStatuses()
 
 	const isArchived = lot.vehicle.Archived
 

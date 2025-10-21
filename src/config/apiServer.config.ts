@@ -3,9 +3,6 @@ import { cookies } from 'next/headers'
 
 export const $ApiServer = pfetch.create({
 	baseURL: process.env.API_URL_SERVER || 'https://api.bidauto.online/api/v1',
-	headers: {
-		'Content-Type': 'application/json',
-	},
 	credentials: 'include',
 })
 
