@@ -4,9 +4,6 @@ import pfetch from '@astralis-team/primitive-fetch'
 export const $Api = pfetch.create({
 	baseURL:
 		process.env.NEXT_PUBLIC_API_URL_CLIENT || 'http://localhost:8000/api/v1',
-	headers: {
-		'Content-Type': 'application/json',
-	},
 	credentials: 'include',
 })
 
