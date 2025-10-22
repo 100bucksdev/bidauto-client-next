@@ -1,22 +1,27 @@
-// app/blog/[post_id]/page.tsx
-
+// app/[locale]/(main)/blog/post/[post_id]/page.tsx
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { blogPosts } from '../../data'
 import PostHeader from './(widgets)/PostHeader'
 
-type Props = {
-	params: Promise<{ post_id: string }>
-}
-
 export async function generateStaticParams() {
-	return blogPosts.map(post => ({
-		post_id: post.id.toString(),
-	}))
+	const locales = ['en', 'lt']
+	return locales.flatMap(locale =>
+		blogPosts.map(post => ({
+			locale,
+			post_id: post.id.toString(),
+		}))
+	)
 }
 
-export default async function BlogPost({ params }: Props) {
+export default async function BlogPost({
+	params,
+}: {
+	params: Promise<{ locale: string; post_id: string }>
+}) {
+	// ✅ Await params
 	const { post_id } = await params
+
 	const post = blogPosts.find(p => p.id.toString() === post_id)
 
 	if (!post) {

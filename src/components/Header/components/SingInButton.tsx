@@ -15,7 +15,7 @@ const SignInButton: FC<SignInButtonProps> = ({ ...options }) => {
 		<button
 			className='text-t-text-primary max-md:rounded-none bg-t-blue-light px-6 rounded-full max-lg:px-16 max-lg:py-2'
 			{...options}
-			onClick={() => path.push($Pages.AUTH.LOGIN)}
+			onClick={() => path.push($Pages.CLIENT.AUTH.LOGIN)}
 		>
 			{t('logIn')}
 		</button>

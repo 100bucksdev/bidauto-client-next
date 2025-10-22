@@ -129,7 +129,7 @@ const Header = () => {
 
 				<div className='flex justify-between 3xl:px-72 2xl:px-72 lg:px-20 max-lg:px-5 h-[70px] items-center max-md:px-[16px] !border-b-2 bg-white !border-b-t-header-bottom-border z-10 relative !border-solid'>
 					<div className='flex h-[100%] select-none'>
-						<Link href={$Pages.HOME}>
+						<Link href={$Pages.CLIENT.HOME}>
 							<Image
 								draggable={false}
 								className='3xl:w-[100px] lg:w-[70px] h-[100%] object-cover max-md:hidden max-lg:w-[15vw] max-xl:w-[300px]'
