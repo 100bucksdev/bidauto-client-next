@@ -80,5 +80,3 @@ export default async function SalesDocuments() {
 		</>
 	)
 }
-
-export const dynamic = 'force-static'

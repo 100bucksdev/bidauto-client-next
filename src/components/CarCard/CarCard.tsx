@@ -49,9 +49,9 @@ const SafeCarCard = ({ lot }: SafeCarCardProps) => {
 		return `${Math.round(num / 1000)}k`
 	}
 
-	const lotPath = `/lot/${
-		lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID
-	}?auction_name=${lot.Auction}`
+	const lotPath = `/lot/${lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}/${
+		lot.Auction
+	}`
 
 	return (
 		<div className='w-[250px] relative bg-white rounded-xl'>

@@ -28,5 +28,3 @@ export default async function Contact() {
 		</>
 	)
 }
-
-export const dynamic = 'force-static'

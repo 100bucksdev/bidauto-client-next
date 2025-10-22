@@ -55,5 +55,3 @@ export default async function Deposit() {
 		</>
 	)
 }
-
-export const dynamic = 'force-static'

@@ -17,9 +17,9 @@ const SimilarArchivalCard = ({ lot }: { lot: TLot }) => {
 				<CardPhotos photos={photos} setPhotos={setPhotos} loop={false} />
 			</div>
 			<Link
-				href={`/lot/${
-					lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID
-				}?auction_name=${lot.Auction}`}
+				href={`/lot/${lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}/${
+					lot.Auction
+				}`}
 				className='w-full flex flex-wrap gap-2 mx-auto mt-2 text-base hover:text-sky-500'
 			>
 				<div>{lot.Year}</div>

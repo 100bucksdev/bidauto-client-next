@@ -69,9 +69,7 @@ const SoldVehicleCard = async ({
 								onClick={() =>
 									path.push(
 										`/lot/${lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}${
-											redirectWithAuction
-												? `?auction_name=${lot.Auction.toUpperCase()}`
-												: ''
+											redirectWithAuction ? `/${lot.Auction.toUpperCase()}` : ''
 										}`
 									)
 								}

@@ -25,6 +25,8 @@ const FinalPriceEstimator = ({
 }) => {
 	const t = useTranslations()
 
+	console.log(info)
+
 	return (
 		<div className='bg-white rounded-2xl border-2 border-gray-300 mb-5'>
 			<div>
@@ -65,7 +67,7 @@ const FinalPriceEstimator = ({
 				<div className='flex justify-center items-center h-20'>
 					<CircleLoader />
 				</div>
-			) : !info.data ? (
+			) : !info ? (
 				<div className='flex justify-center items-center h-20'>
 					<div className='text-red-500'>
 						Something went wrong, please try again later

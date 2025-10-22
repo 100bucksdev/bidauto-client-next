@@ -1,4 +1,4 @@
-import { TIcon } from '@100bucksdev/icons'
+import { TIcon } from '@/shared/icons/data'
 
 interface IHeaderData {
 	title: string
