@@ -18,7 +18,7 @@ const icons: Record<string, IconType> = {
 const links: Record<string, string> = {
 	facebook: 'https://www.facebook.com/autoimportLT?mibextid=uzlsIk',
 	instagram: 'https://www.instagram.com/t_autologistics?igsh=OWlzcHh0bjkwOWEy',
-	youtube: 'https://www.youtube.com/@MR-T_LT',
+	youtube: 'https://www.youtube.com/@bidautoLT',
 	whatsapp: '',
 	email: '',
 }
