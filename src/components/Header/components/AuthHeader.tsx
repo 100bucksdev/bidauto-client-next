@@ -7,7 +7,7 @@ import Link from 'next/link'
 const AuthHeader = () => {
 	return (
 		<header className='bg-t-header-bottom flex justify-center items-center h-[70px] overflow-hidden'>
-			<Link href={$Pages.HOME}>
+			<Link href={$Pages.CLIENT.HOME}>
 				<Image
 					draggable={false}
 					className='w-[400px] h-[100%] object-cover max-md:hidden'

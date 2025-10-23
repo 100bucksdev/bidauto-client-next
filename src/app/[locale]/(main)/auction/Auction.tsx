@@ -4,11 +4,11 @@ import backgroundImage from '@/assets/images/ShopBackground.jpeg'
 import { useGetAllAuctionVehicles } from '@/shared/api/auction/getAllAuctionVehicles/useGetAllAuctionVehicles'
 import { useGetAuctionFirstFoutVehiclesEveryCategory } from '@/shared/api/auction/getAuctionFirstFoutVehiclesEveryCategory/useGetAuctionFirstFoutVehiclesEveryCategory'
 import { useInfiniteScrolling } from '@/shared/hooks/useInfiniteScrolling'
+import Image from 'next/image'
 import { useParams, useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { IoIosArrowBack, IoIosSearch } from 'react-icons/io'
 import { MdExpandMore } from 'react-icons/md'
-import { Fragment } from 'react/jsx-runtime'
 import ShopCardMask from '../shop/(widgets)/ShopCardMask'
 import AuctionCard from './(widgets)/AuctionCard'
 
@@ -16,6 +16,7 @@ const Auction = () => {
 	const { push: path } = useRouter()
 	const [search, setSearch] = useState('')
 	const { slug, id } = useParams()
+
 	const {
 		data: all,
 		isLoading: allIsLoading,
@@ -27,9 +28,7 @@ const Auction = () => {
 	useInfiniteScrolling(
 		document,
 		() => {
-			if (hasNextPage && !isFetchingNextPage) {
-				fetchNextPage()
-			}
+			if (hasNextPage && !isFetchingNextPage) fetchNextPage()
 		},
 		2000
 	)
@@ -38,11 +37,16 @@ const Auction = () => {
 
 	return (
 		<div className='pb-20'>
-			<div
-				style={{ backgroundImage: `url(${backgroundImage})` }}
-				className='relative z-10 mb-12 py-44 max-md:py-24 flex items-center justify-center bg-cover max-lg:bg-center'
-			>
-				<div className='absolute z-10 inset-0 bg-white bg-opacity-65'></div>
+			{/* ✅ Фоновая секция */}
+			<div className='relative z-10 mb-12 py-44 max-md:py-24 flex items-center justify-center overflow-hidden'>
+				<Image
+					src={backgroundImage}
+					alt='Shop background'
+					fill
+					priority
+					className='object-cover object-center'
+				/>
+				<div className='absolute z-10 inset-0 bg-white/65'></div>
 				<h1 className='text-6xl relative z-20 max-md:text-3xl text-center font-semibold leading-[1] tracking-[-0.4px]'>
 					Welcome to our{' '}
 					<span className='border-b-8 border-t-header-top border-dashed'>
@@ -50,6 +54,8 @@ const Auction = () => {
 					</span>
 				</h1>
 			</div>
+
+			{/* ✅ Поиск и возврат */}
 			{id && slug && (
 				<div className='flex justify-center'>
 					<div className='flex max-md:w-[270px] w-[400px] justify-center gap-x-2 max-md:gap-x-1'>
@@ -68,9 +74,7 @@ const Auction = () => {
 							</div>
 							<input
 								type='text'
-								onChange={e => {
-									setSearch(e.target.value)
-								}}
+								onChange={e => setSearch(e.target.value)}
 								placeholder='Search'
 								className='bg-transparent border-none outline-none'
 							/>
@@ -78,6 +82,8 @@ const Auction = () => {
 					</div>
 				</div>
 			)}
+
+			{/* ✅ Главная секция категорий */}
 			{(!id || !slug) && (
 				<>
 					{isLoading ? (
@@ -90,7 +96,7 @@ const Auction = () => {
 					) : data ? (
 						<div className='flex flex-col gap-y-20'>
 							{data.data.map(el => (
-								<div>
+								<div key={el.category.id}>
 									<h3 className='flex justify-center font-semibold text-4xl px-5 max-md:text-3xl'>
 										{el.category.name}
 									</h3>
@@ -117,17 +123,17 @@ const Auction = () => {
 								</div>
 							))}
 						</div>
-					) : (
-						<></>
-					)}
+					) : null}
 				</>
 			)}
 
+			{/* ✅ Секция других авто */}
 			{!!all?.pages[0].data.vehicles.length && (
 				<h3 className='flex justify-center font-semibold text-4xl mt-20 px-5'>
 					{id && slug ? all?.pages[0].data.category?.name : 'Other'}
 				</h3>
 			)}
+
 			<div className='flex flex-wrap justify-center mt-12 px-48 max-md:px-6 max-xl:px-12 gap-8'>
 				{allIsLoading ? (
 					<>

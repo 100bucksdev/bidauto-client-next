@@ -4,6 +4,7 @@ import backgroundImage from '@/assets/images/ShopBackground.jpeg'
 import { useGetFirstFoutVehiclesEveryCategory } from '@/shared/api/Shop/getFirstFoutVehiclesEveryCategory/useGetFirstFoutVehiclesEveryCategory'
 import { useGetShop } from '@/shared/api/Shop/getShop/useGetShop'
 import { useInfiniteScrolling } from '@/shared/hooks/useInfiniteScrolling'
+import Image from 'next/image'
 import { useParams, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { IoIosArrowBack, IoIosSearch } from 'react-icons/io'
@@ -26,13 +27,10 @@ const Shop = () => {
 		fetchNextPage,
 	} = useGetShop({ search, category: id || '0' })
 
-	// бесконечный скролл
 	useInfiniteScrolling(
 		typeof document !== 'undefined' ? document : null,
 		() => {
-			if (hasNextPage && !isFetchingNextPage) {
-				fetchNextPage()
-			}
+			if (hasNextPage && !isFetchingNextPage) fetchNextPage()
 		},
 		2000
 	)
@@ -41,12 +39,16 @@ const Shop = () => {
 
 	return (
 		<div className='pb-20'>
-			{/* фон через backgroundImage */}
-			<div
-				className='relative z-10 mb-12 py-44 max-md:py-24 flex items-center justify-center bg-cover bg-center'
-				style={{ backgroundImage: `url(${backgroundImage.src})` }}
-			>
-				<div className='absolute inset-0 bg-white bg-opacity-65 z-10'></div>
+			{/* ✅ Фоновая секция с адаптивным изображением */}
+			<div className='relative z-10 mb-12 py-44 max-md:py-24 flex items-center justify-center overflow-hidden'>
+				<Image
+					src={backgroundImage}
+					alt='Shop background'
+					fill
+					priority
+					className='object-cover object-center'
+				/>
+				<div className='absolute inset-0 bg-white/65 z-10'></div>
 				<h1 className='text-6xl relative z-20 max-md:text-3xl text-center font-semibold leading-[1] tracking-[-0.4px]'>
 					Welcome to our{' '}
 					<span className='border-b-8 border-t-header-top border-dashed'>
@@ -55,7 +57,7 @@ const Shop = () => {
 				</h1>
 			</div>
 
-			{/* панель поиска */}
+			{/* Панель поиска */}
 			{id && slug && (
 				<div className='flex justify-center'>
 					<div className='flex max-md:w-[270px] w-[400px] justify-center gap-x-2 max-md:gap-x-1'>
@@ -80,7 +82,7 @@ const Shop = () => {
 				</div>
 			)}
 
-			{/* превью категорий */}
+			{/* Превью категорий */}
 			{(!id || !slug) && (
 				<>
 					{isLoading ? (
@@ -124,7 +126,7 @@ const Shop = () => {
 				</>
 			)}
 
-			{/* список автомобилей */}
+			{/* Основной список автомобилей */}
 			{!!all?.pages[0].data.vehicles.length && (
 				<h3 className='flex justify-center font-semibold text-4xl mt-20 px-5'>
 					{id && slug ? all?.pages[0].data.category?.name : 'Other'}
