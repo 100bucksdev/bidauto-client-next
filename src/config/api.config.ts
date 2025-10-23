@@ -3,7 +3,7 @@ import pfetch from '@astralis-team/primitive-fetch'
 
 export const $Api = pfetch.create({
 	baseURL:
-		process.env.NEXT_PUBLIC_API_URL_CLIENT ||
+		process.env.NEXT_PUBLIC_API_URL_CLIENT ??
 		'https://api.bidauto.online/api/v1',
 	credentials: 'include',
 })
