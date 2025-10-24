@@ -35,6 +35,8 @@ const ProfileBar = () => {
 	const logout = useLogout({
 		options: {
 			onSuccess: () => {
+				localStorage.removeItem('access_token')
+				localStorage.removeItem('refresh_token')
 				path.push('/')
 			},
 		},

@@ -4,5 +4,13 @@ import { FetchesRequestConfig } from '@astralis-team/primitive-fetch'
 export type LogoutConfig = FetchesRequestConfig
 
 export const logout = (config: LogoutConfig) => {
-	return $Api.post('/auth/token/blacklist/', {}, config)
+	const token = localStorage.getItem('refresh_token')
+
+	return $Api.post(
+		'/auth/token/blacklist/',
+		{
+			refresh: token,
+		},
+		config
+	)
 }
