@@ -3,6 +3,7 @@
 import { MMenuPopUpFromBottom } from '@/assets/animation/PopUp.animation'
 import logo from '@/assets/images/main-logo.svg'
 import { $Pages } from '@/config/router.config'
+import { useGetAppState } from '@/shared/api/app/getState/useGetState'
 import { IcMail, IcPhone, IcSearch } from '@/shared/icons'
 import Icon from '@/shared/icons/icon'
 import Modal from '@/shared/ui/Modal'
@@ -12,7 +13,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { FaInstagram } from 'react-icons/fa'
+import { FaChevronDown, FaChevronUp, FaInstagram } from 'react-icons/fa'
+import { HiMiniBellAlert } from 'react-icons/hi2'
 import { MdExpandMore } from 'react-icons/md'
 import { RiFacebookCircleLine } from 'react-icons/ri'
 import ProfileBar from './ProfileBar'
@@ -40,7 +42,7 @@ const Header = () => {
 	const [messageNeedsExpansion, setMessageNeedsExpansion] = useState(false)
 	const messageTextRef = useRef<HTMLAnchorElement | null>(null)
 
-	// const { data } = useGetAppState()
+	const { data } = useGetAppState()
 	const dropdownRefs = useRef<Array<HTMLDivElement | null>>([])
 	const currentLocale = useLocale()
 
@@ -73,12 +75,12 @@ const Header = () => {
 		}
 	}, [openDropdownIndex])
 
-	// useEffect(() => {
-	// 	if (messageTextRef.current && data?.data?.important_message) {
-	// 		const element = messageTextRef.current
-	// 		setMessageNeedsExpansion(element.scrollWidth > element.clientWidth)
-	// 	}
-	// }, [data?.data?.important_message])
+	useEffect(() => {
+		if (messageTextRef.current && data?.data?.important_message) {
+			const element = messageTextRef.current
+			setMessageNeedsExpansion(element.scrollWidth > element.clientWidth)
+		}
+	}, [data?.data?.important_message])
 
 	return (
 		<>
@@ -234,7 +236,7 @@ const Header = () => {
 					</div>
 				</div>
 
-				{/* {data && data.data.important_message_active && (
+				{data && data.data.important_message_active && (
 					<div className='flex justify-between 3xl:px-72 2xl:px-36 lg:px-20 max-lg:px-5 bg-t-blue-light min-h-[20px] items-center max-md:px-[16px] relative !border-solid py-1'>
 						<div className='flex items-center gap-3 text-white w-full'>
 							<div className='max-sm:text-xl max-lg:text-2xl lg:text-xl flex-shrink-0'>
@@ -271,7 +273,7 @@ const Header = () => {
 							)}
 						</div>
 					</div>
-				)}*/}
+				)}
 			</header>
 
 			<Modal centerChildren isVisible={isVisible} setIsVisible={setIsVisible}>
