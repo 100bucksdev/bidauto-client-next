@@ -37,7 +37,7 @@ const ChangeLanguage = ({
 			<div className='w-[40%] flex flex-col relative'>
 				<div>
 					<button
-						className='cursor-pointer text-4xl flex items-center w-full justify-center hover:bg-black bg-opacity-55 hover:bg-opacity-50 py-4 duration-100'
+						className='cursor-pointer text-4xl flex items-center w-full justify-center hover:bg-gray-400 bg-opacity-55 hover:bg-opacity-50 py-4 px-2 duration-100'
 						onClick={() => switchLanguage('lt')}
 					>
 						<div className='w-20 flex justify-center'>
@@ -51,7 +51,7 @@ const ChangeLanguage = ({
 				</div>
 				<div>
 					<button
-						className='cursor-pointer text-4xl flex items-center w-full justify-center hover:bg-black bg-opacity-55 hover:bg-opacity-50 py-4 duration-100'
+						className='cursor-pointer text-4xl flex items-center w-full justify-center hover:bg-gray-400 bg-opacity-55 hover:bg-opacity-50 py-4 px-2 duration-100'
 						onClick={() => switchLanguage('en')}
 					>
 						<div className='w-20 flex justify-center'>
