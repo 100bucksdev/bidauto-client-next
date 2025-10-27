@@ -2,7 +2,6 @@
 
 import { SupportChatProvider } from '@/components/AI/hook/useSupportChat'
 import { usePathname } from '@/i18n/navigation'
-import { GoogleReCaptchaProvider } from '@google-recaptcha/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { PropsWithChildren, useEffect, useState } from 'react'
@@ -45,16 +44,8 @@ export function Providers({ children }: PropsWithChildren) {
 	}, [])
 
 	return (
-		<GoogleReCaptchaProvider
-			type='v3'
-			siteKey={
-				process.env.NEXT_PUBLIC_RECAPTCHA_KEY ||
-				'6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw'
-			}
-		>
-			<SupportChatProvider>
-				<QueryClientProvider client={client}>{children}</QueryClientProvider>
-			</SupportChatProvider>
-		</GoogleReCaptchaProvider>
+		<SupportChatProvider>
+			<QueryClientProvider client={client}>{children}</QueryClientProvider>
+		</SupportChatProvider>
 	)
 }
