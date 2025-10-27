@@ -54,7 +54,12 @@ export default function LotSidebar({ lot, info }: LotSidebarProps) {
 	const options = keys?.length
 		? keys.map(key => ({
 				value: key,
-				label: key.charAt(0).toUpperCase() + key.slice(1),
+				label:
+					key.toLocaleLowerCase() === 'losangeles'
+						? 'Los Angeles'
+						: key.toLocaleLowerCase() === 'newyork'
+						? 'New York'
+						: key.charAt(0).toUpperCase() + key.slice(1),
 		  }))
 		: undefined
 
