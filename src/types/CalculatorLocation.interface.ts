@@ -8,6 +8,7 @@ export interface ICalculatorLocation {
 	houston: number
 	miami: number
 	chicago: number
+	losangeles: number
 	nj: number
 	email: string
 }

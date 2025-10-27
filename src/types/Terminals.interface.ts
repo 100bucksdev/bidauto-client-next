@@ -4,6 +4,7 @@ export interface ITerminalsPrices {
 	houston: number
 	miami: number
 	chicago: number
+	losangeles: number
 }
 
 export type TTerminals =
@@ -12,6 +13,7 @@ export type TTerminals =
 	| 'HOUSTON'
 	| 'MIAMI'
 	| 'CHICAGO'
+	| 'LOS ANGELES'
 
 export interface ITerminalsPricesNj extends Omit<ITerminalsPrices, 'NEWYORK'> {
 	nj: number
