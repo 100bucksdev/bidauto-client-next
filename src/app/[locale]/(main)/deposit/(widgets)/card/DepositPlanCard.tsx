@@ -48,7 +48,7 @@ const DepositPlanCard = ({
 	}
 
 	const price = {
-		minimal: 1000,
+		minimal: 1500,
 		medium: userPlan === 'minimal' ? 1500 : 2500,
 		maximal:
 			userPlan === 'medium' ? 2500 : userPlan === 'minimal' ? 4000 : 5000,
@@ -56,8 +56,8 @@ const DepositPlanCard = ({
 
 	const bidding_power = {
 		minimal: '10,000$',
-		medium: '50,000$',
-		maximal: '200,000$',
+		medium: '25,000$',
+		maximal: '50,000$',
 	}
 
 	const isDisabled = (
@@ -81,42 +81,51 @@ const DepositPlanCard = ({
 	const isDisabledValue = isDisabled(userPlan, userBidPower, plan)
 
 	return (
-		<div
-			className={`border border-zinc-300 w-52 text-center bg-white py-2 rounded-2xl min-w-72`}
-		>
-			<div className='flex flex-col'>
+		<div className='border border-zinc-300 w-52 min-w-72 h-[28rem] bg-white py-2 rounded-2xl flex flex-col justify-between shadow-sm hover:shadow-md transition-all'>
+			{/* Верхняя часть */}
+			<div className='flex flex-col h-full justify-between px-5'>
+				{/* Заголовок и описание */}
 				<div className='text-center py-2 font-semibold text-lg'>
 					<div>{plans[plan]}</div>
-					<div className='text-zinc-500'>{descriptions[plan]}</div>
+					<div className='text-zinc-500 text-sm mt-1'>{descriptions[plan]}</div>
 				</div>
-				<hr className='border-t-[2px] border-b-zinc-300 my-2' />
-				<div className='px-5 py-4'>
+
+				<hr className='border-t-[2px] border-zinc-300 my-2' />
+
+				{/* Контент блока */}
+				<div className='flex flex-col flex-1 justify-around'>
 					<div className='flex justify-center flex-col items-center'>
-						<div>{t('plans.biddingPower')}:</div>
+						<div className='text-sm'>{t('plans.biddingPower')}:</div>
 						<div className='text-2xl text-purple-700 font-semibold'>
 							{bidding_power[plan]}
 						</div>
 					</div>
-					<div className='flex mt-5 justify-center flex-col items-center'>
+
+					<div className='flex justify-center flex-col items-center text-sm'>
 						<div>{bidUp[plan]}</div>
 					</div>
-					<div className='flex justify-center mt-5 flex-col items-center'>
-						<div>{t('plans.cost')}:</div>
+
+					<div className='flex justify-center flex-col items-center'>
+						<div className='text-sm'>{t('plans.cost')}:</div>
 						<div className='text-xl text-purple-700 font-semibold'>
 							{`${price[plan]} USD`} /{' '}
 							{`${Math.ceil(price[plan] * toEuro)} EUR`}
 						</div>
 					</div>
 				</div>
-				<hr className='border-t-[2px] border-b-zinc-300 my-2' />
+			</div>
+
+			{/* Нижняя кнопка */}
+			<div>
+				<hr className='border-t-[2px] border-zinc-300 my-2' />
 				<div className='px-4 py-2'>
 					<button
 						onClick={() => path.push('/contact')}
 						disabled={isDisabledValue || isDefaultDisabled}
-						className={`${
+						className={`w-full py-2 flex justify-center rounded-md transition-all duration-200 ${
 							isDisabledValue || isDefaultDisabled
-								? ''
-								: `btn btn-primary w-full py-2 flex justify-center`
+								? 'bg-zinc-400 text-zinc-100 cursor-not-allowed'
+								: 'bg-purple-600 hover:bg-purple-700 text-white font-medium'
 						}`}
 					>
 						{t('plans.select')}

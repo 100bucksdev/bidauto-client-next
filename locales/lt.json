@@ -86,7 +86,7 @@
 	"home": {
 		"firstScreen": {
 			"header": "Siūlykite ir pirkite automobilius JAV",
-			"subHeader": "Pateikite savo išankstinius pasiūlymus šimtams audros pažeistų automobilių, prieinamų keliose pietryčių filialuose.",
+			"subHeader": "Ieškokite ir pateikite išankstinius pasiūlymus dėl šimtų sugadintų ir švarius nuosavybės dokumentus turinčių transporto priemonių, prieinamų įvairiose Copart ir IAAI aukcionų filialuose.",
 			"button": "Sužinoti daugiau"
 		},
 		"searchbar": {
@@ -115,6 +115,10 @@
 			"subHeader": "Sužinokite naujausią informaciją apie mūsų dabartinį renginį Instagram tinkle",
 			"viewProfile": "Peržiūrėti profilį"
 		},
+		"youtube": {
+			"header": "Vaizdo instrukcijos jums",
+			"subHeader": "Daugiau vaizdo įrašų rasite mūsų „YouTube“ kanale"
+		},
 		"cars": {
 			"lates": "Naujausi",
 			"details": "išsami informacija"
@@ -136,7 +140,7 @@
 			"products": "Mūsų pagrindiniai produktai",
 			"contact": "Kontaktai"
 		},
-		"destinations": "Mes pristatome į 3 paskirties vietas"
+		"destinations": "Profesionali automobilių pristatymo paslauga"
 	},
 	"profile": {
 		"profile": "Profilis",
@@ -202,6 +206,7 @@
 		"bidView": "Loto peržiūra",
 		"currentBid": "Dabartinis pasiūlymas",
 		"buyNow": "Pirkti dabar",
+		"reservePrice": "Rezervinė kaina",
 		"finalBid": "Išankstinis pasiūlymas uždarytas",
 		"lotNotFound": "Lotas nerastas",
 		"preBidClosed": "Išankstinis pasiūlymas uždarytas",
@@ -393,15 +398,15 @@
 			"header": "Užstatas",
 			"basicPlan": {
 				"header": "Pagrindinis planas",
-				"description": "Šis planas leidžia jums kiekvieną mėnesį vienu metu dalyvauti 5 lotų aukcionuose. Įnešę vos 1 000 USD užstatą, turėsite 10 000 USD siūlymų galią."
+				"description": "Šis planas puikiai tinka pradžiai. Galite statyti už vieną objektą vienu metu, o įnešę vos 1 500 USD užstatą, turėsite 10 000 USD statymo galią."
 			},
 			"professionalPlan": {
 				"header": "Profesionalus planas",
-				"description": "Šis planas padidina jūsų galimybes teikti pasiūlymus iki 10 lotų vienu metu. Įnešus 2 500 USD užstatą, jūsų siūlymų galia padidėja iki 50 000 USD."
+				"description": "Šis planas leidžia pakelti savo statymų lygį. Įnešę 2 500 USD užstatą, gausite 25 000 USD statymo galią ir galimybę statyti už du objektus vienu metu, jei kiekvienas statymas neviršija 10 000 USD."
 			},
 			"enterprisePlan": {
-				"header": "Enterprise planas",
-				"description": "Mūsų aukščiausio lygio pasiūlymas leidžia vienu metu teikti pasiūlymus dėl 20 lotų. Įnešę 5 000 USD užstatą, gaunate įspūdingą 200 000 USD siūlymų galią."
+				"header": "Įmonės planas",
+				"description": "Mūsų aukščiausios klasės planas suteikia visišką lankstumą. Įnešę 5 000 USD užstatą, gausite 50 000 USD statymo galią. Galite statyti už penkis objektus vienu metu (jei kiekvienas statymas neviršija 10 000 USD), o didžiausias statymas už vieną objektą yra 50 000 USD."
 			},
 			"note": {
 				"header": "PASTABA:",
@@ -409,7 +414,7 @@
 			},
 			"goodNews": {
 				"header": "Geros naujienos!",
-				"description": "Jei jau investavote į mūsų Pagrindinį planą už 1000 USD ir galvojate apie perėjimą prie mūsų Profesionalaus plano, kainuojančio 2500 USD, jums nereikės mokėti visos sumos. Jums reikės padengti tik kainų skirtumą tarp šių dviejų planų! Štai kaip tai veikia: skirtumas tarp mūsų Pagrindinio ir Profesionalaus plano yra 1500 USD (2500 - 1000). Taigi, jūs tiesiog sumokėsite šį 1500 USD skirtumą, kad pereitumėte iš Pagrindinio į Profesionalų planą. Ši patogi politika taip pat taikoma pereinant iš Pagrindinio į Įmonės planą arba iš bet kurio kito plano į aukštesnį. Tiesiog prisiminkite, kad mokėsite tik skirtumą tarp dviejų planų kainų, o ne visą naujo plano kainą. Jūsų atnaujinimas tapo daug paprastesnis!"
+				"description": "Jeigu jau pasirinkote Basic Plan su 1,500 USD užstatu ir nusprendėte pereiti prie Professional Plan su 2,500 USD užstatu, jums nereikės vėl mokėti visos sumos. Jums tereikės padengti skirtumą tarp šių planų — šiuo atveju tik 1,000 USD. Tas pats galioja, kai atnaujinate į Enterprise Plan ar pereinate iš bet kurio plano į aukštesnį. Visada mokėsite tik užstatų skirtumą, o ne visą naujo plano sumą. Atnaujinti planą dar niekada nebuvo taip paprasta — padidinkite savo statymo galią be nereikalingų išlaidų!"
 			}
 		}
 	},
@@ -565,22 +570,22 @@
 		"verifyEmail": "Patvirtinkite savo el. paštą dėl užstato",
 		"verifyPhone": "Patvirtinkite savo telefono numerį dėl užstato",
 		"basic": {
-			"header": "Pagrindinis planas",
-			"description": "Geras pradžiamokslis visiems",
-			"bidUp": "Siūlykite iki 5 transporto priemonių vienu metu",
-			"receive": "Gaukite 5 transporto priemonių istorijos ataskaitas kas mėnesį nemokamai"
+			"header": "Basic Plan",
+			"description": "Puikiai tinka pradžiai",
+			"bidUp": "Vienu metu statykite už vieną lotą",
+			"receive": "Kas mėnesį gaukite 5 nemokamas transporto priemonių istorijos ataskaitas"
 		},
 		"pro": {
-			"header": "Profesionalus planas",
-			"description": "Turite šiek tiek patirties?",
-			"bidUp": "Siūlykite iki 10 transporto priemonių vienu metu",
-			"receive": "Gaukite 10 transporto priemonių istorijos ataskaitų kas mėnesį nemokamai"
+			"header": "Professional Plan",
+			"description": "Pakelkite savo statymų lygį",
+			"bidUp": "Vienu metu statykite už iki 2 lotų (jei statymas neviršija 10,000 USD)",
+			"receive": "Kas mėnesį gaukite 10 nemokamų transporto priemonių istorijos ataskaitų"
 		},
 		"enterprise": {
-			"header": "Įmonės planas",
-			"description": "Geriausia pardavėjams ir brokeriams",
-			"bidUp": "Siūlykite iki 20 transporto priemonių vienu metu",
-			"receive": "Gaukite 20 transporto priemonių istorijos ataskaitų kas mėnesį nemokamai"
+			"header": "Enterprise Plan",
+			"description": "Mūsų aukščiausios klasės pasiūlymas",
+			"bidUp": "Vienu metu statykite už 5 lotus (jei statymas neviršija 10,000 USD), didžiausias statymas už vieną lotą – 50,000 USD",
+			"receive": "Kas mėnesį gaukite 20 nemokamų transporto priemonių istorijos ataskaitų"
 		}
 	},
 	"settings": {

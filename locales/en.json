@@ -86,7 +86,7 @@
 	"home": {
 		"firstScreen": {
 			"header": "Bid & Buy cars in U.S.A",
-			"subHeader": "Place your pre-bids on hundreds of storm-damaged vehicles available at multiple branches in the southeast.",
+			"subHeader": "Search and place your pre-bids on hundreds of salvage and clean title vehicles available at multiple branches of Copart and IAAI auctions",
 			"button": "Explore more"
 		},
 		"searchbar": {
@@ -115,6 +115,10 @@
 			"subHeader": "Find out the latest about our current event, on Instagram",
 			"viewProfile": "View Profile"
 		},
+		"youtube": {
+			"header": "Video instructions for you",
+			"subHeader": "You will see more videos on our YouTube channel"
+		},
 		"cars": {
 			"lates": "Lates",
 			"details": "details"
@@ -136,7 +140,7 @@
 			"products": "Our main products",
 			"contact": "Contact"
 		},
-		"destinations": "We deliver to 3 destinations"
+		"destinations": "Professional Car delivery service"
 	},
 	"profile": {
 		"profile": "Profile",
@@ -202,6 +206,7 @@
 		"bidView": "Lot View",
 		"currentBid": "Current Bid",
 		"buyNow": "Buy Now",
+		"reservePrice": "Reserve Price",
 		"finalBid": "Pre-bid closed",
 		"lotNotFound": "Lot Not Found",
 		"preBidClosed": "Pre-Bid Closed",
@@ -393,15 +398,15 @@
 			"header": "Deposit",
 			"basicPlan": {
 				"header": "Basic Plan",
-				"description": "This plan allows you to place bids on 5 lots simultaneously each month. With a deposit of just 1,000 USD, you'll have a bidding power of 10,000 USD."
+				"description": "This plan is perfect for getting started. You can bid on one lot at a time, and with a deposit of just 1,500 USD, you'll have a bidding power of 10,000 USD."
 			},
 			"professionalPlan": {
 				"header": "Professional Plan",
-				"description": "This plan increases your ability to bid on up to 10 lots at the same time. With a deposit of 2,500 USD, your bidding power rises to 50,000 USD."
+				"description": "This plan lets you step up your bidding game. With a deposit of 2,500 USD, you’ll get a bidding power of 25,000 USD and the ability to bid on up to two lots at a time, as long as each bid does not exceed 10,000 USD."
 			},
 			"enterprisePlan": {
 				"header": "Enterprise Plan",
-				"description": "Our premium offering allows you to bid on 20 lots simultaneously. With a deposit of 5,000 USD, you receive an impressive bidding power of 200,000 USD."
+				"description": "Our premium plan gives you full bidding flexibility. With a deposit of 5,000 USD, you’ll receive a bidding power of 50,000 USD. You can bid on up to five lots at the same time (if each bid does not exceed 10,000 USD), with a maximum bid of 50,000 USD per lot."
 			},
 			"note": {
 				"header": "NOTE:",
@@ -409,7 +414,7 @@
 			},
 			"goodNews": {
 				"header": "Good news!",
-				"description": "If you've already invested in our Basic Plan for $1000 and you're thinking about stepping up to our Professional Plan priced at $2500, you won't have to shoulder the full cost. You'll only need to cover the price difference between the two! Here's how it works: the gap between our Basic and Professional Plans is $1500 ($2500 - $1000). So, you would simply pay this $1500 difference to upgrade from the Basic to the Professional Plan. This convenient policy also applies when you're upgrading from the Basic to the Enterprise Plan, or from any other plan to a higher one. Just remember, you'll only be paying the difference between the two plan costs, not the entire cost of the new plan. Your upgrade just got a whole lot simpler!"
+				"description": "If you’ve already chosen the Basic Plan with a deposit of 1,500 USD and decide to move up to the Professional Plan with a deposit of 2,500 USD, you won’t need to pay the full amount again. You’ll only cover the difference between the two plans — in this case, just 1,000 USD. The same applies when upgrading to the Enterprise Plan, or when moving from any plan to a higher one. You’ll always pay only the difference in deposit amounts, not the full cost of the new plan. Upgrading has never been easier — step up your bidding power without unnecessary extra costs!"
 			}
 		}
 	},
@@ -566,20 +571,20 @@
 		"verifyPhone": "Verify your phone number for deposit",
 		"basic": {
 			"header": "Basic Plan",
-			"description": "Good start for everyone",
-			"bidUp": "Bid up to 5 vehicles at one time",
+			"description": "Perfect for getting started",
+			"bidUp": "Bid on one lot at a time",
 			"receive": "Receive 5 vehicles history reports monthly for free"
 		},
 		"pro": {
 			"header": "Professional Plan",
-			"description": "Have a little bit of experience?",
-			"bidUp": "Bid up to 10 vehicles at one time",
+			"description": "Step up your bidding game",
+			"bidUp": "Bid on up to 2 lots at a time (if bid not higher than $10,000)",
 			"receive": "Receive 10 vehicles history reports monthly for free"
 		},
 		"enterprise": {
 			"header": "Enterprise Plan",
-			"description": "Best for Dealers & Brokers",
-			"bidUp": "Bid up to 20 vehicles at one time",
+			"description": "Our premium offering",
+			"bidUp": "Bid on 5 lots at a time(if bid not higher than $10,000), max bid per one lot is $50,000",
 			"receive": "Receive 20 vehicles history reports monthly for free"
 		}
 	},
