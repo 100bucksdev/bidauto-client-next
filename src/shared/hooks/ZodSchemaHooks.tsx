@@ -50,9 +50,9 @@ export function useLoginSchema() {
 			.string('It should be a string')
 			.min(8, t('validation.shortPass'))
 			.max(30, t('validation.longPass')),
-		// captcha: isDev
-		// 	? z.string().optional() // not required in dev
-		// 	: z.string().min(1, 'Captcha is required'),
+		captcha: isDev
+			? z.string().optional() // not required in dev
+			: z.string().min(1, 'Captcha is required'),
 	})
 
 	// if (!isDev) {
