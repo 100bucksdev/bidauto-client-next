@@ -1,3 +1,5 @@
+'use client'
+
 import LotHeaderMask from './LotHeaderMask'
 import LotMainMask from './LotMainMask'
 import LotSidebarMask from './LotSidebarMask'
