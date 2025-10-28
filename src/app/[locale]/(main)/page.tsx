@@ -1,12 +1,11 @@
 import { $ApiServer } from '@/config/apiServer.config'
-import { IInstagramPost } from '@/types/InstagramPost.interface'
 import { IMainPageCars } from '@/types/MainPageCars.interface'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import HomeScreen from './(widgets)/HomeScrean/HomeScreen'
 import Lots from './(widgets)/Lots/HomeLots'
-import InstagramPosts from './(widgets)/Realse/InstagramPosts'
+import YouTubePosts from './(widgets)/YouTube/YouTubePosts'
 import { HomePageCarBrendsData } from './data'
 
 export const metadata: Metadata = {
@@ -30,7 +29,7 @@ export default async function Home() {
 	const t = await getTranslations()
 
 	let cars: IMainPageCars[] = []
-	let realse: IInstagramPost[] = []
+	// let realse: IInstagramPost[] = []
 
 	try {
 		const carsResponse = await $ApiServer.get<IMainPageCars[]>(
@@ -44,17 +43,17 @@ export default async function Home() {
 		console.error('Ошибка загрузки машин:', err)
 	}
 
-	try {
-		const realseResponse = await $ApiServer.get<IInstagramPost[]>(
-			'/instagram/posts/',
-			{
-				next: { revalidate: 60 * 60 },
-			}
-		)
-		realse = realseResponse?.data ?? []
-	} catch (err) {
-		console.error('Ошибка загрузки Instagram постов:', err)
-	}
+	// try {
+	// 	const realseResponse = await $ApiServer.get<IInstagramPost[]>(
+	// 		'/instagram/posts/',
+	// 		{
+	// 			next: { revalidate: 60 * 60 },
+	// 		}
+	// 	)
+	// 	realse = realseResponse?.data ?? []
+	// } catch (err) {
+	// 	console.error('Ошибка загрузки Instagram постов:', err)
+	// }
 
 	return (
 		<div className='break-words w-full overflow-y-auto overflow-x-hidden'>
@@ -62,7 +61,8 @@ export default async function Home() {
 
 			<section className='w-full 3xl:ml-72 2xl:ml-72 2xl:mr-0 xl:mx-36 lg:mx-20 flex flex-col my-24 max-sm:my-12 max-lg:ml-0 overflow-hidden'>
 				<div className='w-full mb-10 pb-4 max-lg:mx-36 max-sm:mx-10'>
-					<InstagramPosts data={realse} />
+					{/* <InstagramPosts data={realse} /> */}
+					<YouTubePosts />
 				</div>
 
 				<div className='space-y-10 max-lg:ml-10 max-sm:mx-2 flex justify-center flex-col'>
