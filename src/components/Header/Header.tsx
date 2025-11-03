@@ -237,7 +237,7 @@ const Header = () => {
 				</div>
 
 				{data && data.data.important_message_active && (
-					<div className='flex justify-between 3xl:px-72 2xl:px-36 lg:px-20 max-lg:px-5 bg-t-blue-light min-h-[20px] items-center max-md:px-[16px] relative !border-solid py-1'>
+					<div className='flex justify-between 3xl:px-72 2xl:px-72 lg:px-20 max-lg:px-5 bg-t-blue-light min-h-[20px] items-center max-md:px-[16px] relative !border-solid py-1'>
 						<div className='flex items-center gap-3 text-white w-full'>
 							<div className='max-sm:text-xl max-lg:text-2xl lg:text-xl flex-shrink-0'>
 								<HiMiniBellAlert />
