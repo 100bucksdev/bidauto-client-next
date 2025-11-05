@@ -451,102 +451,99 @@
 		}
 	},
 	"termsOfUse": {
-		"header": "Terms and Conditions of Use",
-		"description": "These Terms and Conditions govern the use of electronic services provided on the T-Auto Logistics LLC website, offering a platform for the purchase, bidding, and transportation of vehicles from the United States to locations worldwide.",
-		"definitions": {
-			"header": "Definitions",
-			"company": {
-				"header": "Company",
-				"description": "T-Auto Logistics LLC, 1806 Mariners Ln, Weston, FL 33327, USA."
-			},
-			"user": {
-				"header": "User",
-				"description": "Any individual or entity using the services provided by the Company."
-			},
-			"vehicle": {
-				"header": "Vehicle",
-				"description": "Motor vehicles auctioned and sold through the Company’s platform."
-			},
-			"order": {
-				"header": "Order",
-				"description": "A User request for the Company to bid on, purchase, and/or arrange the transport of a Vehicle."
-			},
-			"website": {
-				"header": "Website",
-				"description": "The online platform operated by the Company."
-			},
-			"account": {
-				"header": "Account",
-				"description": "The User’s profile on the Website."
+		"header": "Terms and Conditions of Use / Legal Disclaimer",
+		"description": "These Terms and Conditions govern the use of BidAuto.online services, which act as a broker between auction platforms and logistics providers for the purchase, transport, and export of vehicles.",
+
+		"brokerRole": {
+			"header": "1. BidAuto’s Role as Broker",
+			"description": "BidAuto.online acts solely as an independent broker and logistics facilitator between third-party automotive auction platforms (including but not limited to Copart, IAAI, and Manheim) and international shipping and freight companies.",
+			"details": {
+				"nonOwnership": "BidAuto.online does not own, sell, or represent ownership of any vehicle listed on these auction platforms.",
+				"services": {
+					"header": "Services Provided",
+					"list": [
+						"Providing authorized access to auction platforms for registered buyers.",
+						"Coordinating vehicle retrieval from auction facilities and transportation to export terminals.",
+						"Processing vehicles at export terminals, obtaining and forwarding available documentation (if issued by the auction or seller).",
+						"Organizing container loading and arranging maritime shipment to the customer’s chosen destination."
+					]
+				},
+				"legalBasis": "BidAuto.online operates as an intermediary ('broker') under U.S. Uniform Commercial Code (UCC), Title 15 of the United States Code, and applicable Federal Maritime Commission (FMC) export guidelines.",
+				"responsibility": "All purchase, sale, and title transfer responsibilities rest entirely with the auction platform and the buyer."
 			}
 		},
-		"generalProvisions": {
-			"header": "General Provisions",
-			"description": "These Terms are binding for all Users. The Company facilitates vehicle bidding, purchase, and transport. Transactions are conducted in USD."
-		},
-		"membership": {
-			"header": "Membership and Account",
-			"description": "Users must be at least 18 years old with full legal capacity. The Website offers free and premium account options."
-		},
-		"servicesOffered": {
-			"header": "Electronic Services Offered",
-			"description": "Services include vehicle bidding, price calculation, customs assistance, and transport organization."
-		},
-		"vehicleConditionsAndDelivery": {
-			"header": "Vehicle Conditions and Delivery",
-			"vehicleConditions": {
-				"header": "Vehicle Conditions",
-				"description": "Vehicles are sold \"AS IS, WHERE IS,\" without warranties on condition beyond auction listings. The Company is not liable for undepictured damages."
+
+		"limitationsOfLiability": {
+			"header": "2. Limitations of Liability",
+
+			"asIsCondition": {
+				"header": "2.1 'As Is, Where Is' Condition",
+				"description": "All vehicles purchased through IAAI, Copart, or similar salvage auctions are sold strictly 'As Is, Where Is', with no warranty, express or implied.",
+				"disclaimer": "Neither the auction nor BidAuto.online assumes responsibility for the mechanical condition, completeness, or roadworthiness of any vehicle.",
+				"buyerAcknowledgment": {
+					"header": "Buyers acknowledge that:",
+					"list": [
+						"Vehicles may contain hidden or undisclosed damages not visible in photos or condition reports.",
+						"Vehicles may not comply with safety, emissions, or registration standards in the destination country.",
+						"Buyers accept all risks associated with repair, transport, and importation."
+					]
+				}
 			},
-			"delivery": {
-				"header": "Delivery",
-				"description": "The Company arranges transport through third-party haulers and is not liable for damages during delivery from the Auction to the Loading terminal."
+
+			"titleAndDocumentation": {
+				"header": "2.2 Title and Documentation",
+				"description": "BidAuto.online cannot and does not guarantee the presence, validity, or accuracy of title documents or their eligibility for export.",
+				"responsibility": "Responsibility for verifying title status (including liens, salvage classifications, or export restrictions) lies solely with the buyer and auction.",
+				"notLiableFor": {
+					"header": "Neither Copart, IAAI, nor BidAuto.online shall be held liable for:",
+					"list": [
+						"Missing titles or delays in title issuance.",
+						"Invalid or non-exportable documents (e.g., 'Bill of Sale,' 'Non-Repairable,' or 'Certificate of Destruction').",
+						"Customs rejections or import denials based on documentation issues."
+					]
+				}
 			},
-			"support": {
-				"header": "Support",
-				"description": "The Company will support Users in mitigating delivery issues, within the limitations stated."
+
+			"transportationAndShipping": {
+				"header": "2.3 Transportation and Shipping",
+				"description": "Vehicles purchased through these auctions are generally insurance total-loss or salvage write-offs.",
+				"liability": "BidAuto.online and its logistics partners assume no liability for:",
+				"notLiableFor": [
+					"Damage, loss, or deterioration during inland or maritime transport.",
+					"Acts of nature, loading incidents, port handling, or storage-related damage."
+				],
+				"regulations": "All transport is arranged at the buyer’s risk, in accordance with FMC regulations, CFR Title 46 (Shipping), and INCOTERMS 2020 where applicable.",
+				"insurance": "Insurance coverage during shipment must be arranged separately by the buyer unless explicitly stated otherwise in a written agreement."
 			}
 		},
-		"buyersResponsibilities": {
-			"header": "Buyer’s Responsibilities",
-			"description": "The Buyer chooses vehicles based on personal observation and research. By confirming a purchase, the Buyer agrees to make full payment within 3 working days from the purchase date, starting on purchase day."
+
+		"disputeResolution": {
+			"header": "3. Dispute Resolution & Governing Law",
+			"description": "All purchases made through Copart or IAAI are governed by their respective Buyer Agreements and Terms of Use, which the buyer must review and accept prior to bidding.",
+			"userAgreement": {
+				"header": "By utilizing BidAuto.online services, you acknowledge and agree that:",
+				"list": [
+					"BidAuto.online is not a party to the auction contract between buyer and auction house.",
+					"Any claims or disputes regarding vehicle condition, title validity, or sale terms must be addressed directly with the auction platform.",
+					"Any claims arising from export logistics shall be subject to the laws of the United Arab Emirates, under which BidAuto.online’s operating entity (NAVI GRUPE LLC-FZ) is registered."
+				]
+			}
 		},
-		"calculatorsAndDeposits": {
-			"header": "Calculators and Deposits",
-			"description": "Price and customs calculators are for informational purposes only. Deposits are made in USD and define the User’s purchasing power."
+
+		"legalCompliance": {
+			"header": "4. Legal Compliance and Buyer Acknowledgment",
+			"description": "The buyer acknowledges that all exports and imports must comply with applicable laws and regulations.",
+			"buyerAcknowledges": {
+				"header": "The buyer acknowledges that:",
+				"list": [
+					"All exports must comply with U.S. Customs and Border Protection (CBP) regulations under 19 CFR §192.2, governing the export of used self-propelled vehicles.",
+					"It is the buyer’s sole responsibility to ensure the vehicle’s compliance with destination country import regulations, emissions, or tax requirements.",
+					"BidAuto.online does not engage in or support any document falsification, title alteration, or other unlawful export activities."
+				]
+			},
+			"agreement": "By purchasing and arranging transport through BidAuto.online, you agree to these Terms and Conditions and affirm that you have read and accepted the auction rules of Copart, IAAI, or any platform through which the purchase was made."
 		},
-		"biddingAndOrders": {
-			"header": "Bidding and Orders",
-			"description": "A deposit is required for bidding. The Website facilitates bid and order submissions for Vehicles."
-		},
-		"services": {
-			"header": "Electronic Services",
-			"description": "Services are available to Users with internet access and appropriate devices."
-		},
-		"agreementTerms": {
-			"header": "Agreement Terms",
-			"description": "The agreement for electronic services commences upon Website use and ends when the User stops using the Website."
-		},
-		"userContent": {
-			"header": "User Content",
-			"description": "Users agree to upload true, non-misleading content and to protect their Account access."
-		},
-		"complaints": {
-			"header": "Complaints",
-			"description": "Complaints must be submitted within 30 days of the incident to logisticstauto@gmail.com."
-		},
-		"liability": {
-			"header": "Liability",
-			"description": "The Company is not liable for issues beyond its control or for damages post-auction and pre-loading terminal delivery."
-		},
-		"copyrights": {
-			"header": "Copyrights",
-			"description": "Website content is copyrighted. Users do not acquire any rights to this content."
-		},
-		"finalProvisions": {
-			"header": "Final Provisions",
-			"description": "These Terms may be modified by the Company. Disputes will be governed by the laws of the United States, with jurisdiction in Florida courts."
-		},
+
 		"contactInfo": {
 			"header": "Contact Information",
 			"email": "Email",

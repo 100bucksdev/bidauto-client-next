@@ -451,102 +451,99 @@
 		}
 	},
 	"termsOfUse": {
-		"header": "Naudojimo sąlygos",
-		"description": "Šios Naudojimo sąlygos reglamentuoja elektroninių paslaugų, teikiamų T-Auto Logistics LLC svetainėje, naudojimą, siūlančią platformą transporto priemonių pirkimui, pasiūlymų teikimui ir transportavimui iš Jungtinių Valstijų į viso pasaulio vietas.",
-		"definitions": {
-			"header": "Apibrėžimai",
-			"company": {
-				"header": "Įmonė",
-				"description": "T-Auto Logistics LLC, 1806 Mariners Ln, Weston, FL 33327, JAV."
-			},
-			"user": {
-				"header": "Vartotojas",
-				"description": "Bet kuris fizinis ar juridinis asmuo, naudojantis Įmonės teikiamas paslaugas."
-			},
-			"vehicle": {
-				"header": "Transporto priemonė",
-				"description": "Motorinės transporto priemonės, parduodamos aukcione ir parduodamos per Įmonės platformą."
-			},
-			"order": {
-				"header": "Užsakymas",
-				"description": "Vartotojo prašymas Įmonei pateikti pasiūlymą, įsigyti ir/arba organizuoti transporto priemonės transportavimą."
-			},
-			"website": {
-				"header": "Svetainė",
-				"description": "Internetinė platforma, kurią valdo Įmonė."
-			},
-			"account": {
-				"header": "Paskyra",
-				"description": "Vartotojo profilis Svetainėje."
+		"header": "Naudojimosi sąlygos / Teisinis atsisakymas",
+		"description": "Šios sąlygos reglamentuoja BidAuto.online paslaugų naudojimą. Bendrovė veikia kaip tarpininkas tarp automobilių aukcionų platformų ir logistikos paslaugų teikėjų, siekiant palengvinti transporto priemonių pirkimą, gabenimą ir eksportą.",
+
+		"brokerRole": {
+			"header": "1. BidAuto tarpininko vaidmuo",
+			"description": "BidAuto.online veikia tik kaip nepriklausomas tarpininkas ir logistikos koordinatorius tarp trečiųjų šalių automobilių aukcionų platformų (įskaitant, bet neapsiribojant Copart, IAAI ir Manheim) ir tarptautinių laivybos bei krovinių kompanijų.",
+			"details": {
+				"nonOwnership": "BidAuto.online neturi, neparduoda ir neatstovauja jokių nuosavybės teisių į automobilius, esančius šiose aukcionų platformose.",
+				"services": {
+					"header": "Teikiamos paslaugos",
+					"list": [
+						"Suteikia registruotiems pirkėjams autorizuotą prieigą prie aukcionų platformų.",
+						"Organizuoja transporto priemonės paėmimą iš aukciono vietos ir pristatymą į eksporto terminalą.",
+						"Atlieka transporto priemonių apdorojimą eksporto terminale, gauna ir perduoda dokumentus (jei jie pateikiami aukciono ar pardavėjo).",
+						"Organizuoja konteinerių pakrovimą ir jūrų transportavimą į kliento pasirinktą paskirties vietą."
+					]
+				},
+				"legalBasis": "BidAuto.online veikia kaip tarpininkas („brokeris“) pagal JAV Vienodąjį komercinį kodeksą (UCC), JAV kodekso 15 skyrių ir Federalinės jūrų komisijos (FMC) eksporto taisykles.",
+				"responsibility": "Visa atsakomybė už pirkimą, pardavimą ir nuosavybės perdavimą tenka tik aukciono platformai ir pirkėjui."
 			}
 		},
-		"generalProvisions": {
-			"header": "Bendrosios nuostatos",
-			"description": "Šios Sąlygos yra privalomos visiems Vartotojams. Įmonė palengvina transporto priemonių pasiūlymų teikimą, pirkimą ir transportavimą. Sandoriai vykdomi USD."
-		},
-		"membership": {
-			"header": "Narystė ir paskyra",
-			"description": "Vartotojai turi būti ne jaunesni kaip 18 metų ir turėti pilną teisinį veiksnumą. Svetainė siūlo nemokamas ir premium paskyrų parinktis."
-		},
-		"servicesOffered": {
-			"header": "Teikiamos elektroninės paslaugos",
-			"description": "Paslaugos apima transporto priemonių pasiūlymų teikimą, kainų skaičiavimą, muitinės pagalbą ir transporto organizavimą."
-		},
-		"vehicleConditionsAndDelivery": {
-			"header": "Transporto priemonių sąlygos ir pristatymas",
-			"vehicleConditions": {
-				"header": "Transporto priemonių sąlygos",
-				"description": "Transporto priemonės parduodamos „KAIP YRA, KUR YRA“, be jokių garantijų dėl būklės, išskyrus aukciono sąrašuose nurodytas. Įmonė neatsako už neaprašytus pažeidimus."
+
+		"limitationsOfLiability": {
+			"header": "2. Atsakomybės apribojimai",
+
+			"asIsCondition": {
+				"header": "2.1 „Kaip yra, kur yra“ būklė",
+				"description": "Visi per IAAI, Copart ar panašius aukcionus įsigyti automobiliai parduodami griežtai „kaip yra, kur yra“, be jokių išreikštų ar numanomų garantijų.",
+				"disclaimer": "Ne aukcionas, nei BidAuto.online neprisiima atsakomybės už transporto priemonės techninę būklę, pilnumą ar tinkamumą eksploatacijai.",
+				"buyerAcknowledgment": {
+					"header": "Pirkėjas patvirtina, kad:",
+					"list": [
+						"Transporto priemonė gali turėti paslėptų ar nepateiktų pažeidimų, kurie nėra matomi nuotraukose ar aprašymuose.",
+						"Transporto priemonė gali neatitikti saugumo, išmetamųjų teršalų ar registracijos reikalavimų paskirties šalyje.",
+						"Pirkėjas prisiima visą riziką, susijusią su remontu, transportavimu ir importu."
+					]
+				}
 			},
-			"delivery": {
-				"header": "Pristatymas",
-				"description": "Įmonė organizuoja transportavimą per trečiųjų šalių vežėjus ir neatsako už pažeidimus pristatymo metu nuo Aukciono iki Pakrovimo terminalo."
+
+			"titleAndDocumentation": {
+				"header": "2.2 Nuosavybės dokumentai ir jų galiojimas",
+				"description": "BidAuto.online negarantuoja nuosavybės dokumentų buvimo, galiojimo ar tinkamumo eksportui.",
+				"responsibility": "Atsakomybė už nuosavybės dokumentų patikrinimą (įskaitant įkeitimus, draudimo statusą ar eksporto apribojimus) tenka išimtinai pirkėjui ir aukcionui.",
+				"notLiableFor": {
+					"header": "Ne Copart, ne IAAI, nei BidAuto.online nebus atsakingi už:",
+					"list": [
+						"Trūkstamus nuosavybės dokumentus arba jų išdavimo vėlavimus.",
+						"Neteisingus ar neeksportuojamus dokumentus (pvz., „Bill of Sale“, „Non-Repairable“, „Certificate of Destruction“).",
+						"Muitinės atmetimus ar importo draudimus dėl dokumentacijos problemų."
+					]
+				}
 			},
-			"support": {
-				"header": "Palaikymas",
-				"description": "Įmonė palaikys Vartotojus sprendžiant pristatymo problemas, laikantis nurodytų apribojimų."
+
+			"transportationAndShipping": {
+				"header": "2.3 Transportavimas ir laivyba",
+				"description": "Per šiuos aukcionus įsigytos transporto priemonės paprastai yra draudimo nurašytos arba sugadintos (salvage) transporto priemonės.",
+				"liability": "BidAuto.online ir jo logistikos partneriai neprisiima atsakomybės už:",
+				"notLiableFor": [
+					"Žalą, praradimą ar pablogėjimą vidaus ar jūrų transportavimo metu.",
+					"Gamtos reiškinius, pakrovimo incidentus, uosto tvarkymo ar sandėliavimo metu padarytą žalą."
+				],
+				"regulations": "Visas transportas organizuojamas pirkėjo rizika, vadovaujantis FMC taisyklėmis, CFR 46 skyriumi (Laivyba) ir INCOTERMS 2020, jei taikoma.",
+				"insurance": "Draudimą transportavimo metu turi atskirai pasirūpinti pirkėjas, nebent raštu sutarta kitaip."
 			}
 		},
-		"buyersResponsibilities": {
-			"header": "Pirkėjo pareigos",
-			"description": "Pirkėjas renkasi transporto priemones pagal asmeninius stebėjimus ir tyrimus. Patvirtindamas pirkimą, Pirkėjas sutinka atlikti pilną mokėjimą per 3 darbo dienas nuo pirkimo datos, pradedant pirkimo diena."
+
+		"disputeResolution": {
+			"header": "3. Ginčų sprendimas ir taikytina teisė",
+			"description": "Visi pirkimai, atlikti per Copart ar IAAI, yra reglamentuojami atitinkamų platformų Pirkėjo sutartimis ir Naudojimo sąlygomis, su kuriomis pirkėjas privalo susipažinti ir sutikti prieš dalyvaudamas aukcione.",
+			"userAgreement": {
+				"header": "Naudodamasis BidAuto.online paslaugomis, pirkėjas sutinka, kad:",
+				"list": [
+					"BidAuto.online nėra aukciono sandorio šalis tarp pirkėjo ir aukciono.",
+					"Visi skundai ar ginčai dėl transporto priemonės būklės, dokumentų galiojimo ar pardavimo sąlygų turi būti sprendžiami tiesiogiai su aukciono platforma.",
+					"Visi ginčai, kylantys dėl eksporto logistikos, bus sprendžiami pagal Jungtinių Arabų Emyratų teisę, pagal kurią registruota BidAuto.online veiklos įmonė (NAVI GRUPE LLC-FZ)."
+				]
+			}
 		},
-		"calculatorsAndDeposits": {
-			"header": "Skaičiuoklės ir užstatai",
-			"description": "Kainų ir muitinės skaičiuoklės skirtos tik informaciniais tikslais. Užstatai mokami USD ir lemia Vartotojo pirkimo galią."
+
+		"legalCompliance": {
+			"header": "4. Teisės laikymasis ir pirkėjo pareiškimas",
+			"description": "Pirkėjas patvirtina, kad visas eksportas ir importas turi atitikti galiojančius įstatymus ir reglamentus.",
+			"buyerAcknowledges": {
+				"header": "Pirkėjas pripažįsta, kad:",
+				"list": [
+					"Visas eksportas turi atitikti JAV Muitinės ir pasienio apsaugos (CBP) reikalavimus pagal 19 CFR §192.2, reglamentuojančius naudotų savaeigių transporto priemonių eksportą.",
+					"Pirkėjas pats atsako už transporto priemonės atitiktį paskirties šalies importo, išmetamųjų teršalų ar mokesčių reikalavimams.",
+					"BidAuto.online nedalyvauja ir nepalaiko jokių dokumentų klastojimo, nuosavybės dokumentų keitimo ar kitų neteisėtų eksporto veiklų."
+				]
+			},
+			"agreement": "Įsigydamas ir organizuodamas transportavimą per BidAuto.online, pirkėjas sutinka su šiomis Naudojimosi sąlygomis ir patvirtina, kad perskaitė bei priėmė Copart, IAAI ar kitos platformos, per kurią atliktas pirkimas, taisykles."
 		},
-		"biddingAndOrders": {
-			"header": "Pasiūlymai ir užsakymai",
-			"description": "Pasiūlymams teikti reikalingas užstatas. Svetainė palengvina pasiūlymų ir užsakymų pateikimą transporto priemonėms."
-		},
-		"services": {
-			"header": "Elektroninės paslaugos",
-			"description": "Paslaugos prieinamos Vartotojams, turintiems interneto prieigą ir tinkamus įrenginius."
-		},
-		"agreementTerms": {
-			"header": "Sutarties sąlygos",
-			"description": "Elektroninių paslaugų sutartis prasideda naudojant Svetainę ir baigiasi, kai Vartotojas nustoja ją naudoti."
-		},
-		"userContent": {
-			"header": "Vartotojo turinys",
-			"description": "Vartotojai sutinka įkelti teisingą, neapgaulingą turinį ir apsaugoti savo paskyros prieigą."
-		},
-		"complaints": {
-			"header": "Skundai",
-			"description": "Skundai turi būti pateikti per 30 dienų nuo incidento adresu logisticstauto@gmail.com."
-		},
-		"liability": {
-			"header": "Atsakomybė",
-			"description": "Įmonė neatsako už problemas, kurios nepriklauso nuo jos kontrolės, arba už pažeidimus po aukciono ir iki pristatymo į pakrovimo terminalą."
-		},
-		"copyrights": {
-			"header": "Autorių teisės",
-			"description": "Svetainės turinys yra apsaugotas autorių teisėmis. Vartotojai neįgyja jokių teisių į šį turinį."
-		},
-		"finalProvisions": {
-			"header": "Baigiamosios nuostatos",
-			"description": "Šios Sąlygos gali būti keičiamos Įmonės. Ginčai bus sprendžiami pagal Jungtinių Valstijų įstatymus, jurisdikcija priklauso Floridos teismams."
-		},
+
 		"contactInfo": {
 			"header": "Kontaktinė informacija",
 			"email": "El. paštas",

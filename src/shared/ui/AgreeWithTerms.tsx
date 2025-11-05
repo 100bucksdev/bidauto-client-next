@@ -1,4 +1,3 @@
-import { useRouter } from 'next/navigation'
 import { FC, useEffect } from 'react'
 import { FieldValues, UseFormSetValue } from 'react-hook-form'
 import Checkbox from './Checkbox'
@@ -10,8 +9,6 @@ interface IAgreeWithTerms {
 }
 
 const AgreeWithTerms: FC<IAgreeWithTerms> = ({ error, setValue, name }) => {
-	const path = useRouter()
-
 	useEffect(() => {
 		setValue(name, true)
 	}, [name, setValue])
@@ -26,12 +23,14 @@ const AgreeWithTerms: FC<IAgreeWithTerms> = ({ error, setValue, name }) => {
 					}}
 				>
 					<div className='inline ml-3'>I agree with </div>
-					<div
-						onClick={() => path.push('/help/terms-of-use')}
+					<a
+						href='/help/terms-of-use'
+						target='_blank'
+						rel='noopener noreferrer'
 						className='inline text-blue-500 hover:underline'
 					>
 						terms of use
-					</div>
+					</a>
 				</Checkbox>
 			</div>
 			{error && <span className='text-red-500 flex'>{error.message}</span>}

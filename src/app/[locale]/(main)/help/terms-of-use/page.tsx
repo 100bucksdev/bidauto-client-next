@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
 export const metadata: Metadata = {
-	title: 'Terms of Use',
-	description: 'Terms of Use for BidAuto Online',
+	title: 'Terms and Conditions / Legal Disclaimer',
+	description: 'Terms and Conditions for BidAuto.online',
 }
 
 export default async function TermsOfUse() {
@@ -17,138 +17,188 @@ export default async function TermsOfUse() {
 						<h1 className='text-3xl font-bold mb-4'>
 							{t('termsOfUse.header')}
 						</h1>
-						<p className='mb-4'>{t('termsOfUse.description')}</p>
+						<p className='mb-6'>{t('termsOfUse.description')}</p>
+
+						{/* 1. Broker Role */}
 						<h2 className='text-lg font-semibold mb-2'>
-							1. {t('termsOfUse.definitions.header')}
+							1. {t('termsOfUse.brokerRole.header')}
 						</h2>
+						<p className='mb-4'>{t('termsOfUse.brokerRole.description')}</p>
 						<p className='mb-4'>
-							<span className='font-semibold'>
-								{t('termsOfUse.definitions.company.header')}:
-							</span>{' '}
-							{t('termsOfUse.definitions.company.description')}
-							<br />
-							<span className='font-semibold'>
-								{t('termsOfUse.definitions.user.header')}:
-							</span>{' '}
-							{t('termsOfUse.definitions.user.description')}
-							<br />
-							<span className='font-semibold'>
-								{t('termsOfUse.definitions.vehicle.header')}:
-							</span>{' '}
-							{t('termsOfUse.definitions.vehicle.description')}
-							<br />
-							<span className='font-semibold'>
-								{t('termsOfUse.definitions.order.header')}:
-							</span>{' '}
-							{t('termsOfUse.definitions.order.description')}
-							<br />
-							<span className='font-semibold'>
-								{t('termsOfUse.definitions.website.header')}:
-							</span>{' '}
-							{t('termsOfUse.definitions.website.description')}
-							<br />
-							<span className='font-semibold'>
-								{t('termsOfUse.definitions.account.header')}:
-							</span>{' '}
-							{t('termsOfUse.definitions.account.description')}
+							{t('termsOfUse.brokerRole.details.nonOwnership')}
 						</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							2. {t('termsOfUse.generalProvisions.header')}
-						</h2>
-						<p className='mb-4'>
-							{t('termsOfUse.generalProvisions.description')}
+						<p className='mb-4 font-semibold'>
+							{t('termsOfUse.brokerRole.details.services.header')}:
 						</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							3. {t('termsOfUse.membership.header')}
-						</h2>
-						<p className='mb-4'>{t('termsOfUse.membership.description')}</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							4. {t('termsOfUse.servicesOffered.header')}
-						</h2>
+						<ul className='list-disc ml-6 mb-4'>
+							<li>{t('termsOfUse.brokerRole.details.services.list.0')}</li>
+							<li>{t('termsOfUse.brokerRole.details.services.list.1')}</li>
+							<li>{t('termsOfUse.brokerRole.details.services.list.2')}</li>
+							<li>{t('termsOfUse.brokerRole.details.services.list.3')}</li>
+						</ul>
 						<p className='mb-4'>
-							{t('termsOfUse.servicesOffered.description')}
+							{t('termsOfUse.brokerRole.details.legalBasis')}
 						</p>
+						<p className='mb-6'>
+							{t('termsOfUse.brokerRole.details.responsibility')}
+						</p>
+
+						{/* 2. Limitations of Liability */}
 						<h2 className='text-lg font-semibold mb-2'>
-							5. {t('termsOfUse.vehicleConditionsAndDelivery.header')}
+							2. {t('termsOfUse.limitationsOfLiability.header')}
 						</h2>
+
+						{/* 2.1 */}
+						<h3 className='font-semibold mb-2'>
+							{t('termsOfUse.limitationsOfLiability.asIsCondition.header')}
+						</h3>
 						<p className='mb-4'>
-							<span className='font-semibold'>
+							{t('termsOfUse.limitationsOfLiability.asIsCondition.description')}
+						</p>
+						<p className='mb-4'>
+							{t('termsOfUse.limitationsOfLiability.asIsCondition.disclaimer')}
+						</p>
+						<p className='font-semibold mb-2'>
+							{t(
+								'termsOfUse.limitationsOfLiability.asIsCondition.buyerAcknowledgment.header'
+							)}
+						</p>
+						<ul className='list-disc ml-6 mb-6'>
+							<li>
 								{t(
-									'termsOfUse.vehicleConditionsAndDelivery.vehicleConditions.header'
+									'termsOfUse.limitationsOfLiability.asIsCondition.buyerAcknowledgment.list.0'
 								)}
-								:
-							</span>{' '}
+							</li>
+							<li>
+								{t(
+									'termsOfUse.limitationsOfLiability.asIsCondition.buyerAcknowledgment.list.1'
+								)}
+							</li>
+							<li>
+								{t(
+									'termsOfUse.limitationsOfLiability.asIsCondition.buyerAcknowledgment.list.2'
+								)}
+							</li>
+						</ul>
+
+						{/* 2.2 */}
+						<h3 className='font-semibold mb-2'>
 							{t(
-								'termsOfUse.vehicleConditionsAndDelivery.vehicleConditions.description'
+								'termsOfUse.limitationsOfLiability.titleAndDocumentation.header'
 							)}
-							<br />
-							<span className='font-semibold'>
-								{t('termsOfUse.vehicleConditionsAndDelivery.delivery.header')}:
-							</span>{' '}
+						</h3>
+						<p className='mb-4'>
 							{t(
-								'termsOfUse.vehicleConditionsAndDelivery.delivery.description'
+								'termsOfUse.limitationsOfLiability.titleAndDocumentation.description'
 							)}
-							<br />
-							<span className='font-semibold'>
-								{t('termsOfUse.vehicleConditionsAndDelivery.support.header')}:
-							</span>{' '}
-							{t('termsOfUse.vehicleConditionsAndDelivery.support.description')}
 						</p>
+						<p className='mb-4'>
+							{t(
+								'termsOfUse.limitationsOfLiability.titleAndDocumentation.responsibility'
+							)}
+						</p>
+						<p className='font-semibold mb-2'>
+							{t(
+								'termsOfUse.limitationsOfLiability.titleAndDocumentation.notLiableFor.header'
+							)}
+						</p>
+						<ul className='list-disc ml-6 mb-6'>
+							<li>
+								{t(
+									'termsOfUse.limitationsOfLiability.titleAndDocumentation.notLiableFor.list.0'
+								)}
+							</li>
+							<li>
+								{t(
+									'termsOfUse.limitationsOfLiability.titleAndDocumentation.notLiableFor.list.1'
+								)}
+							</li>
+							<li>
+								{t(
+									'termsOfUse.limitationsOfLiability.titleAndDocumentation.notLiableFor.list.2'
+								)}
+							</li>
+						</ul>
+
+						{/* 2.3 */}
+						<h3 className='font-semibold mb-2'>
+							{t(
+								'termsOfUse.limitationsOfLiability.transportationAndShipping.header'
+							)}
+						</h3>
+						<p className='mb-4'>
+							{t(
+								'termsOfUse.limitationsOfLiability.transportationAndShipping.description'
+							)}
+						</p>
+						<p className='mb-2'>
+							{t(
+								'termsOfUse.limitationsOfLiability.transportationAndShipping.liability'
+							)}
+						</p>
+						<ul className='list-disc ml-6 mb-4'>
+							<li>
+								{t(
+									'termsOfUse.limitationsOfLiability.transportationAndShipping.notLiableFor.0'
+								)}
+							</li>
+							<li>
+								{t(
+									'termsOfUse.limitationsOfLiability.transportationAndShipping.notLiableFor.1'
+								)}
+							</li>
+						</ul>
+						<p className='mb-4'>
+							{t(
+								'termsOfUse.limitationsOfLiability.transportationAndShipping.regulations'
+							)}
+						</p>
+						<p className='mb-6'>
+							{t(
+								'termsOfUse.limitationsOfLiability.transportationAndShipping.insurance'
+							)}
+						</p>
+
+						{/* 3. Dispute Resolution */}
 						<h2 className='text-lg font-semibold mb-2'>
-							6. {t('termsOfUse.buyersResponsibilities.header')}
+							3. {t('termsOfUse.disputeResolution.header')}
 						</h2>
 						<p className='mb-4'>
-							{t('termsOfUse.buyersResponsibilities.description')}
+							{t('termsOfUse.disputeResolution.description')}
 						</p>
+						<p className='font-semibold mb-2'>
+							{t('termsOfUse.disputeResolution.userAgreement.header')}
+						</p>
+						<ul className='list-disc ml-6 mb-6'>
+							<li>{t('termsOfUse.disputeResolution.userAgreement.list.0')}</li>
+							<li>{t('termsOfUse.disputeResolution.userAgreement.list.1')}</li>
+							<li>{t('termsOfUse.disputeResolution.userAgreement.list.2')}</li>
+						</ul>
+
+						{/* 4. Legal Compliance */}
 						<h2 className='text-lg font-semibold mb-2'>
-							7. {t('termsOfUse.calculatorsAndDeposits.header')}
+							4. {t('termsOfUse.legalCompliance.header')}
 						</h2>
 						<p className='mb-4'>
-							{t('termsOfUse.calculatorsAndDeposits.description')}
+							{t('termsOfUse.legalCompliance.description')}
 						</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							8. {t('termsOfUse.biddingAndOrders.header')}
-						</h2>
-						<p className='mb-4'>
-							{t('termsOfUse.biddingAndOrders.description')}
+						<p className='font-semibold mb-2'>
+							{t('termsOfUse.legalCompliance.buyerAcknowledges.header')}
 						</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							9. {t('termsOfUse.services.header')}
-						</h2>
-						<p className='mb-4'>{t('termsOfUse.services.description')}</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							10. {t('termsOfUse.agreementTerms.header')}
-						</h2>
-						<p className='mb-4'>{t('termsOfUse.agreementTerms.description')}</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							11. {t('termsOfUse.userContent.header')}
-						</h2>
-						<p className='mb-4'>{t('termsOfUse.userContent.description')}</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							12. {t('termsOfUse.complaints.header')}
-						</h2>
-						<p className='mb-4'>{t('termsOfUse.complaints.description')}</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							13. {t('termsOfUse.liability.header')}
-						</h2>
-						<p className='mb-4'>{t('termsOfUse.liability.description')}</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							14. {t('termsOfUse.copyrights.header')}
-						</h2>
-						<p className='mb-4'>{t('termsOfUse.copyrights.description')}</p>
-						<h2 className='text-lg font-semibold mb-2'>
-							15. {t('termsOfUse.finalProvisions.header')}
-						</h2>
-						<p className='mb-4'>
-							{t('termsOfUse.finalProvisions.description')}
-						</p>
-						<h2 className='text-lg font-semibold mb-2'>16. Deposits</h2>
-						<p>
-							All deposits paid through Stripe or bank transfer are
-							non-refundable and collected to cover the expenses if client fails
-							to pay on time for the bids and purchases made on our portal
-							https://bidauto.online , unless agreed otherwise on both sides
-						</p>
+						<ul className='list-disc ml-6 mb-4'>
+							<li>
+								{t('termsOfUse.legalCompliance.buyerAcknowledges.list.0')}
+							</li>
+							<li>
+								{t('termsOfUse.legalCompliance.buyerAcknowledges.list.1')}
+							</li>
+							<li>
+								{t('termsOfUse.legalCompliance.buyerAcknowledges.list.2')}
+							</li>
+						</ul>
+						<p className='mb-6'>{t('termsOfUse.legalCompliance.agreement')}</p>
+
+						{/* Contact Info */}
 						<div className='mt-6'>
 							<p className='font-semibold'>
 								{t('termsOfUse.contactInfo.header')}:
