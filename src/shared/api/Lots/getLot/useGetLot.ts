@@ -12,7 +12,6 @@ export function useGetLot({
 	return useQuery({
 		queryKey: ['getLot', params],
 		queryFn: () => getLot({ params, config: settings?.config }),
-		enabled: !!params.vinOrId && !!params.auction,
 		...settings?.options,
 	})
 }

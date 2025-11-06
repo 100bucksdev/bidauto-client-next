@@ -33,7 +33,7 @@ const HomeSearchBarButton = ({
 						(Array.isArray(lotsByVinOrId.data?.data)
 							? lotsByVinOrId.data?.data.length || 1
 							: 1) === 1
-							? `/lot/${search}?auction_name=${
+							? `/lot/${search}/${
 									lotsByVinOrId.data &&
 									(Array.isArray(lotsByVinOrId.data?.data)
 										? lotsByVinOrId.data.data[0].Auction

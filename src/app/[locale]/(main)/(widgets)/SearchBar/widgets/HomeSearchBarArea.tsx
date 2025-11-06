@@ -7,10 +7,17 @@ import HomeSearchbarSelects from './HomeSearchBarSelects'
 const HomeSearchBarArea = () => {
 	const [search, setSearch] = useState('')
 
-	const lotsByVinOrId = useGetLot({ params: { vinOrId: search } })
+	const lotsByVinOrId = useGetLot({
+		settings: {
+			options: {
+				enabled: !!search,
+			},
+		},
+		params: { vinOrId: search },
+	})
 
 	return (
-		<section className='w-full px-2 py-2 rounded-2xl h-auto max-sm:h-auto max-lg:h-auto lg:h-auto bg-white'>
+		<section className='w-full px-2 py-2 rounded-2xl h-auto bg-white'>
 			<div className='bg-gray-200 rounded-2xl flex 2xl:flex-row max-sm:flex-col max-lg:flex-col lg:flex-col items-center'>
 				<HomeSearchbarSelects />
 				<HomeSearchBarByVinOrLotNumber search={search} setSearch={setSearch} />
