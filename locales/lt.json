@@ -245,7 +245,8 @@
 				"text5": "tiesiog spustelėkite čia",
 				"text6": "Atsiprašome už nepatogumus.",
 				"text7": "Atšaukti",
-				"text8": "Siūlyti"
+				"text8": "Siūlyti",
+				"error": "Your bid must be higher than current bid"
 			}
 		},
 		"additionalServices": {

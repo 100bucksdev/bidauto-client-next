@@ -245,7 +245,8 @@
 				"text5": "just click here",
 				"text6": "Sorry for the inconvenience.",
 				"text7": "Cancel",
-				"text8": "Bid"
+				"text8": "Bid",
+				"error": "Your bid must be higher than current bid"
 			}
 		},
 		"additionalServices": {

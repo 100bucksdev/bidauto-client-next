@@ -1,3 +1,5 @@
+'use client'
+
 import { usePlaceBid } from '@/shared/api/Lots/bid/postBid/usePlaceBid'
 import { useTermsSchema } from '@/shared/hooks/ZodSchemaHooks'
 
@@ -6,7 +8,7 @@ import CircleLoader from '@/shared/ui/CircleLoader'
 import Modal from '@/shared/ui/Modal'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
-import { Dispatch, FC, SetStateAction } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { RxCross2 } from 'react-icons/rx'
 
@@ -39,18 +41,27 @@ const PlaceBetModal: FC<IPlaceBetModal> = ({
 	})
 	const bidLot = usePlaceBid()
 
-	if (bidLot.isError) {
-		setError('terms', {
-			type: 'custom',
-			message: t('lot.bidBox.modal.error'),
-		})
-	}
+	console.log('errors', bidLot.error, bidLot.data)
 
-	if (bidLot.isSuccess) {
-		setIsAlreadyPlaced(true)
-		setIsVisible(false)
-	}
+	useEffect(() => {
+		if (bidLot.isError) {
+			const backendMessage =
+				(bidLot.error as any)?.response?.data?.message ||
+				(bidLot.error as any)?.response?.data?.[0]
 
+			setError('terms', {
+				type: 'custom',
+				message: backendMessage || t('lot.bidBox.modal.error'),
+			})
+		}
+	}, [bidLot.isError, bidLot.error, setError, t])
+
+	useEffect(() => {
+		if (bidLot.isSuccess) {
+			setIsAlreadyPlaced(true)
+			setIsVisible(false)
+		}
+	}, [bidLot.isSuccess, setIsAlreadyPlaced, setIsVisible])
 	const onSubmit = async () => {
 		await bidLot.mutateAsync({
 			params: {
