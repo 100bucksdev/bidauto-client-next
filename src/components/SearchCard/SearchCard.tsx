@@ -212,9 +212,9 @@ const SearchCard = ({
 					{withCarfax && (
 						<a
 							target='_blank'
-							href={`${process.env.NEXT_REACT_APP_CLIENT_URL}/carfax?auction=${
+							href={`${process.env.NEXT_REACT_APP_CLIENT_URL}/carfax/${
 								lot.Auction
-							}&id=${lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}`}
+							}/${lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}/`}
 							className='mt-2 inline-block w-full text-center bg-green-500 text-white py-1 rounded-full hover:underline'
 						>
 							{t('lot.sideBar.getReports')}

@@ -30,6 +30,7 @@ export const $Pages = {
 			SALES_DOCUENTS: '/help/sales-documents',
 			TERMS_OF_USE: '/help/terms-of-use',
 		},
+		CARFAX: (auction: string, id: string) => `/carfax/${auction}/${id}`,
 		LOT: (id: string, auction: string) => `/lot/${id}/${auction}`,
 		SEARCH: {
 			INDEX: '/search',

@@ -179,13 +179,13 @@ const OfferCard = ({
 					{withCarfax && (
 						<a
 							target='_blank'
-							href={`${process.env.VITE_REACT_APP_CLIENT_URL}/carfax?auction=${
+							href={`${process.env.VITE_REACT_APP_CLIENT_URL}/carfax/${
 								lot.vehicle.Auction
-							}&id=${
+							}/${
 								lot.vehicle.Auction === 'IAAI'
 									? lot.vehicle.Stock
 									: lot.vehicle.U_ID
-							}`}
+							}/`}
 							className='bg-green-500 text-white px-4 py-1 rounded-full text-center hover:underline w-full sm:w-auto'
 						>
 							{t('lot.sideBar.getReports')}

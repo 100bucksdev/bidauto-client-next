@@ -47,7 +47,7 @@ const GetCarfaxReports = ({
 						<a
 							className={`px-4 flex items-center gap-x-2 py-2 rounded-full hover:bg-blue-200 cursor-pointer bg-blue-100 text-t-blue-light font-medium`}
 							target='_blank'
-							href={`${process.env.NEXT_PUBLIC_CLIENT_URL}/carfax?auction=${auction}&id=${lot_id}`}
+							href={`${process.env.NEXT_PUBLIC_CLIENT_URL}/carfax/${auction}/${lot_id}/`}
 						>
 							<span>{t('lot.sideBar.getReports')}</span>
 							{isAlreadyViewedCarfax ? (
