@@ -11,10 +11,8 @@ import { useForm } from 'react-hook-form'
 
 const RegistrationEmailConfirm = ({
 	setStep,
-	email,
 }: {
 	setStep: Dispatch<SetStateAction<0 | 1 | 2>>
-	email: string
 }) => {
 	const t = useTranslations()
 	const [timer, setTimer] = useState(59)
@@ -40,13 +38,11 @@ const RegistrationEmailConfirm = ({
 	const sendMail = useSendEmail()
 	const verifyMail = useVerifyMail({
 		options: {
-			onSuccess: data => {
-				setStep ? setStep(2) : null
+			onSuccess: () => {
+				setStep(2)
 			},
 			onError: (data: any) => {
-				setError
-					? setError('code', { message: data.response.data.non_field_errors })
-					: null
+				setError('code', { message: data.response.data.non_field_errors })
 			},
 		},
 	})
@@ -65,7 +61,9 @@ const RegistrationEmailConfirm = ({
 	return (
 		<div>
 			<div className='flex justify-center text-xl font-semibold mb-4'>
-				{`${t('auth.verificationCode')} ${email}. ${t('auth.confirmEmail')}`}
+				{`${t('auth.verificationCode')} ${userInReg.email}. ${t(
+					'auth.confirmEmail'
+				)}`}
 			</div>
 			<form
 				className='flex flex-col relative w-full items-end gap-x-2'
