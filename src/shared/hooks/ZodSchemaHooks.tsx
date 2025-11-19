@@ -22,8 +22,15 @@ export function useRegisterSchema() {
 			.min(6, { message: 'Ensure this field has at least 6 characters.' }),
 		password: z
 			.string()
-			.min(8, t('validation.shortPass'))
-			.max(30, t('validation.longPass')),
+			.min(8, 'Password must be at least 8 characters long')
+			.max(30, 'Password must be at most 30 characters long')
+			.regex(/[a-z]/, 'Password must contain at least one lowercase letter')
+			.regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+			.regex(/[0-9]/, 'Password must contain at least one number')
+			.regex(
+				/[^A-Za-z0-9]/,
+				'Password must contain at least one special character'
+			),
 		country: z.string().nullable().optional(),
 		terms: z.boolean().refine(val => val === true, {
 			message: 'You must agree with terms of use',
@@ -47,9 +54,9 @@ export function useLoginSchema() {
 	const schema = z.object({
 		email: z.string().email(t('validation.invalidEmail')),
 		password: z
-			.string('It should be a string')
-			.min(8, t('validation.shortPass'))
-			.max(30, t('validation.longPass')),
+			.string()
+			.min(8, 'Password must be at least 8 characters long')
+			.max(30, 'Password must be at most 30 characters long'),
 		captcha: isDev
 			? z.string().optional() // not required in dev
 			: z.string().min(1, 'Captcha is required'),
@@ -86,8 +93,15 @@ export function useResetPassShema() {
 				.max(8, t('validation.longCode')),
 			new_password: z
 				.string()
-				.min(8, t('validation.shortPass'))
-				.max(30, t('validation.longPass')),
+				.min(8, 'Password must be at least 8 characters long')
+				.max(30, 'Password must be at most 30 characters long')
+				.regex(/[a-z]/, 'Password must contain at least one lowercase letter')
+				.regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+				.regex(/[0-9]/, 'Password must contain at least one number')
+				.regex(
+					/[^A-Za-z0-9]/,
+					'Password must contain at least one special character'
+				),
 			confirm_password: z.string().min(1, t('validation.requiredError')),
 			// captcha: z.string().min(1, 'Captcha is required'),
 		})
@@ -115,8 +129,6 @@ export function useForgotPasswordSchema() {
 }
 
 export function useTermsSchema() {
-	const t = useTranslations()
-
 	const schema = z.object({
 		terms: z.boolean().refine(val => val === true, {
 			message: 'You must agree with terms of use',
@@ -207,8 +219,15 @@ export function useAdminCreateUserSchema() {
 			.min(6, { message: 'Ensure this field has at least 6 characters.' }),
 		password: z
 			.string()
-			.min(8, t('validation.shortPass'))
-			.max(30, t('validation.longPass')),
+			.min(8, 'Password must be at least 8 characters long')
+			.max(30, 'Password must be at most 30 characters long')
+			.regex(/[a-z]/, 'Password must contain at least one lowercase letter')
+			.regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
+			.regex(/[0-9]/, 'Password must contain at least one number')
+			.regex(
+				/[^A-Za-z0-9]/,
+				'Password must contain at least one special character'
+			),
 		country: z.string().min(2).max(2),
 		delivery_info: z
 			.object({
