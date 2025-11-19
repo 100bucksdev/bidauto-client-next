@@ -4,5 +4,5 @@ export interface IRegisterFields {
 	phone_number: string
 	email: string
 	password: string
-	country?: string | null
+	// country?: string | null
 }

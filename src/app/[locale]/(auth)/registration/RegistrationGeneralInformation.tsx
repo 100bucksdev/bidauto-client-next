@@ -5,6 +5,7 @@ import AgreeWithTerms from '@/shared/ui/AgreeWithTerms'
 import CircleLoader from '@/shared/ui/CircleLoader'
 import Input from '@/shared/ui/Input'
 import PhoneInput from '@/shared/ui/PhoneInput'
+import { userStore } from '@/store/user.sore'
 import { IRegisterFields } from '@/types/RegisterFields.interface'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
@@ -13,20 +14,16 @@ import { Dispatch, SetStateAction, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaArrowRight } from 'react-icons/fa'
 import 'react-phone-input-2/lib/material.css'
-import RegistrationReCaptcha from '../(widgets)/RegistrationReCaptcha'
 
 const RegistrationGeneralInformation = ({
 	setStep,
-	setEmail,
-	setPhone,
 }: {
 	setStep: Dispatch<SetStateAction<0 | 1 | 2>>
-	setEmail: Dispatch<SetStateAction<string>>
-	setPhone: Dispatch<SetStateAction<string>>
 }) => {
 	const t = useTranslations()
 	const { push: path } = useRouter()
 	const data = useUserLocation()
+	const setUserInReg = userStore(state => state.setUser)
 
 	useEffect(() => {
 		if (!!localStorage.getItem('access')) {
@@ -43,27 +40,26 @@ const RegistrationGeneralInformation = ({
 		handleSubmit,
 		control,
 		setValue,
-	} = useForm<IRegisterFields & { captcha: string; terms: boolean }>({
+	} = useForm<IRegisterFields & { terms: boolean }>({
 		resolver: zodResolver(RegisterSchema),
 	})
 
-	useEffect(() => {
-		if (data && data?.data?.data.country) {
-			setValue(
-				'country',
-				data && data.data.data.country && data.data.data.country.length === 2
-					? data.data.data.country.toUpperCase()
-					: 'LT'
-			)
-		}
-	}, [data, setValue])
+	// useEffect(() => {
+	// 	if (data && data?.data?.data.country) {
+	// 		setValue(
+	// 			'country',
+	// 			data && data.data.data.country && data.data.data.country.length === 2
+	// 				? data.data.data.country.toUpperCase()
+	// 				: 'LT'
+	// 		)
+	// 	}
+	// }, [data, setValue])
 
 	const registration = useRegistration({
 		options: {
 			onSuccess: data => {
-				setEmail?.(data.data.email)
 				setStep?.(1)
-				setPhone?.(data.data.phone_number)
+				setUserInReg(data.data)
 			},
 			onError: error => {
 				const err = error as { response?: { data?: Record<string, string[]> } }
@@ -93,7 +89,7 @@ const RegistrationGeneralInformation = ({
 				first_name: fields.first_name,
 				last_name: fields.last_name,
 				phone_number: `+${fields.phone_number}`,
-				country: fields.country || 'LT',
+				// country: fields.country || 'LT',
 			},
 		})
 		return
@@ -159,7 +155,7 @@ const RegistrationGeneralInformation = ({
 							error={errors.password}
 						/>
 					</div>
-					<div>
+					{/* <div>
 						<RegistrationReCaptcha
 							onChange={value => {
 								setValue('captcha', value || '')
@@ -170,7 +166,7 @@ const RegistrationGeneralInformation = ({
 								{errors.captcha.message}
 							</span>
 						)}
-					</div>
+					</div> */}
 					<AgreeWithTerms
 						error={errors.terms}
 						name='terms'

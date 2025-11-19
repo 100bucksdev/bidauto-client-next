@@ -81,7 +81,8 @@
 		"invalidEmail": "Invalid email",
 		"requiredError": "This field is required",
 		"shortCode": "Code is too short",
-		"longCode": "Code is too long"
+		"longCode": "Code is too long",
+		"passwordsDoNotMatch": "Passwords do not match"
 	},
 	"home": {
 		"firstScreen": {

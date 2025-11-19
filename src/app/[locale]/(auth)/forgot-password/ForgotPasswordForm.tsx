@@ -3,20 +3,18 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { useSendResetCodeToEmail } from '@/shared/api/User/auth/forgotPassword/sendResetCodeToemail/useSendResetCodeToEmail'
 import { useForgotPasswordSchema } from '@/shared/hooks/ZodSchemaHooks'
 import Input from '@/shared/ui/Input'
 import { useTranslations } from 'next-intl'
 import { FaArrowRight } from 'react-icons/fa'
-import RegistrationReCaptcha from '../(widgets)/RegistrationReCaptcha'
 
 const ForgotPasswordForm = ({
 	setStep,
 	setEmail,
-	setPassword,
 }: {
 	setStep: Dispatch<SetStateAction<0 | 1>>
 	setEmail: Dispatch<SetStateAction<string>>
-	setPassword: Dispatch<SetStateAction<string>>
 }) => {
 	const t = useTranslations()
 
@@ -26,15 +24,21 @@ const ForgotPasswordForm = ({
 		register,
 		formState: { errors },
 		handleSubmit,
-		setValue,
-	} = useForm<IForgotPasswordFields & { captcha: string }>({
+	} = useForm<IForgotPasswordFields>({
 		resolver: zodResolver(ForgotPasswordSchema),
 	})
 
+	const sendResetCodeToEmail = useSendResetCodeToEmail({
+		options: {
+			onSuccess: () => {
+				setStep(1)
+			},
+		},
+	})
+
 	const onSubmit = async (fields: IForgotPasswordFields) => {
-		setPassword(fields.new_password)
 		setEmail(fields.email)
-		setStep(1)
+		sendResetCodeToEmail.mutateAsync({ params: { email: fields.email } })
 	}
 
 	return (
@@ -54,19 +58,8 @@ const ForgotPasswordForm = ({
 						autoComplete='username'
 					/>
 				</div>
-				<div>
-					<Input
-						placeholder={t('auth.newPasswordPlaceholder')}
-						type='password'
-						name='new_password'
-						label={`${t('auth.newPassword')}*`}
-						register={register}
-						error={errors.new_password}
-						maxLength={30}
-						autoComplete='current-password'
-					/>
-				</div>
-				<div>
+
+				{/* <div>
 					<RegistrationReCaptcha
 						onChange={value => {
 							setValue('captcha', value || '')
@@ -75,7 +68,7 @@ const ForgotPasswordForm = ({
 					{errors.captcha && (
 						<span className='text-red-500 flex'>{errors.captcha.message}</span>
 					)}
-				</div>
+				</div> */}
 				<div>
 					<button
 						className='bg-t-blue-light h-12 text-t-text-primary text-lg rounded-full hover:bg-t-blue-light/90 w-full duration-100 px-4 flex justify-center items-center'

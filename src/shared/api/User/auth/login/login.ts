@@ -1,6 +1,5 @@
 import { $Api } from '@/config/api.config'
 import { ITokens } from '@/types/Tokens.interface'
-import { IUser } from '@/types/User.interface'
 import {
 	FetchesRequestConfig,
 	FetchesResponse,
@@ -16,9 +15,9 @@ export type loginConfig = FetchesRequestConfig<loginParams>
 export const login = ({
 	params,
 	config,
-}: loginConfig): Promise<FetchesResponse<ITokens & Record<'user', IUser>>> => {
+}: loginConfig): Promise<FetchesResponse<ITokens>> => {
 	return $Api.post(
-		'/auth/token/',
+		'/auth/v1/login',
 		{
 			email: params.email,
 			password: params.password,

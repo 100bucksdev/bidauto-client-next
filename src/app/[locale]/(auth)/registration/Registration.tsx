@@ -67,11 +67,7 @@ const Registration = () => {
 									transition={{ duration: 0.1 }}
 									className='absolute w-full'
 								>
-									<RegistrationGeneralInformation
-										setStep={setStep}
-										setEmail={setEmail}
-										setPhone={setPhone}
-									/>
+									<RegistrationGeneralInformation setStep={setStep} />
 								</motion.div>
 							)}
 							{step === 1 && (

@@ -28,7 +28,7 @@ export function useRegisterSchema() {
 		terms: z.boolean().refine(val => val === true, {
 			message: 'You must agree with terms of use',
 		}),
-		captcha: z.string().min(1, 'Captcha is required'),
+		// captcha: z.string().min(1, 'Captcha is required'),
 	})
 
 	if (!isDev) {
@@ -75,17 +75,34 @@ export function useCodeSchema() {
 	})
 }
 
+export function useResetPassShema() {
+	const t = useTranslations()
+
+	return z
+		.object({
+			code: z
+				.string()
+				.min(3, t('validation.shortCode'))
+				.max(8, t('validation.longCode')),
+			new_password: z
+				.string()
+				.min(8, t('validation.shortPass'))
+				.max(30, t('validation.longPass')),
+			confirm_password: z.string().min(1, t('validation.requiredError')),
+			// captcha: z.string().min(1, 'Captcha is required'),
+		})
+		.refine(data => data.new_password === data.confirm_password, {
+			message: t('validation.passwordsDoNotMatch'),
+			path: ['confirm_password'],
+		})
+}
+
 export function useForgotPasswordSchema() {
 	const isDev = process.env.NODE_ENV === 'development'
 	const t = useTranslations()
 
 	let schema = z.object({
 		email: z.string().email(t('validation.invalidEmail')),
-		new_password: z
-			.string()
-			.min(8, t('validation.shortPass'))
-			.max(30, t('validation.longPass')),
-		captcha: z.string().min(1, 'Captcha is required'),
 	})
 
 	if (!isDev) {

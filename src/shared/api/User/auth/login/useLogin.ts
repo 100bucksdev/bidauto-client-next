@@ -11,8 +11,8 @@ export const useLogin = (
 			login({ params, config: { ...config, ...settings?.config } }),
 		...settings?.options,
 		onSuccess: data => {
-			localStorage.setItem('access_token', data.data.access)
-			localStorage.setItem('refresh_token', data.data.refresh) // must be removed after implementing refresh token rotation
+			localStorage.setItem('access_token', data.data.access_token)
+			localStorage.setItem('refresh_token', data.data.refresh_token) // must be removed after implementing refresh token rotation
 		},
 	})
 }

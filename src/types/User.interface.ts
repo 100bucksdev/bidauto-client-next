@@ -34,6 +34,20 @@ export interface IUserCarfaxAccount {
 	}
 }
 
+export interface IUserInRegistration {
+	id: number
+	uuid_key: string
+	email: string
+	phone_number: string
+	is_active: true
+	first_name: string
+	last_name: string
+	language: string
+	email_verified: boolean
+	phone_verified: boolean
+	created_at: Date
+}
+
 export interface IUser {
 	id: number
 	first_name: string

@@ -1,28 +1,17 @@
 import { $Api } from '@/config/api.config'
-import { ITokens } from '@/types/Tokens.interface'
-import { IUser } from '@/types/User.interface'
-import {
-	FetchesRequestConfig,
-	FetchesResponse,
-} from '@astralis-team/primitive-fetch'
+import { FetchesRequestConfig } from '@astralis-team/primitive-fetch'
 
 export interface verifyMailParams {
-	email: string
+	userUUID: string
 	code: string
 }
 
 export type verifyMailConfig = FetchesRequestConfig<verifyMailParams>
 
-export const verifyMail = ({
-	params,
-	config,
-}: verifyMailConfig): Promise<
-	FetchesResponse<ITokens & Record<'user', IUser>>
-> => {
+export const verifyMail = ({ params, config }: verifyMailConfig) => {
 	return $Api.post(
-		'/auth/verifyemail/',
+		`/auth/v1/verification-code/${params.userUUID}/email/verify`,
 		{
-			email: params.email,
 			code: params.code,
 		},
 		{

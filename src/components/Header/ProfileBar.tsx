@@ -2,8 +2,8 @@
 
 import { MMenuPopUpFromBottom } from '@/assets/animation/PopUp.animation'
 import defaultUserAvatar from '@/assets/images/default-user-avatar.svg'
+import { useLogout } from '@/shared/api/User/auth/logout/useLogout'
 import { useGetUserData } from '@/shared/api/User/getUserData/useGetUserData'
-import { useLogout } from '@/shared/api/User/logout/useLogout'
 import { useClickAway } from '@/shared/hooks/useClickAway'
 import { useLocationChanged } from '@/shared/hooks/useLocationChanged'
 import { IcCircleUser, IcExit, IcSettings, IcShield } from '@/shared/icons'

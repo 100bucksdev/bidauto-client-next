@@ -3,6 +3,7 @@ import { useVerifyMail } from '@/shared/api/mail/verify/useVerifyMail'
 import { useCodeSchema } from '@/shared/hooks/ZodSchemaHooks'
 import CircleLoader from '@/shared/ui/CircleLoader'
 import Input from '@/shared/ui/Input'
+import { userStore } from '@/store/user.sore'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
@@ -17,6 +18,7 @@ const RegistrationEmailConfirm = ({
 }) => {
 	const t = useTranslations()
 	const [timer, setTimer] = useState(59)
+	const userInReg = userStore(state => state.user)
 
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -39,7 +41,6 @@ const RegistrationEmailConfirm = ({
 	const verifyMail = useVerifyMail({
 		options: {
 			onSuccess: data => {
-				localStorage.setItem('access_token', data.data.access)
 				setStep ? setStep(2) : null
 			},
 			onError: (data: any) => {
@@ -51,11 +52,13 @@ const RegistrationEmailConfirm = ({
 	})
 
 	useEffect(() => {
-		sendMail.mutateAsync({ params: { email } })
+		sendMail.mutateAsync({ params: { userUUID: userInReg.uuid_key } })
 	}, [])
 
 	const onSubmit = async (fields: { code: string }) => {
-		await verifyMail.mutateAsync({ params: { email, code: fields.code } })
+		await verifyMail.mutateAsync({
+			params: { userUUID: userInReg.uuid_key, code: fields.code },
+		})
 		return
 	}
 
@@ -98,7 +101,7 @@ const RegistrationEmailConfirm = ({
 				<button
 					onClick={() => {
 						if (timer <= 0) {
-							sendMail.mutateAsync({ params: { email } })
+							sendMail.mutateAsync({ params: { userUUID: userInReg.uuid_key } })
 							setTimer(59)
 						}
 					}}

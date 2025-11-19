@@ -9,8 +9,7 @@ import LotSidebar from './(widgets)/SideBar/LotSidebar'
 export const dynamic = 'force-dynamic'
 
 // ================= CONFIG =================
-const API_URL =
-	process.env.API_URL_SERVER || 'https://api.bidauto.online/api/v1'
+const API_URL = process.env.API_URL_SERVER || 'http://localhost:8000/api/v1'
 
 const CACHE_CONFIG = {
 	headers: { 'Content-Type': 'application/json' },

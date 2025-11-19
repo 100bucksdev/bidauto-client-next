@@ -1,8 +1,9 @@
-import { useSendEmail } from '@/shared/api/mail/send/useSendMail'
-import { useForgotPassword } from '@/shared/api/User/auth/forgotPassword/useForgotPassword'
-import { useCodeSchema } from '@/shared/hooks/ZodSchemaHooks'
+import { useSendResetCodeToEmail } from '@/shared/api/User/auth/forgotPassword/sendResetCodeToemail/useSendResetCodeToEmail'
+import { useForgotPassword } from '@/shared/api/User/auth/forgotPassword/update/useForgotPassword'
+import { useResetPassShema } from '@/shared/hooks/ZodSchemaHooks'
 import CircleLoader from '@/shared/ui/CircleLoader'
 import Input from '@/shared/ui/Input'
+import { IForgotPasswordNewPassFields } from '@/types/ForgotPasswordFields.interface'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
@@ -39,15 +40,18 @@ const ForgotPasswordConfirm = ({
 		return () => clearInterval(interval)
 	}, [])
 
-	const CodeSchema = useCodeSchema()
+	const sendResetCodeToEmail = useSendResetCodeToEmail()
+
+	const CodeSchema = useResetPassShema()
 	const {
 		register,
 		formState: { errors },
 		setError,
 		handleSubmit,
-	} = useForm<{ code: string }>({ resolver: zodResolver(CodeSchema) })
+	} = useForm<IForgotPasswordNewPassFields>({
+		resolver: zodResolver(CodeSchema),
+	})
 
-	const sendMail = useSendEmail()
 	const forgotPassword = useForgotPassword({
 		options: {
 			onError: (error: unknown) => {
@@ -67,17 +71,13 @@ const ForgotPasswordConfirm = ({
 		},
 	})
 
-	// Исправляем useEffect зависимости
-	useEffect(() => {
-		sendMail.mutateAsync({ params: { email } })
-	}, [email, sendMail])
-
-	const onSubmit = async (fields: { code: string }) => {
+	const onSubmit = async (fields: IForgotPasswordNewPassFields) => {
 		const data = await forgotPassword.mutateAsync({
 			params: {
 				code: fields.code,
 				email,
-				new_password: password,
+				new_password1: fields.new_password,
+				new_password2: fields.confirm_password,
 			},
 		})
 		return data
@@ -105,6 +105,30 @@ const ForgotPasswordConfirm = ({
 							autoComplete='off'
 							error={errors.code}
 						/>
+						<div>
+							<Input
+								placeholder={t('auth.newPasswordPlaceholder')}
+								type='password'
+								name='new_password'
+								label={`${t('auth.newPassword')}*`}
+								register={register}
+								error={errors.new_password}
+								maxLength={30}
+								autoComplete='current-password'
+							/>
+						</div>
+						<div>
+							<Input
+								placeholder={t('auth.newPasswordPlaceholder')}
+								type='password'
+								name='confirm_password'
+								label={`${t('auth.newPassword')}*`}
+								register={register}
+								error={errors.new_password}
+								maxLength={30}
+								autoComplete='current-password'
+							/>
+						</div>
 					</div>
 					<div>
 						<button
@@ -121,7 +145,7 @@ const ForgotPasswordConfirm = ({
 				<button
 					onClick={() => {
 						if (timer <= 0) {
-							sendMail.mutateAsync({ params: { email } })
+							sendResetCodeToEmail.mutateAsync({ params: { email } })
 							setTimer(59)
 						}
 					}}

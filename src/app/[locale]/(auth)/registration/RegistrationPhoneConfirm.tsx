@@ -1,9 +1,11 @@
 import { MRegPopUpFromRightToLeft } from '@/assets/animation/PopUp.animation'
+import { $Pages } from '@/config/router.config'
 import { useSendSms } from '@/shared/api/phone/send/useSendSms'
 import { useVerifyPhone } from '@/shared/api/phone/verify/useVerifyPhone'
 import { useCodeSchema } from '@/shared/hooks/ZodSchemaHooks'
 import CircleLoader from '@/shared/ui/CircleLoader'
 import Input from '@/shared/ui/Input'
+import { userStore } from '@/store/user.sore'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
@@ -16,6 +18,7 @@ const RegistrationPhoneConfirm = memo(
 		const t = useTranslations()
 		const { push: path } = useRouter()
 		const [timer, setTimer] = useState(59)
+		const userInReg = userStore(state => state.user)
 
 		useEffect(() => {
 			const timer = setInterval(() => {
@@ -38,7 +41,7 @@ const RegistrationPhoneConfirm = memo(
 		const verifyPhoneNumber = useVerifyPhone({
 			options: {
 				onSuccess: () => {
-					path('/')
+					path($Pages.CLIENT.AUTH.LOGIN)
 				},
 				onError: (data: any) => {
 					setError
@@ -49,11 +52,11 @@ const RegistrationPhoneConfirm = memo(
 		})
 
 		useEffect(() => {
-			if (phone && email) {
+			if (phone) {
 				const button = document.createElement('button')
 				button.style.display = 'none'
 				button.onclick = () => {
-					sendSms.mutate({ params: { phone_number: phone, email } })
+					sendSms.mutate({ params: { userUUID: userInReg.phone_number } })
 					button.remove()
 				}
 				document.body.appendChild(button)
@@ -64,9 +67,8 @@ const RegistrationPhoneConfirm = memo(
 		const onSubmit = async (fields: { code: string }) => {
 			await verifyPhoneNumber.mutateAsync({
 				params: {
-					phone_number: phone,
+					userUUID: userInReg.uuid_key,
 					code: fields.code,
-					email,
 				},
 			})
 			return
@@ -122,7 +124,9 @@ const RegistrationPhoneConfirm = memo(
 							<button
 								onClick={() => {
 									if (timer <= 0) {
-										sendSms.mutate({ params: { phone_number: phone, email } })
+										sendSms.mutate({
+											params: { userUUID: userInReg.phone_number },
+										})
 										setTimer(59)
 									}
 								}}
@@ -142,7 +146,7 @@ const RegistrationPhoneConfirm = memo(
 							<hr className='border border-black w-[52px] my-4 border-opacity-40' />
 						</div>
 						<div className='text-opacity-60 z-10 justify-center text-black flex items-end'>
-							<button onClick={() => path('/')}>
+							<button onClick={() => path($Pages.CLIENT.AUTH.LOGIN)}>
 								{t('auth.confirmLater')}
 							</button>
 						</div>

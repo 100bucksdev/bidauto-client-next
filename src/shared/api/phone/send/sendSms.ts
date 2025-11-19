@@ -5,8 +5,7 @@ import {
 } from '@astralis-team/primitive-fetch'
 
 export interface sendSmsParams {
-	phone_number: string
-	email: string | undefined
+	userUUID: string
 }
 
 export type sendSmsConfig = FetchesRequestConfig<sendSmsParams>
@@ -16,11 +15,7 @@ export const sendSms = ({
 	config,
 }: sendSmsConfig): Promise<FetchesResponse<Record<'phone_number', string>>> => {
 	return $Api.post(
-		'/auth/send-sms/',
-		{
-			phone_number: params.phone_number,
-			email: params.email,
-		},
+		`/auth/v1/verification-code/${params.userUUID}/sms/send-code`,
 		{
 			...config,
 		}

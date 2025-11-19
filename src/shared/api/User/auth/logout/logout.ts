@@ -7,9 +7,9 @@ export const logout = (config: LogoutConfig) => {
 	const token = localStorage.getItem('refresh_token')
 
 	return $Api.post(
-		'/auth/token/blacklist/',
+		'/auth/v1/logout',
 		{
-			refresh: token,
+			refresh_token: token,
 		},
 		config
 	)

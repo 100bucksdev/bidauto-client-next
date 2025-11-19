@@ -3,10 +3,8 @@
 import pfetch from '@astralis-team/primitive-fetch'
 
 export const $Api = pfetch.create({
-	baseURL:
-		process.env.NEXT_PUBLIC_API_URL_CLIENT ??
-		// 'http://localhost:8000/api/v1',
-		'https://api.bidauto.online/api/v1',
+	baseURL: process.env.NEXT_PUBLIC_API_URL_CLIENT ?? 'http://localhost/',
+	// 'https://api.bidauto.online/',
 	credentials: 'include',
 })
 
@@ -31,8 +29,8 @@ $Api.interceptors.response.use(
 					`${
 						process.env.NEXT_PUBLIC_API_URL_CLIENT ??
 						// 'http://localhost:8000/api/v1'
-						'https://api.bidauto.online/api/v1'
-					}/auth/token/refresh/`,
+						'https://api.bidauto.online/'
+					}/auth/v1/refresh`,
 					{
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },
