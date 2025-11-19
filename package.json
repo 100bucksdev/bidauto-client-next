@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build",
+		"build:dev": "docker build   -t bid-auto-client-side:local   --build-arg NEXT_PUBLIC_APP_WEBSOCKET_URL=ws://localhost   --build-arg API_URL_SERVER=http://localhost   --build-arg NEXT_PUBLIC_API_URL_CLIENT=http://localhost   --build-arg NEXT_PUBLIC_APP_CLIENT_URL=http://localhost   --build-arg NEXT_PUBLIC_CAPTCHA_KEY=6LcsN7gpAAAAAIeq9lUlHXNGapKqqzgygsngw8Mw   --build-arg NEXT_PUBLIC_COPART_DOMEN=https://www.copart.com   --build-arg NEXT_PUBLIC_IAAI_DOMEN=https://www.iaai.com   --build-arg NPM_TOKEN=YOUR_TOKEN   -f ./dockerfile   .",
 		"start": "next start",
 		"lint": "next lint"
 	},
