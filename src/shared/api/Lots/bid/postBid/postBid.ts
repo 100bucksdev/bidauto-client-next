@@ -11,7 +11,7 @@ export type postBidConfig = FetchesRequestConfig<postBidParams>
 
 export const postBid = async ({ config, params }: postBidConfig) => {
 	return $Api.post(
-		'/bid/',
+		'/bid/private/v1/bid',
 		{
 			lot_id: params.lot_id,
 			auction: params.auction,
