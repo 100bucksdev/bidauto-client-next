@@ -73,9 +73,9 @@ export async function generateMetadata({
 	}
 
 	return {
-		title: `T-auto | ${lot.Make ?? ''} ${lot.ModelGroup ?? ''}`.trim(),
-		description: `Information about ${lot.Make ?? ''} ${
-			lot.ModelGroup ?? ''
+		title: `T-auto | ${lot.make ?? ''} ${lot.model ?? ''}`.trim(),
+		description: `Information about ${lot.make ?? ''} ${
+			lot.model ?? ''
 		}`.trim(),
 	}
 }
@@ -99,8 +99,8 @@ export default async function LotPage({
 
 	// Fetch additional info if U_ID exists
 	let info: ILotInfo | null = null
-	if (lot.U_ID) {
-		info = await fetchLotInfo(Number(lot.U_ID), auctionName)
+	if (lot.lot_id) {
+		info = await fetchLotInfo(Number(lot.lot_id), auctionName)
 	}
 
 	// Prepare request data

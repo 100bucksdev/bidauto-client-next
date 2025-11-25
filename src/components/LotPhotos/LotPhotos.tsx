@@ -20,7 +20,7 @@ const LotPhotos = ({
 	photos: string[]
 	miniaturePhotos?: string[]
 	lot_id?: number
-	auction_name?: 'COPART' | 'IAAI'
+	auction_name?: 'copart' | 'iaai'
 	disableFavoriteButton?: boolean
 	view360?: string
 	engineStartVideo?: string

@@ -36,8 +36,16 @@ const HomeSearchBarButton = ({
 							? `/lot/${search}/${
 									lotsByVinOrId.data &&
 									(Array.isArray(lotsByVinOrId.data?.data)
-										? lotsByVinOrId.data.data[0].Auction
-										: lotsByVinOrId.data.data.Auction)
+										? lotsByVinOrId.data.data[0].site === 1
+											? 'copart'
+											: lotsByVinOrId.data.data[0].site === 2
+											? 'iaai'
+											: 'copart'
+										: lotsByVinOrId.data.data.site === 1
+										? 'copart'
+										: lotsByVinOrId.data.data.site === 2
+										? 'iaai'
+										: 'copart')
 							  }`
 							: `/search${
 									queryParamsString

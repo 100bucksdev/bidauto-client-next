@@ -17,11 +17,14 @@ export const getModelsByMake = async ({
 }: getModelsByMakeConfig): Promise<
 	FetchesResponse<Record<'name' | 'slug', string>[]>
 > => {
-	return $Api.get('/auction-vehicles/get-models-by-make-vehicle-type/', {
-		params: {
-			make: params.make,
-			vehicle_type: params.vehicle_type,
-		},
-		...config,
-	})
+	return $Api.get(
+		`/auction-api/public/v1/filters/${params.vehicle_type}/makes/${params.make}/models`,
+		{
+			params: {
+				make: params.make,
+				vehicle_type: params.vehicle_type,
+			},
+			...config,
+		}
+	)
 }

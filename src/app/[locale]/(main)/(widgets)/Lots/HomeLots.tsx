@@ -72,7 +72,7 @@ const Lots = ({ data, title }: { data: TLot[]; title: string }) => {
 									<SwiperSlide
 										onMouseEnter={() => setIsHover(true)}
 										onMouseLeave={() => setIsHover(false)}
-										key={lot.U_ID}
+										key={lot.lot_id}
 									>
 										<CarCard lot={lot} />
 									</SwiperSlide>
@@ -82,7 +82,7 @@ const Lots = ({ data, title }: { data: TLot[]; title: string }) => {
 					) : (
 						<div className='flex justify-center items-start flex-wrap gap-10'>
 							{data.map((lot: TLot, index: number) => (
-								<Fragment key={lot.U_ID}>
+								<Fragment key={lot.lot_id}>
 									{index <= 4 ? <CarCard lot={lot} /> : ''}
 								</Fragment>
 							))}

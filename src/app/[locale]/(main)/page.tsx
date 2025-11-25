@@ -1,5 +1,5 @@
 import { $ApiServer } from '@/config/apiServer.config'
-import { IMainPageCars } from '@/types/MainPageCars.interface'
+import { TLot } from '@/types/Lot.interface'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 		description: 'Win lots at auctions and we will deliver them to you',
 		images: [
 			{
-				url: '/images/footerImage.jpg', // ⚠️ помести файл в public/images/
+				url: '/images/footerImage.jpg',
 				width: 1200,
 				height: 630,
 				alt: 'T-auto Open Graph Image',
@@ -28,32 +28,37 @@ export const metadata: Metadata = {
 export default async function Home() {
 	const t = await getTranslations()
 
-	let cars: IMainPageCars[] = []
-	// let realse: IInstagramPost[] = []
+	const brands = ['BMW', 'Audi', 'Ford']
+
+	type BrandLots = {
+		make: string
+		vehicles: TLot[]
+	}
+
+	let cars: BrandLots[] = []
 
 	try {
-		const carsResponse = await $ApiServer.get<IMainPageCars[]>(
-			'/auction-vehicles/main-page/',
-			{
+		const promises = brands.map(brand =>
+			$ApiServer.get<{ data: TLot[] }>('/auction-api/public/v1/lot/current', {
+				params: {
+					site: 'copart',
+					make: brand,
+					page: 1,
+					limit: 20,
+				},
 				next: { revalidate: 60 * 60 },
-			}
+			})
 		)
-		cars = carsResponse?.data ?? []
+
+		const responses = await Promise.all(promises)
+
+		cars = responses.map((res, index) => ({
+			make: brands[index],
+			vehicles: res.data?.data ?? [],
+		}))
 	} catch (err) {
 		console.error('Ошибка загрузки машин:', err)
 	}
-
-	// try {
-	// 	const realseResponse = await $ApiServer.get<IInstagramPost[]>(
-	// 		'/instagram/posts/',
-	// 		{
-	// 			next: { revalidate: 60 * 60 },
-	// 		}
-	// 	)
-	// 	realse = realseResponse?.data ?? []
-	// } catch (err) {
-	// 	console.error('Ошибка загрузки Instagram постов:', err)
-	// }
 
 	return (
 		<div className='break-words w-full overflow-y-auto overflow-x-hidden'>
@@ -61,7 +66,6 @@ export default async function Home() {
 
 			<section className='w-full 3xl:ml-72 2xl:ml-72 2xl:mr-0 xl:mx-36 lg:mx-20 flex flex-col my-24 max-sm:my-12 max-lg:ml-0 overflow-hidden'>
 				<div className='w-full mb-10 pb-4 max-lg:mx-36 max-sm:mx-10'>
-					{/* <InstagramPosts data={realse} /> */}
 					<YouTubePosts />
 				</div>
 

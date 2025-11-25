@@ -15,7 +15,7 @@ export const sendSms = ({
 	config,
 }: sendSmsConfig): Promise<FetchesResponse<Record<'phone_number', string>>> => {
 	return $Api.post(
-		`/auth/v1/verification-code/${params.userUUID}/sms/send-code/`,
+		`/auth/v1/verification-code/${params.userUUID}/sms/send-code`,
 		{
 			...config,
 		}

@@ -1,6 +1,8 @@
 'use client'
 
 import { useGetSimilarArchivalOffers } from '@/shared/api/Lots/getSimilarArchivalOffers/useGetSimilarArchivalOffers'
+import { auctionName } from '@/shared/utils/auctionName'
+import { TLot } from '@/types/Lot.interface'
 import { useState } from 'react'
 import { LotWithHistory } from './LotHeader'
 import SalesHistory from './SalesHistory/SalesHistory'
@@ -10,12 +12,10 @@ import SimilarArchivalOffersTitle from './SimilarArchival/SimilarArchivalOffersT
 
 const LotHeaderFooter = ({
 	info,
-	auction,
-	id,
+	lot,
 }: {
 	info: LotWithHistory
-	auction: 'COPART' | 'IAAI'
-	id: string
+	lot: TLot
 }) => {
 	const [isSalesHistoryOpen, setIsSalesHistoryOpen] = useState(false)
 	const [isSimilarArchivalOffersOpen, setIsSimilarArchivalOffersOpen] =
@@ -37,8 +37,11 @@ const LotHeaderFooter = ({
 
 	const data = useGetSimilarArchivalOffers(
 		{
-			auction,
-			id,
+			auction: auctionName(lot.site),
+			model: lot.model,
+			make: lot.make,
+			year: lot.year,
+			vehicle_type: lot.vehicle_type,
 		},
 		{
 			options: {
@@ -64,10 +67,11 @@ const LotHeaderFooter = ({
 			</div>
 			<div>
 				<SimilarArchivalOffers
-					data={data.data?.data}
+					lot={data.data?.data.data}
 					isLoading={data.isLoading}
-					auction={auction}
+					auction={auctionName(lot.site)}
 					isOpen={isSimilarArchivalOffersOpen}
+					make_model={{ make: lot.make, model: lot.model }}
 				/>
 			</div>
 		</>

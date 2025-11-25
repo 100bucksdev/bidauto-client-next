@@ -6,20 +6,20 @@ import SimilarArchivalCard from './SimilarArchivalCard'
 import SimilarArchivalCardSkeleton from './SimilarArchivalCardSkeleton'
 
 const SimilarArchivalOffers = ({
-	data,
+	lot,
 	isLoading,
 	isOpen,
 	auction,
+	make_model,
 }: {
-	data:
-		| {
-				lots: TLot[]
-				'make-model': Record<'make' | 'model', string>
-		  }
-		| undefined
+	lot: TLot[] | undefined
 	isLoading: boolean
 	isOpen: boolean
-	auction: 'IAAI' | 'COPART'
+	auction: 'iaai' | 'copart'
+	make_model: {
+		model: string
+		make: string
+	}
 }) => {
 	const t = useTranslations()
 
@@ -37,15 +37,15 @@ const SimilarArchivalOffers = ({
 								<SimilarArchivalCardSkeleton />
 							</div>
 						</div>
-					) : data ? (
+					) : lot ? (
 						<div className='flex max-md:flex-col gap-x-2 p-2'>
 							<div className='grid grid-cols-5 max-md:flex max-md:flex-col max-md:items-center gap-2'>
-								{data?.lots?.map(lot => (
-									<SimilarArchivalCard key={lot.U_ID} lot={lot} />
+								{lot?.map(lot => (
+									<SimilarArchivalCard key={lot.lot_id} lot={lot} />
 								))}
 							</div>
 							<Link
-								href={`/search?model=${data['make-model'].model}&make=${data['make-model'].make}&auction=${auction}`}
+								href={`/search?model=${make_model.model}&make=${make_model.make}&auction=${auction}`}
 								className='w-[40px] max-md:w-full max-md:h-[30px] rounded-md bg-blue-500 grid place-items-center text-white hover:bg-blue-600 duration-150 max-md:mt-2'
 							>
 								<div className='max-md:rotate-90'>

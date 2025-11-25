@@ -7,9 +7,9 @@ import { useBidStatuses } from '@/shared/hooks/useBidStatuses'
 import { useMonths } from '@/shared/hooks/useMonths'
 import { useWeekDays } from '@/shared/hooks/useWeekDays'
 import AuctionName from '@/shared/ui/AuctionName'
+import { auctionName } from '@/shared/utils/auctionName'
 import { kmInMile, odometer } from '@/shared/utils/odometer'
 import { priceFormat } from '@/shared/utils/priceFormat'
-import { TLot } from '@/types/Lot.interface'
 import { IOffers } from '@/types/Offers.interface'
 import { AuctionImage } from '@/types/Shop.interface'
 import { IUserBid } from '@/types/User.interface'
@@ -29,16 +29,7 @@ const OfferCard = ({
 	redirectWithAuction?: boolean
 	withCarfax?: boolean
 }) => {
-	function getSmallImages(lot: TLot): string[] | undefined {
-		if (lot.VehicleImagesSmallHD && lot.VehicleImagesSmallHD.length > 0) {
-			return lot.VehicleImagesSmallHD.map(image => image.small).filter(
-				(small): small is string => small !== undefined
-			)
-		}
-		return lot.VehicleImages || undefined
-	}
-
-	const img = getSmallImages(lot.vehicle)
+	const img = lot.vehicle.link_img_small
 
 	const t = useTranslations()
 	const path = useRouter()
@@ -48,14 +39,14 @@ const OfferCard = ({
 		setPhotos(img ?? [])
 	}, [lot.vehicle])
 
-	const auctionDate = lot.vehicle.AuctionDate
+	const auctionDate = lot.vehicle.auction_date
 	const listOfWeekDays = useWeekDays()
 	const listOfMonths = useMonths()
-	const saleDate = new Date(lot.vehicle.AuctionDate)
+	const saleDate = new Date(lot.vehicle.auction_date)
 	const timeLeft = useBiddingTimeLeft(Number(auctionDate))
 	const price = priceFormat({ char: 'USD' })
 	const bidStatusesLabels = useBidStatuses()
-	const isArchived = lot.vehicle.Archived
+	const isArchived = lot.vehicle.form_get_type === 'history'
 
 	return (
 		<div className='flex flex-col md:flex-row border-2 border-gray-300 rounded-2xl overflow-hidden my-4 bg-white shadow-sm hover:shadow-md transition-all duration-300'>
@@ -73,44 +64,37 @@ const OfferCard = ({
 					<button
 						onClick={() =>
 							path.push(
-								`/lot/${
-									lot.vehicle.Auction === 'IAAI'
-										? lot.vehicle.Stock
-										: lot.vehicle.U_ID
-								}${
-									redirectWithAuction
-										? `/${lot.vehicle.Auction.toUpperCase()}`
-										: ''
+								`/lot/${lot.lot_id}${
+									redirectWithAuction ? `/${auctionName(lot.vehicle.site)}` : ''
 								}`
 							)
 						}
 						className='flex flex-wrap text-2xl font-semibold text-start hover:underline'
 					>
-						{lot.vehicle.Year} {lot.vehicle.Make} {lot.vehicle.ModelGroup}
+						{lot.vehicle.year} {lot.vehicle.make} {lot.vehicle.model}
 					</button>
 
 					<div className='mt-3 grid grid-cols-2 sm:grid-cols-2 gap-y-2 text-sm text-gray-700'>
 						<div>
 							<b>{t('lot.details.lotId')}:</b>{' '}
-							{lot.vehicle.U_ID ?? lot.vehicle.U_ID}
+							{lot.vehicle.lot_id ?? lot.vehicle.lot_id}
 						</div>
 						<div>
-							<b>VIN:</b> {lot.vehicle.VIN}
+							<b>VIN:</b> {lot.vehicle.vin}
 						</div>
 						<div>
 							<b>{t('lot.details.odometer')}:</b>{' '}
-							{odometer.format(Number(lot.vehicle.Odometer))} mi (
+							{odometer.format(Number(lot.vehicle.odometer))} mi (
 							{odometer.format(
-								Math.round(Number(lot.vehicle.Odometer) * kmInMile)
+								Math.round(Number(lot.vehicle.odometer) * kmInMile)
 							)}{' '}
 							km)
 						</div>
 						<div>
-							<b>{t('lot.details.location')}:</b> {lot.vehicle.LocationCity},{' '}
-							{lot.vehicle.LocationState}
+							<b>{t('lot.details.location')}:</b> {lot.vehicle.location}
 						</div>
 						<div>
-							<b>{t('lot.details.damage')}:</b> {lot.vehicle.PrimaryDamage}
+							<b>{t('lot.details.damage')}:</b> {lot.vehicle.damage_pr}
 						</div>
 					</div>
 				</div>
@@ -179,13 +163,9 @@ const OfferCard = ({
 					{withCarfax && (
 						<a
 							target='_blank'
-							href={`${process.env.VITE_REACT_APP_CLIENT_URL}/carfax/${
-								lot.vehicle.Auction
-							}/${
-								lot.vehicle.Auction === 'IAAI'
-									? lot.vehicle.Stock
-									: lot.vehicle.U_ID
-							}/`}
+							href={`${
+								process.env.VITE_REACT_APP_CLIENT_URL
+							}/carfax/${auctionName(lot.vehicle.site)}/${lot.lot_id}/`}
 							className='bg-green-500 text-white px-4 py-1 rounded-full text-center hover:underline w-full sm:w-auto'
 						>
 							{t('lot.sideBar.getReports')}
@@ -195,8 +175,8 @@ const OfferCard = ({
 
 				{/* Подвал — аукцион и страховка */}
 				<div className='flex justify-between items-center mt-3 text-sm'>
-					<AuctionName auction_name={lot.vehicle.Auction} />
-					{lot.vehicle.Insurance && <InsuranceBar />}
+					<AuctionName auction_name={auctionName(lot.vehicle.site)} />
+					{lot.vehicle.seller_type && <InsuranceBar />}
 				</div>
 			</div>
 		</div>

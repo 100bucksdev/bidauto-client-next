@@ -16,10 +16,13 @@ export const getBrands = async ({
 }: getBrandsConfig): Promise<
 	FetchesResponse<Record<'name' | 'slug', string>[]>
 > => {
-	return $Api.get('/auction-vehicles/get-makes-by-vehicle-type/', {
-		params: {
-			vehicle_type: params.vehicleType,
-		},
-		...config,
-	})
+	return $Api.get(
+		`/auction-api/public/v1/filters/${params.vehicleType}/makes`,
+		{
+			params: {
+				vehicle_type_slug: params.vehicleType,
+			},
+			...config,
+		}
+	)
 }

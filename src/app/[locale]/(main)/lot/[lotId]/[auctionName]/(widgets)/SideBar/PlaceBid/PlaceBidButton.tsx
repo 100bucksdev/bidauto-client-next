@@ -1,3 +1,4 @@
+import { auctionName } from '@/shared/utils/auctionName'
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { TLot } from '@/types/Lot.interface'
 import { IUserBid } from '@/types/User.interface'
@@ -35,7 +36,7 @@ const PlaceBidButton: FC<IPlaceBidButton> = ({
 	const bid = bids.find(
 		el =>
 			el.lot_id ===
-			String(lot.Auction === 'IAAI' ? `1_${lot.Stock}` : `0_${lot.U_ID}`)
+			String(lot.site === 2 ? `1_${lot.lot_id}` : `0_${lot.lot_id}`)
 	)
 
 	const is = true
@@ -61,32 +62,32 @@ const PlaceBidButton: FC<IPlaceBidButton> = ({
 						''
 					)}
 					<>
-						{(lot.Auction === 'COPART' &&
+						{/* {(lot.Auction === 'COPART' &&
 							!lot.auctions_statuses.copart_available) ||
 						(lot.Auction === 'IAAI' &&
 							!lot.auctions_statuses.iaai_available) ? (
 							<div className='bg-red-600 rounded-2xl w-full flex justify-center py-2 mt-2 text-t-text-primary text-xl'>
-								{lot.Auction} {t('lot.bidBox.notAvailable')}
+								{} {t('lot.bidBox.notAvailable')}
 							</div>
-						) : (
-							<>
-								{!isArchived &&
-									timeLeft &&
-									!error &&
-									lotBid > price &&
-									(lot.Auction?.toUpperCase() === 'COPART' ||
-										lot.Auction?.toUpperCase() === 'IAAI') && (
-										<button
-											onClick={() => setIsPlaceBet(true)}
-											className='bg-t-blue-light hover:bg-t-blue-light/85 duration-100 rounded-2xl w-full flex justify-center py-2 mt-2 text-t-text-primary text-xl'
-										>
-											{isAlreadyPlaced
-												? t('lot.bidBox.changeBid')
-												: t('lot.bidBox.placeBid')}
-										</button>
-									)}
-							</>
-						)}
+						) : ( */}
+						<>
+							{!isArchived &&
+								timeLeft &&
+								!error &&
+								lotBid > price &&
+								(auctionName(lot.site).toUpperCase() === 'COPART' ||
+									auctionName(lot.site).toUpperCase() === 'IAAI') && (
+									<button
+										onClick={() => setIsPlaceBet(true)}
+										className='bg-t-blue-light hover:bg-t-blue-light/85 duration-100 rounded-2xl w-full flex justify-center py-2 mt-2 text-t-text-primary text-xl'
+									>
+										{isAlreadyPlaced
+											? t('lot.bidBox.changeBid')
+											: t('lot.bidBox.placeBid')}
+									</button>
+								)}
+						</>
+						{/* )} */}
 					</>
 				</>
 			) : (

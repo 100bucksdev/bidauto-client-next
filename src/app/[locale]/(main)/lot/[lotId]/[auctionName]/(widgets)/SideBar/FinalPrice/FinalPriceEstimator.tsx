@@ -1,6 +1,5 @@
-import { ITerminalsPrices } from '@/types/Terminals.interface'
-
 import CircleLoader from '@/shared/ui/CircleLoader'
+import { FeeItem } from '@/types/CalculatorLocation.interface'
 import { useTranslations } from 'next-intl'
 import { MdOutlineDiscount } from 'react-icons/md'
 import FinalPriceEstimatorFields from './FinalPriceEstimatorFields'
@@ -19,13 +18,24 @@ const FinalPriceEstimator = ({
 	setType: (data: 'yourBid' | 'fastBuy') => void
 	terminal: { value: string; label: string }
 	lotBid: number
-	finalPrices: Partial<ITerminalsPrices> | undefined
-	euFinalPrices: Partial<ITerminalsPrices> | undefined
-	fastBuy: boolean
+	finalPrices: FeeItem[] | undefined
+	euFinalPrices: FeeItem[] | undefined
+	fastBuy?: boolean
 }) => {
 	const t = useTranslations()
 
-	console.log(info)
+	// Утилита: найти цену по терминалу
+	const getPriceByTerminal = (
+		arr: FeeItem[] | undefined,
+		terminalName: string
+	) => {
+		if (!arr) return ''
+		const item = arr.find(
+			i =>
+				i.name.toLowerCase().replace(/\s+/g, '') === terminalName.toLowerCase()
+		)
+		return item ? Math.round(item.price) : ''
+	}
 
 	return (
 		<div className='bg-white rounded-2xl border-2 border-gray-300 mb-5'>
@@ -46,24 +56,11 @@ const FinalPriceEstimator = ({
 						>
 							{t('lot.userBid.yourBid')}
 						</button>
-						{/* {fastBuy && (
-              <button
-                onClick={() => {
-                  console.log("Switching to fastBuy");
-                  setType("fastBuy");
-                }}
-                className={`border border-gray-400 rounded-full text-gray-500 py-1 px-2 ${
-                  type === "fastBuy" ? "bg-gray-400 text-white" : ""
-                } duration-200`}
-              >
-                {t("lot.buyNow")}
-              </button>
-            )} */}
 					</div>
 				</div>
 			</div>
 
-			{info.isLoading ? (
+			{info?.isLoading ? (
 				<div className='flex justify-center items-center h-20'>
 					<CircleLoader />
 				</div>
@@ -75,37 +72,32 @@ const FinalPriceEstimator = ({
 				</div>
 			) : (
 				<>
-					{type === 'yourBid' ? (
+					{type === 'yourBid' && (
 						<FinalPriceEstimatorFields
-							estimatedPrice={`$${
-								euFinalPrices?.[terminal.value as keyof ITerminalsPrices]
-									? Math.round(
-											Number(
-												euFinalPrices[terminal.value as keyof ITerminalsPrices]
-											)
-									  )
-									: ''
-							}`}
-							purchaseAmount={`$${lotBid}`}
-							customValue={`$${
-								finalPrices?.[terminal.value as keyof ITerminalsPrices] || ''
-							}`}
-						/>
-					) : (
-						''
-					)}
-					{type === 'fastBuy' ? (
-						<FinalPriceEstimatorFields
-							estimatedPrice={`$${Math.round(
-								Number(terminal.value as keyof ITerminalsPrices)
+							estimatedPrice={`$${getPriceByTerminal(
+								euFinalPrices,
+								terminal.value
 							)}`}
 							purchaseAmount={`$${lotBid}`}
-							customValue={`$${
-								finalPrices?.[terminal.value as keyof ITerminalsPrices] || ''
-							}`}
+							customValue={`$${getPriceByTerminal(
+								finalPrices,
+								terminal.value
+							)}`}
 						/>
-					) : (
-						''
+					)}
+
+					{type === 'fastBuy' && (
+						<FinalPriceEstimatorFields
+							estimatedPrice={`$${getPriceByTerminal(
+								euFinalPrices,
+								terminal.value
+							)}`}
+							purchaseAmount={`$${lotBid}`}
+							customValue={`$${getPriceByTerminal(
+								finalPrices,
+								terminal.value
+							)}`}
+						/>
 					)}
 				</>
 			)}

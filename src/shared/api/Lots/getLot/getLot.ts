@@ -16,10 +16,10 @@ export const getLot = async ({
 	config,
 	params,
 }: getLotConfig): Promise<FetchesResponse<TLot[] | TLot>> => {
-	return $Api.get(`/auction-vehicles/get-vin-or-lot/`, {
+	return $Api.get(`/auction-api/public/v1/lot/current/vin-or-lot-id`, {
 		params: {
 			vin_or_lot: params.vinOrId,
-			auction: params.auction,
+			site: params.auction,
 		},
 		...config,
 	})

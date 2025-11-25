@@ -5,7 +5,7 @@ import {
 } from '@astralis-team/primitive-fetch'
 
 export interface deleteLotToFavouritesParams {
-	lot_id: number
+	favorite_id: number
 	auction_name: 'COPART' | 'IAAI'
 }
 
@@ -17,7 +17,9 @@ export const deleteLotToFavourites = async ({
 	params,
 }: deleteLotToFavouritesConfig): Promise<FetchesResponse<string[]>> => {
 	return $Api.delete(
-		`/favorite/${params.auction_name?.toLowerCase()}/${params.lot_id}/`,
+		`/private/v1/favorites/${params.auction_name?.toLowerCase()}/${
+			params.lot_id
+		}/`,
 		{
 			...config,
 		}

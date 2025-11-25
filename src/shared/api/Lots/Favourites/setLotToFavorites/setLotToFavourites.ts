@@ -5,8 +5,7 @@ import {
 } from '@astralis-team/primitive-fetch'
 
 export interface setLotToFavouritesParams {
-	lot_id: number
-	auction_name: 'COPART' | 'IAAI'
+	favorite_id: number
 }
 
 export type setLotToFavouritesConfig =
@@ -17,7 +16,10 @@ export const setLotToFavourites = async ({
 	params,
 }: setLotToFavouritesConfig): Promise<FetchesResponse<string[]>> => {
 	return $Api.post(
-		`/favorite/${params.auction_name?.toLowerCase()}/${params.lot_id}/`,
+		`/private/v1/favorites/`,
+		{
+			favorite_id: params.favorite_id,
+		},
 		{
 			...config,
 		}

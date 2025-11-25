@@ -6,8 +6,11 @@ import {
 } from '@astralis-team/primitive-fetch'
 
 export interface getSimilarArchivalOffersParams {
-	auction: 'COPART' | 'IAAI'
-	id: string
+	auction: 'copart' | 'iaai'
+	make: string
+	model: string
+	year: number
+	vehicle_type: string
 }
 
 export type getSimilarArchivalOffersConfig =
@@ -18,14 +21,18 @@ export const getSimilarArchivalOffers = ({
 	config,
 }: getSimilarArchivalOffersConfig): Promise<
 	FetchesResponse<{
-		lots: TLot[]
+		data: TLot[]
 		'make-model': Record<'make' | 'model', string>
 	}>
 > => {
-	return $Api.get(
-		`/auction-vehicles/archival-offers/${params.id}/${params.auction}/`,
-		{
-			...config,
-		}
-	)
+	return $Api.get(`/public/v1/lot/similar-sales/`, {
+		params: {
+			site: params.auction,
+			make: params.make,
+			model: params.model,
+			year: params.year,
+			vehicle_type: params.vehicle_type,
+		},
+		...config,
+	})
 }

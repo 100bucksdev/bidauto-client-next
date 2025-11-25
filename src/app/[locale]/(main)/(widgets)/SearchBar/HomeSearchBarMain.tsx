@@ -1,13 +1,11 @@
 import { searchOptions } from '@/store/searchOptions.store'
 import { useTranslations } from 'next-intl'
-import { FC, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import HomeSearchBarArea from './widgets/HomeSearchBarArea'
 import HomeSearchBarAuctionType from './widgets/HomeSearchBarAuctionType'
 
-interface HomeSearchBarMainProps {}
-
-const HomeSearchBarMain: FC<HomeSearchBarMainProps> = () => {
+const HomeSearchBarMain = () => {
 	const { setMake, setModel, params, toDefault } = searchOptions()
 
 	const { type } = params

@@ -1,4 +1,5 @@
 import LotPhotos from '@/components/LotPhotos/LotPhotos'
+import { auctionName } from '@/shared/utils/auctionName'
 import { TLot } from '@/types/Lot.interface'
 import LotDetails from './LotDetails'
 
@@ -8,16 +9,12 @@ const LotMain = ({ lot }: { lot: TLot }) => {
 			<div className='bg-white pb-8'>
 				<div></div>
 				<LotPhotos
-					view360={lot.Auction === 'IAAI' ? lot.View360 : undefined}
-					photos={lot.VehicleImages || []}
-					miniaturePhotos={
-						lot.VehicleImagesSmallHD?.map(url => url.small).filter(
-							(url): url is string => typeof url === 'string'
-						) || []
-					}
-					lot_id={lot.Auction === 'IAAI' ? Number(lot.Stock) : Number(lot.U_ID)}
-					auction_name={lot.Auction}
-					engineStartVideo={lot.Auction === 'IAAI' ? lot.EngineVideo : ''}
+					view360={lot.iaai_360 || undefined}
+					photos={lot.link_img_hd || []}
+					miniaturePhotos={lot.link_img_small}
+					lot_id={lot.lot_id}
+					auction_name={auctionName(lot.lot_id)}
+					// engineStartVideo={lot.}
 				/>
 				<div>
 					<LotDetails lot={lot} />

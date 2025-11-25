@@ -7,8 +7,7 @@ import {
 	FetchesResponse,
 } from '@astralis-team/primitive-fetch'
 
-export interface lotSearchParams
-	extends Partial<ISearchParams & { page: number }> {}
+export type lotSearchParams = Partial<ISearchParams>
 
 export type lotSearchConfig = FetchesRequestConfig<lotSearchParams>
 
@@ -27,7 +26,7 @@ export const lotSearch = ({
 				params.make?.toUpperCase() === 'ALL_MAKES' ? undefined : params.make,
 			model:
 				params.model?.toUpperCase() === 'ALL_MODELS' ? undefined : params.model,
-			auction: params.auction,
+			site: params.auction,
 			year_from: params.yearFrom,
 			year_to: params.yearTo,
 			page: params.page,
@@ -35,9 +34,9 @@ export const lotSearch = ({
 				? undefined
 				: params.auctionDateFrom,
 			auction_date_to: !params.auctionDateTo ? undefined : params.auctionDateTo,
-			current_bid_from: !params.bidFrom ? undefined : params.bidFrom,
-			current_bid_to: !params.bidTo ? undefined : params.bidTo,
-			is_buy_now: params.isBuyNow === 'true' ? 1 : 0,
+			// current_bid_from: !params.bidFrom ? undefined : params.bidFrom,
+			// current_bid_to: !params.bidTo ? undefined : params.bidTo,
+			buy_now: params.isBuyNow,
 			vehicle_type: params.type,
 			buy_now_price_min: params.buyNowPriceFrom || undefined,
 			buy_now_price_max: params.buyNowPriceTo || undefined,
@@ -61,5 +60,6 @@ export const lotSearch = ({
 					? undefined
 					: params.insurance,
 		},
+		...config,
 	})
 }

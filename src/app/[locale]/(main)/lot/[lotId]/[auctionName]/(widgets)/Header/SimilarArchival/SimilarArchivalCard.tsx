@@ -1,4 +1,5 @@
 import CardPhotos from '@/components/CarCard/CardPhoto'
+import { auctionName } from '@/shared/utils/auctionName'
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { TLot } from '@/types/Lot.interface'
 import { AuctionImage } from '@/types/Shop.interface'
@@ -7,7 +8,7 @@ import { useState } from 'react'
 
 const SimilarArchivalCard = ({ lot }: { lot: TLot }) => {
 	const [photos, setPhotos] = useState<string[] | AuctionImage[]>(
-		lot.VehicleImages ?? []
+		lot.link_img_hd ?? []
 	)
 	const priceFormatter = priceFormat({ char: 'USD' })
 
@@ -17,14 +18,12 @@ const SimilarArchivalCard = ({ lot }: { lot: TLot }) => {
 				<CardPhotos photos={photos} setPhotos={setPhotos} loop={false} />
 			</div>
 			<Link
-				href={`/lot/${lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}/${
-					lot.Auction
-				}`}
+				href={`/lot/${lot.lot_id}/${auctionName(lot.lot_id)}`}
 				className='w-full flex flex-wrap gap-2 mx-auto mt-2 text-base hover:text-sky-500'
 			>
-				<div>{lot.Year}</div>
-				<div>{lot.Make}</div>
-				<div>{lot.ModelGroup}</div>
+				<div>{lot.year}</div>
+				<div>{lot.make}</div>
+				<div>{lot.model}</div>
 			</Link>
 			{/* <div className='mt-2 text-sm'>
 				<div className='text-slate-500'>Seller</div>
@@ -33,12 +32,14 @@ const SimilarArchivalCard = ({ lot }: { lot: TLot }) => {
 			<div className='grid grid-cols-2 max-md:grid-cols-none max-md:grid-rows-2 w-full mt-2 text-sm bg-gray-300 rounded-lg p-2'>
 				<div>
 					<div className='text-slate-600'>Seller:</div>
-					<div>{lot.Seller ?? 'Unknown'}</div>
+					<div>{lot.seller ?? 'Unknown'}</div>
 				</div>
 				<div>
 					<div className='text-slate-600'>Final Bid:</div>
 					<div>
-						{lot.CurrentBid ? priceFormatter.format(lot.CurrentBid) : 'Unknown'}
+						{lot.current_bid
+							? priceFormatter.format(lot.current_bid)
+							: 'Unknown'}
 					</div>
 				</div>
 			</div>

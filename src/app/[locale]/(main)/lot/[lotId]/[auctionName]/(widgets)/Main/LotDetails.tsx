@@ -14,24 +14,24 @@ const LotDetails = async ({ lot }: { lot: TLot }) => {
 				<div className='flex justify-between'>
 					<div>{t('lot.details.primaryDamage')}</div>
 					<div className='font-medium'>
-						{lot.PrimaryDamage?.toUpperCase() ? lot.PrimaryDamage : ''}
+						{lot.damage_pr?.toUpperCase() ? lot.damage_pr : ''}
 					</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.secondaryDamage')}</div>
-					<div className='font-medium'>{lot.SecondaryDamage || ''}</div>
+					<div className='font-medium'>{lot.damage_sec || ''}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.odometer')}</div>
-					{!Number.isNaN(Number(lot.Odometer)) && (
+					{!Number.isNaN(Number(lot.odometer)) && (
 						<div className='font-medium'>
 							<span className='mr-1'>
-								{odometer.format(Number(lot.Odometer))}
+								{odometer.format(Number(lot.odometer))}
 							</span>
 							<span>{`(${odometer.format(
-								Math.round(Number(lot.Odometer) * kmInMile)
+								Math.round(Number(lot.odometer) * kmInMile)
 							)} km)`}</span>
 						</div>
 					)}
@@ -39,70 +39,66 @@ const LotDetails = async ({ lot }: { lot: TLot }) => {
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.odometerBrand')}</div>
-					<div className='font-medium'>{lot.OdometerBrand}</div>
+					<div className='font-medium'>{lot.odobrand}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.lotId')}</div>
-					<div className='font-medium'>
-						{lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}
-					</div>
+					<div className='font-medium'>{lot.lot_id}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>VIN</div>
-					<div className='font-medium'>{lot.VIN}</div>
+					<div className='font-medium'>{lot.vin}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.make')}</div>
-					<div className='font-medium'>{lot.Make}</div>
+					<div className='font-medium'>{lot.make}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.model')}</div>
-					<div className='font-medium'>{lot.ModelGroup}</div>
+					<div className='font-medium'>{lot.model}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.engine')}</div>
-					<div className='font-medium'>{lot.Engine}</div>
+					<div className='font-medium'>{lot.engine}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.fuel')}</div>
-					<div className='font-medium'>{lot.FuelType}</div>
+					<div className='font-medium'>{lot.fuel}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.transmission')}</div>
-					<div className='font-medium'>{lot.Transmission}</div>
+					<div className='font-medium'>{lot.transmission}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.keys')}</div>
 					<div className='font-medium'>
-						{lot.Keys ? t('common.yes') : t('common.no')}
+						{lot.keys ? t('common.yes') : t('common.no')}
 					</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.lotCondition')}</div>
-					<div className='font-medium'>{lot.LotCondition}</div>
+					<div className='font-medium'>{lot.state}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.color')}</div>
-					<div className='font-medium'>{lot.Color}</div>
+					<div className='font-medium'>{lot.color}</div>
 				</div>
 				<hr className='border border-slate-200 my-6' />
 				<div className='flex justify-between'>
 					<div>{t('lot.details.location')}</div>
-					<div className='font-medium'>{`${
-						lot.LocationCity && lot.LocationCity
-					} ${lot.LocationState && lot.LocationState}`}</div>
+					<div className='font-medium'>{lot.location}</div>
 				</div>
-				{lot.Auction === 'IAAI' && (
+				{/* {lot.Auction === 'IAAI' && (
 					<>
 						<hr className='border border-slate-200 my-6' />
 						<div className='flex justify-between'>
@@ -110,7 +106,7 @@ const LotDetails = async ({ lot }: { lot: TLot }) => {
 							<div className='font-medium'>{lot.ManufacturedIn}</div>
 						</div>
 					</>
-				)}
+				)} */}
 			</div>
 		</>
 	)

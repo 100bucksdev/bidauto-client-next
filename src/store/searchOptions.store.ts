@@ -85,28 +85,28 @@ export type TIAAIVehicles =
 export type TVehicles = TCopartVehicles | TIAAIVehicles
 
 export interface ISearchParams {
-	isBuyNow: 'true' | 'false'
-	auction: 'COPART' | 'IAAI'
-	make: string
-	model: string
-	yearFrom: string
-	yearTo: string
-	bidFrom: string
-	bidTo: string
-	auctionDateFrom: string
-	auctionDateTo: string
-	buyNowPriceFrom: string
-	buyNowPriceTo: string
-	archived: 'true' | 'false'
-	type: TVehicles
-	vin: string
-	fuel: string
-	seller: string
-	vehicle_condition: string
-	odometerFrom: string
-	odometerTo: string
-	insurance: 'ALL' | '1' | '0'
-	q?: string
+	site: 'copart' | 'iaai' | '1' | '2' | '3' | 'all' | '' // site*
+	make: string | null // make
+	model: string | null // model
+	vehicle_type: string | null // vehicle_type
+	year_from: number | null // year_from
+	year_to: number | null // year_to
+	auction_date_from: string | null // auction_date_from
+	auction_date_to: string | null // auction_date_to
+	transmission: string[] | null // transmission[]
+	status: string[] | null // status[]
+	drive: string[] | null // drive[]
+	damage_pr: string[] | null // damage_pr[]
+	document: string[] | null // document[]
+	odometer_min: number | null // odometer_min
+	odometer_max: number | null // odometer_max
+	seller_type: 'insurance' | 'dealer' | null // seller_type
+	sort: 'auction_date' | 'created_at' | null // sort
+	direction: 'ASC' | 'DESC' | null // direction
+	page: number // page
+	size: number // size
+	buy_now: boolean | null // buy_now
+	fuel: string[] | null // fuel[]
 }
 
 const defaultState: ISearchParams = {

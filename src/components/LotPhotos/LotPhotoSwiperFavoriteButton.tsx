@@ -1,6 +1,7 @@
 'use client'
 
 import { useDeleteLotFromFavourites } from '@/shared/api/Lots/Favourites/deleteLotFromFavourites/useDeleteLotFromFavourites'
+import { useGetFavoriteByLot } from '@/shared/api/Lots/Favourites/gerFavoriteByLot/useGetFavoriteByLot'
 import { useSetLotToFavourites } from '@/shared/api/Lots/Favourites/setLotToFavorites/useSetLotToFavourites'
 import { useGetUserData } from '@/shared/api/User/getUserData/useGetUserData'
 import { useState } from 'react'
@@ -10,17 +11,20 @@ const LotPhotoSwiperFavoriteButton = ({
 	lot_id,
 	auction_name,
 }: {
-	lot_id: number | undefined
-	auction_name: 'COPART' | 'IAAI' | undefined
+	lot_id: number
+	auction_name: 'copart' | 'iaai'
 }) => {
 	const userData = useGetUserData()
-
+	const lotData = useGetFavoriteByLot({
+		lotId: lot_id,
+		auction: auction_name,
+	})
 	// const isUserLogin = localStorage.getItem('access_token') ? true : false
 	const isUserLogin = false
 	const userFavorites = userData.data?.favorites || []
 
 	const [isFavorite, setIsFavorite] = useState(
-		userFavorites.includes(`${auction_name === 'IAAI' ? '1' : '0'}_${lot_id}`)
+		userFavorites.includes(`${auction_name === 'iaai' ? '1' : '0'}_${lot_id}`)
 	)
 	const addToFavorites = useSetLotToFavourites()
 	const deleteFromFavorites = useDeleteLotFromFavourites()
@@ -39,21 +43,25 @@ const LotPhotoSwiperFavoriteButton = ({
 							return
 						}
 
-						isFavorite ? setIsFavorite(false) : setIsFavorite(true)
+						setIsFavorite(prev => !prev)
 
-						isFavorite
-							? deleteFromFavorites.mutateAsync({
-									params: {
-										lot_id,
-										auction_name,
-									},
-							  })
-							: addToFavorites.mutateAsync({
-									params: {
-										lot_id,
-										auction_name,
-									},
-							  })
+						const auctionNameUpper = auction_name === 'iaai' ? 'IAAI' : 'COPART'
+
+						if (isFavorite) {
+							deleteFromFavorites.mutateAsync({
+								params: {
+									favorite_id: lotData.data?.data.id,
+									auction_name: auctionNameUpper,
+								} as unknown as any,
+							})
+						} else {
+							addToFavorites.mutateAsync({
+								params: {
+									lot_id,
+									auction_name: auctionNameUpper,
+								} as unknown as any,
+							})
+						}
 					}}
 					className={`flex items-center gap-x-2 px-2 py-1 z-40 ${
 						isFavorite

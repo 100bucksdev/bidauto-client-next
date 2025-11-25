@@ -15,7 +15,6 @@ const ForgotPassword = () => {
 	const t = useTranslations()
 	const [step, setStep] = useState<0 | 1>(0)
 	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
 	const { push: path } = useRouter()
 
 	return (
@@ -83,11 +82,7 @@ const ForgotPassword = () => {
 								variants={MRegPopUpFromRightToLeft}
 								transition={{ duration: 0.1 }}
 							>
-								<ForgotPasswordForm
-									setStep={setStep}
-									setEmail={setEmail}
-									setPassword={setPassword}
-								/>
+								<ForgotPasswordForm setStep={setStep} setEmail={setEmail} />
 							</motion.div>
 						) : null}
 					</AnimatePresence>
@@ -102,7 +97,7 @@ const ForgotPassword = () => {
 								variants={MRegPopUpFromRightToLeft}
 								transition={{ duration: 0.1 }}
 							>
-								<ForgotPasswordConfirm email={email} password={password} />
+								<ForgotPasswordConfirm email={email} />
 							</motion.div>
 						) : null}
 					</AnimatePresence>

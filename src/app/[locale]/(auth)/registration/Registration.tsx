@@ -16,8 +16,6 @@ const Registration = () => {
 	const { push: path } = useRouter()
 	const t = useTranslations()
 	const [step, setStep] = useState<0 | 1 | 2>(0)
-	const [email, setEmail] = useState('')
-	const [phone, setPhone] = useState('')
 
 	return (
 		<div className='flex h-screen overflow-hidden'>
@@ -79,7 +77,7 @@ const Registration = () => {
 									transition={{ delay: 0.1, duration: 0.1 }}
 									className='absolute w-full'
 								>
-									<RegistrationEmailConfirm setStep={setStep} email={email} />
+									<RegistrationEmailConfirm setStep={setStep} />
 								</motion.div>
 							)}
 							{step === 2 && (
@@ -91,7 +89,7 @@ const Registration = () => {
 									transition={{ delay: 0.1, duration: 0.1 }}
 									className='absolute w-full'
 								>
-									<RegistrationPhoneConfirm email={email} phone={phone} />
+									<RegistrationPhoneConfirm />
 								</motion.div>
 							)}
 						</AnimatePresence>

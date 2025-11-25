@@ -12,112 +12,65 @@ export interface IAuctionsStatuses {
 	copart_available: boolean
 }
 
-export interface ICopartLot {
-	ActualCashValue: number
-	Archived: boolean
-	Auction: 'COPART'
-	AuctionDate: string
-	BodyStyle: any
-	BuyNowPrice: number
-	Color: string
-	CurrentBid: number
-	ReservePrice: number | null
-	Cylinders: string
-	Drive: string
-	Engine: string
-	EstimatedRepairCost: number
-	FuelType: string
-	Keys: boolean
-	LocationCity: string
-	LocationState: string
-	LotCondition: string
-	Make: string
-	ModelDetail: string
-	ModelGroup: string
-	Odometer: string
-	OdometerBrand: string
-	PrimaryDamage: string
-	SaleStatus: string
-	SecondaryDamage: string
-	Seller: string
-	SpecialNotes: string
-	StartCode: string
-	Title: string
-	Transmission: string
-	U_ID: string
-	VIN: string
-	VehicleImages: string[] | undefined
-	VehicleImagesSmallHD?:
-		| {
-				hd?: string
-				small?: string
-		  }[]
-		| undefined
-	VehicleType: string
-	Year: number
-	Insurance: boolean
-	auctions_statuses: IAuctionsStatuses
+export interface TLot {
+	lot_id: number
+	site: number
+	base_site: string
+	salvage_id: number
+	odometer: number
+	price_new: number
+	price_future: number
+	price_reserve: number
+	current_bid: number
+	auction_date: string
+	cost_priced: number
+	cost_repair: number
+	year: number
+	cylinders: number
+	state: string
+	vehicle_type: string
+	auction_type: string
+	make: string
+	model: string
+	series: string
+	damage_pr: string
+	damage_sec: string
+	keys: string
+	odobrand: string
+	fuel: string
+	drive: string
+	transmission: string
+	color: string
+	status: string
+	title: string
+	vin: string
+	engine: string
+	engine_size: number
+	location: string
+	location_old: string
+	location_id: number
+	country: string
+	document: string
+	document_old: string
+	currency: string
+	seller: string
+	is_buynow: boolean
+	iaai_360: string
+	copart_exterior_360: string[]
+	copart_interior_360: string
+	video: string
+	link_img_hd: string[]
+	link_img_small: string[]
+	is_offsite: boolean
+	location_offsite: string
+	link: string
+	body_type: string
+	seller_type: string
+	vehicle_score: string
+	form_get_type: 'history' | 'active'
 }
-
-export interface IIAAILot {
-	ActualCashValue: number
-	Archived: boolean
-	Auction: 'IAAI'
-	AuctionDate: string
-	BodyStyle: any
-	BuyNowPrice: number
-	ReservePrice: number | null
-	Color: string
-	CurrentBid: number
-	Cylinders: string
-	Drive: string
-	Engine: string
-	EstimatedRepairCost: number
-	FuelType: string
-	Keys: boolean
-	LocationCity: string
-	LocationState: string
-	LotCondition: string
-	Make: string
-	ModelDetail: string
-	ModelGroup: string
-	Odometer: string
-	OdometerBrand: string
-	PrimaryDamage: string
-	SaleStatus: string
-	SecondaryDamage: string
-	Seller: string
-	SpecialNotes: string
-	Title: string
-	Transmission: string
-	U_ID: string
-	VIN: string
-	Interior: string
-	ManufacturedIn: string
-	Options: string
-	RestraintSystem: string
-	Loss: string
-	Airbags: string
-	VehicleImages: string[]
-	VehicleImagesSmallHD?:
-		| {
-				hd?: string
-				small?: string
-		  }[]
-		| undefined
-	VehicleType: string
-	Year: number
-	Insurance: boolean
-	Stock: string
-	View360: string
-	auctions_statuses: IAuctionsStatuses
-	EngineVideo: string
-}
-
-export type TLot = IIAAILot | ICopartLot
 
 export interface ILotInfo {
-	title_indicator: string
 	insurance_caution: boolean
 	history: ISalesHistoryItem[]
 	bid: number
@@ -133,4 +86,16 @@ export interface ILotInfo {
 		eu_calculator: ILotEuCalculator
 		eur_rate: number
 	}
+}
+
+export type TLotTitleColorData =
+	| 'grey'
+	| 'green'
+	| 'yellow'
+	| 'red'
+	| 'red red'
+	| 'black'
+
+export interface ILotTitleIndicators {
+	color: TLotTitleColorData
 }

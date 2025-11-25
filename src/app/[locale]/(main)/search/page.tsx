@@ -6,6 +6,5 @@ export const metadata: Metadata = {
 }
 
 export default function SearchPage() {
-	// это серверный компонент, просто возвращает клиентский
 	return <Search />
 }

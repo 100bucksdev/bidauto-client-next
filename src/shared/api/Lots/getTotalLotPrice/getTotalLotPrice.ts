@@ -1,8 +1,5 @@
 import { $Api } from '@/config/api.config'
-import {
-	ILotCalculator,
-	ILotEuCalculator,
-} from '@/types/LotCalculator.interface'
+import { ICalculator } from '@/types/CalculatorLocation.interface'
 import {
 	FetchesRequestConfig,
 	FetchesResponse,
@@ -10,9 +7,11 @@ import {
 
 export interface getTotalLotPriceParams {
 	price: number
-	lot_id: string
 	auction_name: 'COPART' | 'IAAI'
 	fee_type?: string
+	vehicle_type: string
+	destination: string
+	location: string
 }
 
 export type getTotalLotPriceConfig =
@@ -21,20 +20,16 @@ export type getTotalLotPriceConfig =
 export const getTotalLotPrice = async ({
 	config,
 	params,
-}: getTotalLotPriceConfig): Promise<
-	FetchesResponse<{
-		calculator: ILotCalculator
-		eu_calculator: ILotEuCalculator
-		eur_rate: number
-	}>
-> => {
+}: getTotalLotPriceConfig): Promise<FetchesResponse<ICalculator>> => {
 	return $Api.post(
-		'/calculator/',
+		'/calculator/v1/public/calculator',
 		{
 			price: params.price,
-			lot_id: params.lot_id,
 			auction: params.auction_name,
 			fee_type: params.fee_type,
+			vehicle_type: params.vehicle_type,
+			destination: params.destination,
+			location: params.location,
 		},
 		{
 			...config,

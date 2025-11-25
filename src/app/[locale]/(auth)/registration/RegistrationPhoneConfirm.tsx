@@ -53,7 +53,7 @@ const RegistrationPhoneConfirm = memo(() => {
 			const button = document.createElement('button')
 			button.style.display = 'none'
 			button.onclick = () => {
-				sendSms.mutate({ params: { userUUID: userInReg.phone_number } })
+				sendSms.mutate({ params: { userUUID: userInReg.uuid_key } })
 				button.remove()
 			}
 			document.body.appendChild(button)
@@ -123,7 +123,7 @@ const RegistrationPhoneConfirm = memo(() => {
 							onClick={() => {
 								if (timer <= 0) {
 									sendSms.mutate({
-										params: { userUUID: userInReg.phone_number },
+										params: { userUUID: userInReg.uuid_key },
 									})
 									setTimer(59)
 								}

@@ -1,10 +1,10 @@
 import CircleLoader from '@/shared/ui/CircleLoader'
 import { priceFormat } from '@/shared/utils/priceFormat'
 import { homeSearchBarSelectStyles } from '@/shared/utils/reactSelectStyles'
-import { ITerminalsPrices } from '@/types/Terminals.interface'
+import { CalculatorBase, FeeItem } from '@/types/CalculatorLocation.interface'
 import { useTranslations } from 'next-intl'
 
-import { Dispatch, memo, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, memo, SetStateAction, useEffect, useMemo } from 'react'
 import { LuCalculator } from 'react-icons/lu'
 import Select from 'react-select'
 
@@ -18,18 +18,25 @@ interface ILotFinalPriceCalculator {
 				label: string
 		  }[]
 		| undefined
-	calculator?: any
+	calculator?: CalculatorBase
 	lotBid: number
 	toEuro: number
-	finalPrices:
-		| Partial<ITerminalsPrices>
-		| undefined
-		| Partial<ITerminalsPrices>[]
+	finalPrices: Partial<FeeItem>[] | Partial<FeeItem> | undefined
 	terminal: { value: string; label: string }
 	setTerminal: Dispatch<SetStateAction<{ value: string; label: string }>>
 	info?: any
 	type?: 'yourBid' | 'fastBuy'
 }
+
+// Нормализация ключей терминалов
+const normalize = (name: string) => name.toLowerCase().replace(/\s+/g, '')
+
+// Преобразуем FeeItem[] в объект { key: price }
+const feeArrayToObject = (arr: FeeItem[] = []) =>
+	arr.reduce<Record<string, number>>((acc, item) => {
+		acc[normalize(item.name)] = item.price
+		return acc
+	}, {})
 
 const LotFinalPriceCalculator = memo<ILotFinalPriceCalculator>(
 	({
@@ -39,7 +46,6 @@ const LotFinalPriceCalculator = memo<ILotFinalPriceCalculator>(
 		options,
 		calculator,
 		lotBid,
-		finalPrices,
 		terminal,
 		setTerminal,
 		type,
@@ -48,14 +54,29 @@ const LotFinalPriceCalculator = memo<ILotFinalPriceCalculator>(
 		const t = useTranslations()
 		const priceFormatter = priceFormat({ char: 'USD' })
 
-		const [loadOptions, setLoadOptions] = useState(false)
+		// Преобразуем массивы в словари
+		const transport = useMemo(
+			() =>
+				calculator ? feeArrayToObject(calculator.transportation_price) : {},
+			[calculator]
+		)
 
+		const ship = useMemo(
+			() => (calculator ? feeArrayToObject(calculator.ocean_ship) : {}),
+			[calculator]
+		)
+
+		const totals = useMemo(
+			() => (calculator ? feeArrayToObject(calculator.totals) : {}),
+			[calculator]
+		)
+
+		// При первой загрузке выставляем первый терминал
 		useEffect(() => {
-			if (options && !loadOptions) {
+			if (options?.length && !terminal.value) {
 				setTerminal(options[0])
-				setLoadOptions(true)
 			}
-		}, [options, loadOptions])
+		}, [options])
 
 		return (
 			<>
@@ -87,16 +108,17 @@ const LotFinalPriceCalculator = memo<ILotFinalPriceCalculator>(
 							</div>
 						</div>
 					</div>
+
+					{/* TERMINAL SELECT */}
 					<div className='mb-3 max-md:text-base flex flex-col px-4'>
 						<div className='flex justify-between items-center'>
 							<div className='flex items-center gap-x-2 py-1'>
 								<div className='py-2'>{t('lot.calc.terminal')}</div>
+
 								{isLoading || isError ? (
 									isLoading ? (
 										<CircleLoader />
-									) : (
-										''
-									)
+									) : null
 								) : (
 									<Select
 										styles={homeSearchBarSelectStyles}
@@ -104,8 +126,8 @@ const LotFinalPriceCalculator = memo<ILotFinalPriceCalculator>(
 										options={options}
 										onChange={e =>
 											setTerminal({
-												value: e?.value || 'newyork',
-												label: e?.label || 'Newyork',
+												value: e?.value || '',
+												label: e?.label || '',
 											})
 										}
 										value={terminal}
@@ -113,134 +135,77 @@ const LotFinalPriceCalculator = memo<ILotFinalPriceCalculator>(
 								)}
 							</div>
 						</div>
+
+						{/* LOT PRICE */}
 						<div className='flex justify-between py-2'>
 							<div className='text-gray-500'>{t('lot.calc.lotPrice')}</div>
-							<div>
-								{(info && !isError && priceFormatter.format(lotBid)) || ''}
-							</div>
+							<div>{info && !isError && priceFormatter.format(lotBid)}</div>
 						</div>
+
+						{/* AUCTION FEES */}
 						<div className='flex justify-between py-2'>
 							<div className='text-gray-500'>{t('lot.calc.auctionFees')}</div>
 							<div>
 								{isLoading ? (
 									<CircleLoader />
 								) : (
-									info &&
-									((calculator?.additional &&
-										priceFormatter.format(calculator?.additional)) ||
-										'')
+									priceFormatter.format(calculator?.auction_fee || 0)
 								)}
 							</div>
 						</div>
-						<div className='flex justify-between py-2'>
-							<div className='text-gray-500'>
-								{t('lot.calc.titleMailingFee')}
-							</div>
-							<div>
-								{isLoading ? (
-									<CircleLoader />
-								) : (
-									(calculator?.title_mailing_fee &&
-										priceFormatter.format(calculator?.title_mailing_fee)) ||
-									''
-								)}
-							</div>
-						</div>
+
+						{/* BROKER FEE */}
 						<div className='flex justify-between py-2'>
 							<div className='text-gray-500'>{t('lot.calc.brokerFee')}</div>
 							<div>
 								{isLoading ? (
 									<CircleLoader />
 								) : (
-									(calculator?.broker_fee &&
-										priceFormatter.format(calculator?.broker_fee)) ||
-									''
+									priceFormatter.format(calculator?.broker_fee || 0)
 								)}
 							</div>
 						</div>
+
+						{/* OCEAN SHIP */}
 						<div className='flex justify-between py-2'>
 							<div className='text-gray-500'>{t('lot.calc.ship')}</div>
 							<div>
 								{isLoading ? (
 									<CircleLoader />
 								) : (
-									(calculator?.ocean_ship[terminal.value] &&
-										priceFormatter.format(
-											calculator?.ocean_ship[terminal.value]
-										)) ||
-									''
+									priceFormatter.format(ship[terminal.value] || 0)
 								)}
 							</div>
 						</div>
-						<div className='flex justify-between py-2 items-center'>
-							<div className='flex items-center gap-x-2'>
-								<div className='text-gray-500'>{t('lot.calc.transport')}</div>
-							</div>
+
+						{/* TRANSPORTATION */}
+						<div className='flex justify-between py-2'>
+							<div className='text-gray-500'>{t('lot.calc.transport')}</div>
 							<div>
 								{isLoading ? (
 									<CircleLoader />
 								) : (
-									(calculator?.transportation_price[terminal.value] &&
-										priceFormatter.format(
-											calculator?.transportation_price[terminal.value]
-										)) ||
-									''
+									priceFormatter.format(transport[terminal.value] || 0)
 								)}
 							</div>
 						</div>
-						<div className='flex justify-between py-2 items-center'>
-							<div className='flex items-center gap-x-2'>
-								<div className='text-lg font-medium'>{t('lot.calc.total')}</div>
-							</div>
+
+						{/* TOTAL */}
+						<div className='flex justify-between py-2'>
+							<div className='text-lg font-medium'>{t('lot.calc.total')}</div>
 							<div>
 								{isLoading ? (
 									<CircleLoader />
-								) : finalPrices && info ? (
-									priceFormatter.format((finalPrices as any)[terminal.value])
 								) : (
-									'No price available'
+									priceFormatter.format(totals[terminal.value] || 0)
 								)}
 							</div>
 						</div>
-						{/* <div className='flex justify-between items-center'>
-							<div className='font-semibold'>
-							{isLoading ? (
-									<CircleLoader />
-								) : info && type === 'yourBid' ? (
-									`${priceFormatter.format(
-										currency.value === 'EUR'
-											? info.data?.data.min_price_calculated.calculator.totals[
-													terminal.value
-												] * toEuro
-											: info.data?.data.min_price_calculated.calculator.totals[
-													terminal.value
-												]
-									)} - ${priceFormatter.format(
-										currency.value === 'EUR'
-											? info.data?.data.max_price_calculated.calculator.totals[
-													terminal.value
-												] * toEuro
-											: info.data?.data.max_price_calculated.calculator.totals[
-													terminal.value
-												]
-									)}`
-								) : (
-									(finalPrices &&
-									info &&
-									((finalPrices &&
-										(finalPrices as any)[terminal.value] &&
-										priceFormatter.format(
-											currency.value === 'EUR'
-												? (finalPrices as any)[terminal.value] * toEuro
-												: (finalPrices as any)[terminal.value]
-										)) ||
-									'')
-								))}
-							</div>
-						</div> */}
 					</div>
+
 					<hr />
 				</div>
+
 				{error ? (
 					<div className='text-center text-t-text-error'>{error}</div>
 				) : (
@@ -252,5 +217,7 @@ const LotFinalPriceCalculator = memo<ILotFinalPriceCalculator>(
 		)
 	}
 )
+
+LotFinalPriceCalculator.displayName = 'LotFinalPriceCalculator'
 
 export default LotFinalPriceCalculator

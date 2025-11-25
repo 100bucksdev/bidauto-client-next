@@ -2,8 +2,8 @@
 
 import { useGetTotalLotPrice } from '@/shared/api/Lots/getTotalLotPrice/useGetTotalLotPrice'
 import { toEuro } from '@/shared/utils/ExchageRates'
+import { FeeItem } from '@/types/CalculatorLocation.interface'
 import { TLot } from '@/types/Lot.interface'
-import { ITerminalsPrices } from '@/types/Terminals.interface'
 import { useEffect, useState } from 'react'
 import FinalPriceEstimator from './FinalPrice/FinalPriceEstimator'
 import GetCarfaxReports from './GetCarfaxReports'
@@ -19,61 +19,66 @@ interface LotSidebarProps {
 
 export default function LotSidebar({ lot, info }: LotSidebarProps) {
 	const [type, setType] = useState<'yourBid' | 'fastBuy'>('yourBid')
-	const price = lot?.CurrentBid ?? 0
+	const price = lot?.current_bid ?? 0
 
 	const [lotBid, setLotBid] = useState<number>(price + 25)
 	const [error, setError] = useState('')
 	const [terminal, setTerminal] = useState({ value: '', label: '' })
 	const [estimator, setEstimator] = useState(true)
 
-	// При изменении лота — сбрасываем ставку
+	// Сбрасываем ставку при смене лота
 	useEffect(() => {
 		if (lot) {
 			setLotBid(price + 25)
 		}
 	}, [lot, price])
 
-	// Если выбран FastBuy — обновляем ставку
+	// FastBuy обновляет ставку
 	useEffect(() => {
 		if (type === 'fastBuy') {
-			setLotBid(lot.BuyNowPrice || lot.CurrentBid + 25)
+			setLotBid(lot.current_bid + 25)
 		}
-	}, [type, lot.BuyNowPrice, lot.CurrentBid])
+	}, [type, lot.current_bid])
 
-	// Получаем цены
+	const auctionName = lot.site === 1 ? 'COPART' : 'IAAI'
+
+	// Получаем цену
 	const totalPrice = useGetTotalLotPrice({
-		price: type === 'fastBuy' ? lot.BuyNowPrice : lotBid,
-		lot_id: lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID,
-		auction_name: lot.Auction,
+		price: lotBid,
+		auction_name: auctionName,
+		vehicle_type: lot.vehicle_type,
+		destination: terminal.value || 'losangeles',
+		location: terminal.value || 'losangeles',
 	})
 
-	const keys = totalPrice.data?.calculator.totals
-		? Object.keys(totalPrice.data.calculator.totals)
-		: undefined
+	// Новый путь к данным
+	const calculator = totalPrice.data?.calculator_in_dollars?.calculator
 
-	const options = keys?.length
-		? keys.map(key => ({
-				value: key,
-				label:
-					key.toLocaleLowerCase() === 'losangeles'
-						? 'Los Angeles'
-						: key.toLocaleLowerCase() === 'newyork'
-						? 'New York'
-						: key.charAt(0).toUpperCase() + key.slice(1),
-		  }))
-		: undefined
+	const euCalculator = totalPrice.data?.calculator_in_dollars?.eu_calculator
 
-	const calculator = totalPrice.data?.calculator
-	const [finalPrices, setFinalPrices] = useState<
-		Partial<ITerminalsPrices> | undefined
-	>(calculator?.totals)
+	// Формирование списка терминалов
+	const options =
+		calculator?.totals?.map(item => ({
+			value: item.name,
+			label:
+				item.name.toLowerCase() === 'losangeles'
+					? 'Los Angeles'
+					: item.name.toLowerCase() === 'newyork'
+					? 'New York'
+					: item.name.charAt(0).toUpperCase() + item.name.slice(1),
+			price: item.price,
+		})) ?? []
 
-	const euCalculator = totalPrice.data?.eu_calculator
-	const [euFinalPrices, setEuFinalPrices] = useState<
-		Partial<ITerminalsPrices> | undefined
-	>(euCalculator?.totals)
+	// Локальные состояния финальных цен
+	const [finalPrices, setFinalPrices] = useState<FeeItem[] | undefined>(
+		calculator?.totals
+	)
 
-	// При изменении данных с сервера — обновляем цены
+	const [euFinalPrices, setEuFinalPrices] = useState<FeeItem[] | undefined>(
+		euCalculator?.totals
+	)
+
+	// Обновляем финальные цены при изменении данных с API
 	useEffect(() => {
 		if (calculator?.totals) setFinalPrices(calculator.totals)
 		if (euCalculator?.totals) setEuFinalPrices(euCalculator.totals)
@@ -81,10 +86,7 @@ export default function LotSidebar({ lot, info }: LotSidebarProps) {
 
 	return (
 		<div>
-			<GetCarfaxReports
-				auction={lot.Auction}
-				lot_id={lot.Auction === 'IAAI' ? lot.Stock : lot.U_ID}
-			/>
+			<GetCarfaxReports auction={auctionName} lot_id={lot.lot_id.toString()} />
 
 			<div className='mb-3'>
 				<LotPlaceBidBox
@@ -107,7 +109,7 @@ export default function LotSidebar({ lot, info }: LotSidebarProps) {
 					isError={totalPrice.isError}
 					isLoading={totalPrice.isLoading}
 					calculator={calculator}
-					toEuro={totalPrice.data?.eur_rate || toEuro}
+					toEuro={toEuro}
 					terminal={terminal}
 					setTerminal={setTerminal}
 					info={info}
@@ -131,23 +133,17 @@ export default function LotSidebar({ lot, info }: LotSidebarProps) {
 					lotBid={lotBid}
 					finalPrices={finalPrices}
 					euFinalPrices={euFinalPrices}
-					fastBuy={lot.BuyNowPrice > 0}
+					// fastBuy={lot.BuyNowPrice > 0}
 				/>
 			)}
 
 			<div className='mt-5 bg-white border-2 border-gray-300 rounded-2xl'>
 				<LotClearanceCalculator
 					finalPrices={euFinalPrices}
-					options={options}
-					lotBid={lotBid}
-					error={error}
-					isError={totalPrice.isError}
 					isLoading={totalPrice.isLoading}
 					calculator={euCalculator}
-					toEuro={totalPrice.data?.eur_rate || toEuro}
 					terminal={terminal}
 					type={type}
-					info={info}
 				/>
 			</div>
 		</div>

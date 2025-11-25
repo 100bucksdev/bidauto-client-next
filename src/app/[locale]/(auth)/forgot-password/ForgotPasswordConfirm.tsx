@@ -12,7 +12,6 @@ import { useForm } from 'react-hook-form'
 
 interface ForgotPasswordConfirmProps {
 	email: string
-	password: string
 }
 
 interface ErrorResponse {
@@ -25,10 +24,7 @@ interface ErrorResponse {
 	}
 }
 
-const ForgotPasswordConfirm = ({
-	email,
-	password,
-}: ForgotPasswordConfirmProps) => {
+const ForgotPasswordConfirm = ({ email }: ForgotPasswordConfirmProps) => {
 	const t = useTranslations()
 	const [timer, setTimer] = useState(59)
 	const { push: path } = useRouter()

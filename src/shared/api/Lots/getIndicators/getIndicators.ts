@@ -1,13 +1,13 @@
 import { $Api } from '@/config/api.config'
-import { ILotInfo } from '@/types/Lot.interface'
+import { ILotTitleIndicators } from '@/types/Lot.interface'
 import {
 	FetchesRequestConfig,
 	FetchesResponse,
 } from '@astralis-team/primitive-fetch'
 
 export interface getIndicatorsParams {
-	auction: 'COPART' | 'IAAI'
-	id: number
+	auction: 'copart' | 'iaai'
+	title_name: string
 }
 
 export type getIndicatorsConfig = FetchesRequestConfig<getIndicatorsParams>
@@ -15,14 +15,18 @@ export type getIndicatorsConfig = FetchesRequestConfig<getIndicatorsParams>
 export const getIndicators = ({
 	params,
 	config,
-}: getIndicatorsConfig): Promise<FetchesResponse<ILotInfo>> => {
-	if (!params.id) {
-		return Promise.reject('ID is required')
+}: getIndicatorsConfig): Promise<FetchesResponse<ILotTitleIndicators>> => {
+	if (!params.title_name) {
+		return Promise.reject('Title name is required')
 	}
 
-	return $Api.get<ILotInfo>(
-		`/auction-vehicles/indicators/${params.auction}/${params.id}/`,
+	return $Api.get<ILotTitleIndicators>(
+		`/auction-api/public/v1/lot/title-indicators`,
 		{
+			params: {
+				auction: params.auction,
+				title_name: params.title_name,
+			},
 			...config,
 		}
 	)
